@@ -24,3 +24,5 @@ public class HelloApplication extends Application {
 
 
 //Emil var her
+
+//Karo var her
