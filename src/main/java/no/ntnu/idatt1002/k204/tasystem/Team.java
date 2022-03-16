@@ -7,11 +7,15 @@ public class Team {
     private String teamName;
     private int wins;
 
-
     public Team(ArrayList<Player> players, String teamName, int wins) {
         this.players = players;
         this.teamName = teamName;
         this.wins = wins;
+    }
+
+    public Team(String teamName){
+        this.teamName = teamName;
+        this.wins = 0;
     }
 
     public ArrayList<Player> getPlayers() {
