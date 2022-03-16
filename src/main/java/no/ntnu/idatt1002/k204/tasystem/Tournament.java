@@ -37,12 +37,12 @@ public class Tournament {
     public Team getWinner() {
         return winner;
     }
-    public void setTeams(ArrayList<Team> teams) {
-        this.teams = teams;
-    }
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+    public void setWinner(Team winner){
+        this.winner=winner;
     }
 
     public boolean addTeam(Team team){
@@ -57,7 +57,8 @@ public class Tournament {
         setActive(true);
     }
 
-    public void finishTournament(){
+    public void finishTournament(Team winner){
         setActive(false);
+        setWinner(winner);
     }
 }
