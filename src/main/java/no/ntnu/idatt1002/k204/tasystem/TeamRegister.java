@@ -2,6 +2,9 @@ package no.ntnu.idatt1002.k204.tasystem;
 
 import java.util.ArrayList;
 
+/**
+ * The register that holds all teams in the system.
+ */
 public class TeamRegister {
     private ArrayList<Team> teams = new ArrayList<>();
 
