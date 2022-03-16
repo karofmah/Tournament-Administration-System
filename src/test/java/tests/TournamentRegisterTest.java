@@ -27,12 +27,6 @@ public class TournamentRegisterTest {
     public void addTournament(){
         TestData();
         Tournament tournament = new Tournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
-        register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
-        System.out.println(register.toString());
-        Assertions.assertTrue(register.getTournaments().get(0)==(tournament));
-        register.addTournament("Tirsdagsturnering","Unranked",false, LocalDateTime.of(2022, Month.APRIL,18,14,00,00));
-        register.addTournament("Onsdagsturnering","Silver",true, LocalDateTime.of(2022, Month.MARCH,28,14,00,00));
-        System.out.println(register.getTournaments());
-
+        Assertions.assertTrue(register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00)));
     }
 }
