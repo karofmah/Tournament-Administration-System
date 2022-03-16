@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import no.ntnu.idatt1002.k204.tasystem.dao.AdministratorDAO;
+import no.ntnu.idatt1002.k204.tasystem.dao.Database;
+
+import java.sql.SQLException;
 
 
 /**
@@ -21,7 +25,7 @@ public class LoginController {
 
     @FXML
     private TextField usernameTextField;
-
+    Database database;
 
     /**
      * Handle login button event
@@ -31,15 +35,22 @@ public class LoginController {
      */
     @FXML
     void loginButtonClicked() {
-        //TODO
+        try {
+            System.out.println("Connecting...");
+            database = new Database();
+            AdministratorDAO adminDAO = new AdministratorDAO();
 
-        //FIXME Add database connection:
-        // - 1. Start connection when authenticated user logs in
-        // - 2. After successful authentication, change scene
+            if (adminDAO.getAdmin(usernameTextField.getText(), passwordTextField.getText())) {
+                System.out.println("Succesfully logged in!");
+                //TODO
 
-        System.out.println("Login clicked\n");
-        System.out.println("Username: " + usernameTextField.getText());
-        System.out.println("Password: " + passwordTextField.getText());//
+                //FIXME Add database connection:
+                // - 1. After successful authentication, change scene
+            } else {
+                System.out.println("You don't have access to this system!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
 }
