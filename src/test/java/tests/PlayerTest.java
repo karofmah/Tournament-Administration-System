@@ -6,18 +6,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class PlayerTest {
-
     @Test
-    void setGamerTagToBlank() {
-    Player player1 = new Player("Sjokoladepudden", "Silver");
-    try {
-        player1.setGamertag("");
-    }catch (IllegalArgumentException e){
-        System.out.println(e.getMessage());
+    void setGamerTagToBlankException() {
+        Player player1 = new Player("Sjokoladepudden", "Silver");
+        try {
+            player1.setGamertag("");
+        }catch (IllegalArgumentException e){
+        }
+        Assertions.assertThrows(IllegalArgumentException.class,()->new Player("","Silver"));
     }
-        Assertions.assertEquals(player1.getGamertag(),"Sjokoladepudden");
-    }
-
     @Test
     void setGamerTag(){
         Player player1 = new Player("Sjokoladepudden", "Silver");

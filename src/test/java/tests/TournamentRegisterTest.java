@@ -5,7 +5,6 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ public class TournamentRegisterTest {
         playerlist.add(player1);
         playerlist.add(player2);
         Team team1 = new Team(playerlist,"GeirSittLag",0);
-
     }
 
 
