@@ -2,6 +2,7 @@ module no.ntnu.idatt1002.k204.tasystem {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.logging;
+    requires java.sql;
 
 
     opens no.ntnu.idatt1002.k204.tasystem to javafx.fxml;

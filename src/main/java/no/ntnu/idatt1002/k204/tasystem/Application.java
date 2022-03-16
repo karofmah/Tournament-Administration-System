@@ -4,8 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import no.ntnu.idatt1002.k204.tasystem.dao.Database;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 /**
@@ -32,6 +35,18 @@ public class Application extends javafx.application.Application {
 
         stage.setTitle("TA-System");
         stage.setScene(scene);
+        stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> {
+            //Since connection is kept as long as the app is running
+            //Listen for closing event and close when at app exit
+            try {
+                if (Database.getConnection() != null){
+                    Database.getConnection().close();
+                    System.out.println("Closing database...");
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        });
         stage.show();
     }
 
