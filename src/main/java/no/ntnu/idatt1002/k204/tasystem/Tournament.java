@@ -13,13 +13,13 @@ public class Tournament {
     private boolean isActive;
     private Team winner;
 
-    public Tournament(String name, String rankRequirement,boolean hasGroupStage,LocalDateTime dateTime, ArrayList<Team> teams) {
+    public Tournament(String name, String rankRequirement,boolean hasGroupStage,LocalDateTime dateTime) {
         this.name = name;
         this.rankRequirement=rankRequirement;
         this.hasGroupStage=hasGroupStage;
         this.dateTime=dateTime;
         this.teams = teams;
-        this.isActive = isActive;
+        this.isActive = false;
         this.winner = winner;
     }
 
@@ -38,7 +38,6 @@ public class Tournament {
     public Team getWinner() {
         return winner;
     }
-
     public void setTeams(ArrayList<Team> teams) {
         this.teams = teams;
     }
@@ -47,4 +46,19 @@ public class Tournament {
         isActive = active;
     }
 
+    public boolean addTeam(Team team){
+        if(!teams.contains(team)){
+            return teams.add(team);
+        }
+        else{
+            return false;
+        }
+    }
+    public void startTournament() {
+        setActive(true);
+    }
+
+    public void finishTournament(){
+        setActive(false);
+    }
 }
