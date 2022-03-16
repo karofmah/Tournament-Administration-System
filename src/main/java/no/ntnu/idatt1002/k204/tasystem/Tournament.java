@@ -38,7 +38,7 @@ public class Tournament {
 
     /**
      * Returns name of the tournament
-     * @return name
+     * @return name as a String
      */
     public String getName() {
         return name;
@@ -46,15 +46,15 @@ public class Tournament {
 
     /**
      * Returns teams in the tournament
-     * @return teams
+     * @return teams as an ArrayList
      */
     public ArrayList<Team> getTeams() {
         return teams;
     }
 
     /**
-     *
-     * @return
+     *Returns whether or not the
+     * @return isActive as a boolean
      */
     public boolean isActive() {
         return isActive;

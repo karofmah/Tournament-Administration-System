@@ -24,8 +24,8 @@ public class TournamentRegister {
      *                      If there are 8 teams competing, there will only be a knockout stage.
      *                      If there are 12 teams competing, there will be a group stage as well.
      */
-    public void addTournament(String name, String rankRequirement, boolean hasGroupStage, LocalDateTime dateTime) {
-        tournaments.add(new Tournament(name, rankRequirement, hasGroupStage, dateTime));
+    public boolean addTournament(String name, String rankRequirement, boolean hasGroupStage, LocalDateTime dateTime) {
+        return tournaments.add(new Tournament(name, rankRequirement, hasGroupStage, dateTime));
     }
 
     public ArrayList<Tournament> getTournaments() {
