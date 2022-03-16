@@ -1,4 +1,4 @@
-package no.ntnu.idatt1002.k204.tasystem;
+package no.ntnu.idatt1002.k204.tasystem.model;
 
 public class Player {
     private String gamertag;

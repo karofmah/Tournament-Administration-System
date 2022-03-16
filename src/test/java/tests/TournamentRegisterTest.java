@@ -1,8 +1,8 @@
 package tests;
-import no.ntnu.idatt1002.k204.tasystem.Player;
-import no.ntnu.idatt1002.k204.tasystem.Team;
-import no.ntnu.idatt1002.k204.tasystem.Tournament;
-import no.ntnu.idatt1002.k204.tasystem.TournamentRegister;
+import no.ntnu.idatt1002.k204.tasystem.model.Player;
+import no.ntnu.idatt1002.k204.tasystem.model.Team;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
+import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package tests;
 
 
-import no.ntnu.idatt1002.k204.tasystem.Player;
+import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
