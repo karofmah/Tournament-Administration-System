@@ -6,13 +6,13 @@ public class Tournament {
     private String name;
     private ArrayList<Team> teams;
     private boolean isActive;
-    private Team team;
+    private Team winner;
 
-    public Tournament(String name, ArrayList<Team> teams, boolean isActive, Team team) {
+    public Tournament(String name, ArrayList<Team> teams) {
         this.name = name;
         this.teams = teams;
         this.isActive = isActive;
-        this.team = team;
+        this.winner = winner;
     }
 
     public String getName() {
@@ -27,8 +27,8 @@ public class Tournament {
         return isActive;
     }
 
-    public Team getTeam() {
-        return team;
+    public Team getWinner() {
+        return winner;
     }
 
     public void setTeams(ArrayList<Team> teams) {
