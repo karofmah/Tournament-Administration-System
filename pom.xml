@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>no.ntnu.idatt1002.k204</groupId>
-    <artifactId>tasystem</artifactId>
+    <artifactId>tassystem</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>tasystem</name>
+    <name>tassystem</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
