@@ -53,7 +53,7 @@ public class Tournament {
     }
 
     /**
-     *Returns whether or not the
+     *Returns whether or not the tournament is active
      * @return isActive as a boolean
      */
     public boolean isActive() {
@@ -61,15 +61,15 @@ public class Tournament {
     }
 
     /**
-     *
-     * @return
+     *Returns the winner of the tournament
+     * @return winner as the type Team
      */
     public Team getWinner() {
         return winner;
     }
 
     /**
-     *
+     *Changes whether or not the tournament is active
      * @param active
      */
     public void setActive(boolean active) {
@@ -77,7 +77,7 @@ public class Tournament {
     }
 
     /**
-     *
+     *Sets the winner
      * @param winner
      */
     public void setWinner(Team winner){this.winner=winner;}
@@ -92,20 +92,21 @@ public class Tournament {
     }
 
     /**
-     *
+     *Starts the tournament by setting active to be true
      */
     public void startTournament() {
         setActive(true);
     }
 
     /**
-     *
+     *Finishes tournament by selecting a winner and setting active to be false
      * @param winner
      */
     public void finishTournament(Team winner){
         setActive(false);
         setWinner(winner);
     }
+
 
     @Override
     public String toString() {
