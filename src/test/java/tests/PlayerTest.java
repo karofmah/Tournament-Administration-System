@@ -18,6 +18,13 @@ class PlayerTest {
     }
 
     @Test
-    void setRank() {
+    void setRankToBlank() {
+        Player player1 = new Player("Sjokoladepudden", "Silver");
+        try {
+            player1.setRank("");
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(player1.toString());
     }
 }
