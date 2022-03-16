@@ -9,9 +9,13 @@ public class Player {
      * @param gamertag gamertag of player
      * @param rank rank of player
      */
-    public Player(String gamertag, String rank) {
-        this.gamertag = gamertag;
-        if (rank.equals(null) && !rank.equals("")){
+    public Player(String gamertag, String rank) throws IllegalArgumentException {
+        if(!gamertag.equals(null) && !gamertag.equals("")) {
+            this.gamertag = gamertag;
+        } else {
+            throw new IllegalArgumentException("Gamertag cannot be null or empty");
+        }
+        if (!rank.equals(null) && !rank.equals("")){
             this.rank = rank;
         } else{
             this.rank = "Unranked";
@@ -39,7 +43,11 @@ public class Player {
      * @param gamertag gamertag of player
      */
     public void setGamertag(String gamertag) {
-        this.gamertag = gamertag;
+        if(!gamertag.equals(null) && !gamertag.equals("")) {
+            this.gamertag = gamertag;
+        } else {
+            throw new IllegalArgumentException("Gamertag cannot be null or empty");
+        }
     }
 
     /**
@@ -53,5 +61,13 @@ public class Player {
             this.rank = "Unranked";
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "gamertag='" + gamertag + '\'' +
+                ", rank='" + rank + '\'' +
+                '}';
     }
 }
