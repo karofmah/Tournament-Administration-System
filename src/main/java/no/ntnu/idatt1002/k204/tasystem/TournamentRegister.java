@@ -28,5 +28,14 @@ public class TournamentRegister {
         tournaments.add(new Tournament(name, rankRequirement, hasGroupStage, dateTime));
     }
 
+    public ArrayList<Tournament> getTournaments() {
+        return tournaments;
+    }
 
+    @Override
+    public String toString() {
+        return "TournamentRegister{" +
+                "tournaments=" + tournaments +
+                '}';
+    }
 }
