@@ -13,9 +13,9 @@ public class Team {
 
     /**
      * Team-Constructors, the second one only has @param teamName
-     * @param players
-     * @param teamName
-     * @param wins
+     * @param players players in team
+     * @param teamName name of team
+     * @param wins amount of wins
      */
     public Team(ArrayList<Player> players, String teamName, int wins) {
         this.players = players;
@@ -54,7 +54,7 @@ public class Team {
 
     /**
      * Method for adding player to team
-     * @param player
+     * @param player players in team
      */
     public void addPlayer(Player player){
         players.add(player);
@@ -62,7 +62,7 @@ public class Team {
 
     /**
      * Method for changing team name
-     * @param teamName
+     * @param teamName name of team
      */
     public void setTeamName(String teamName) {
         this.teamName = teamName;
@@ -70,7 +70,7 @@ public class Team {
 
     /**
      * Method for modifying team wins
-     * @param wins
+     * @param wins amount of wins
      */
     public void setWins(int wins) {
         this.wins = wins;
