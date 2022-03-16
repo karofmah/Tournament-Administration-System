@@ -1,6 +1,7 @@
 package no.ntnu.idatt1002.k204.tasystem;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Team class. Creates a team with a list of players that will participate in tournament
@@ -73,6 +74,19 @@ public class Team {
      */
     public void setWins(int wins) {
         this.wins = wins;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(players, team.players) && Objects.equals(teamName, team.teamName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(players, teamName, wins);
     }
 
     @Override
