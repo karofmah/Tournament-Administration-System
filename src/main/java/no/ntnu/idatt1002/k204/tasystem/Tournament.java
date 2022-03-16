@@ -2,7 +2,6 @@ package no.ntnu.idatt1002.k204.tasystem;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Tournament {
     private String name;
@@ -18,9 +17,9 @@ public class Tournament {
         this.rankRequirement=rankRequirement;
         this.hasGroupStage=hasGroupStage;
         this.dateTime=dateTime;
-        this.teams = teams;
+        this.teams = new ArrayList<Team>();
         this.isActive = false;
-        this.winner = winner;
+        this.winner = null;
     }
 
     public String getName() {

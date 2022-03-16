@@ -1,12 +1,13 @@
 package no.ntnu.idatt1002.k204.tasystem;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * The register that holds all teams in the system.
+ * Utilizes HashSet to ensure that each team is only added once.
  */
 public class TeamRegister {
-    private ArrayList<Team> teams = new ArrayList<>();
+    private HashSet<Team> teams = new HashSet<>();
 
     /**
      * The constructor for the TeamRegister.
