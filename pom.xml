@@ -69,7 +69,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                no.ntnu.idatt1002.k204.tasystem/no.ntnu.idatt1002.k204.tasystem.HelloApplication
+                                no.ntnu.idatt1002.k204.tasystem/no.ntnu.idatt1002.k204.tasystem.Application
                                 <!-- This launcher will only work on Windows. If using another OS, change this and recompile-->
                             </mainClass>
                             <launcher>app.exe</launcher>
