@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Provides the possibility to get an existing admin.
  */
 public class AdministratorDAO {
-
+    private static boolean isTest = Database.isJunitTest();
     /**
      * Try to get administrator with given name and password
      *
@@ -22,14 +22,18 @@ public class AdministratorDAO {
      */
     public boolean getAdmin(String username, String password) {
         Connection connection;
-        PreparedStatement preparedStatement;
-        ResultSet resultSet;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         boolean exist;
         try {
             connection = Database.getConnection();
-            preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM admininistrator WHERE username = ? AND paswd = MD5(?)");
-
+            if (isTest) {
+                preparedStatement = connection.prepareStatement(
+                        "SELECT * FROM admininistratorTEST WHERE username = ? AND paswd = MD5(?)");
+            } else {
+                preparedStatement = connection.prepareStatement(
+                        "SELECT * FROM admininistrator WHERE username = ? AND paswd = MD5(?)");
+            }
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
@@ -41,6 +45,8 @@ public class AdministratorDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            Database.close(preparedStatement, resultSet);
         }
         return true;
     }

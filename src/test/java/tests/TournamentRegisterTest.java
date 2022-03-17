@@ -10,6 +10,9 @@ import java.time.Month;
 import java.util.ArrayList;
 
 public class TournamentRegisterTest {
+    //TODO Fix maven tests, currently not running properly
+    // 1. Make class for testing public and test methods public otherwise maven lifecycle "test" will fail including
+    // some other maven build lifecycles e.g. package
     TournamentRegister register = new TournamentRegister();
     void TestData(){
         Player player1 = new Player("Sjokoladepudden", "Silver");

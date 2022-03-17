@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * Class used to create database connection
  */
-public class Database{
+public class Database {
 
     private static final String DB_NAME = "g_idatt1002_x";
     private static final String DB_USERNAME = "g_idatt1002_x";
@@ -30,4 +30,42 @@ public class Database{
         return connection;
     }
 
+    /**
+     * Close statements and result sets
+     *
+     * @param preparedStatement the prepared statement to be closed
+     * @param resultSet         the result set to be closed
+     */
+    static void close(PreparedStatement preparedStatement, ResultSet resultSet) {
+        if (resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (preparedStatement != null) {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Check if incoming connection is JUnit test
+     *
+     * @return {@true if it's a JUnit test}
+     */
+    public static boolean isJunitTest() {
+        StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
+        for (StackTraceElement element : stackTraces) {
+            if (element.getClassName().startsWith("org.junit.")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

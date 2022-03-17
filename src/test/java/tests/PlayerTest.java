@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class PlayerTest {
+    //TODO Fix maven tests, currently not running properly
+    // 1. Make class for testing public and test methods public otherwise maven lifecycle "test" will fail including
+    // some other maven build lifecycles e.g. package
     @Test
     void setGamerTagToBlankException() {
         Player player1 = new Player("Sjokoladepudden", "Silver");
