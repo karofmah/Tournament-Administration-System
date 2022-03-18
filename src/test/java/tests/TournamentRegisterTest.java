@@ -28,7 +28,6 @@ public class TournamentRegisterTest {
         this.team1 = new Team(playerlist,"GeirSittLag");
     }
 
-
     @Test
     public void addTournament(){
         Assertions.assertTrue(register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00)));
