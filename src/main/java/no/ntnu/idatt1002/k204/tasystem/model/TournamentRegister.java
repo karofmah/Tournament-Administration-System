@@ -28,10 +28,19 @@ public class TournamentRegister {
         return tournaments.add(new Tournament(name, rankRequirement, hasGroupStage, dateTime));
     }
 
+    /**
+     * Gets a list of all tournaments in the register.
+     * @return a list of tournaments
+     */
     public ArrayList<Tournament> getTournaments() {
         return tournaments;
     }
 
+    /**
+     * Searches for a specific tournament in the register.
+     * @param tournamentName the name of the tournament, as a String
+     * @return the corresponding Tournament object if a matching tournament is found. If not, null is returned.
+     */
     public Tournament getTournamentByName(String tournamentName) {
         for (Tournament tournament: tournaments) {
             if (tournament.getName().equals(tournamentName)) {
