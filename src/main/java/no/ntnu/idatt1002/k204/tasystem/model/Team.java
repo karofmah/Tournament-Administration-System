@@ -9,23 +9,20 @@ import java.util.Objects;
 public class Team {
     private ArrayList<Player> players = new ArrayList<>();
     private String teamName;
-    private int wins;
+
 
     /**
      * Team-Constructors, the second one only has @param teamName
      * @param players players in team
      * @param teamName name of team
-     * @param wins amount of wins
      */
-    public Team(ArrayList<Player> players, String teamName, int wins) {
+    public Team(ArrayList<Player> players, String teamName) {
         this.players = players;
         this.teamName = teamName;
-        this.wins = wins;
     }
 
     public Team(String teamName){
         this.teamName = teamName;
-        this.wins = 0;
     }
 
     /**
@@ -48,9 +45,6 @@ public class Team {
      * Method for getting amount of team wins
      * @return wins
      */
-    public int getWins() {
-        return wins;
-    }
 
     /**
      * Method for adding player to team
@@ -66,14 +60,6 @@ public class Team {
      */
     public void setTeamName(String teamName) {
         this.teamName = teamName;
-    }
-
-    /**
-     * Method for modifying team wins
-     * @param wins amount of wins
-     */
-    public void setWins(int wins) {
-        this.wins = wins;
     }
 
     @Override
@@ -94,7 +80,7 @@ public class Team {
         return "Team{" +
                 "players=" + players +
                 ", teamName='" + teamName + '\'' +
-                ", wins=" + wins +
+                 +
                 '}';
     }
 }
