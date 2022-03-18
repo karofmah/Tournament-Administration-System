@@ -18,11 +18,20 @@ public class Team {
      */
     public Team(ArrayList<Player> players, String teamName) {
         this.players = players;
+        if(players.isEmpty()){
+            Team team=new Team(teamName);
+        }
         this.teamName = teamName;
+        if(teamName.isBlank()){
+            throw new IllegalArgumentException("Team name can not be blank");
+        }
     }
 
     public Team(String teamName){
         this.teamName = teamName;
+        if(teamName.isBlank()){
+            throw new IllegalArgumentException("Team name can not be blank");
+        }
     }
 
     /**
