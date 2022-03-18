@@ -24,6 +24,14 @@ public class TeamRegister {
     }
 
     /**
+     * Gets a list of all the teams in the register.
+     * @return a list of teams
+     */
+    public HashSet<Team> getTeams() {
+        return teams;
+    }
+
+    /**
      * Searches for a team in the TeamRegister by its name.
      * @param teamName the name of the team, as a String
      * @return the corresponding team in the TeamRegister. If it does not exist, null will be returned.
