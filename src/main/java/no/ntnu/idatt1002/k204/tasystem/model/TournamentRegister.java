@@ -32,6 +32,15 @@ public class TournamentRegister {
         return tournaments;
     }
 
+    public Tournament getTournamentByName(String tournamentName) {
+        for (Tournament tournament: tournaments) {
+            if (tournament.getName().equals(tournamentName)) {
+                return tournament;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "TournamentRegister{" +
