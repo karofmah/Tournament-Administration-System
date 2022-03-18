@@ -15,7 +15,7 @@ public class TournamentRegisterTest {
     // 1. Make class for testing public and test methods public otherwise maven lifecycle "test" will fail including
     // some other maven build lifecycles e.g. package
     private TournamentRegister register;
-
+    private Team team1;
     @BeforeEach
     public void TestData(){
         this.register=new TournamentRegister();
@@ -24,7 +24,7 @@ public class TournamentRegisterTest {
         ArrayList<Player> playerlist = new ArrayList<>();
         playerlist.add(player1);
         playerlist.add(player2);
-        Team team1 = new Team(playerlist,"GeirSittLag",0);
+        this.team1 = new Team(playerlist,"GeirSittLag");
     }
 
 
@@ -32,5 +32,7 @@ public class TournamentRegisterTest {
     public void addTournament(){
         Tournament tournament = new Tournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
         Assertions.assertTrue(register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00)));
+        register.getTournamentByName("SummonersRift").addTeam(team1);
+        System.out.println(register.getTournamentByName("SummonersRift").getTeams());
     }
 }
