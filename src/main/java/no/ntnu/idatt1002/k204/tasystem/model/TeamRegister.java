@@ -22,4 +22,18 @@ public class TeamRegister {
     public void addTeam(Team team) {
         teams.add(team);
     }
+
+    /**
+     * Searches for a team in the TeamRegister by its name.
+     * @param teamName the name of the team, as a String
+     * @return the corresponding team in the TeamRegister. If it does not exist, null will be returned.
+     */
+    public Team getTeamByName(String teamName) {
+        for (Team team: teams) {
+            if (team.getTeamName().equals(teamName)) {
+                return team;
+            }
+        }
+        return null;
+    }
 }
