@@ -33,22 +33,14 @@ class PlayerTest {
     @Test
     void setRankToBlank() {
         Player player1 = new Player("Sjokoladepudden", "Silver");
-        try {
-            player1.setRank("");
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
+        player1.setRank("");
         Assertions.assertEquals(player1.getRank(),"Unranked");
     }
 
     @Test
     void setRank(){
         Player player1 = new Player("Sjokoladepudden", "Silver");
-        try {
-            player1.setRank("Challenger");
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
+        player1.setRank("Challenger");
         Assertions.assertEquals(player1.getRank(),"Challenger");
     }
 }
