@@ -16,6 +16,7 @@ public class TournamentRegisterTest {
     // some other maven build lifecycles e.g. package
     private TournamentRegister register;
     private Team team1;
+
     @BeforeEach
     public void TestData(){
         this.register=new TournamentRegister();
@@ -30,9 +31,12 @@ public class TournamentRegisterTest {
 
     @Test
     public void addTournament(){
-        Tournament tournament = new Tournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
         Assertions.assertTrue(register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00)));
+    }
+    @Test
+    public void addTeamToTournament(){
+        register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
         register.getTournamentByName("SummonersRift").addTeam(team1);
-        System.out.println(register.getTournamentByName("SummonersRift").getTeams());
+        Assertions.assertEquals("[GeirSittLag]",register.getTournamentByName("SummonersRift").getTeams().toString());
     }
 }
