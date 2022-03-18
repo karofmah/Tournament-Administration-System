@@ -1,7 +1,7 @@
 package tests;
 import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
-import static org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class TeamTest {
     @DisplayName("Adds player to team")
     public void addPlayerToTeam(){
         team.addPlayer(player);
-
+        assertTrue()
     }
 
 
