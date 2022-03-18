@@ -30,8 +30,8 @@ public class TeamRegisterTest {
         Player player3 = new Player("Rain", "Gold");
         Player player4 = new Player("Olofmeister", "Iron");
         ArrayList<Player> playerlist2 = new ArrayList<>();
-        playerlist2.add(player1);
-        playerlist2.add(player2);
+        playerlist2.add(player3);
+        playerlist2.add(player4);
         this.team2 = new Team(playerlist2,"Ninjas in Pyjamas");
     }
 
