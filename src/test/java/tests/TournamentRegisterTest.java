@@ -32,7 +32,7 @@ public class TournamentRegisterTest {
     public void addTournament(){
         Tournament tournament = new Tournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
         Assertions.assertTrue(register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00)));
-        register.getTournaments().get(0).addTeam(team1);
-        System.out.println(register.getTournaments().get(0).getTeams());
+        register.getTournamentByName("SummonersRift").addTeam(team1);
+        System.out.println(register.getTournamentByName("SummonersRift").getTeams());
     }
 }
