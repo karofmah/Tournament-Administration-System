@@ -24,6 +24,13 @@ public class TeamTest {
         team.addPlayer(player);
         assertTrue(team.getPlayers().contains(player));
     }
+    @Test
+    @DisplayName("Set team name")
+    public void setTeamName(){
+        team.setTeamName("Team Liquid");
+        assertEquals("Team Liquid",team.getTeamName());
+    }
+    @Test
 
 
 }
