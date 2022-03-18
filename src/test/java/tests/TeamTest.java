@@ -30,7 +30,4 @@ public class TeamTest {
         team.setTeamName("Team Liquid");
         assertEquals("Team Liquid",team.getTeamName());
     }
-    @Test
-
-
 }
