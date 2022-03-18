@@ -49,11 +49,4 @@ public class TournamentRegister {
         }
         return null;
     }
-
-    @Override
-    public String toString() {
-        return "TournamentRegister{" +
-                "tournaments=" + tournaments +
-                '}';
-    }
 }
