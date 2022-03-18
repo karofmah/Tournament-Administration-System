@@ -30,7 +30,8 @@ public class TournamentRegisterTest {
 
     @Test
     public void addTournament(){
-        Assertions.assertTrue(register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00)));
+       register.addTournament("SummonersRift","Silver",false, LocalDateTime.of(2022, Month.APRIL,28,14,00,00));
+       Assertions.assertEquals("[Tournament{name='SummonersRift', rankRequirement='Silver', hasGroupStage=false, dateTime=2022-04-28T14:00, teams=[], isActive=false, winner=null}]",register.getTournaments().toString());
     }
     @Test
     public void addTeamToTournament(){
