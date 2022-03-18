@@ -22,7 +22,7 @@ public class TeamTest {
     @DisplayName("Adds player to team")
     public void addPlayerToTeam(){
         team.addPlayer(player);
-        assertTrue()
+        assertTrue(team.getPlayers().contains(player));
     }
 
 
