@@ -1,6 +1,5 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -16,7 +15,6 @@ import java.sql.SQLException;
 /**
  * Controller for handling login.
  *
- * (to be added, database connection when login success)
  *
  */
 public class LoginController {
@@ -37,20 +35,21 @@ public class LoginController {
      *
      */
     @FXML
-    void loginButtonClicked(ActionEvent event) {
+    void loginButtonClicked() {
         try {
             System.out.println("Connecting...");
             database = new Database();
             AdministratorDAO adminDAO = new AdministratorDAO();
 
-            if (adminDAO.getAdmin(usernameTextField.getText(), passwordTextField.getText())) {
+            //if (adminDAO.getAdmin(usernameTextField.getText(), passwordTextField.getText())) {
+            if (adminDAO.getAdmin("skype", "1234")) { //Only for testing, remove afterwards
                 System.out.println("Succesfully logged in!");
                 Application.changeScene("frontPageView.fxml");
             } else {
                 System.out.println("You don't have access to this system!");
                 //TODO
 
-                //FIXME User feedback when not authenticated:
+                //FIXME Add user feedback when not authenticated
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();

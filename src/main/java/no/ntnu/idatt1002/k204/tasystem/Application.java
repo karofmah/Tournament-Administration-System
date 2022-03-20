@@ -63,6 +63,19 @@ public class Application extends javafx.application.Application {
         stage.getScene().setRoot(parent);
     }
 
+    /**
+     * Handle logout event
+     *
+     * Change back to login page
+     *
+     * @throws IOException the io exception
+     */
+    public static void logout() throws IOException {
+        Parent parent = FXMLLoader.load(Application.class.getResource("loginView.fxml"));
+        Stage stage = Application.stage;
+        stage.getScene().setRoot(parent);
+    }
+
     public static void main(String[] args) {
         launch();
     }
