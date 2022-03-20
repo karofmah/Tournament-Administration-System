@@ -62,8 +62,11 @@ public class FrontPageController implements Initializable {
      */
     @FXML
     void addTournamentClicked() {
-        //TODO
-        // ADD ME: Start stage or change scene for adding new tournament
+        try {
+            Application.changeScene("addTournamentView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
