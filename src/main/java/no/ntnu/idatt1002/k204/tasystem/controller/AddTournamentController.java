@@ -9,7 +9,9 @@ import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Controller for adding tournaments
@@ -24,6 +26,8 @@ public class AddTournamentController {
 
     @FXML
     private DatePicker datePicker;
+
+    @FXML TextField timePicker;
 
     @FXML
     private Button groupKnockoutBtn;
@@ -52,10 +56,14 @@ public class AddTournamentController {
 
     @FXML
     void addTournamentBtnClicked() {
-     //    String[] timesplitt = datePicker.getText().split("-");
-      //      private LocalDateTime time = LocalDateTime.of(timesplitt[0],timesplitt[1].timesplitt[2])
-       //     TournamentRegister register = new TournamentRegister();
-         //   register.addTournament(nameTextField.getText(),requirementsTextfield.getText(), hasGroupStage,datePicker.getValue())
+        LocalDate date = datePicker.getValue();
+        int hour = Integer.parseInt(timePicker.getText().split(":")[0]);
+        int minutes =Integer.parseInt(timePicker.getText().split(":")[0]);
+        LocalTime time = LocalTime.of(hour, minutes);
+        LocalDateTime datetime = LocalDateTime.of(date, time);
+           TournamentRegister register = new TournamentRegister();
+           register.addTournament(nameTextField.getText(),requirementsTextfield.getText(), hasGroupStage,datetime);
+        System.out.println(register.getTournaments());
     }
 
     /**
