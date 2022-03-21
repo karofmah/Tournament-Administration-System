@@ -2,10 +2,14 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * Controller for adding tournaments
@@ -19,7 +23,7 @@ public class AddTournamentController {
     private Button backBtn;
 
     @FXML
-    private TextField dateTimeTextField;
+    private DatePicker datePicker;
 
     @FXML
     private Button groupKnockoutBtn;
@@ -36,15 +40,22 @@ public class AddTournamentController {
     @FXML
     private TextField requirementsTextfield;
 
+    @FXML
+    private Text StageselectIndicator;
+
     /**
      * Handle add tournament events
      *
      * Add tournament to database
      */
+    private boolean hasGroupStage = false;
+
     @FXML
     void addTournamentBtnClicked() {
-        //TODO
-        // ADD ME: Add tournament to database
+     //    String[] timesplitt = datePicker.getText().split("-");
+      //      private LocalDateTime time = LocalDateTime.of(timesplitt[0],timesplitt[1].timesplitt[2])
+       //     TournamentRegister register = new TournamentRegister();
+         //   register.addTournament(nameTextField.getText(),requirementsTextfield.getText(), hasGroupStage,datePicker.getValue())
     }
 
     /**
@@ -64,8 +75,7 @@ public class AddTournamentController {
      */
     @FXML
     void groupKnockoutBtnClicked() {
-        //TODO
-        // ADD ME: Toggle group + knockout option (maybe use radio buttons here)
+        hasGroupStage =true;
     }
 
     /**
@@ -73,8 +83,7 @@ public class AddTournamentController {
      */
     @FXML
     void knockoutBtnClicked() {
-        //TODO
-        // ADD ME: Toggle knockout option (maybe use radio buttons here)
+        hasGroupStage = false;
     }
 
     /**
