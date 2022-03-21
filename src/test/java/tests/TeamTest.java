@@ -14,6 +14,7 @@ public class TeamTest {
     private Player player;
     private Team team_2;
     @BeforeEach
+    @DisplayName("Creates a list with players, a new team and a new player.")
     public void testData() {
         ArrayList<Player> teamList = new ArrayList<Player>();
         this.team = new Team(teamList, "Fnatic");
@@ -21,7 +22,7 @@ public class TeamTest {
 
     }
     @Nested
-    public class generalTest{
+    public class inputIsSupported{
 
         @Test
         @DisplayName("Adds player to team")
@@ -38,16 +39,17 @@ public class TeamTest {
         }
     }
     @Nested
-    public class inputNotSupported{
+    public class inputIsNotSupported{
         @Test
+        @DisplayName("Tests if exception is thrown when a team with empty team name is created")
         public void emptyName(){
             assertThrows(IllegalArgumentException.class,()->new Team(""));
 
         }
         @Test
+        @DisplayName("Tests if exception is thrown when a team with empty list of players can be created")
         public void emptyArrayList(){
             assertEquals("Fnatic",team.toString());
         }
     }
-
 }
