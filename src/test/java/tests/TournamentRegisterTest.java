@@ -17,7 +17,7 @@ public class TournamentRegisterTest {
     private Team team1;
 
     @BeforeEach
-    @DisplayName("Creates tournament register and two players that are added to a team ")
+    @DisplayName("Creates tournament register and fills a team with two players")
     public void TestData(){
         this.register=new TournamentRegister();
         Player player1 = new Player("Sjokoladepudden", "Silver");

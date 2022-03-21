@@ -18,7 +18,7 @@ public class TeamRegisterTest {
     private Team team2;
 
     @BeforeEach
-    @DisplayName("Creates a team register, and fills two teams with players that are created")
+    @DisplayName("Creates a team register, and fills two teams with players")
     public void testData(){
         this.teamRegister = new TeamRegister();
 
