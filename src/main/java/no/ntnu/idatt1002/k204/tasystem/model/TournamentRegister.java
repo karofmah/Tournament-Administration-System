@@ -29,6 +29,16 @@ public class TournamentRegister {
     }
 
     /**
+     * Add tournament.
+     *
+     * @param tournament the tournament
+     */
+    public void addTournament(Tournament tournament) {
+        this.tournaments.add(tournament);
+        //TODO FIX ME: use boolean instead of void, requires equals to work correctly
+    }
+
+    /**
      * Gets a list of all tournaments in the register.
      * @return a list of tournaments
      */
