@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController">
+   <center>
+      <AnchorPane prefHeight="672.0" prefWidth="861.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="362.0" layoutY="99.0" prefHeight="25.0" prefWidth="138.0" AnchorPane.leftAnchor="362.0" AnchorPane.topAnchor="99.0" />
+            <Button fx:id="addEligibleTeamBtn" layoutX="135.0" layoutY="147.0" mnemonicParsing="false" onAction="#addEligibleTeamBtnClicked" text="Add eligible team" />
+            <Button fx:id="backBtn" layoutX="77.0" layoutY="603.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" AnchorPane.bottomAnchor="43.39999999999998" AnchorPane.rightAnchor="727.0" />
+            <TableView fx:id="teamsTableView" layoutX="135.0" layoutY="195.0" prefHeight="358.0" prefWidth="590.0" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="195.0">
+              <columns>
+                <TableColumn fx:id="teamNameCol" prefWidth="254.0" text="Team name" />
+                <TableColumn fx:id="countPlayersCol" minWidth="0.0" prefWidth="221.0" text="Players" />
+              </columns>
+            </TableView>
+            <ButtonBar layoutX="257.0" layoutY="92.0" prefHeight="40.0" prefWidth="347.0">
+              <buttons>
+                <Button fx:id="teamsBtn" mnemonicParsing="false" text="Teams" />
+                  <Button fx:id="groupStageBtn" mnemonicParsing="false" onAction="#groupStageBtnClicked" text="Group stage" />
+                  <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage" />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
