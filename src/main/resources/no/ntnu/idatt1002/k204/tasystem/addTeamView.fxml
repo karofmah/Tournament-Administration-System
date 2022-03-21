@@ -29,9 +29,9 @@
             <TextField fx:id="p4NameTextfield" layoutX="232.0" layoutY="379.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
             <TextField fx:id="p5NameTextfield" layoutX="232.0" layoutY="431.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
             <TextField fx:id="p2RankTextfield" layoutX="456.0" layoutY="272.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
-            <TextField fx:id="p2RankTextfield" layoutX="456.0" layoutY="322.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
-            <TextField fx:id="p3RankTextfield" layoutX="456.0" layoutY="379.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
-            <TextField fx:id="p4RankTextfield" layoutX="456.0" layoutY="431.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
+            <TextField fx:id="p3RankTextfield" layoutX="456.0" layoutY="322.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
+            <TextField fx:id="p4RankTextfield" layoutX="456.0" layoutY="379.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
+            <TextField fx:id="p5RankTextfield" layoutX="456.0" layoutY="431.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
             <Label layoutX="158.0" layoutY="276.0" text="Player 2" />
             <Label layoutX="158.0" layoutY="327.0" text="Player 3" />
             <Label layoutX="158.0" layoutY="383.0" text="Player 4" />
