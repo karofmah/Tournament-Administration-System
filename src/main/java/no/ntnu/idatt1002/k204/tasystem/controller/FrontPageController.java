@@ -1,11 +1,17 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
+import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,13 +29,10 @@ public class FrontPageController implements Initializable {
     private Button addTournamentBtn;
 
     @FXML
-    private TableColumn<?, ?> dateTimeCol;
+    private TableColumn<?, ?> dateCol;
 
     @FXML
     private TableColumn<?, ?> requirementsCol;
-
-    @FXML
-    private TableColumn<?, ?> stageCol;
 
     @FXML
     private TableColumn<?, ?> statusCol;
@@ -38,23 +41,39 @@ public class FrontPageController implements Initializable {
     private Button teamsBtn;
 
     @FXML
+    private TableColumn<?, ?> timeCol;
+
+    @FXML
     private TableColumn<?, ?> tournamentNameCol;
 
     @FXML
     private Button tournamentsBtn;
 
     @FXML
-    private TableView<?> tournamentsTableView;
+    private TableView<Tournament> tournamentsTableView;
+
+    private TournamentRegister tournamentRegister;
+
+    private TournamentDAO tournamentDAO;
+
+    private ObservableList<Tournament> tournamentObservableList;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO
-        // ADD ME
-        // - 1. Connect table cells/columns to tournament fields
-        // - 2. Get tournaments from database to display
-        //      Needs:
-        //          - Tournaments register
-        //          - Observable list
+        this.tournamentNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        this.statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        this.requirementsCol.setCellValueFactory(new PropertyValueFactory<>("rankRequirement"));
+        this.dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        this.timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+        this.tournamentRegister = new TournamentRegister();
+        this.tournamentDAO = new TournamentDAO();
+
+        this.tournamentDAO.getTournament(this.tournamentRegister);
+        this.tournamentObservableList = FXCollections.observableArrayList(this.tournamentRegister.getTournaments());
+        this.tournamentsTableView.setItems(this.tournamentObservableList);
+
     }
 
     /**

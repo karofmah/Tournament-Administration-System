@@ -2,8 +2,11 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 
@@ -19,7 +22,7 @@ public class AddTournamentController {
     private Button backBtn;
 
     @FXML
-    private TextField dateTimeTextField;
+    private DatePicker datePicker;
 
     @FXML
     private Button groupKnockoutBtn;
@@ -36,6 +39,9 @@ public class AddTournamentController {
     @FXML
     private TextField requirementsTextfield;
 
+    @FXML
+    private TextField timeTextField;
+
     /**
      * Handle add tournament events
      *
@@ -43,8 +49,14 @@ public class AddTournamentController {
      */
     @FXML
     void addTournamentBtnClicked() {
-        //TODO
-        // ADD ME: Add tournament to database
+        TournamentDAO tournamentDAO = new TournamentDAO();
+
+        Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
+                String.valueOf(datePicker.getValue()), timeTextField.getText());
+
+        String status = "Inactive";
+
+        tournamentDAO.addTournament(tournament1.getName(), status, tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
     }
 
     /**

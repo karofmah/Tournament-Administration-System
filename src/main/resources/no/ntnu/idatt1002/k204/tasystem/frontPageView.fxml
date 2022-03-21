@@ -22,8 +22,8 @@
                 <TableColumn fx:id="tournamentNameCol" prefWidth="152.0" text="Tournament name" />
                 <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="111.0" text="Status" />
                   <TableColumn fx:id="requirementsCol" prefWidth="126.0" text="Requirements" />
-                  <TableColumn fx:id="dateTimeCol" prefWidth="111.0" text="Date/time" />
-                  <TableColumn fx:id="stageCol" prefWidth="135.0" text="Stage" />
+                  <TableColumn fx:id="dateCol" prefWidth="111.0" text="Date" />
+                  <TableColumn fx:id="timeCol" prefWidth="135.0" text="Time" />
               </columns>
             </TableView>
             <Button fx:id="logOutBtn" layoutX="718.0" layoutY="619.0" mnemonicParsing="false" onAction="#logOutBtnClicked" text="Log out" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="86.0" />
