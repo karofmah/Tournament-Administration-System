@@ -5,6 +5,7 @@ import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -17,7 +18,8 @@ public class TeamRegisterTest {
     private Team team2;
 
     @BeforeEach
-    public void TestData(){
+    @DisplayName("Creates a team register, and fills two teams with players")
+    public void testData(){
         this.teamRegister = new TeamRegister();
 
         Player player1 = new Player("Sjokoladepudden", "Silver");
@@ -36,12 +38,14 @@ public class TeamRegisterTest {
     }
 
     @Test
+    @DisplayName("Tests if it is possible to add a team to a team register, and to find a team by its name")
     public void addTeam(){
         teamRegister.addTeam(team1);
         Assertions.assertTrue(teamRegister.getTeams().contains(teamRegister.getTeamByName("GeirSittLag")));
     }
 
     @Test
+    @DisplayName("Tests if it is possible to add two teams to team register, and to find a team by its name")
     public void addTwoTeams(){
         teamRegister.addTeam(team2);
         teamRegister.addTeam(team1);
