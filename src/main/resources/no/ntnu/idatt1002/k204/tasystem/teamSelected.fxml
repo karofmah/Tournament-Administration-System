@@ -13,8 +13,8 @@
       <BorderPane layoutX="70.0" layoutY="79.0" prefHeight="200.0" prefWidth="300.0" />
       <TableView layoutX="166.0" layoutY="179.0" prefHeight="547.0" prefWidth="689.0">
         <columns>
-          <TableColumn prefWidth="316.0" text="C1" />
-          <TableColumn prefWidth="305.0" text="C2" />
+          <TableColumn prefWidth="316.0" text="Player name" />
+          <TableColumn prefWidth="305.0" text="Rank" />
         </columns>
       </TableView>
       <Label graphicTextGap="1.0" layoutX="394.0" layoutY="79.0" prefHeight="58.0" prefWidth="234.0" text="Team liquid">
