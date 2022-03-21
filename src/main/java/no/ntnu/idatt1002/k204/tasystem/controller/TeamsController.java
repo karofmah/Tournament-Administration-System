@@ -55,10 +55,11 @@ public class TeamsController implements Initializable {
      */
     @FXML
     void addTeamBtnClicked() {
-        //TODO
-        // ADD ME
-        // - 1. Change scene to Add new team view
-
+        try {
+            Application.changeScene("addTeamView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
