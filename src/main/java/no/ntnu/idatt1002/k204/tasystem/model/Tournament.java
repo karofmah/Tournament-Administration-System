@@ -27,7 +27,7 @@ public class Tournament {
         }
         this.rankRequirement=rankRequirement;
         if(rankRequirement.isBlank()) {
-            rankRequirement="Unranked";
+            this.rankRequirement="Unranked";
         }
         this.hasGroupStage=hasGroupStage;
         this.dateTime=dateTime;
@@ -42,6 +42,14 @@ public class Tournament {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Returns rand requirement to enter the tournament
+     * @return rankRequirement as a String
+     */
+    public String getRankRequirement() {
+        return rankRequirement;
     }
 
     /**
