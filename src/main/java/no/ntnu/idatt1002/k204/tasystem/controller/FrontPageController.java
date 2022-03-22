@@ -4,9 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
@@ -74,6 +73,49 @@ public class FrontPageController implements Initializable {
         this.tournamentObservableList = FXCollections.observableArrayList(this.tournamentRegister.getTournaments());
         this.tournamentsTableView.setItems(this.tournamentObservableList);
 
+        handleTournamentSelection();
+    }
+
+    /**
+     * Change scene when a tournament is selected.
+     *
+     * Listen on hovered row in table and check if there is a tournament
+     * If there is a tournament allow clicking and change scene.
+     *
+     * Also changes cursor type to try and communicate with user that current row
+     * can be clicked.
+     *
+     */
+    private void handleTournamentSelection() {
+        tournamentsTableView.setRowFactory(table -> {
+            TableRow<Tournament> row = new TableRow<>();
+
+            row.hoverProperty().addListener(observable -> {//Listen for hover on row
+                Tournament tournament = row.getItem();
+                if (row.isHover() && tournament != null) {
+                    row.setOnMouseEntered(mouseEvent1 -> {//Listen when mouse is hovered over a row
+                        tournamentsTableView.setCursor(Cursor.HAND);//Change courser
+                        row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
+                           changeToSelectedTournamentView(); //Change scene
+                        });
+                    });
+                } else {
+                    row.setOnMouseEntered(mouseEvent -> { //Default cursor when row is empty
+                        tournamentsTableView.setCursor(Cursor.DEFAULT);
+                    });
+                }
+            });
+
+            return row;
+        });
+    }
+
+    private void changeToSelectedTournamentView() {
+        try {
+            Application.changeScene("selectedTournamentView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

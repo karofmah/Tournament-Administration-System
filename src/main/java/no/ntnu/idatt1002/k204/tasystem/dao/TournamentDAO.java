@@ -23,7 +23,13 @@ public class TournamentDAO {
      * @param time        the time
      */
     public void addTournament(String name, String status, String requirement, String date, String time) {
-        String sql = "INSERT INTO tournament VALUES(null , ? , ?, ?, ?, ?)";
+        String sql;
+        if (isTest) {
+            sql = "INSERT INTO tournamentTEST VALUES(null , ? , ?, ?, ?, ?)";
+        } else {
+            sql = "INSERT INTO tournament VALUES(null , ? , ?, ?, ?, ?)";
+        }
+
         PreparedStatement statement = null;
         try {
             statement = Database.getConnection().prepareStatement(sql);
@@ -50,7 +56,14 @@ public class TournamentDAO {
      * @param register the register
      */
     public void getTournament(TournamentRegister register) {
-        String sql = "SELECT * FROM tournament";
+        String sql;
+
+        if (isTest) {
+            sql = "SELECT * FROM tournamentTEST";
+        } else {
+            sql = "SELECT * FROM tournament";
+        }
+
         ResultSet res = null;
         try {
             res = Database.getConnection().prepareStatement(sql).executeQuery();
@@ -68,6 +81,5 @@ public class TournamentDAO {
                 e.printStackTrace();
             }
         }
-
     }
 }
