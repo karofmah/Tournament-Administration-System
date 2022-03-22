@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AdministratorDAOTest {
     private Database database;
     private Connection connection;
-    private Statement statement;
     private AdministratorDAO administratorDAO;
 
     @BeforeAll
@@ -20,7 +18,6 @@ public class AdministratorDAOTest {
         try {
             database = new Database();
             connection = Database.getConnection();
-            statement = connection.createStatement();
             administratorDAO = new AdministratorDAO();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -32,7 +29,6 @@ public class AdministratorDAOTest {
         try {
             administratorDAO = null;
             connection.close();
-            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
