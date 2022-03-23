@@ -5,10 +5,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController;
 import no.ntnu.idatt1002.k204.tasystem.dao.Database;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
@@ -63,6 +66,7 @@ public class Application extends javafx.application.Application {
         Stage stage = Application.stage;
         stage.getScene().setRoot(parent);
     }
+
 
     /**
      * Handle logout even   t

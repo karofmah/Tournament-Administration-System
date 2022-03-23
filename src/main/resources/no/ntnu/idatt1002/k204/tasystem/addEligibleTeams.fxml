@@ -18,11 +18,10 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="teamTableView" layoutX="139.0" layoutY="117.0" prefHeight="200.0" prefWidth="321.0">
+            <TableView fx:id="teamsTableView" layoutX="139.0" layoutY="117.0" prefHeight="200.0" prefWidth="321.0">
               <columns>
-                <TableColumn fx:id="teamNameCol" prefWidth="114.66665649414062" text="Team" />
-                <TableColumn fx:id="playersCol" prefWidth="106.6666259765625" text="Players" />
-                  <TableColumn fx:id="lowRankCol" prefWidth="99.3333740234375" text="Lowest Rank" />
+                <TableColumn fx:id="teamNameCol" prefWidth="198.6667022705078" text="Team" />
+                  <TableColumn fx:id="lowRankCol" prefWidth="121.33331298828125" text="Lowest Rank" />
               </columns>
             </TableView>
          </children>

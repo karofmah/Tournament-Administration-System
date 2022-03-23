@@ -3,12 +3,15 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
@@ -46,7 +49,7 @@ public class SelectedTournamentController implements Initializable {
     private Button teamsBtn;
 
     @FXML
-    private TableView<Team> teamTableView;
+    private TableView<Team> teamsTableView;
 
     @FXML
     private Text selectedTText;
@@ -62,6 +65,12 @@ public class SelectedTournamentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+        this.teamRegister = new TeamRegister();
+
+
+
+
         //TODO
         // ADD ME
         // - 1. Connect table cells/columns to team fields
@@ -77,13 +86,30 @@ public class SelectedTournamentController implements Initializable {
 
     public void initData(Tournament tournament){
     selectedTournament = tournament;
+        System.out.println(selectedTournament);
     selectedTText.setText(tournament.getName());
+        if(selectedTournament !=null) {
+            for (Team team : selectedTournament.getTeams()) {
+                System.out.println("KOKO");
+                this.teamRegister.addTeam(team);
+            }
+        }
+        this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
+        this.teamsTableView.setItems(this.teamObservableList);
 
     }
     @FXML
     void addEligibleTeamBtnClicked() {
         try {
-            Application.changeScene("addEligibleTeams.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/addEligibleTeams.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            AddEligibleTeamsController controller = loader.getController();
+            System.out.println(selectedTournament);
+            controller.initData(selectedTournament);
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

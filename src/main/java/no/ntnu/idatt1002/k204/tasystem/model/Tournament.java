@@ -10,7 +10,7 @@ public class Tournament {
     private String rankRequirement;
     private boolean hasGroupStage;
     private LocalDateTime dateTime;
-    private ArrayList<Team> teams;
+    private ArrayList<Team> teams = new ArrayList<>();
     private boolean isActive;
     private Team winner;
     private LocalDate date;
@@ -36,7 +36,7 @@ public class Tournament {
         }
         this.hasGroupStage=hasGroupStage;
         this.dateTime=dateTime;
-        this.teams = new ArrayList<Team>();
+        this.teams = new ArrayList<>();
         this.isActive = false;
         this.winner = null;
     }
