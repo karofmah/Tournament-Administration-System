@@ -60,7 +60,7 @@ public class TeamDAO {
      *
      * @param register the register
      */
-    public void getTournament(TeamRegister register) {
+    public void getTeam(TeamRegister register) {
         String sql;
 
         if (isTest) {
