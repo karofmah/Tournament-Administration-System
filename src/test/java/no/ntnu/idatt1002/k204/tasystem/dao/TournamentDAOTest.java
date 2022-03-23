@@ -18,14 +18,10 @@ public class TournamentDAOTest {
 
     @BeforeAll
     public void setup() {
-        try {
-            database = new Database();
-            connection = Database.getConnection();
-            tournamentDAO = new TournamentDAO();
-            tournamentRegister = new TournamentRegister();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        database = Database.getInstance();
+        connection = Database.getConnection();
+        tournamentDAO = new TournamentDAO();
+        tournamentRegister = new TournamentRegister();
     }
 
     @AfterAll
@@ -41,7 +37,7 @@ public class TournamentDAOTest {
     @Test
     @DisplayName("Add tournament, expected ok")
     public void addTournamentExpectedOk() {
-        tournamentDAO.addTournament("LCK for noobs 2022", "Inactive", "Bronze 2", "2022-07-21", "13:37");
+        tournamentDAO.addTournament(1,"LCK for noobs 2022", "Inactive", "Bronze 2", "2022-07-21", "13:37");
     }
 
     @Test

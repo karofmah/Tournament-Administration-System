@@ -5,13 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController;
 import no.ntnu.idatt1002.k204.tasystem.dao.Database;
-import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
-import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
@@ -26,7 +22,6 @@ public class Application extends javafx.application.Application {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     @Override
     public void start(Stage stage) {
-        TournamentRegister register = new TournamentRegister();
         Application.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("loginView.fxml"));
         Scene scene = null;
@@ -69,7 +64,7 @@ public class Application extends javafx.application.Application {
 
 
     /**
-     * Handle logout even   t
+     * Handle logout event
      *
      * Change back to login page
      *
@@ -85,8 +80,3 @@ public class Application extends javafx.application.Application {
         launch();
     }
 }
-
-//Fanuel var her
-//Emil var her
-
-//Karo var her v10

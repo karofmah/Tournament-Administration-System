@@ -38,7 +38,7 @@ public class LoginController {
     void loginButtonClicked() {
         try {
             System.out.println("Connecting...");
-            database = new Database();
+            database = Database.getInstance();
             AdministratorDAO adminDAO = new AdministratorDAO();
 
             //if (adminDAO.getAdmin(usernameTextField.getText(), passwordTextField.getText())) {
@@ -51,7 +51,7 @@ public class LoginController {
 
                 //FIXME Add user feedback when not authenticated
             }
-        } catch (SQLException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

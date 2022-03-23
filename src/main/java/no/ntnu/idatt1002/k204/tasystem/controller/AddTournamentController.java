@@ -56,7 +56,8 @@ public class AddTournamentController {
 
         String status = "Inactive";
 
-        tournamentDAO.addTournament(tournament1.getName(), status, tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
+        tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
+                tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
     }
 
     /**

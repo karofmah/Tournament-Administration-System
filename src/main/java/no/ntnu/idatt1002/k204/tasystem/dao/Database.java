@@ -13,12 +13,26 @@ public class Database {
     private static final String DB_URL = "jdbc:mysql://mysql-ait.stud.idi.ntnu.no/"
             + DB_NAME + "?user=" + DB_USERNAME + "&password=" + DB_PW;
 
+    private static Database instance;
     private static Connection connection;
 
-    public Database() throws SQLException {
-        connection = DriverManager.getConnection(DB_URL);
+    private Database() {
+        try {
+            connection = DriverManager.getConnection(DB_URL);
+        } catch (SQLException e ) {
+            e.printStackTrace();
+        }
+
     }
 
+    public static Database getInstance() {
+        if (instance == null) {
+            instance = new Database();
+            return instance;
+        } else {
+            return instance;
+        }
+    }
     /**
      * Get connection from the database instance.
      *

@@ -15,13 +15,9 @@ public class AdministratorDAOTest {
 
     @BeforeAll
     public void setup() {
-        try {
-            database = new Database();
-            connection = Database.getConnection();
-            administratorDAO = new AdministratorDAO();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        database = Database.getInstance();
+        connection = Database.getConnection();
+        administratorDAO = new AdministratorDAO();
     }
 
     @AfterAll

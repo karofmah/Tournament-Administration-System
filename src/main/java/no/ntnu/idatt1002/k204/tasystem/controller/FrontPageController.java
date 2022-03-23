@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -61,6 +60,7 @@ public class FrontPageController implements Initializable {
 
     private ObservableList<Tournament> tournamentObservableList;
 
+    //public static int selectedTournamentID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -96,18 +96,17 @@ public class FrontPageController implements Initializable {
             TableRow<Tournament> row = new TableRow<>();
 
             row.hoverProperty().addListener(observable -> {//Listen for hover on row
-                Tournament tournament = row.getItem();
+                 Tournament tournament = row.getItem();
                 if (row.isHover() && tournament != null) {
                     row.setOnMouseEntered(mouseEvent1 -> {//Listen when mouse is hovered over a row
                         tournamentsTableView.setCursor(Cursor.HAND);//Change courser
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
                             try {
-                                changeToSelectedTournamentView(tournament); //Change scene
+                                Tournament.setSelectedTournamentID(tournament.getTournamentId());
+                                changeToSelectedTournamentView(tournament);//Change scene
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
-
                         });
                     });
                 } else {
