@@ -65,7 +65,7 @@ public class Application extends javafx.application.Application {
     }
 
     /**
-     * Handle logout event
+     * Handle logout even   t
      *
      * Change back to login page
      *

@@ -34,6 +34,9 @@ public class Team {
         }
     }
 
+    public Team(String name, String p1name, String p1rank, String p2name, String p2rank, String p3name, String p3rank, String p4name, String p4rank, String p5name, String p5rank) {
+    }
+
     /**
      * Method for getting players in team
      * @return players
