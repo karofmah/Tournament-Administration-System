@@ -53,10 +53,6 @@ public class Team {
         return teamName;
     }
 
-    /**
-     * Method for getting amount of team wins
-     * @return wins
-     */
 
     /**
      * Method for adding player to team
