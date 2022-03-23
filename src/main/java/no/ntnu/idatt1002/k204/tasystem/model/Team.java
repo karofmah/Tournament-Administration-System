@@ -10,7 +10,6 @@ public class Team {
     private ArrayList<Player> players = new ArrayList<>();
     private String teamName;
 
-
     /**
      * Team-Constructors, the second one only has @param teamName
      * @param players players in team
@@ -34,7 +33,32 @@ public class Team {
         }
     }
 
+    /**
+     * Constructor used for retrieving teams from the database.
+     * @param name the name of the team
+     * @param p1name player 1's name (gamertag)
+     * @param p1rank player 1's rank
+     * @param p2name player 2's name (gamertag)
+     * @param p2rank player 2's rank
+     * @param p3name player 3's name (gamertag)
+     * @param p3rank player 3's rank
+     * @param p4name player 4's name (gamertag)
+     * @param p4rank player 4's rank
+     * @param p5name player 5's name (gamertag)
+     * @param p5rank player 5's rank
+     */
     public Team(String name, String p1name, String p1rank, String p2name, String p2rank, String p3name, String p3rank, String p4name, String p4rank, String p5name, String p5rank) {
+        this.teamName = name;
+
+        ArrayList<Player> newPlayers = new ArrayList<>();
+        newPlayers.add(new Player(p1name,p1rank));
+        newPlayers.add(new Player(p2name,p2rank));
+        newPlayers.add(new Player(p3name,p3rank));
+        newPlayers.add(new Player(p4name,p4rank));
+        newPlayers.add(new Player(p5name,p5rank));
+
+        this.players = newPlayers;
+
     }
 
     /**

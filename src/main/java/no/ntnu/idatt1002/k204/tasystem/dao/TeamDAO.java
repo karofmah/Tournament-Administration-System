@@ -64,9 +64,9 @@ public class TeamDAO {
         String sql;
 
         if (isTest) {
-            sql = "SELECT * FROM tournamentTEST";
+            sql = "SELECT * FROM teamTest";
         } else {
-            sql = "SELECT * FROM tournament";
+            sql = "SELECT * FROM team";
         }
 
         ResultSet res = null;

@@ -1,11 +1,17 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
+import no.ntnu.idatt1002.k204.tasystem.model.Team;
+import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,29 +29,34 @@ public class TeamsController implements Initializable {
     private Button logoutBtn;
 
     @FXML
-    private TableColumn<?, ?> playersCol;
-
-    @FXML
     private Button teamsBtn;
 
     @FXML
     private TableColumn<?, ?> teamsCol;
 
     @FXML
-    private TableView<?> teamsTableView;
+    private TableView<Team> teamsTableView;
 
     @FXML
     private Button tournamentsBtn;
 
+    private TeamRegister teamRegister;
+
+    private TeamDAO teamDAO;
+
+    private ObservableList<Team> teamObservableList;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO
-        // ADD ME
-        // - 1. Connect table cells/columns to team fields
-        // - 2. Get teams from database to display
-        //      Needs:
-        //          - Teams register
-        //          - Observable list
+        this.teamsCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+
+        this.teamRegister = new TeamRegister();
+        this.teamDAO = new TeamDAO();
+
+        this.teamDAO.getTeam(this.teamRegister);
+        this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
+        this.teamsTableView.setItems(this.teamObservableList);
+
     }
 
     /**
