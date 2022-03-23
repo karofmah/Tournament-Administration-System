@@ -3,10 +3,14 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -86,6 +90,7 @@ public class FrontPageController implements Initializable {
      * can be clicked.
      *
      */
+
     private void handleTournamentSelection() {
         tournamentsTableView.setRowFactory(table -> {
             TableRow<Tournament> row = new TableRow<>();
@@ -96,7 +101,13 @@ public class FrontPageController implements Initializable {
                     row.setOnMouseEntered(mouseEvent1 -> {//Listen when mouse is hovered over a row
                         tournamentsTableView.setCursor(Cursor.HAND);//Change courser
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
-                           changeToSelectedTournamentView(); //Change scene
+                            try {
+                                changeToSelectedTournamentView(tournament); //Change scene
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
                         });
                     });
                 } else {
@@ -110,9 +121,16 @@ public class FrontPageController implements Initializable {
         });
     }
 
-    private void changeToSelectedTournamentView() {
+    private void changeToSelectedTournamentView(Tournament tournament) throws IOException {
         try {
-            Application.changeScene("selectedTournamentView.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            SelectedTournamentController controller = loader.getController();
+            controller.initData(tournament);
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,6 +139,7 @@ public class FrontPageController implements Initializable {
     /**
      * Handle adding tournament event
      */
+
     @FXML
     void addTournamentClicked() {
         try {

@@ -8,9 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,15 +48,20 @@ public class SelectedTournamentController implements Initializable {
     @FXML
     private TableView<Team> teamTableView;
 
+    @FXML
+    private Text selectedTText;
+
     private TeamRegister teamRegister;
+    private TeamDAO teamDAO;
 
     private ObservableList<Team> teamObservableList;
+
+    private Tournament selectedTournament;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         //TODO
         // ADD ME
         // - 1. Connect table cells/columns to team fields
@@ -66,6 +74,12 @@ public class SelectedTournamentController implements Initializable {
     /**
      * Change to add eligible team scene and start adding teams
      */
+
+    public void initData(Tournament tournament){
+    selectedTournament = tournament;
+    selectedTText.setText(tournament.getName());
+
+    }
     @FXML
     void addEligibleTeamBtnClicked() {
         try {
