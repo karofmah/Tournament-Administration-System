@@ -25,9 +25,9 @@ public class TournamentDAO {
     public void addTournament(String name, String status, String requirement, String date, String time) {
         String sql;
         if (isTest) {
-            sql = "INSERT INTO tournamentTEST VALUES(null , ? , ?, ?, ?, ?)";
+            sql = "INSERT INTO tournamentTEST VALUES(null , ? , ?, ?, ?, ?, null)";
         } else {
-            sql = "INSERT INTO tournament VALUES(null , ? , ?, ?, ?, ?)";
+            sql = "INSERT INTO tournament VALUES(null , ? , ?, ?, ?, ?, null)";
         }
 
         PreparedStatement statement = null;
