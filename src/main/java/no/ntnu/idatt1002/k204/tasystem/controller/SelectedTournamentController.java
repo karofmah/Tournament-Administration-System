@@ -1,11 +1,16 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.model.Team;
+import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,10 +43,17 @@ public class SelectedTournamentController implements Initializable {
     private Button teamsBtn;
 
     @FXML
-    private TableView<?> teamsTableView;
+    private TableView<Team> teamTableView;
+
+    private TeamRegister teamRegister;
+
+    private ObservableList<Team> teamObservableList;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         //TODO
         // ADD ME
         // - 1. Connect table cells/columns to team fields
@@ -56,9 +68,13 @@ public class SelectedTournamentController implements Initializable {
      */
     @FXML
     void addEligibleTeamBtnClicked() {
-        //TODO
-        // ADD ME Change to eligible teams scene
+        try {
+            Application.changeScene("addEligibleTeams.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     /**
      * Navigate back to previous scene
