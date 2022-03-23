@@ -4,14 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import no.ntnu.idatt1002.k204.tasystem.Application;
-import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
+import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 /**
  * Controller for adding tournaments
@@ -26,8 +23,6 @@ public class AddTournamentController {
 
     @FXML
     private DatePicker datePicker;
-
-    @FXML TextField timePicker;
 
     @FXML
     private Button groupKnockoutBtn;
@@ -45,24 +40,23 @@ public class AddTournamentController {
     private TextField requirementsTextfield;
 
     @FXML
-    private Text StageselectIndicator;
+    private TextField timeTextField;
 
     /**
      * Handle add tournament events
      *
      * Add tournament to database
      */
-    private boolean hasGroupStage = false;
-    TournamentRegister register = new TournamentRegister();
     @FXML
     void addTournamentBtnClicked() {
-        LocalDate date = datePicker.getValue();
-        int hour = Integer.parseInt(timePicker.getText().split(":")[0]);
-        int minutes =Integer.parseInt(timePicker.getText().split(":")[0]);
-        LocalTime time = LocalTime.of(hour, minutes);
-        LocalDateTime datetime = LocalDateTime.of(date, time);
-        register.addTournament(nameTextField.getText(),requirementsTextfield.getText(), hasGroupStage,datetime);
-        System.out.println(register.getTournaments());
+        TournamentDAO tournamentDAO = new TournamentDAO();
+
+        Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
+                String.valueOf(datePicker.getValue()), timeTextField.getText());
+
+        String status = "Inactive";
+
+        tournamentDAO.addTournament(tournament1.getName(), status, tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
     }
 
     /**
@@ -82,7 +76,8 @@ public class AddTournamentController {
      */
     @FXML
     void groupKnockoutBtnClicked() {
-        hasGroupStage =true;
+        //TODO
+        // ADD ME: Toggle group + knockout option (maybe use radio buttons here)
     }
 
     /**
@@ -90,7 +85,8 @@ public class AddTournamentController {
      */
     @FXML
     void knockoutBtnClicked() {
-        hasGroupStage = false;
+        //TODO
+        // ADD ME: Toggle knockout option (maybe use radio buttons here)
     }
 
     /**

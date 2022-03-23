@@ -1,6 +1,8 @@
 package no.ntnu.idatt1002.k204.tasystem.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Tournament {
@@ -11,6 +13,9 @@ public class Tournament {
     private ArrayList<Team> teams;
     private boolean isActive;
     private Team winner;
+    private LocalDate date;
+    private LocalTime time;
+    private String status;
 
     /**
      * Creates constructor for Tournament
@@ -34,6 +39,65 @@ public class Tournament {
         this.teams = new ArrayList<Team>();
         this.isActive = false;
         this.winner = null;
+    }
+
+    /**
+     * Instantiates a new tournament. Used when adding tournament to database
+     * @param name
+     * @param rankRequirement
+     * @param date
+     * @param time
+     */
+    public Tournament(String name, String rankRequirement, String date, String time) {
+        this.name = name;
+        this.rankRequirement = rankRequirement;
+        this.isActive = false;
+        this.date = LocalDate.parse(date);
+        this.time = LocalTime.parse(time);
+    }
+
+    /**
+     * Instantiates a new tournament. Used when adding fetching tournament from database
+     * @param name
+     * @param status
+     * @param rankRequirement
+     * @param date
+     * @param time
+     */
+    public Tournament(String name, String status, String rankRequirement, String date, String time) {
+        this.name = name;
+        this.rankRequirement = rankRequirement;
+        this.status = status;
+        this.date = LocalDate.parse(date);
+        this.time = LocalTime.parse(time);
+    }
+
+
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
+    public LocalDate getDate() {
+        return date;
+    }
+
+    /**
+     * Gets time.
+     *
+     * @return the time
+     */
+    public LocalTime getTime() {
+        return time;
+    }
+
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
     }
 
     /**
