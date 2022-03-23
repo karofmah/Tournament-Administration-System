@@ -71,6 +71,8 @@ public class TeamDAO {
 
         ResultSet res = null;
 
+
+
         try {
             res = Database.getConnection().prepareStatement(sql).executeQuery();
             while (res.next()) {
