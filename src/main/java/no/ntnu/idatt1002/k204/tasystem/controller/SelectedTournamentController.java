@@ -67,13 +67,8 @@ public class SelectedTournamentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
         this.teamRegister = new TeamRegister();
-        if(selectedTournament !=null) {
-            for (Team team : selectedTournament.getTeams()) {
-                this.teamRegister.addTeam(team);
-            }
-            this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
-            this.teamsTableView.setItems(this.teamObservableList);
-        }
+
+
 
 
         //TODO
@@ -91,7 +86,16 @@ public class SelectedTournamentController implements Initializable {
 
     public void initData(Tournament tournament){
     selectedTournament = tournament;
+        System.out.println(selectedTournament);
     selectedTText.setText(tournament.getName());
+        if(selectedTournament !=null) {
+            for (Team team : selectedTournament.getTeams()) {
+                System.out.println("KOKO");
+                this.teamRegister.addTeam(team);
+            }
+        }
+        this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
+        this.teamsTableView.setItems(this.teamObservableList);
 
     }
     @FXML

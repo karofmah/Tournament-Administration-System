@@ -79,9 +79,9 @@ public class AddEligibleTeamsController implements Initializable {
                         teamsTableView.setCursor(Cursor.HAND);//Change courser
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
                             System.out.println(selectedTournament);
-                            System.out.println(selectedTournament.getTeams());
-                            System.out.println(team);
                             selectedTournament.addTeam(team);
+                            System.out.println(selectedTournament.getTeams());
+
 
                         });
                     });
@@ -100,6 +100,8 @@ public class AddEligibleTeamsController implements Initializable {
      */
     public void initData(Tournament tournament){
         selectedTournament = tournament;
+        System.out.println(selectedTournament);
+
     }
     @FXML
     void backBtnClicked(ActionEvent Event) {
