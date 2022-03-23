@@ -4,14 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
@@ -37,45 +41,51 @@ public class AddEligibleTeamsController implements Initializable {
     private TableColumn<?, ?> playersCol;
 
     @FXML
-    private TableView<Team> teamTableView;
+    private TableView<Team> teamsTableView;
 
     private TeamRegister teamRegister;
 
+    private TeamDAO teamDAO;
+
     private ObservableList<Team> teamObservableList;
+    private Tournament selectedTournament;
 
     //private TeamDAO teamDAO;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        this.playersCol.setCellValueFactory(new PropertyValueFactory<>("players"));
-        this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("lowRank"));
+        this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+       // this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("Lowest Rank"));
 
         this.teamRegister = new TeamRegister();
-        //this.teamDAO = new TeamDAO();
+        this.teamDAO = new TeamDAO();
 
-        //this.teamDAO.getTeam(this.teamRegister);
+        this.teamDAO.getTeam(this.teamRegister);
         this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
-        this.teamTableView.setItems(this.teamObservableList);
+        this.teamsTableView.setItems(this.teamObservableList);
+        handleTeamSelection();
     }
 
-    private void handleTournamentSelection() {
-        teamTableView.setRowFactory(table -> {
+    private void handleTeamSelection() {
+        teamsTableView.setRowFactory(table -> {
             TableRow<Team> row = new TableRow<>();
 
             row.hoverProperty().addListener(observable -> {//Listen for hover on row
                 Team team = row.getItem();
                 if (row.isHover() && team != null) {
                     row.setOnMouseEntered(mouseEvent1 -> {//Listen when mouse is hovered over a row
-                        teamTableView.setCursor(Cursor.HAND);//Change courser
+                        teamsTableView.setCursor(Cursor.HAND);//Change courser
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
-                            /*Add team to tournament */
+                            System.out.println(selectedTournament);
+                            System.out.println(selectedTournament.getTeams());
+                            System.out.println(team);
+                            selectedTournament.addTeam(team);
                         });
                     });
                 } else {
                     row.setOnMouseEntered(mouseEvent -> { //Default cursor when row is empty
-                        teamTableView.setCursor(Cursor.DEFAULT);
+                        teamsTableView.setCursor(Cursor.DEFAULT);
                     });
                 }
             });
@@ -86,10 +96,19 @@ public class AddEligibleTeamsController implements Initializable {
     /**
      * Navigate back to previous scene
      */
+    public void initData(Tournament tournament){
+        selectedTournament = tournament;
+    }
     @FXML
     void backBtnClicked(ActionEvent Event) {
         try {
-            Application.changeScene("selectedTournamentView.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            SelectedTournamentController controller = loader.getController();
+            controller.initData(selectedTournament);
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
         } catch (IOException e) {
             e.printStackTrace();
         }
