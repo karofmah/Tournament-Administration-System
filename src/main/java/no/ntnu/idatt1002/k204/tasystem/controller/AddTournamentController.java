@@ -53,7 +53,7 @@ public class AddTournamentController {
      * Add tournament to database
      */
     private boolean hasGroupStage = false;
-
+    TournamentRegister register = new TournamentRegister();
     @FXML
     void addTournamentBtnClicked() {
         LocalDate date = datePicker.getValue();
@@ -61,8 +61,7 @@ public class AddTournamentController {
         int minutes =Integer.parseInt(timePicker.getText().split(":")[0]);
         LocalTime time = LocalTime.of(hour, minutes);
         LocalDateTime datetime = LocalDateTime.of(date, time);
-           TournamentRegister register = new TournamentRegister();
-           register.addTournament(nameTextField.getText(),requirementsTextfield.getText(), hasGroupStage,datetime);
+        register.addTournament(nameTextField.getText(),requirementsTextfield.getText(), hasGroupStage,datetime);
         System.out.println(register.getTournaments());
     }
 

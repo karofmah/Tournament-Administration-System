@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import no.ntnu.idatt1002.k204.tasystem.dao.Database;
+import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,9 +21,9 @@ public class Application extends javafx.application.Application {
     public static Stage stage;
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
-
     @Override
     public void start(Stage stage) {
+        TournamentRegister register = new TournamentRegister();
         Application.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("loginView.fxml"));
         Scene scene = null;
