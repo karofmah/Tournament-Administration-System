@@ -49,6 +49,7 @@ public class AddEligibleTeamsController implements Initializable {
 
     private ObservableList<Team> teamObservableList;
     private Tournament selectedTournament;
+    private TournamentDAO tournamentDAO;
 
     //private TeamDAO teamDAO;
 
@@ -57,7 +58,7 @@ public class AddEligibleTeamsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
        // this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("Lowest Rank"));
-
+        this.tournamentDAO = new TournamentDAO();
         this.teamRegister = new TeamRegister();
         this.teamDAO = new TeamDAO();
 
@@ -81,6 +82,7 @@ public class AddEligibleTeamsController implements Initializable {
                             System.out.println(selectedTournament.getTeams());
                             System.out.println(team);
                             selectedTournament.addTeam(team);
+
                         });
                     });
                 } else {
