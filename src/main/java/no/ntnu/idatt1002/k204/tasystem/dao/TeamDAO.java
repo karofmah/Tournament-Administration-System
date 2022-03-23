@@ -22,9 +22,9 @@ public class TeamDAO {
     public void addTeam(ArrayList<Player> players,String teamName) {
         String sql;
         if (isTest) {
-            sql = "INSERT INTO teamTEST VALUES(?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+            sql = "INSERT INTO teamTEST VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         } else {
-            sql = "INSERT INTO team VALUES(?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+            sql = "INSERT INTO team VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         }
         PreparedStatement statement = null;
         try {
@@ -70,8 +70,6 @@ public class TeamDAO {
         }
 
         ResultSet res = null;
-
-        ArrayList<Player> players=new ArrayList();
 
         try {
             res = Database.getConnection().prepareStatement(sql).executeQuery();
