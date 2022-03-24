@@ -43,7 +43,7 @@ public class SelectedTournamentController implements Initializable {
     private Button knockoutStageBtn;
 
     @FXML
-    private Button startTournamentBtn;
+    private Button saveTournamentBtn;
 
     @FXML
     private TableColumn<?, ?> teamNameCol;
@@ -148,7 +148,7 @@ public class SelectedTournamentController implements Initializable {
      * Currently added this so teams that are participating in a tournament can be added to database.
      */
     @FXML
-    void startTournament() {
+    void saveTournament() {
         for (Team team : selectedTournament.getTeams()) {
             tournamentDAO.addTournamentAndTeams(selectedTournament.getTournamentId(), team.getTeamName());
         }

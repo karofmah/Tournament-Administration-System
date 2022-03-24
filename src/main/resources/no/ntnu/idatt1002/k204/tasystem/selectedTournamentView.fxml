@@ -34,7 +34,7 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="startTournamentBtn" layoutX="376.0" layoutY="604.0" mnemonicParsing="false" onAction="#startTournament" text="Start tournament" />
+            <Button fx:id="saveTournamentBtn" layoutX="410.0" layoutY="603.0" mnemonicParsing="false" onAction="#saveTournament" text="Save" />
          </children>
       </AnchorPane>
    </center>
