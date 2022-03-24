@@ -131,8 +131,11 @@ public class SelectedTournamentController implements Initializable {
      */
     @FXML
     void groupStageBtnClicked() {
-        //TODO
-        // ADD ME Change to group stage scene
+        try {
+            Application.changeScene("groupStageView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
