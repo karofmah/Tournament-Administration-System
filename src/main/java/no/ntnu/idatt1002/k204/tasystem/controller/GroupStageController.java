@@ -146,4 +146,12 @@ public class GroupStageController implements Initializable {
         // -2. Lock combobox with team names (if possible)
 
     }
+    @FXML
+    void teamsBtnClicked() {
+        try {
+            Application.changeScene("selectedTournamentView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
