@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.LoginController">
    <center>
-      <VBox maxHeight="600.0" maxWidth="800.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="500.0" maxWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>

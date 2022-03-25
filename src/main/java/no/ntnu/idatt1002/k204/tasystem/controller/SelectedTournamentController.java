@@ -88,7 +88,6 @@ public class SelectedTournamentController implements Initializable {
         selectedTText.setText(tournament.getName());
         if (selectedTournament != null) {
             for (Team team : selectedTournament.getTeams()) {
-                //System.out.println("KOKO");
                 this.teamRegister.addTeam(team);
             }
         }

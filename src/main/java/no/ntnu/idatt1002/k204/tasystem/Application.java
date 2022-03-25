@@ -27,7 +27,7 @@ public class Application extends javafx.application.Application {
         Scene scene = null;
 
         try {
-            scene = new Scene(fxmlLoader.load(), 861, 772);
+            scene = new Scene(fxmlLoader.load(), 1280, 700);
         } catch (IOException e) {
             logger.severe("ERROR: IOException occurred. Cause: " + e.getCause());
         }
