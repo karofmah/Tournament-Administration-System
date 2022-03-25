@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.DatePicker?>
@@ -11,32 +12,75 @@
 
 <BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddTournamentController">
    <center>
-      <AnchorPane prefHeight="398.0" prefWidth="599.0">
+      <AnchorPane prefHeight="398.0" prefWidth="599.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="201.0" layoutY="78.0" prefHeight="58.0" prefWidth="422.0" text="Add new tournament">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label layoutX="219.0" layoutY="221.0" text="Name" />
-            <TextField fx:id="nameTextField" layoutX="275.0" layoutY="217.0" prefHeight="26.0" prefWidth="274.0" />
-            <TextField fx:id="requirementsTextfield" layoutX="355.0" layoutY="265.0" prefHeight="26.0" prefWidth="150.0" />
-            <Label layoutX="240.0" layoutY="269.0" text="Requirements" />
-            <Label layoutX="240.0" layoutY="315.0" text="Date" />
-            <Label layoutX="203.0" layoutY="423.0" text="Stage" />
+            <Label layoutX="201.0" layoutY="221.0" text="Name">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <TextField fx:id="nameTextField" layoutX="334.0" layoutY="217.0" prefHeight="39.0" prefWidth="259.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="requirementsTextfield" layoutX="337.0" layoutY="265.0" prefHeight="39.0" prefWidth="252.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <Label layoutX="200.0" layoutY="269.0" text="Requirements">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="207.0" layoutY="309.0" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="203.0" layoutY="423.0" text="Stage">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
             <ButtonBar layoutX="240.0" layoutY="412.0" prefHeight="40.0" prefWidth="380.0">
               <buttons>
                 <Button fx:id="groupKnockoutBtn" mnemonicParsing="false" onAction="#groupKnockoutBtnClicked" text="Group + knockout (12 teams)" />
                   <Button fx:id="knockoutBtn" mnemonicParsing="false" onAction="#knockoutBtnClicked" text="Knockout (8 teams)" />
               </buttons>
             </ButtonBar>
-            <Button fx:id="AddTournamentBtn" layoutX="267.0" layoutY="519.0" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" text="Add tournament" />
-            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
-            <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" text="Log out" />
-            <TextField fx:id="timeTextField" layoutX="355.0" layoutY="354.0" />
-            <Label layoutX="225.0" layoutY="358.0" prefHeight="17.0" prefWidth="92.0" text="Time (HH:mm)" />
-            <DatePicker fx:id="datePicker" layoutX="355.0" layoutY="311.0" prefHeight="25.0" prefWidth="150.0" />
+            <Button fx:id="AddTournamentBtn" layoutX="267.0" layoutY="519.0" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" text="Add tournament">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" text="Log out">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <TextField fx:id="timeTextField" layoutX="337.0" layoutY="354.0" prefHeight="39.0" prefWidth="250.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <Label layoutX="200.0" layoutY="358.0" prefHeight="30.0" prefWidth="134.0" text="Time (HH:mm)">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <DatePicker fx:id="datePicker" layoutX="337.0" layoutY="311.0" prefHeight="34.0" prefWidth="249.0" />
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </AnchorPane>
    </center>
+   <left>
+      <AnchorPane prefHeight="672.0" prefWidth="34.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="200.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </left>
 </BorderPane>

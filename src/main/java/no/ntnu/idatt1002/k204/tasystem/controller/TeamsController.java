@@ -142,7 +142,7 @@ public class TeamsController implements Initializable {
      * Logout and send back to log in screen
      */
     @FXML
-    void logoutBtnClicked() {
+    void logOutBtnClicked() {
         try {
             Application.logout();
         } catch (IOException e) {
