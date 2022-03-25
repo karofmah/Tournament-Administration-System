@@ -58,7 +58,7 @@
          <children>
             <ButtonBar layoutX="257.0" layoutY="36.0" prefHeight="40.0" prefWidth="347.0">
               <buttons>
-                <Button fx:id="teamsBtn" mnemonicParsing="false" text="Teams" />
+                <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" text="Teams" />
                   <Button fx:id="groupStageBtn" mnemonicParsing="false" text="Group stage" />
                   <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage" />
               </buttons>

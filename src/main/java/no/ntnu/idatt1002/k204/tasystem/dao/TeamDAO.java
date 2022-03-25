@@ -56,9 +56,9 @@ public class TeamDAO {
     }
 
     /**
-     * Get tournament from database
+     * Get team from database
      *
-     * @param register the register
+     * @param register team register
      */
     public void getTeam(TeamRegister register) {
         String sql;
