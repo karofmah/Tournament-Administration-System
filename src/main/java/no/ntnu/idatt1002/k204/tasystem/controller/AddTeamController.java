@@ -2,6 +2,7 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
@@ -61,6 +62,9 @@ public class AddTeamController {
     @FXML
     private TextField p5RankTextfield;
 
+    @FXML
+    private Label txtAddedTeam;
+
     /**
      * Handle add team events
      *
@@ -80,6 +84,8 @@ public class AddTeamController {
         Team team1 = new Team(players, nameTextField.getText());
 
         teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
+
+        txtAddedTeam.setText(nameTextField.getText() + " has been added to the system!");
     }
 
     /**

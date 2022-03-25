@@ -10,7 +10,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddEligibleTeamsController">
    <center>
-      <AnchorPane prefHeight="452.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="395.0" prefWidth="642.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backBtn" layoutX="34.0" layoutY="342.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
             <Label layoutX="144.0" layoutY="30.0" text="Add eligible team">
@@ -24,6 +24,11 @@
                   <TableColumn fx:id="lowRankCol" prefWidth="121.33331298828125" text="Lowest Rank" />
               </columns>
             </TableView>
+            <Label fx:id="txtAddedEligibleTeam" layoutX="144.0" layoutY="325.0" prefHeight="49.0" prefWidth="316.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

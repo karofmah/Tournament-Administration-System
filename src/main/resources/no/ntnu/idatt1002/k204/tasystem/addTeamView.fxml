@@ -21,7 +21,6 @@
             <TextField fx:id="p1NameTextfield" layoutX="232.0" layoutY="223.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
             <TextField fx:id="p1RankTextfield" layoutX="456.0" layoutY="223.0" prefHeight="26.0" prefWidth="200.0" promptText="Rank" />
             <Label layoutX="158.0" layoutY="227.0" text="Player 1" />
-            <Button fx:id="AddTeamBtn" layoutX="331.0" layoutY="520.0" mnemonicParsing="false" onAction="#addTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" text="Add team" />
             <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
             <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" text="Log out" />
             <TextField fx:id="p2NameTextfield" layoutX="232.0" layoutY="272.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
@@ -36,6 +35,12 @@
             <Label layoutX="158.0" layoutY="327.0" text="Player 3" />
             <Label layoutX="158.0" layoutY="383.0" text="Player 4" />
             <Label layoutX="158.0" layoutY="435.0" text="Player 5" />
+            <Button fx:id="AddTeamBtn" layoutX="331.0" layoutY="520.0" mnemonicParsing="false" onAction="#addTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" text="Add team" />
+            <Label fx:id="txtAddedTeam" layoutX="159.0" layoutY="472.0" prefHeight="33.0" prefWidth="568.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

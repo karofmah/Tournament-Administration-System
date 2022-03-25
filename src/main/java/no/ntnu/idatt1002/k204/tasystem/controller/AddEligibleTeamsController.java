@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
@@ -50,6 +47,8 @@ public class AddEligibleTeamsController implements Initializable {
     private ObservableList<Team> teamObservableList;
     private Tournament selectedTournament;
     private TournamentDAO tournamentDAO;
+    @FXML
+    private Label txtAddedEligibleTeam;
 
     //private TeamDAO teamDAO;
 
@@ -81,7 +80,7 @@ public class AddEligibleTeamsController implements Initializable {
                             System.out.println(selectedTournament);
                             selectedTournament.addTeam(team);
                             System.out.println(selectedTournament.getTeams());
-
+                            txtAddedEligibleTeam.setText(team.getTeamName() + " has been added to " + selectedTournament.getName());
 
                         });
                     });
