@@ -63,7 +63,7 @@ public class AddTournamentController {
         tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
                 tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
 
-        txtAddedTournament.setText(nameTextField.getText()+ " has been added! ");
+        txtAddedTournament.setText(nameTextField.getText()+ " has been added to the tournament list! ");
     }
 
     /**
