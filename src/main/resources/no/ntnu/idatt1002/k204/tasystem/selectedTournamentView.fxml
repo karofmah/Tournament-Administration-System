@@ -29,7 +29,7 @@
                   <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage" />
               </buttons>
             </ButtonBar>
-            <Text fx:id="selectedTText" layoutX="290.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Tournament">
+            <Text fx:id="selectedText" layoutX="290.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Tournament">
                <font>
                   <Font size="30.0" />
                </font>

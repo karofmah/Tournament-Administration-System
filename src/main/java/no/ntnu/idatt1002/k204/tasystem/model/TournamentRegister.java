@@ -59,4 +59,13 @@ public class TournamentRegister {
         }
         return null;
     }
+
+    public Tournament getTournamentById(int id) {
+        for (Tournament tournament: tournaments) {
+            if (tournament.getTournamentId() == id) {
+                return tournament;
+            }
+        }
+        return null;
+    }
 }

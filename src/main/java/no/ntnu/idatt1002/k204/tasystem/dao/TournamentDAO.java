@@ -145,4 +145,32 @@ public class TournamentDAO {
         }
         return teamRegister;
     }
+
+    /**
+     * Gets the name of a tournament from the database
+     * @param tournamentID the ID of the tournament
+     * @return the name of the tournament
+     */
+    public String getTournamentNameByTournamentId(int tournamentID) {
+        String sql = "SELECT name from tournament WHERE tournament_id = ?";
+
+        PreparedStatement statement = null;
+        ResultSet result = null;
+
+        String tournamentName = "";
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setInt(1,tournamentID);
+
+            result = statement.executeQuery();
+            while (result.next()) {
+                tournamentName = result.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Database.close(statement, result);
+        }
+        return tournamentName;
+    }
 }

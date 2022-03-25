@@ -106,6 +106,7 @@ public class AddEligibleTeamsController implements Initializable {
     @FXML
     void backBtnClicked(ActionEvent Event) {
         try {
+            // TODO: implement the new way of changing to the SelectedTournament scene
             URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent FrontPageParent = loader.load();

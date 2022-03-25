@@ -55,7 +55,7 @@ public class SelectedTournamentController implements Initializable {
     private TableView<Team> teamsTableView;
 
     @FXML
-    private Text selectedTText;
+    private Text selectedText;
 
     private TeamRegister teamRegister;
 
@@ -68,6 +68,7 @@ public class SelectedTournamentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // TODO: Add try-catch
         this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
         this.teamRegister = new TeamRegister();
         this.tournamentDAO = new TournamentDAO();
@@ -76,7 +77,11 @@ public class SelectedTournamentController implements Initializable {
         this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
         this.teamsTableView.setItems(this.teamObservableList);
 
+        selectedText.setText(this.tournamentDAO.getTournamentNameByTournamentId(Tournament.getSelectedTournamentID()));
+
     }
+
+    // TODO: remove this:
 
     /**
      * Change to add eligible team scene and start adding teams
@@ -85,7 +90,6 @@ public class SelectedTournamentController implements Initializable {
     public void initData(Tournament tournament) {
         selectedTournament = tournament;
         //System.out.println(selectedTournament);
-        selectedTText.setText(tournament.getName());
         if (selectedTournament != null) {
             for (Team team : selectedTournament.getTeams()) {
                 this.teamRegister.addTeam(team);

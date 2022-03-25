@@ -103,7 +103,12 @@ public class FrontPageController implements Initializable {
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
                             try {
                                 Tournament.setSelectedTournamentID(tournament.getTournamentId());
+
+                                //TODO: remove this:
                                 changeToSelectedTournamentView(tournament);//Change scene
+
+                                // TODO: implement the new way of changing to the SelectedTournament scene
+                                //Application.changeScene("selectedTournamentView.fxml");//Change scene
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
