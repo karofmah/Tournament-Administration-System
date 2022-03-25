@@ -3,6 +3,7 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
@@ -42,6 +43,9 @@ public class AddTournamentController {
     @FXML
     private TextField timeTextField;
 
+    @FXML
+    private Label txtAddedTournament;
+
     /**
      * Handle add tournament events
      *
@@ -58,6 +62,8 @@ public class AddTournamentController {
 
         tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
                 tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
+
+        txtAddedTournament.setText(nameTextField.getText()+ " has been added! ");
     }
 
     /**
