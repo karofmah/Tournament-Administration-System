@@ -4,10 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTreeTableCell;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
@@ -16,6 +15,7 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -36,83 +36,75 @@ public class GroupStageController implements Initializable {
     private Button startTournamentBtn;
 
     @FXML
-    private TableColumn<?, ?> t1PointsCol;
+    private TreeTableColumn<Team, String> pointsColTable1;
 
     @FXML
-    private TableColumn t1RankCol;
+    private TreeTableColumn<Team, String> pointsColTable2;
 
     @FXML
-    private TableColumn<?, ?> t1TeamCol;
+    private TreeTableColumn<Team, String> pointsColTable3;
 
     @FXML
-    private TableColumn<?, ?> t2PointsCol;
+    private TreeTableColumn<Team, String> pointsColTable4;
 
     @FXML
-    private TableColumn<?, ?> t2RankCol;
+    private TreeTableColumn<Team, String> teamColTable1;
 
     @FXML
-    private TableColumn<?, ?> t2TeamCol;
+    private TreeTableColumn<Team, String> teamColTable2;
 
     @FXML
-    private TableColumn<?, ?> t3PointsCol;
+    private TreeTableColumn<Team, String> teamColTable3;
 
     @FXML
-    private TableColumn<?, ?> t3RankCol;
+    private TreeTableColumn<Team, String> teamColTable4;
 
     @FXML
-    private TableColumn<?, ?> t3TeamCol;
+    private TreeTableView<Team> tableView1;
 
     @FXML
-    private TableColumn<?, ?> t4PointsCol;
+    private TreeTableView<Team> tableView2;
 
     @FXML
-    private TableColumn<?, ?> t4RankCol;
+    private TreeTableView<Team> tableView3;
 
     @FXML
-    private TableColumn<?, ?> t4TeamCol;
+    private TreeTableView<Team> tableView4;
 
-    @FXML
-    private TableView<TeamRegister> tableView1;
-
-    @FXML
-    private TableView<TeamRegister> tableView2;
-
-    @FXML
-    private TableView<TeamRegister> tableView3;
-
-    @FXML
-    private TableView<TeamRegister> tableView4;
 
     @FXML
     private Button teamsBtn;
 
-    private ObservableList<TeamRegister> teamObservableList1;
-    private ObservableList<TeamRegister> teamObservableList2;
+    private final TreeItem<Team> table1root = new TreeItem<>();
+    private final TreeItem<Team> table2root = new TreeItem<>();
+    private final TreeItem<Team> table3root = new TreeItem<>();
+    private final TreeItem<Team> table4root = new TreeItem<>();
+    private TournamentDAO tournamentDAO;
+    private TeamRegister teamRegister;
+    private ObservableList<String> teamNames;
 
-    private TeamRegister teamRegister1;
-    private TeamRegister teamRegister2;
-
-    TournamentDAO tournamentDAO;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        t1TeamCol.setCellValueFactory(new PropertyValueFactory<>("teamComboBox"));
-        t2TeamCol.setCellValueFactory(new PropertyValueFactory<>("teamComboBox"));
-
-        this.teamRegister1 = new TeamRegister(FXCollections.observableArrayList());
-        this.teamRegister2 = new TeamRegister(FXCollections.observableArrayList());
-
         this.tournamentDAO = new TournamentDAO();
-        for (Team team : this.tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams()) {
-            this.teamRegister1.addTeamToObservableList(team);
-            this.teamRegister2.addTeamToObservableList(team);
-        }
+        this.teamRegister = this.tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
+        this.teamNames = FXCollections.observableArrayList();
 
-        this.teamObservableList1 = FXCollections.observableArrayList(new TeamRegister(teamRegister1.getTeamObservableList()));
-        this.teamObservableList2 = FXCollections.observableArrayList(new TeamRegister(teamRegister2.getTeamObservableList()));
+        initializeRowsWithDefaultText();
 
-        this.tableView1.setItems(this.teamObservableList1);
-        this.tableView2.setItems(this.teamObservableList2);
+        initializeTeamColumns();
+
+        initializePointsColumns();
+
+        addTeamNamesToTeamsList();
+
+        addComboboxToTeamCol(this.teamNames);
+
+        setRootInTreeTables();
+
+        handleEditingTeamCols(this.teamNames);
+
+
     }
 
     /**
@@ -140,12 +132,10 @@ public class GroupStageController implements Initializable {
      */
     @FXML
     void startTournamentBtnClicked() {
-        //TODO
-        // ADD ME:
-        // -1. Add buttons to change points (if possible)
-        // -2. Lock combobox with team names (if possible)
-
+        setNotEditableTeamCols();
+        setPointsColumnsAsEditable();
     }
+
     @FXML
     void teamsBtnClicked() {
         try {
@@ -153,5 +143,105 @@ public class GroupStageController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void initializeRowsWithDefaultText() {
+        ArrayList<TreeItem<Team>> teamItem1 = new ArrayList();
+        ArrayList<TreeItem<Team>> teamItem2 = new ArrayList();
+        ArrayList<TreeItem<Team>> teamItem3 = new ArrayList();
+        ArrayList<TreeItem<Team>> teamItem4 = new ArrayList();
+
+        for (int i = 0; i < 3; i++) {//3 teams per group
+            //Create a TreeItem in order to set a default text.
+            //Will fail with other objects since TreeItem here requires a team
+            TreeItem<Team> team1 = new TreeItem<>(new Team("<Double click to choose team>"));
+            TreeItem<Team> team2 = new TreeItem<>(new Team("<Double click to choose team>"));
+            TreeItem<Team> team3 = new TreeItem<>(new Team("<Double click to choose team>"));
+            TreeItem<Team> team4 = new TreeItem<>(new Team("<Double click to choose team>"));
+            teamItem1.add(team1);
+            teamItem2.add(team2);
+            teamItem3.add(team3);
+            teamItem4.add(team4);
+        }
+
+        table1root.getChildren().setAll(teamItem1);
+        table2root.getChildren().setAll(teamItem2);
+        table3root.getChildren().setAll(teamItem3);
+        table4root.getChildren().setAll(teamItem4);
+    }
+
+    private void setRootInTreeTables() {
+        setRootInTableView(this.tableView1, this.table1root);
+        setRootInTableView(this.tableView2, this.table2root);
+        setRootInTableView(this.tableView3, this.table3root);
+        setRootInTableView(this.tableView4, this.table4root);
+    }
+
+    private void setRootInTableView(TreeTableView<Team> tableView, TreeItem<Team> root) {
+        tableView.setRoot(root);
+        tableView.setShowRoot(false);
+    }
+
+    //When start button is clicked, don't allow editing teams.
+    private void setNotEditableTeamCols() {
+        this.teamColTable1.setEditable(false);
+        this.teamColTable2.setEditable(false);
+        this.teamColTable3.setEditable(false);
+        this.teamColTable4.setEditable(false);
+    }
+
+    //Allow editing points column when start is clicked.
+    private void setPointsColumnsAsEditable() {
+        this.pointsColTable1.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+        this.pointsColTable2.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+        this.pointsColTable3.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+        this.pointsColTable4.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+    }
+
+    //Get teams from the team register, add them to an observable list which is used in the combo boxes.
+    private void addTeamNamesToTeamsList() {
+        for (Team team : this.teamRegister.getTeams()) {
+            this.teamNames.add(team.getTeamName());
+        }
+    }
+
+    private void addComboboxToTeamCol(ObservableList<String> teamNames) {
+        this.teamColTable1.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable2.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable3.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable4.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
+    }
+
+    private void handleEditingTeamCols(ObservableList<String> teams) {
+        chooseAndRemoveTeam(this.teamColTable1, this.tableView1, teams);
+        chooseAndRemoveTeam(this.teamColTable2, this.tableView2, teams);
+        chooseAndRemoveTeam(this.teamColTable3, this.tableView3, teams);
+        chooseAndRemoveTeam(this.teamColTable4, this.tableView4, teams);
+    }
+
+    private void chooseAndRemoveTeam(TreeTableColumn<Team, String> teamCol, TreeTableView<Team> tableView, ObservableList<String> teams) {
+        //Get column that is being edited
+        teamCol.setOnEditCommit(event -> {
+            //Get name that has been chosen from combobox
+            TreeItem<Team> currentlyChosen = tableView.getTreeItem(event.getTreeTablePosition().getRow());
+            //Set name that has been chosen to the cell. Or else it is lost when tournament is started.
+            currentlyChosen.getValue().setTeamName(event.getNewValue());
+            //Remove chosen name from observable list
+            teams.remove(event.getNewValue());
+        });
+    }
+
+    private void initializeTeamColumns() {
+        this.teamColTable1.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().teamNameProperty());
+        this.teamColTable2.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().teamNameProperty());
+        this.teamColTable3.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().teamNameProperty());
+        this.teamColTable4.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().teamNameProperty());
+    }
+
+    private void initializePointsColumns() {
+        this.pointsColTable1.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().pointsProperty());
+        this.pointsColTable2.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().pointsProperty());
+        this.pointsColTable3.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().pointsProperty());
+        this.pointsColTable4.setCellValueFactory((TreeTableColumn.CellDataFeatures<Team, String> param) -> param.getValue().getValue().pointsProperty());
     }
 }

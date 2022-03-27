@@ -1,5 +1,7 @@
 package no.ntnu.idatt1002.k204.tasystem.model;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -8,7 +10,8 @@ import java.util.Objects;
  */
 public class Team {
     private ArrayList<Player> players = new ArrayList<>();
-    private String teamName;
+    private SimpleStringProperty teamName; //Have to use string property because of combobox and events
+    private SimpleStringProperty points;
 
     /**
      * Team-Constructors, the second one only has @param teamName
@@ -20,17 +23,19 @@ public class Team {
         if(players.isEmpty()){
             Team team=new Team(teamName);
         }
-        this.teamName = teamName;
+        this.teamName = new SimpleStringProperty(teamName);
+        this.points = new SimpleStringProperty();
         if(teamName.isBlank()){
             throw new IllegalArgumentException("Team name can not be blank");
         }
     }
 
     public Team(String teamName){
-        this.teamName = teamName;
+        this.teamName = new SimpleStringProperty(teamName);
         if(teamName.isBlank()){
             throw new IllegalArgumentException("Team name can not be blank");
         }
+        this.points = new SimpleStringProperty();
     }
 
     /**
@@ -48,7 +53,7 @@ public class Team {
      * @param p5rank player 5's rank
      */
     public Team(String name, String p1name, String p1rank, String p2name, String p2rank, String p3name, String p3rank, String p4name, String p4rank, String p5name, String p5rank) {
-        this.teamName = name;
+        this.teamName = new SimpleStringProperty(name);
 
         ArrayList<Player> newPlayers = new ArrayList<>();
         newPlayers.add(new Player(p1name,p1rank));
@@ -59,6 +64,30 @@ public class Team {
 
         this.players = newPlayers;
 
+    }
+
+    public String getTeamName() {
+        return teamName.get();
+    }
+
+    public SimpleStringProperty teamNameProperty() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName.set(teamName);
+    }
+
+    public String getPoints() {
+        return points.get();
+    }
+
+    public SimpleStringProperty pointsProperty() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points.set(String.valueOf(points));
     }
 
     /**
@@ -73,10 +102,9 @@ public class Team {
      * Method for getting teamname
      * @return teamName
      */
-    public String getTeamName() {
+    /*public String getTeamName() {
         return teamName;
-    }
-
+    }*/
 
     /**
      * Method for adding player to team
@@ -88,11 +116,11 @@ public class Team {
 
     /**
      * Method for changing team name
-     * @param teamName name of team
+     //* @param teamName name of team
      */
-    public void setTeamName(String teamName) {
+    /*public void setTeamName(String teamName) {
         this.teamName = teamName;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {

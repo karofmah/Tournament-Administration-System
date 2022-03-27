@@ -11,9 +11,6 @@ import java.util.HashSet;
  */
 public class TeamRegister {
     private HashSet<Team> teams = new HashSet<>();
-    private ComboBox<Team> teamComboBox;
-    private ObservableList<Team> teamObservableList;//Need this in order to display teams in combo box.
-    //Combo box need an observable list in order to work.
 
     /**
      * The constructor for the TeamRegister.
@@ -26,10 +23,6 @@ public class TeamRegister {
      *
      * @param teamObservableList observable list of teams
      */
-    public TeamRegister(ObservableList<Team> teamObservableList) {
-        this.teamObservableList = teamObservableList;
-        this.teamComboBox = new ComboBox<>(teamObservableList);
-    }
 
     /**
      * Adds a new team to the system.
@@ -39,29 +32,12 @@ public class TeamRegister {
         teams.add(team);
     }
 
-    public void addTeamToObservableList(Team team) {
-        this.teamObservableList.add(team);
-    }
-
-    public ObservableList<Team> getTeamObservableList() {
-        return teamObservableList;
-    }
-
-
     /**
      * Gets a list of all the teams in the register.
      * @return a list of teams
      */
     public HashSet<Team> getTeams() {
         return teams;
-    }
-
-    public ComboBox<Team> getTeamComboBox() {
-        return teamComboBox;
-    }
-
-    public void setTeamComboBox(ComboBox<Team> teamComboBox) {
-        this.teamComboBox = teamComboBox;
     }
 
     /**
