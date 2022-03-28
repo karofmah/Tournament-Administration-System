@@ -16,6 +16,9 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
+
 /**
  * Controller for adding a team
  */
@@ -73,22 +76,27 @@ public class AddTeamController {
      */
     @FXML
     void addTeamBtnClicked() throws IOException {
-        TeamDAO teamDAO = new TeamDAO();
 
-        ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player(p1NameTextfield.getText(), p1RankTextfield.getText()));
-        players.add(new Player(p2NameTextfield.getText(), p2RankTextfield.getText()));
-        players.add(new Player(p3NameTextfield.getText(), p3RankTextfield.getText()));
-        players.add(new Player(p4NameTextfield.getText(), p4RankTextfield.getText()));
-        players.add(new Player(p5NameTextfield.getText(), p5RankTextfield.getText()));
+        try {
+            TeamDAO teamDAO = new TeamDAO();
 
-        Team team1 = new Team(players, nameTextField.getText());
+            ArrayList<Player> players = new ArrayList<>();
+            players.add(new Player(p1NameTextfield.getText(), p1RankTextfield.getText()));
+            players.add(new Player(p2NameTextfield.getText(), p2RankTextfield.getText()));
+            players.add(new Player(p3NameTextfield.getText(), p3RankTextfield.getText()));
+            players.add(new Player(p4NameTextfield.getText(), p4RankTextfield.getText()));
+            players.add(new Player(p5NameTextfield.getText(), p5RankTextfield.getText()));
 
-        teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
+            Team team1 = new Team(players, nameTextField.getText());
 
-        showInformationDialog(nameTextField.getText() + " has been added to the system!");
+            teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
 
-        Application.changeScene("addTeamView.fxml");
+            showInformationDialog(nameTextField.getText() + " has been added to the system!");
+
+            Application.changeScene("addTeamView.fxml");
+        } catch (IllegalArgumentException e) {
+            showAlertDialog(e);
+        }
     }
 
     /**
@@ -115,17 +123,5 @@ public class AddTeamController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Displays an information dialog
-     * @param text the text to be displayed
-     */
-    private void showInformationDialog(String text) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Tournament Administration System");
-        alert.setHeaderText(null);
-        alert.setContentText(text);
-        alert.showAndWait();
     }
 }

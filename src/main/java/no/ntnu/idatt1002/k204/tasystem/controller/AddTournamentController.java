@@ -7,6 +7,10 @@ import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
 
 /**
  * Controller for adding tournaments
@@ -50,19 +54,23 @@ public class AddTournamentController {
      */
     @FXML
     void addTournamentBtnClicked() {
-        TournamentDAO tournamentDAO = new TournamentDAO();
+        try {
+            TournamentDAO tournamentDAO = new TournamentDAO();
 
-        Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
-                String.valueOf(datePicker.getValue()), timeTextField.getText());
+            Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
+                    String.valueOf(datePicker.getValue()), timeTextField.getText());
 
-        String status = "Inactive";
+            String status = "Inactive";
 
-        //tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
-        //        tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
+            tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
+                    tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
 
-        showInformationDialog(nameTextField.getText()+ " has been added to the tournament list!");
+            showInformationDialog(nameTextField.getText()+ " has been added to the tournament list!");
 
-        backBtnClicked();
+            backBtnClicked();
+        } catch (IllegalArgumentException e) {
+            showAlertDialog(e);
+        }
     }
 
     /**
@@ -108,17 +116,4 @@ public class AddTournamentController {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Displays an information dialog
-     * @param text the text to be displayed
-     */
-    private void showInformationDialog(String text) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Tournament Administration System");
-        alert.setHeaderText(null);
-        alert.setContentText(text);
-        alert.showAndWait();
-    }
-
 }

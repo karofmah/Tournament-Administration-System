@@ -1,8 +1,10 @@
 package no.ntnu.idatt1002.k204.tasystem.model;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class Tournament {
@@ -36,7 +38,7 @@ public class Tournament {
         }
         this.rankRequirement = rankRequirement;
         if (rankRequirement.isBlank()) {
-            this.rankRequirement = "Unranked";
+            this.rankRequirement = "No requirements";
         }
         this.hasGroupStage = hasGroupStage;
         this.dateTime = dateTime;
@@ -56,12 +58,23 @@ public class Tournament {
      * @param date
      * @param time
      */
-    public Tournament(String name, String rankRequirement, String date, String time) {
+    public Tournament(String name, String rankRequirement, String date, String time) throws IllegalArgumentException {
         this.name = name;
+        if (name.isBlank()) throw new IllegalArgumentException("Name can not be blank");
         this.rankRequirement = rankRequirement;
+        if (rankRequirement.isBlank()) this.rankRequirement = "No requirements";
         this.isActive = false;
-        this.date = LocalDate.parse(date);
-        this.time = LocalTime.parse(time);
+
+        try {
+            this.date = LocalDate.parse(date);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Please select a valid date");
+        }
+        try {
+            this.time = LocalTime.parse(time);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Please choose a valid time");
+        }
 
         countTournaments++;
         tournamentId = countTournaments;
