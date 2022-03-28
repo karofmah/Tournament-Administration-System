@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddTournamentController">
+<BorderPane prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddTournamentController">
    <center>
       <AnchorPane prefHeight="398.0" prefWidth="599.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="201.0" layoutY="78.0" prefHeight="58.0" prefWidth="422.0" text="Add new tournament">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="78.0" prefHeight="58.0" prefWidth="1052.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Add new tournament" AnchorPane.leftAnchor="0.3333333333334849" AnchorPane.rightAnchor="0.33333333333325754">
                <font>
                   <Font size="40.0" />
                </font>
@@ -49,15 +49,15 @@
                   <Button fx:id="knockoutBtn" mnemonicParsing="false" onAction="#knockoutBtnClicked" text="Knockout (8 teams)" />
               </buttons>
             </ButtonBar>
-            <Button fx:id="AddTournamentBtn" layoutX="267.0" layoutY="519.0" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" text="Add tournament">
+            <Button fx:id="AddTournamentBtn" layoutX="267.0" layoutY="519.0" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Add tournament">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back">
+            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" text="Log out">
+            <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" styleClass="buttons" text="Log out">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -81,11 +81,4 @@
          </BorderPane.margin>
       </AnchorPane>
    </center>
-   <left>
-      <AnchorPane prefHeight="672.0" prefWidth="34.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets right="200.0" />
-         </BorderPane.margin>
-      </AnchorPane>
-   </left>
 </BorderPane>

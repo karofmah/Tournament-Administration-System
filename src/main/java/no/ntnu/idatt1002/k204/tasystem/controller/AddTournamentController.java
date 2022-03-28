@@ -1,15 +1,16 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
 
 /**
  * Controller for adding tournaments
@@ -53,17 +54,23 @@ public class AddTournamentController {
      */
     @FXML
     void addTournamentBtnClicked() {
-        TournamentDAO tournamentDAO = new TournamentDAO();
+        try {
+            TournamentDAO tournamentDAO = new TournamentDAO();
 
-        Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
-                String.valueOf(datePicker.getValue()), timeTextField.getText());
+            Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
+                    String.valueOf(datePicker.getValue()), timeTextField.getText());
 
-        String status = "Inactive";
+            String status = "Inactive";
 
-        tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
-                tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
+            tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
+                    tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
 
-        txtAddedTournament.setText(nameTextField.getText()+ " has been added to the tournament list! ");
+            showInformationDialog(nameTextField.getText()+ " has been added to the tournament list!");
+
+            backBtnClicked();
+        } catch (IllegalArgumentException e) {
+            showAlertDialog(e);
+        }
     }
 
     /**
@@ -109,5 +116,4 @@ public class AddTournamentController {
             e.printStackTrace();
         }
     }
-
 }

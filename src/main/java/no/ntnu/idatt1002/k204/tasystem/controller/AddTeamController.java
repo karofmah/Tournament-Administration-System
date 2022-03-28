@@ -1,6 +1,7 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,6 +15,9 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
 
 /**
  * Controller for adding a team
@@ -71,21 +75,28 @@ public class AddTeamController {
      * Add team to database
      */
     @FXML
-    void addTeamBtnClicked() {
-        TeamDAO teamDAO = new TeamDAO();
+    void addTeamBtnClicked() throws IOException {
 
-        ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player(p1NameTextfield.getText(), p1RankTextfield.getText()));
-        players.add(new Player(p2NameTextfield.getText(), p2RankTextfield.getText()));
-        players.add(new Player(p3NameTextfield.getText(), p3RankTextfield.getText()));
-        players.add(new Player(p4NameTextfield.getText(), p4RankTextfield.getText()));
-        players.add(new Player(p5NameTextfield.getText(), p5RankTextfield.getText()));
+        try {
+            TeamDAO teamDAO = new TeamDAO();
 
-        Team team1 = new Team(players, nameTextField.getText());
+            ArrayList<Player> players = new ArrayList<>();
+            players.add(new Player(p1NameTextfield.getText(), p1RankTextfield.getText()));
+            players.add(new Player(p2NameTextfield.getText(), p2RankTextfield.getText()));
+            players.add(new Player(p3NameTextfield.getText(), p3RankTextfield.getText()));
+            players.add(new Player(p4NameTextfield.getText(), p4RankTextfield.getText()));
+            players.add(new Player(p5NameTextfield.getText(), p5RankTextfield.getText()));
 
-        teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
+            Team team1 = new Team(players, nameTextField.getText());
 
-        txtAddedTeam.setText(nameTextField.getText() + " has been added to the system!");
+            teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
+
+            showInformationDialog(nameTextField.getText() + " has been added to the system!");
+
+            Application.changeScene("addTeamView.fxml");
+        } catch (IllegalArgumentException e) {
+            showAlertDialog(e);
+        }
     }
 
     /**
@@ -113,5 +124,4 @@ public class AddTeamController {
             e.printStackTrace();
         }
     }
-
 }

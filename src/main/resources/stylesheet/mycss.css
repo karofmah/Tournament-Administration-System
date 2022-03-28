@@ -1,0 +1,43 @@
+
+.background{
+    -fx-background-color: #296930;
+}
+.title{
+    -fx-text-fill: #fedb00;
+    -fx-background-color: black;
+    -fx-font-family: "Comic Sans MS";
+}
+#menuBar{
+    -fx-background-color: FEDB00;
+}
+
+.buttons{
+    -fx-background-color: #D92F29;
+}
+.buttons:hover{
+    -fx-cursor:HAND;
+    -fx-background-color: #aa0707;
+}
+.table{
+    -fx-background-color:  transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+    -fx-alignment: CENTER;
+}
+.table-row-cell {
+    -fx-table-cell-border-color: transparent;
+}
+.table-row-cell:odd{
+    -fx-background-insets: 0,0 0 1 0;
+    -fx-background-color: FEDB00;
+}
+.table-row-cell:odd:hover{
+    -fx-background-color: aaaaaa;
+}
+.table-row-cell:even{
+    -fx-background-color: BEDB00;
+    -fx-background-insets: 0,0 0 1 0;
+}
+.table-row-cell:even:hover{
+    -fx-background-color: aaaaaa;
+}
