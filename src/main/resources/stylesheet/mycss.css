@@ -5,12 +5,14 @@
 }
 .background{
     -fx-background-color: #296930;
-
 }
 .title{
     -fx-text-fill: #fedb00;
     -fx-background-color: black;
     -fx-font-family: "Comic Sans MS";
+}
+#menuBar{
+    -fx-start-margin: 10;
 }
 .buttons{
     -fx-padding: 10;
