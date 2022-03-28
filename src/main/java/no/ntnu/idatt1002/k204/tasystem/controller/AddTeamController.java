@@ -1,6 +1,7 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -71,7 +72,7 @@ public class AddTeamController {
      * Add team to database
      */
     @FXML
-    void addTeamBtnClicked() {
+    void addTeamBtnClicked() throws IOException {
         TeamDAO teamDAO = new TeamDAO();
 
         ArrayList<Player> players = new ArrayList<>();
@@ -85,7 +86,9 @@ public class AddTeamController {
 
         teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
 
-        txtAddedTeam.setText(nameTextField.getText() + " has been added to the system!");
+        showInformationDialog(nameTextField.getText() + " has been added to the system!");
+
+        Application.changeScene("addTeamView.fxml");
     }
 
     /**
@@ -114,4 +117,15 @@ public class AddTeamController {
         }
     }
 
+    /**
+     * Displays an information dialog
+     * @param text the text to be displayed
+     */
+    private void showInformationDialog(String text) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Tournament Administration System");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
 }

@@ -1,10 +1,7 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -60,10 +57,12 @@ public class AddTournamentController {
 
         String status = "Inactive";
 
-        tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
-                tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
+        //tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
+        //        tournament1.getRankRequirement(), String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
 
-        txtAddedTournament.setText(nameTextField.getText()+ " has been added to the tournament list! ");
+        showInformationDialog(nameTextField.getText()+ " has been added to the tournament list!");
+
+        backBtnClicked();
     }
 
     /**
@@ -108,6 +107,18 @@ public class AddTournamentController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Displays an information dialog
+     * @param text the text to be displayed
+     */
+    private void showInformationDialog(String text) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Tournament Administration System");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+        alert.showAndWait();
     }
 
 }
