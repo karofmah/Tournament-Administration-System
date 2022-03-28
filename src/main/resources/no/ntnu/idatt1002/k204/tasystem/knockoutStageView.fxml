@@ -1,74 +1,298 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
 <BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
    <center>
       <AnchorPane prefHeight="672.0" prefWidth="861.0">
          <children>
-            <TextFlow fx:id="team1" layoutX="56.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="56.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="team1" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
             <Line endX="200.0" endY="200.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="200.0" />
-            <TextFlow fx:id="team2" layoutX="56.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-            <TextFlow fx:id="team3" layoutX="56.0" layoutY="187.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <TextFlow layoutX="56.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="team2" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+            <TextFlow layoutX="56.0" layoutY="187.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="team3" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></TextFlow>
             <Line endX="200.0" endY="300.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="300.0" />
-            <TextFlow fx:id="team4" layoutX="56.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-            <TextFlow fx:id="team5" layoutX="56.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" />
+            <TextFlow layoutX="56.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="team4" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></TextFlow>
+            <TextFlow layoutX="56.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="148.0">
+               <children>
+                  <Text fx:id="team5" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></TextFlow>
             <Line endX="200.0" endY="400.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="400.0" />
-            <TextFlow fx:id="team6" layoutX="56.0" layoutY="317.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-            <TextFlow fx:id="team7" layoutX="56.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <TextFlow layoutX="56.0" layoutY="317.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="team6" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></TextFlow>
+            <TextFlow layoutX="56.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="team7" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></TextFlow>
             <Line endX="200.0" endY="500.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="500.0" />
-            <TextFlow fx:id="team8" layoutX="56.0" layoutY="417.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <TextFlow layoutX="56.0" layoutY="417.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="team8" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></TextFlow>
             <Line endX="200.0" endY="300.0" layoutX="6.0" layoutY="-83.0" startX="200.0" startY="200.0" />
             <Line endX="200.0" endY="500.0" layoutX="6.0" layoutY="-83.0" startX="200.0" startY="400.0" />
-            <TextFlow fx:id="quarterFinalTeam1" layoutX="256.0" layoutY="137.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="256.0" layoutY="137.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="semiFinalTeam1" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
             <Line endX="400.0" endY="250.0" layoutX="6.0" layoutY="-83.0" startX="200.0" startY="250.0" />
-            <TextFlow fx:id="quarterFinalTeam2" layoutX="256.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="256.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="semiFinalTeam2" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
-            <TextFlow fx:id="quarterFinalTeam3" layoutX="256.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="256.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="semiFinalTeam3" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
             <Line endX="400.0" endY="250.0" layoutX="6.0" layoutY="117.0" startX="200.0" startY="250.0" />
-            <TextFlow fx:id="quarterFinalTeam4" layoutX="256.0" layoutY="367.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="256.0" layoutY="367.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="semiFinalTeam4" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
             <Line endX="425.0" endY="450.0" layoutX="-19.0" layoutY="-83.0" startX="425.5" startY="250.0" />
-            <TextFlow fx:id="semiFinalTeam1" layoutX="456.0" layoutY="237.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="456.0" layoutY="237.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="finalTeam1" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
             <Line endX="450.0" endY="250.0" layoutX="206.0" layoutY="17.0" startX="200.0" startY="250.0" />
-            <TextFlow fx:id="semiFinalTeam2" layoutX="456.0" layoutY="267.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow layoutX="456.0" layoutY="267.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="finalTeam2" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
-            <TextFlow fx:id="winnerTeam" accessibleRole="BUTTON" layoutX="656.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+            <TextFlow accessibleRole="BUTTON" layoutX="682.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <opaqueInsets>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
+               <children>
+                  <Text fx:id="winnerTeam" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
             </TextFlow>
+            <VBox layoutX="213.0" layoutY="97.0">
+               <children>
+                  <RadioButton fx:id="team1Btn" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="quarterFinalGroup1" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="team2Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup1" />
+               </children>
+            </VBox>
+            <VBox layoutX="213.0" layoutY="197.0">
+               <children>
+                  <RadioButton fx:id="team3Btn" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="quarterFinalGroup2" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="team4Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup2" />
+               </children>
+            </VBox>
+            <VBox layoutX="213.0" layoutY="297.0">
+               <children>
+                  <RadioButton fx:id="team5Btn" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="quarterFinalGroup3" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="team6Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup3" />
+               </children>
+            </VBox>
+            <VBox layoutX="213.0" layoutY="397.0">
+               <children>
+                  <RadioButton fx:id="team7Btn" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="quarterFinalGroup4" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="team8Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup4" />
+               </children>
+            </VBox>
+            <VBox layoutX="415.0" layoutY="146.0">
+               <children>
+                  <RadioButton fx:id="semiFinalGroup1Team1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="semiFinalGroup1" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="semiFinalGroup1Team2Btn" disable="true" mnemonicParsing="false" toggleGroup="$semiFinalGroup1" />
+               </children>
+            </VBox>
+            <VBox layoutX="415.0" layoutY="347.0">
+               <children>
+                  <RadioButton fx:id="semiFinalGroup2Team1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="semiFinalGroup2" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="semiFinalGroup2Team2Btn" disable="true" mnemonicParsing="false" toggleGroup="$semiFinalGroup2" />
+               </children>
+            </VBox>
+            <VBox layoutX="640.0" layoutY="247.0">
+               <children>
+                  <RadioButton fx:id="finalTeam1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="finalGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="finalTeam2Btn" disable="true" mnemonicParsing="false" toggleGroup="$finalGroup" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>
