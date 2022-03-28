@@ -146,8 +146,11 @@ public class SelectedTournamentController implements Initializable {
      */
     @FXML
     void knockoutStageBtnClicked() {
-        //TODO
-        // ADD ME Change to knockout stage scene
+        try {
+            Application.changeScene("knockOutStageView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

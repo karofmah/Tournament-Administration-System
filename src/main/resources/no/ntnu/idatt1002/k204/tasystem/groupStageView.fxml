@@ -55,7 +55,7 @@
       <AnchorPane prefHeight="62.0" prefWidth="862.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="startTournamentBtn" layoutX="377.0" layoutY="18.0" mnemonicParsing="false" onAction="#startTournamentBtnClicked" text="Start tournament" />
-            <Button fx:id="backBtn" layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" AnchorPane.bottomAnchor="24.800000000000004" AnchorPane.leftAnchor="27.0" />
+            <Button fx:id="backBtn" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" AnchorPane.bottomAnchor="18.66666666666667" AnchorPane.leftAnchor="25.0" />
          </children>
       </AnchorPane>
    </bottom>

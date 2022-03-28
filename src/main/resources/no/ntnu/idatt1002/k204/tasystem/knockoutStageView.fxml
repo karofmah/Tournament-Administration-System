@@ -1,67 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
-   <children>
-      <TextFlow fx:id="team1" layoutX="75.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets></TextFlow>
-      <Line endX="200.0" endY="200.0" layoutX="25.0" startX="50.0" startY="200.0" />
-      <TextFlow fx:id="team2" layoutX="75.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-      <TextFlow fx:id="team3" layoutX="75.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-      <Line endX="200.0" endY="300.0" layoutX="25.0" startX="50.0" startY="300.0" />
-      <TextFlow fx:id="team4" layoutX="75.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-      <TextFlow fx:id="team5" layoutX="75.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" />
-      <Line endX="200.0" endY="400.0" layoutX="25.0" startX="50.0" startY="400.0" />
-      <TextFlow fx:id="team6" layoutX="75.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-      <TextFlow fx:id="team7" layoutX="75.0" layoutY="470.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-      <Line endX="200.0" endY="500.0" layoutX="25.0" startX="50.0" startY="500.0" />
-      <TextFlow fx:id="team8" layoutX="75.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
-      <Line endX="200.0" endY="300.0" layoutX="25.0" startX="200.0" startY="200.0" />
-      <Line endX="200.0" endY="500.0" layoutX="25.0" startX="200.0" startY="400.0" />
-      <TextFlow fx:id="quarterFinalTeam1" layoutX="275.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-      <Line endX="400.0" endY="250.0" layoutX="25.0" startX="200.0" startY="250.0" />
-      <TextFlow fx:id="quarterFinalTeam2" layoutX="275.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-      <TextFlow fx:id="quarterFinalTeam3" layoutX="275.0" layoutY="420.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-      <Line endX="400.0" endY="250.0" layoutX="25.0" layoutY="200.0" startX="200.0" startY="250.0" />
-      <TextFlow fx:id="quarterFinalTeam4" layoutX="275.0" layoutY="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-      <Line endX="425.0" endY="450.0" startX="425.5" startY="250.0" />
-      <TextFlow fx:id="semiFinalTeam1" layoutX="475.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-      <Line endX="450.0" endY="250.0" layoutX="225.0" layoutY="100.0" startX="200.0" startY="250.0" />
-      <TextFlow fx:id="semiFinalTeam2" layoutX="475.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-      <TextFlow fx:id="winnerTeam" accessibleRole="BUTTON" layoutX="675.0" layoutY="335.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-      </TextFlow>
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
+   <center>
+      <AnchorPane prefHeight="672.0" prefWidth="861.0">
+         <children>
+            <TextFlow fx:id="team1" layoutX="56.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <Line endX="200.0" endY="200.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="200.0" />
+            <TextFlow fx:id="team2" layoutX="56.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <TextFlow fx:id="team3" layoutX="56.0" layoutY="187.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <Line endX="200.0" endY="300.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="300.0" />
+            <TextFlow fx:id="team4" layoutX="56.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <TextFlow fx:id="team5" layoutX="56.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" />
+            <Line endX="200.0" endY="400.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="400.0" />
+            <TextFlow fx:id="team6" layoutX="56.0" layoutY="317.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <TextFlow fx:id="team7" layoutX="56.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <Line endX="200.0" endY="500.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="500.0" />
+            <TextFlow fx:id="team8" layoutX="56.0" layoutY="417.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
+            <Line endX="200.0" endY="300.0" layoutX="6.0" layoutY="-83.0" startX="200.0" startY="200.0" />
+            <Line endX="200.0" endY="500.0" layoutX="6.0" layoutY="-83.0" startX="200.0" startY="400.0" />
+            <TextFlow fx:id="quarterFinalTeam1" layoutX="256.0" layoutY="137.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <Line endX="400.0" endY="250.0" layoutX="6.0" layoutY="-83.0" startX="200.0" startY="250.0" />
+            <TextFlow fx:id="quarterFinalTeam2" layoutX="256.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <TextFlow fx:id="quarterFinalTeam3" layoutX="256.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <Line endX="400.0" endY="250.0" layoutX="6.0" layoutY="117.0" startX="200.0" startY="250.0" />
+            <TextFlow fx:id="quarterFinalTeam4" layoutX="256.0" layoutY="367.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <Line endX="425.0" endY="450.0" layoutX="-19.0" layoutY="-83.0" startX="425.5" startY="250.0" />
+            <TextFlow fx:id="semiFinalTeam1" layoutX="456.0" layoutY="237.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <Line endX="450.0" endY="250.0" layoutX="206.0" layoutY="17.0" startX="200.0" startY="250.0" />
+            <TextFlow fx:id="semiFinalTeam2" layoutX="456.0" layoutY="267.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+            <TextFlow fx:id="winnerTeam" accessibleRole="BUTTON" layoutX="656.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </TextFlow>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="62.0" prefWidth="862.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="finishTournamentBtn" layoutX="377.0" layoutY="18.0" mnemonicParsing="false" onAction="#finishTournamentBtnClicked" text="Finish tournament" />
+            <Button fx:id="backBtn" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <top>
+      <AnchorPane prefHeight="62.0" prefWidth="862.0" BorderPane.alignment="CENTER">
+         <children>
+            <ButtonBar layoutX="257.0" layoutY="36.0" prefHeight="40.0" prefWidth="347.0">
+               <buttons>
+                  <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" text="Teams" />
+                  <Button fx:id="groupStageBtn" mnemonicParsing="false" onAction="#groupStageBtnClicked" text="Group stage" />
+                  <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage" />
+               </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
