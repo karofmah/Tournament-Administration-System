@@ -102,7 +102,7 @@ public class GroupStageController implements Initializable {
 
         setRootInTreeTables();
 
-        handleEditingTeamCols(this.teamNames);
+        handleEditingTeamCols();
 
 
     }
@@ -212,14 +212,14 @@ public class GroupStageController implements Initializable {
         this.teamColTable4.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
     }
 
-    private void handleEditingTeamCols(ObservableList<String> teams) {
-        chooseAndRemoveTeam(this.teamColTable1, this.tableView1, teams);
-        chooseAndRemoveTeam(this.teamColTable2, this.tableView2, teams);
-        chooseAndRemoveTeam(this.teamColTable3, this.tableView3, teams);
-        chooseAndRemoveTeam(this.teamColTable4, this.tableView4, teams);
+    private void handleEditingTeamCols() {
+        chooseAndSetTeam(this.teamColTable1, this.tableView1);
+        chooseAndSetTeam(this.teamColTable2, this.tableView2);
+        chooseAndSetTeam(this.teamColTable3, this.tableView3);
+        chooseAndSetTeam(this.teamColTable4, this.tableView4);
     }
 
-    private void chooseAndRemoveTeam(TreeTableColumn<Team, String> teamCol, TreeTableView<Team> tableView, ObservableList<String> teams) {
+    private void chooseAndSetTeam(TreeTableColumn<Team, String> teamCol, TreeTableView<Team> tableView) {
         //Get column that is being edited
         teamCol.setOnEditCommit(event -> {
             //Get name that has been chosen from combobox
@@ -227,7 +227,6 @@ public class GroupStageController implements Initializable {
             //Set name that has been chosen to the cell. Or else it is lost when tournament is started.
             currentlyChosen.getValue().setTeamName(event.getNewValue());
             //Remove chosen name from observable list
-            teams.remove(event.getNewValue());
         });
     }
 
