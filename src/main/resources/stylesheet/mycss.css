@@ -1,8 +1,4 @@
 
-*{
-    -fx-padding: 0;
-    -fx-end-margin: 0;
-}
 .background{
     -fx-background-color: #296930;
 }
@@ -12,11 +8,15 @@
     -fx-font-family: "Comic Sans MS";
 }
 #menuBar{
-    -fx-start-margin: 10;
+    -fx-background-color: FEDB00;
 }
+
 .buttons{
-    -fx-padding: 10;
     -fx-background-color: #D92F29;
+}
+.buttons:hover{
+    -fx-cursor:HAND;
+    -fx-background-color: #aa0707;
 }
 .table{
     -fx-background-color:  transparent;
@@ -28,11 +28,16 @@
     -fx-table-cell-border-color: transparent;
 }
 .table-row-cell:odd{
-    -fx-background-color: FEDB00;
     -fx-background-insets: 0,0 0 1 0;
-
+    -fx-background-color: FEDB00;
+}
+.table-row-cell:odd:hover{
+    -fx-background-color: aaaaaa;
 }
 .table-row-cell:even{
     -fx-background-color: BEDB00;
     -fx-background-insets: 0,0 0 1 0;
+}
+.table-row-cell:even:hover{
+    -fx-background-color: aaaaaa;
 }
