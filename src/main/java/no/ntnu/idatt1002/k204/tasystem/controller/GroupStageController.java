@@ -36,6 +36,9 @@ public class GroupStageController implements Initializable {
     private Button startTournamentBtn;
 
     @FXML
+    private Button finishGroupStageBtn;
+
+    @FXML
     private TreeTableColumn<Team, String> pointsColTable1;
 
     @FXML
@@ -138,6 +141,12 @@ public class GroupStageController implements Initializable {
     void startTournamentBtnClicked() {
         setNotEditableTeamCols();
         setPointsColumnsAsEditable();
+    }
+
+    @FXML
+    void finishGroupStageBtnClicked() {
+
+
     }
 
     @FXML
