@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
+<BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
    <center>
       <AnchorPane prefHeight="672.0" prefWidth="861.0">
          <children>
@@ -23,7 +16,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="team1" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -33,7 +26,7 @@
             <Line endX="200.0" endY="200.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="200.0" />
             <TextFlow layoutX="56.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="team2" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -42,7 +35,7 @@
             </TextFlow>
             <TextFlow layoutX="56.0" layoutY="187.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="team3" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam3Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -51,7 +44,7 @@
             <Line endX="200.0" endY="300.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="300.0" />
             <TextFlow layoutX="56.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="team4" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam4Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -59,7 +52,7 @@
                </children></TextFlow>
             <TextFlow layoutX="56.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="148.0">
                <children>
-                  <Text fx:id="team5" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam5Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -68,7 +61,7 @@
             <Line endX="200.0" endY="400.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="400.0" />
             <TextFlow layoutX="56.0" layoutY="317.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="team6" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam6Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -76,7 +69,7 @@
                </children></TextFlow>
             <TextFlow layoutX="56.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="team7" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam7Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -85,7 +78,7 @@
             <Line endX="200.0" endY="500.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="500.0" />
             <TextFlow layoutX="56.0" layoutY="417.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="team8" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam8Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -98,7 +91,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam1" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -111,7 +104,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam2" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -123,7 +116,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam3" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam3Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -136,7 +129,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam4" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam4Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -149,7 +142,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="finalTeam1" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="finalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -162,7 +155,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="finalTeam2" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="finalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -174,7 +167,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="winnerTeam" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="winnerTeamTxt" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -183,7 +176,7 @@
             </TextFlow>
             <VBox layoutX="213.0" layoutY="97.0">
                <children>
-                  <RadioButton fx:id="team1Btn" mnemonicParsing="false" prefWidth="16.0">
+                  <RadioButton fx:id="quarterFinalTeam1Btn" mnemonicParsing="false" prefWidth="16.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -194,12 +187,12 @@
                         <ToggleGroup fx:id="quarterFinalGroup1" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="team2Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup1" />
+                  <RadioButton fx:id="quarterFinalTeam2Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup1" />
                </children>
             </VBox>
             <VBox layoutX="213.0" layoutY="197.0">
                <children>
-                  <RadioButton fx:id="team3Btn" mnemonicParsing="false" prefWidth="16.0">
+                  <RadioButton fx:id="quarterFinalTeam3Btn" mnemonicParsing="false" prefWidth="16.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -210,12 +203,12 @@
                         <ToggleGroup fx:id="quarterFinalGroup2" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="team4Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup2" />
+                  <RadioButton fx:id="quarterFinalTeam4Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup2" />
                </children>
             </VBox>
             <VBox layoutX="213.0" layoutY="297.0">
                <children>
-                  <RadioButton fx:id="team5Btn" mnemonicParsing="false" prefWidth="16.0">
+                  <RadioButton fx:id="quarterFinalTeam5Btn" mnemonicParsing="false" prefWidth="16.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -226,12 +219,12 @@
                         <ToggleGroup fx:id="quarterFinalGroup3" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="team6Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup3" />
+                  <RadioButton fx:id="quarterFinalTeam6Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup3" />
                </children>
             </VBox>
             <VBox layoutX="213.0" layoutY="397.0">
                <children>
-                  <RadioButton fx:id="team7Btn" mnemonicParsing="false" prefWidth="16.0">
+                  <RadioButton fx:id="quarterFinalTeam7Btn" mnemonicParsing="false" prefWidth="16.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -242,12 +235,12 @@
                         <ToggleGroup fx:id="quarterFinalGroup4" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="team8Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup4" />
+                  <RadioButton fx:id="quarterFinalTeam8Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup4" />
                </children>
             </VBox>
             <VBox layoutX="415.0" layoutY="146.0">
                <children>
-                  <RadioButton fx:id="semiFinalGroup1Team1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
+                  <RadioButton fx:id="semiFinalTeam1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -258,12 +251,12 @@
                         <ToggleGroup fx:id="semiFinalGroup1" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="semiFinalGroup1Team2Btn" disable="true" mnemonicParsing="false" toggleGroup="$semiFinalGroup1" />
+                  <RadioButton fx:id="semiFinalTeam2Btn" disable="true" mnemonicParsing="false" toggleGroup="$semiFinalGroup1" />
                </children>
             </VBox>
             <VBox layoutX="415.0" layoutY="347.0">
                <children>
-                  <RadioButton fx:id="semiFinalGroup2Team1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
+                  <RadioButton fx:id="semiFinalTeam3Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -274,7 +267,7 @@
                         <ToggleGroup fx:id="semiFinalGroup2" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="semiFinalGroup2Team2Btn" disable="true" mnemonicParsing="false" toggleGroup="$semiFinalGroup2" />
+                  <RadioButton fx:id="semiFinalTeam4Btn" disable="true" mnemonicParsing="false" toggleGroup="$semiFinalGroup2" />
                </children>
             </VBox>
             <VBox layoutX="640.0" layoutY="247.0">
@@ -293,13 +286,25 @@
                   <RadioButton fx:id="finalTeam2Btn" disable="true" mnemonicParsing="false" toggleGroup="$finalGroup" />
                </children>
             </VBox>
+            <TextFlow fx:id="" accessibleRole="BUTTON" layoutX="682.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="169.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+               <children>
+                  <Text fx:id="tournamentWinnerTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament winner:" visible="false" wrappingWidth="148.56707763671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
          </children>
       </AnchorPane>
    </center>
    <bottom>
       <AnchorPane prefHeight="62.0" prefWidth="862.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="finishTournamentBtn" layoutX="377.0" layoutY="18.0" mnemonicParsing="false" onAction="#finishTournamentBtnClicked" text="Finish tournament" />
+            <Button fx:id="finishTournamentBtn" disable="true" layoutX="377.0" layoutY="18.0" mnemonicParsing="false" onAction="#finishTournamentBtnClicked" text="Finish tournament" />
             <Button fx:id="backBtn" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
          </children>
       </AnchorPane>

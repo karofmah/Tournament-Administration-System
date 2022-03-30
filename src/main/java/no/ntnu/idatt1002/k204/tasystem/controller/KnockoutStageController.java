@@ -3,9 +3,12 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.text.Text;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.model.Team;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,85 +17,85 @@ import java.util.ResourceBundle;
 public class KnockoutStageController implements Initializable {
 
     @FXML
-    private Text team1;
+    private Text quarterFinalTeam1Txt;
 
     @FXML
-    private Text team2;
+    private Text quarterFinalTeam2Txt;
 
     @FXML
-    private Text team3;
+    private Text quarterFinalTeam3Txt;
 
     @FXML
-    private Text team4;
+    private Text quarterFinalTeam4Txt;
 
     @FXML
-    private Text team5;
+    private Text quarterFinalTeam5Txt;
 
     @FXML
-    private Text team6;
+    private Text quarterFinalTeam6Txt;
 
     @FXML
-    private Text team7;
+    private Text quarterFinalTeam7Txt;
 
     @FXML
-    private Text team8;
+    private Text quarterFinalTeam8Txt;
 
     @FXML
-    private Text semiFinalTeam1;
+    private Text semiFinalTeam1Txt;
 
     @FXML
-    private Text semiFinalTeam2;
+    private Text semiFinalTeam2Txt;
 
     @FXML
-    private Text semiFinalTeam3;
+    private Text semiFinalTeam3Txt;
 
     @FXML
-    private Text semiFinalTeam4;
+    private Text semiFinalTeam4Txt;
 
     @FXML
-    private Text finalTeam1;
+    private Text finalTeam1Txt;
 
     @FXML
-    private Text finalTeam2;
+    private Text finalTeam2Txt;
 
     @FXML
-    private Text winnerTeam;
+    private Text winnerTeamTxt;
 
     @FXML
-    private RadioButton team1Btn;
+    private RadioButton quarterFinalTeam1Btn;
 
     @FXML
-    private RadioButton team2Btn;
+    private RadioButton quarterFinalTeam2Btn;
 
     @FXML
-    private RadioButton team3Btn;
+    private RadioButton quarterFinalTeam3Btn;
 
     @FXML
-    private RadioButton team4Btn;
+    private RadioButton quarterFinalTeam4Btn;
 
     @FXML
-    private RadioButton team5Btn;
+    private RadioButton quarterFinalTeam5Btn;
 
     @FXML
-    private RadioButton team6Btn;
+    private RadioButton quarterFinalTeam6Btn;
 
     @FXML
-    private RadioButton team7Btn;
+    private RadioButton quarterFinalTeam7Btn;
 
     @FXML
-    private RadioButton team8Btn;
+    private RadioButton quarterFinalTeam8Btn;
 
     @FXML
-    private RadioButton semiFinalGroup1Team1Btn;
+    private RadioButton semiFinalTeam1Btn;
 
     @FXML
-    private RadioButton semiFinalGroup1Team2Btn;
+    private RadioButton semiFinalTeam2Btn;
 
     @FXML
-    private RadioButton semiFinalGroup2Team1Btn;
+    private RadioButton semiFinalTeam3Btn;
 
     @FXML
-    private RadioButton semiFinalGroup2Team2Btn;
+    private RadioButton semiFinalTeam4Btn;
 
     @FXML
     private RadioButton finalTeam1Btn;
@@ -100,30 +103,34 @@ public class KnockoutStageController implements Initializable {
     @FXML
     private RadioButton finalTeam2Btn;
 
-    private String quarterFinalist1 = "Team 1";
-    private String quarterFinalist2 = "Team 2";
-    private String quarterFinalist3 = "Team 3";
-    private String quarterFinalist4 = "Team 4";
-    private String quarterFinalist5 = "Team 5";
-    private String quarterFinalist6 = "Team 6";
-    private String quarterFinalist7 = "Team 7";
-    private String quarterFinalist8 = "Team 8";
-    private String semiFinalist1;
-    private String semiFinalist2;
-    private String semiFinalist3;
-    private String semiFinalist4;
-    private String finalist1;
-    private String finalist2;
-    private String winner;
+    @FXML
+    private Button finishTournamentBtn;
 
+    @FXML
+    private Text tournamentWinnerTxt;
+
+    private Team quarterFinalist1 = new Team("Fnatic");
+    private Team quarterFinalist2 = new Team("Ninjas in Pyjamas");
+    private Team quarterFinalist3 = new Team("NAVI");
+    private Team quarterFinalist4 = new Team("G2");
+    private Team quarterFinalist5 = new Team("Team Liquid");
+    private Team quarterFinalist6 = new Team("Cloud9");
+    private Team quarterFinalist7 = new Team("Astralis");
+    private Team quarterFinalist8 = new Team("Faze");
+    private Team semiFinalist1;
+    private Team semiFinalist2;
+    private Team semiFinalist3;
+    private Team semiFinalist4;
+    private Team finalist1;
+    private Team finalist2;
+    private Team winner;
 
     /**
-     * Navigate back to previous scene
+     * Navigate back to the front page
      */
     @FXML
     void backBtnClicked() {
         try {
-            // TODO: Change scene to the front page instead?
             Application.changeScene("frontPageView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
@@ -171,11 +178,10 @@ public class KnockoutStageController implements Initializable {
      */
     @FXML
     void finishTournamentBtnClicked() {
-        try {
-            Application.changeScene("frontPageView.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        tournamentWinnerTxt.setVisible(true);
+        finalTeam1Btn.setDisable(true);
+        finalTeam2Btn.setDisable(true);
+        finishTournamentBtn.setDisable(true);
     }
 
     /**
@@ -186,31 +192,94 @@ public class KnockoutStageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        team1.setText(quarterFinalist1);
-        team2.setText(quarterFinalist2);
-        team3.setText(quarterFinalist3);
-        team4.setText(quarterFinalist4);
-        team5.setText(quarterFinalist5);
-        team6.setText(quarterFinalist6);
-        team7.setText(quarterFinalist7);
-        team8.setText(quarterFinalist8);
+        setTextToTeamName(quarterFinalTeam1Txt, quarterFinalist1);
+        setTextToTeamName(quarterFinalTeam2Txt, quarterFinalist2);
+        setTextToTeamName(quarterFinalTeam3Txt, quarterFinalist3);
+        setTextToTeamName(quarterFinalTeam4Txt, quarterFinalist4);
+        setTextToTeamName(quarterFinalTeam5Txt, quarterFinalist5);
+        setTextToTeamName(quarterFinalTeam6Txt, quarterFinalist6);
+        setTextToTeamName(quarterFinalTeam7Txt, quarterFinalist7);
+        setTextToTeamName(quarterFinalTeam8Txt, quarterFinalist8);
 
-        team1Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist1,1));
-        team2Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist2,1));
-        team3Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist3,2));
-        team4Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist4,2));
-        team5Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist5,3));
-        team6Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist6,3));
-        team7Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist7,4));
-        team8Btn.setOnAction((ActionEvent event) -> setSemiFinalist(quarterFinalist8,4));
+        quarterFinalTeam1Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist1,1));
+        quarterFinalTeam2Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist2,1));
+        quarterFinalTeam3Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist3,2));
+        quarterFinalTeam4Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist4,2));
+        quarterFinalTeam5Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist5,3));
+        quarterFinalTeam6Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist6,3));
+        quarterFinalTeam7Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist7,4));
+        quarterFinalTeam8Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist8,4));
 
-        semiFinalGroup1Team1Btn.setOnAction((ActionEvent event) -> setFinalist(semiFinalist1,1));
-        semiFinalGroup1Team2Btn.setOnAction((ActionEvent event) -> setFinalist(semiFinalist2,1));
-        semiFinalGroup2Team1Btn.setOnAction((ActionEvent event) -> setFinalist(semiFinalist3,2));
-        semiFinalGroup2Team2Btn.setOnAction((ActionEvent event) -> setFinalist(semiFinalist4,2));
+        semiFinalTeam1Btn.setOnAction((ActionEvent event) -> semiFinalBtnClicked(semiFinalist1,1));
+        semiFinalTeam2Btn.setOnAction((ActionEvent event) -> semiFinalBtnClicked(semiFinalist2,1));
+        semiFinalTeam3Btn.setOnAction((ActionEvent event) -> semiFinalBtnClicked(semiFinalist3,2));
+        semiFinalTeam4Btn.setOnAction((ActionEvent event) -> semiFinalBtnClicked(semiFinalist4,2));
 
-        finalTeam1Btn.setOnAction((ActionEvent event) -> setWinner(finalist1));
-        finalTeam2Btn.setOnAction((ActionEvent event) -> setWinner(finalist2));
+        finalTeam1Btn.setOnAction((ActionEvent event) -> finalBtnClicked(finalist1));
+        finalTeam2Btn.setOnAction((ActionEvent event) -> finalBtnClicked(finalist2));
+    }
+
+    /**
+     * Decides what happens when either of the quarter-final buttons are clicked
+     * @param quarterFinalWinner the winner of the quarter-final
+     * @param semiFinalistNr the semi-finalist "destination" (same as quarter-final match number)
+     */
+    public void quarterFinalBtnClicked(Team quarterFinalWinner, int semiFinalistNr) {
+        switch (semiFinalistNr) {
+            case 1:
+                semiFinalist1 = quarterFinalWinner;
+                setTextToTeamName(semiFinalTeam1Txt, quarterFinalWinner);
+                break;
+            case 2:
+                semiFinalist2 = quarterFinalWinner;
+                setTextToTeamName(semiFinalTeam2Txt, quarterFinalWinner);
+                break;
+            case 3:
+                semiFinalist3 = quarterFinalWinner;
+                setTextToTeamName(semiFinalTeam3Txt, quarterFinalWinner);
+                break;
+            case 4:
+                semiFinalist4 = quarterFinalWinner;
+                setTextToTeamName(semiFinalTeam4Txt, quarterFinalWinner);
+                break;
+        }
+
+        if (semiFinalist1 != null && semiFinalist2 != null) {
+            semiFinalTeam1Btn.setDisable(false);
+            semiFinalTeam2Btn.setDisable(false);
+        }
+        if (semiFinalist3 != null && semiFinalist4 != null) {
+            semiFinalTeam3Btn.setDisable(false);
+            semiFinalTeam4Btn.setDisable(false);
+        }
+    }
+
+    /**
+     * Decides what happens when either of the semi-final buttons are clicked
+     * @param semiFinalWinner the winner of the semi-final
+     * @param finalistNr the finalist "destination" (same as semi-final match)
+     */
+    public void semiFinalBtnClicked(Team semiFinalWinner, int finalistNr) {
+        if (finalistNr == 1) {
+            finalist1 = semiFinalWinner;
+            setTextToTeamName(finalTeam1Txt, finalist1);
+            quarterFinalTeam1Btn.setDisable(true);
+            quarterFinalTeam2Btn.setDisable(true);
+            quarterFinalTeam3Btn.setDisable(true);
+            quarterFinalTeam4Btn.setDisable(true);
+        } else {
+            finalist2 = semiFinalWinner;
+            setTextToTeamName(finalTeam2Txt, finalist2);
+            quarterFinalTeam5Btn.setDisable(true);
+            quarterFinalTeam6Btn.setDisable(true);
+            quarterFinalTeam7Btn.setDisable(true);
+            quarterFinalTeam8Btn.setDisable(true);
+        }
+
+        if (finalist1 != null && finalist2 != null) {
+            finalTeam1Btn.setDisable(false);
+            finalTeam2Btn.setDisable(false);
+        }
 
     }
 
@@ -218,57 +287,23 @@ public class KnockoutStageController implements Initializable {
      * Sets a winner of the tournament
      * @param finalWinner the winner of the final
      */
-    public void setWinner(String finalWinner) {
+    public void finalBtnClicked(Team finalWinner) {
         winner = finalWinner;
-        winnerTeam.setText(winner);
+        setTextToTeamName(winnerTeamTxt, winner);
+        semiFinalTeam1Btn.setDisable(true);
+        semiFinalTeam2Btn.setDisable(true);
+        semiFinalTeam3Btn.setDisable(true);
+        semiFinalTeam4Btn.setDisable(true);
+        finishTournamentBtn.setDisable(false);
     }
 
     /**
-     * Sets a finalist
-     * @param semiFinalWinner the winner of the semi-final in question
-     * @param finalistNr the finalist "destination" (same as semi-final match)
+     * Method used to quickly set a team's name to a Text field in the application view.
+     * @param text the text field where the team name will be displayed
+     * @param team the team to be displayed
      */
-    public void setFinalist(String semiFinalWinner, int finalistNr) {
-        if (finalistNr == 1) {
-            finalist1 = semiFinalWinner;
-            finalTeam1.setText(finalist1);
-            finalTeam1Btn.setDisable(false);
-        } else {
-            finalist2 = semiFinalWinner;
-            finalTeam2.setText(finalist2);
-            finalTeam2Btn.setDisable(false);
-
-        }
-    }
-
-    /**
-     * Sets a semi-finalist
-     * @param quarterFinalWinner the winner of the quarter-final in question
-     * @param semiFinalistNr the semi-finalist "destination" (same as quarter-final match)
-     */
-    public void setSemiFinalist(String quarterFinalWinner, int semiFinalistNr) {
-        switch (semiFinalistNr) {
-            case 1:
-                semiFinalist1 = quarterFinalWinner;
-                semiFinalTeam1.setText(quarterFinalWinner);
-                semiFinalGroup1Team1Btn.setDisable(false);
-                break;
-            case 2:
-                semiFinalist2 = quarterFinalWinner;
-                semiFinalTeam2.setText(quarterFinalWinner);
-                semiFinalGroup1Team2Btn.setDisable(false);
-                break;
-            case 3:
-                semiFinalist3 = quarterFinalWinner;
-                semiFinalTeam3.setText(quarterFinalWinner);
-                semiFinalGroup2Team1Btn.setDisable(false);
-                break;
-            case 4:
-                semiFinalist4 = quarterFinalWinner;
-                semiFinalTeam4.setText(quarterFinalWinner);
-                semiFinalGroup2Team2Btn.setDisable(false);
-                break;
-        }
+    private void setTextToTeamName(Text text, Team team) {
+        text.setText(team.getTeamName());
     }
 }
 
