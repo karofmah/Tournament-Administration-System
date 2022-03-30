@@ -124,7 +124,7 @@ public class KnockoutStageController implements Initializable {
     void backBtnClicked() {
         try {
             // TODO: Change scene to the front page instead?
-            Application.changeScene("groupStageView.fxml");
+            Application.changeScene("frontPageView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

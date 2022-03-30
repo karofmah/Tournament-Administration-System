@@ -113,7 +113,7 @@ public class GroupStageController implements Initializable {
     @FXML
     void backBtnClicked() {
         try {
-            Application.changeScene("selectedTournamentView.fxml");
+            Application.changeScene("frontPageView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
