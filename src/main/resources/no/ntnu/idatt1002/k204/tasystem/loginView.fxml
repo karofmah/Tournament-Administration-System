@@ -43,7 +43,7 @@
    <top>
       <Label alignment="CENTER" prefHeight="28.0" prefWidth="614.0" styleClass="title" text="Tournament System" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
-            <Font size="60.0" />
+            <Font size="20.0" />
          </font>
          <BorderPane.margin>
             <Insets top="40.0" />
