@@ -129,6 +129,7 @@ public class GroupStageController implements Initializable {
     void knockoutStageBtnClicked() {
         try {
             Application.changeScene("knockOutStageView.fxml");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
