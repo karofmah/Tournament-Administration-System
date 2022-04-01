@@ -326,6 +326,7 @@
                   <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" text="Knockout stage" />
                </buttons>
             </ButtonBar>
+            <Button layoutX="710.0" layoutY="43.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="81.0" styleClass="buttons" text="Log out" />
          </children>
       </AnchorPane>
    </top>

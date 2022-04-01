@@ -8,17 +8,23 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddEligibleTeamsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddEligibleTeamsController">
    <center>
       <AnchorPane prefHeight="395.0" prefWidth="642.0">
          <children>
-            <Button fx:id="backBtn" layoutX="35.0" layoutY="548.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
-            <Label layoutX="215.0" layoutY="29.0" text="Add eligible team">
+            <Button fx:id="backBtn" layoutX="35.0" layoutY="548.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" />
+            <Label layoutX="215.0" layoutY="29.0" styleClass="title" text="Add eligible team">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="teamsTableView" layoutX="97.0" layoutY="101.0" prefHeight="447.0" prefWidth="547.0">
+            <Label fx:id="txtAddedEligibleTeam" layoutX="97.0" layoutY="581.0" prefHeight="49.0" prefWidth="546.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="585.0" layoutY="548.0" mnemonicParsing="false" styleClass="buttons" text="Log out" />
+            <TableView fx:id="teamsTableView" layoutX="97.0" layoutY="101.0" prefHeight="447.0" prefWidth="547.0" styleClass="table">
               <columns>
                 <TableColumn fx:id="teamNameCol" prefWidth="399.3332824707031" text="Team" />
                   <TableColumn fx:id="lowRankCol" prefWidth="144.66668701171875" text="Lowest Rank" />
@@ -27,11 +33,6 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="txtAddedEligibleTeam" layoutX="97.0" layoutY="581.0" prefHeight="49.0" prefWidth="546.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </center>
