@@ -49,6 +49,6 @@ public class TeamRegisterTest {
     public void addTwoTeams(){
         teamRegister.addTeam(team2);
         teamRegister.addTeam(team1);
-        Assertions.assertEquals("Ninjas in Pyjamas", teamRegister.getTeamByName("Ninjas in Pyjamas").toString());
+        Assertions.assertEquals("Ninjas in Pyjamas", teamRegister.getTeamByName("Ninjas in Pyjamas").getTeamName());
     }
 }
