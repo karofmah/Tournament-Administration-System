@@ -34,7 +34,7 @@ public class Application extends javafx.application.Application {
         }
 
         stage.setTitle("TA-System");
-        stage.getIcons().add(new Image(Application.class.getResourceAsStream( "/no/ntnu/idatt1002/k204/tasystem/Images/logo.png" )));
+        stage.getIcons().add(new Image(Application.class.getResourceAsStream( "/no/ntnu/idatt1002/k204/tasystem/Images/icon.png" )));
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> {

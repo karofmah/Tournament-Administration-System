@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.FrontPageController">
+<BorderPane styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.FrontPageController">
    <center>
-      <AnchorPane prefHeight="550.0" prefWidth="683.0" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="693.0" prefWidth="683.0" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="151.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -20,9 +27,9 @@
                   </ImageView>
                </children>
             </HBox>
-            <AnchorPane id="menuBar" layoutY="34.0" prefHeight="155.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <AnchorPane id="menuBar" layoutY="68.0" prefHeight="42.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
                <children>
-                <Button fx:id="tournamentsBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="100.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
+                <Button fx:id="tournamentsBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -30,19 +37,19 @@
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor>
                   </Button>
-                  <Button fx:id="logOutBtn" layoutX="533.0" layoutY="100.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
+                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="teamsBtn" layoutX="250.0" layoutY="100.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" AnchorPane.leftAnchor="250.0">
+                  <Button fx:id="teamsBtn" alignment="TOP_LEFT" layoutX="250.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" AnchorPane.leftAnchor="250.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <VBox alignment="CENTER" layoutY="183.0" prefHeight="357.0" prefWidth="683.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="210.0">
+            <VBox alignment="CENTER" layoutY="37.0" prefHeight="711.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="58.0" prefWidth="505.0" VBox.vgrow="NEVER">
                      <children>
@@ -53,7 +60,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets top="20.0" />
                      </VBox.margin>
                   </AnchorPane>
                   <TableView fx:id="tournamentsTableView" fixedCellSize="0.0" maxHeight="250.0" minHeight="150.0" prefHeight="231.0" prefWidth="603.0" styleClass="table">
@@ -87,6 +94,6 @@
       <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="85.0" prefWidth="883.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
