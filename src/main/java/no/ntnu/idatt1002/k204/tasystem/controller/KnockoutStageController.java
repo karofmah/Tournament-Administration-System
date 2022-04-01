@@ -305,5 +305,14 @@ public class KnockoutStageController implements Initializable {
     private void setTextToTeamName(Text text, Team team) {
         text.setText(team.getTeamName());
     }
+    @FXML
+    void logOutBtnClicked() {
+        try {
+            Application.logout();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
 
