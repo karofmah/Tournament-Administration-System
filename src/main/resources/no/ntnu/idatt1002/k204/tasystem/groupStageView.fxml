@@ -7,29 +7,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.GroupStageController">
+<BorderPane prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.GroupStageController">
    <center>
       <AnchorPane>
          <children>
-            <TreeTableView fx:id="tableView1" editable="true" layoutX="72.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" stylesheets="@../../../../../stylesheet/treeTableView.css">
+            <TreeTableView fx:id="tableView1" editable="true" layoutX="72.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" styleClass="table">
               <columns>
-                <TreeTableColumn fx:id="teamColTable1" prefWidth="210.0" text="Team" />
-                <TreeTableColumn fx:id="pointsColTable1" prefWidth="50.0" text="Points" />
+                <TreeTableColumn fx:id="teamColTable1" prefWidth="210.0" styleClass="table" text="Team" />
+                <TreeTableColumn fx:id="pointsColTable1" prefWidth="50.0" styleClass="table" text="Points" />
               </columns>
             </TreeTableView>
-            <TreeTableView fx:id="tableView2" editable="true" layoutX="470.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" stylesheets="@../../../../../stylesheet/treeTableView.css">
+            <TreeTableView fx:id="tableView2" editable="true" layoutX="470.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" styleClass="table" stylesheets="@../../../../../stylesheet/treeTableView.css">
                <columns>
                   <TreeTableColumn fx:id="teamColTable2" prefWidth="210.0" text="Team" />
                   <TreeTableColumn fx:id="pointsColTable2" prefWidth="50.0" text="Points" />
                </columns>
             </TreeTableView>
-            <TreeTableView fx:id="tableView3" editable="true" layoutX="72.0" layoutY="283.0" prefHeight="150.0" prefWidth="310.0" stylesheets="@../../../../../stylesheet/treeTableView.css">
+            <TreeTableView fx:id="tableView3" editable="true" layoutX="72.0" layoutY="283.0" prefHeight="150.0" prefWidth="310.0" styleClass="table" stylesheets="@../../../../../stylesheet/treeTableView.css">
                <columns>
                   <TreeTableColumn fx:id="teamColTable3" prefWidth="210.0" text="Team" />
                   <TreeTableColumn fx:id="pointsColTable3" prefWidth="50.0" text="Points" />
                </columns>
             </TreeTableView>
-            <TreeTableView fx:id="tableView4" editable="true" layoutX="470.0" layoutY="283.0" prefHeight="150.0" prefWidth="310.0" stylesheets="@../../../../../stylesheet/treeTableView.css">
+            <TreeTableView fx:id="tableView4" editable="true" layoutX="470.0" layoutY="283.0" prefHeight="150.0" prefWidth="310.0" styleClass="table" stylesheets="@../../../../../stylesheet/treeTableView.css">
                <columns>
                   <TreeTableColumn fx:id="teamColTable4" prefWidth="210.0" text="Team" />
                   <TreeTableColumn fx:id="pointsColTable4" prefWidth="50.0" text="Points" />
@@ -43,19 +43,20 @@
          <children>
             <ButtonBar layoutX="257.0" layoutY="36.0" prefHeight="40.0" prefWidth="347.0">
               <buttons>
-                <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" text="Teams" />
-                  <Button fx:id="groupStageBtn" mnemonicParsing="false" text="Group stage" />
-                  <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage" />
+                <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Teams" />
+                  <Button fx:id="groupStageBtn" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Group stage" />
+                  <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Knockout stage" />
               </buttons>
             </ButtonBar>
+            <Button fx:id="logOutBtn" layoutX="742.0" layoutY="43.0" mnemonicParsing="false" onAction="#logOutBtnClicked" prefHeight="26.0" prefWidth="73.0" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Log out" />
          </children>
       </AnchorPane>
    </top>
    <bottom>
       <AnchorPane prefHeight="62.0" prefWidth="862.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="startTournamentBtn" layoutX="377.0" layoutY="18.0" mnemonicParsing="false" onAction="#startTournamentBtnClicked" text="Start tournament" />
-            <Button fx:id="backBtn" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" AnchorPane.bottomAnchor="18.66666666666667" AnchorPane.leftAnchor="25.0" />
+            <Button fx:id="startTournamentBtn" layoutX="377.0" layoutY="18.0" mnemonicParsing="false" onAction="#startTournamentBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Start tournament" />
+            <Button fx:id="backBtn" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Back" AnchorPane.bottomAnchor="18.66666666666667" AnchorPane.leftAnchor="25.0" />
          </children>
       </AnchorPane>
    </bottom>
