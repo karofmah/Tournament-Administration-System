@@ -1,6 +1,6 @@
 
 .background{
-    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #296930, black);
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D002E, #CE0097);
 }
 .title{
     -fx-text-fill: #fedb00;
@@ -14,12 +14,12 @@
 
 .buttons{
 
-    -fx-background-color: linear-gradient(#D92F29 40%, #FF671D 100%);
+    -fx-background-color: linear-gradient(#00BCFF 40%, #1112B7 100%);
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.90), 10, 0.5, 0, 0);
 }
 .buttons:hover{
     -fx-cursor:HAND;
-    -fx-background-color: linear-gradient(from 100% 50% to 100% 150%, #D92A00, black);
+    -fx-background-color: linear-gradient(from 100% 50% to 100% 150%, #1D002E, #3B005E);
 }
 
 
@@ -31,7 +31,7 @@
     -fx-alignment: CENTER;
 }
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(#FFC90E 0%, #FFF60C 100%);
+    -fx-background-color: linear-gradient(#00FF00 0%, #FFF60C 100%);
     -fx-background-radius: 7px 7px 0px 0px;
 }
 .table-view .column-header-background .filler{
