@@ -27,28 +27,6 @@
                   </ImageView>
                </children>
             </HBox>
-            <AnchorPane id="menuBar" layoutY="68.0" prefHeight="42.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
-               <children>
-                <Button fx:id="tournamentsBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="NW_RESIZE" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="teamsBtn" alignment="TOP_LEFT" layoutX="250.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" AnchorPane.leftAnchor="250.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
             <VBox alignment="CENTER" layoutY="37.0" prefHeight="711.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="58.0" prefWidth="505.0" VBox.vgrow="NEVER">
@@ -81,6 +59,28 @@
                   </TableView>
                </children>
             </VBox>
+            <AnchorPane id="menuBar" layoutY="68.0" prefHeight="42.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+               <children>
+                <Button fx:id="tournamentsBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="NW_RESIZE" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="teamsBtn" alignment="TOP_LEFT" layoutX="250.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" AnchorPane.leftAnchor="250.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

@@ -16,6 +16,10 @@
 
     -fx-background-color: linear-gradient(#00BCFF 40%, #1112B7 100%);
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.90), 10, 0.5, 0, 0);
+    -fx-text-fill: white;
+}
+.buttons .{
+    -fx-effect: dropshadow(three-pass-box, black, 100, 1, 0, 0);
 }
 .buttons:hover{
     -fx-cursor:HAND;
@@ -38,6 +42,11 @@
     -fx-background-color: #320150;
     -fx-background-radius: 7px 7px 0px 0px;
 }
+.table-view .column-header .label{
+    -fx-text-fill: yellow;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 1, 0, 0);
+}
 .table-view .column-header-background .filler{
     -fx-background-color: transparent;
 }
@@ -47,6 +56,7 @@
 .table-view .table-cell{
     -fx-border-color: transparent;
     -fx-padding: 2 0 2 10px;
+    -fx-effect: dropshadow(three-pass-box, black, 0.5, 1, 0, 0);
 }
 .table-row-cell {
     -fx-table-cell-border-color: transparent;
