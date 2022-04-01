@@ -25,7 +25,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="logoutBtn" layoutX="718.0" layoutY="619.0" mnemonicParsing="false" onAction="#logOutBtnClicked" text="Log out" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="86.0" />
+            <Button fx:id="logoutBtn" layoutX="718.0" layoutY="619.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Log out" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="86.0" />
          </children>
       </AnchorPane>
    </center>

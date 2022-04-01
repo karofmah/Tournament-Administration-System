@@ -30,8 +30,8 @@
             <Label layoutX="158.0" layoutY="435.0" text="Player 5" />
             <TextField fx:id="p5NameTextfield" layoutX="232.0" layoutY="431.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
             <Button fx:id="AddTeamBtn" layoutX="331.0" layoutY="520.0" mnemonicParsing="false" onAction="#addTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Add team" />
-            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
-            <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" text="Log out" />
+            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Back" />
+            <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Log out" />
             <Label fx:id="txtAddedTeam" layoutX="159.0" layoutY="472.0" prefHeight="33.0" prefWidth="568.0">
                <font>
                   <Font size="18.0" />
