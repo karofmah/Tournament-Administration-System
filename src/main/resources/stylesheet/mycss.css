@@ -22,6 +22,9 @@
     -fx-cursor:HAND;
     -fx-background-color: linear-gradient(from 100% 50% to 100% 150%, #01698f, #020344);
 }
+.buttonsActiveTab{
+    -fx-background-color: linear-gradient(from 100% 50% to 100% 150%, #01698f, #020344);
+}
 .inputFields{
     -fx-background-color: linear-gradient(from 100% 50% to 100% 120%, #02EAFC,white);
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.90), 10, 0.5, 0, 0);
@@ -93,4 +96,7 @@
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
     -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+}
+.text {
+    -fx-text-fill: white;
 }

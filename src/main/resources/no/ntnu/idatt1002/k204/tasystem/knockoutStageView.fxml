@@ -23,7 +23,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="quarterFinalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -33,7 +33,7 @@
             <Line endX="200.0" endY="200.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="200.0" />
             <TextFlow layoutX="56.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="quarterFinalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -42,7 +42,7 @@
             </TextFlow>
             <TextFlow layoutX="56.0" layoutY="187.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="quarterFinalTeam3Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam3Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -51,7 +51,7 @@
             <Line endX="200.0" endY="300.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="300.0" />
             <TextFlow layoutX="56.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="quarterFinalTeam4Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam4Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
                </children></TextFlow>
             <TextFlow layoutX="56.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="148.0">
                <children>
-                  <Text fx:id="quarterFinalTeam5Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam5Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -68,7 +68,7 @@
             <Line endX="200.0" endY="400.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="400.0" />
             <TextFlow layoutX="56.0" layoutY="317.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="quarterFinalTeam6Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam6Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -76,7 +76,7 @@
                </children></TextFlow>
             <TextFlow layoutX="56.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="quarterFinalTeam7Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam7Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -85,7 +85,7 @@
             <Line endX="200.0" endY="500.0" layoutX="6.0" layoutY="-83.0" startX="50.0" startY="500.0" />
             <TextFlow layoutX="56.0" layoutY="417.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                <children>
-                  <Text fx:id="quarterFinalTeam8Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="quarterFinalTeam8Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -98,7 +98,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -111,7 +111,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -123,7 +123,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam3Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam3Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -136,7 +136,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="semiFinalTeam4Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="semiFinalTeam4Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -149,7 +149,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="finalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="finalTeam1Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -162,7 +162,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="finalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="finalTeam2Txt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -174,7 +174,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="winnerTeamTxt" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="winnerTeamTxt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -298,7 +298,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </opaqueInsets>
                <children>
-                  <Text fx:id="tournamentWinnerTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament winner:" visible="false" wrappingWidth="148.56707763671875">
+                  <Text fx:id="tournamentWinnerTxt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tournament winner:" visible="false" wrappingWidth="148.56707763671875">
                      <font>
                         <Font size="18.0" />
                      </font>

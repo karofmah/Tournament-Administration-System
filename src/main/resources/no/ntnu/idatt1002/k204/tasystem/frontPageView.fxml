@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -61,20 +62,24 @@
             </VBox>
             <AnchorPane id="menuBar" layoutY="68.0" prefHeight="42.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
                <children>
-                <Button fx:id="tournamentsBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
+                <Button fx:id="tournamentsBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="buttons" />
+                        <String fx:value="buttonsActiveTab" />
+                     </styleClass>
                   </Button>
                   <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="teamsBtn" alignment="TOP_LEFT" layoutX="250.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" AnchorPane.leftAnchor="250.0">
+                  <Button fx:id="teamsBtn" alignment="TOP_LEFT" layoutX="250.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" AnchorPane.leftAnchor="143.0">
                      <font>
                         <Font size="20.0" />
                      </font>
