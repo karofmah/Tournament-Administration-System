@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddTeamController">
+<BorderPane prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddTeamController">
    <center>
-      <AnchorPane prefHeight="398.0" prefWidth="599.0">
+      <AnchorPane prefHeight="398.0" prefWidth="599.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css">
          <children>
-            <Label layoutX="279.0" layoutY="80.0" prefHeight="58.0" prefWidth="304.0" text="Add new team">
+            <Label layoutX="279.0" layoutY="80.0" prefHeight="58.0" prefWidth="304.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Add new team">
                <font>
                   <Font size="40.0" />
                </font>
@@ -29,7 +29,7 @@
             <TextField fx:id="p4NameTextfield" layoutX="232.0" layoutY="379.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
             <Label layoutX="158.0" layoutY="435.0" text="Player 5" />
             <TextField fx:id="p5NameTextfield" layoutX="232.0" layoutY="431.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" />
-            <Button fx:id="AddTeamBtn" layoutX="331.0" layoutY="520.0" mnemonicParsing="false" onAction="#addTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" text="Add team" />
+            <Button fx:id="AddTeamBtn" layoutX="331.0" layoutY="520.0" mnemonicParsing="false" onAction="#addTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Add team" />
             <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
             <Button fx:id="logoutBtn" layoutX="716.0" layoutY="577.0" mnemonicParsing="false" onAction="#logoutBtnClicked" text="Log out" />
             <Label fx:id="txtAddedTeam" layoutX="159.0" layoutY="472.0" prefHeight="33.0" prefWidth="568.0">
