@@ -11,10 +11,10 @@
    <center>
       <AnchorPane>
          <children>
-            <TreeTableView fx:id="tableView1" editable="true" layoutX="72.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" styleClass="table" stylesheets="@../../../../../stylesheet/treeTableView.css">
+            <TreeTableView fx:id="tableView1" editable="true" layoutX="72.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" styleClass="table">
               <columns>
-                <TreeTableColumn fx:id="teamColTable1" prefWidth="210.0" text="Team" />
-                <TreeTableColumn fx:id="pointsColTable1" prefWidth="50.0" text="Points" />
+                <TreeTableColumn fx:id="teamColTable1" prefWidth="210.0" styleClass="table" text="Team" />
+                <TreeTableColumn fx:id="pointsColTable1" prefWidth="50.0" styleClass="table" text="Points" />
               </columns>
             </TreeTableView>
             <TreeTableView fx:id="tableView2" editable="true" layoutX="470.0" layoutY="60.0" prefHeight="150.0" prefWidth="310.0" styleClass="table" stylesheets="@../../../../../stylesheet/treeTableView.css">

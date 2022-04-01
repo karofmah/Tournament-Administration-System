@@ -9,24 +9,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController">
    <center>
-      <AnchorPane prefHeight="531.0" prefWidth="861.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="531.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane layoutX="362.0" layoutY="99.0" prefHeight="25.0" prefWidth="138.0" AnchorPane.leftAnchor="362.0" AnchorPane.topAnchor="99.0" />
-            <Button fx:id="addEligibleTeamBtn" layoutX="135.0" layoutY="147.0" mnemonicParsing="false" onAction="#addEligibleTeamBtnClicked" text="Add eligible team" />
-            <Button fx:id="backBtn" layoutX="77.0" layoutY="603.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" AnchorPane.bottomAnchor="43.39999999999998" AnchorPane.leftAnchor="93.0" />
-            <TableView fx:id="teamsTableView" layoutX="135.0" layoutY="195.0" prefHeight="358.0" prefWidth="590.0" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="195.0">
+            <Button fx:id="addEligibleTeamBtn" layoutX="135.0" layoutY="147.0" mnemonicParsing="false" onAction="#addEligibleTeamBtnClicked" styleClass="buttons" text="Add eligible team" />
+            <Button fx:id="backBtn" layoutX="77.0" layoutY="603.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" AnchorPane.bottomAnchor="43.39999999999998" AnchorPane.leftAnchor="93.0" />
+            <TableView fx:id="teamsTableView" layoutX="135.0" layoutY="195.0" prefHeight="358.0" prefWidth="590.0" styleClass="table" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="195.0">
               <columns>
                 <TableColumn fx:id="teamNameCol" prefWidth="254.0" text="Team name" />
-                <TableColumn fx:id="countPlayersCol" minWidth="0.0" prefWidth="221.0" text="Players" />
+                <TableColumn fx:id="countPlayersCol" minWidth="0.0" prefWidth="334.0000203450521" text="Players" />
               </columns>
             </TableView>
             <ButtonBar layoutX="257.0" layoutY="92.0" prefHeight="40.0" prefWidth="347.0">
               <buttons>
-                <Button fx:id="teamsBtn" mnemonicParsing="false" text="Teams" />
-                  <Button fx:id="groupStageBtn" mnemonicParsing="false" onAction="#groupStageBtnClicked" text="Group stage" />
-                  <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage" />
+                <Button fx:id="teamsBtn" mnemonicParsing="false" styleClass="buttons" text="Teams" />
+                  <Button fx:id="groupStageBtn" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
+                  <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" text="Knockout stage" />
               </buttons>
             </ButtonBar>
             <Text fx:id="selectedText" layoutX="290.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Tournament">
@@ -34,7 +34,8 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="saveTournamentBtn" layoutX="410.0" layoutY="603.0" mnemonicParsing="false" onAction="#saveTournament" text="Save" AnchorPane.bottomAnchor="43.39999999999998" />
+            <Button fx:id="saveTournamentBtn" layoutX="410.0" layoutY="603.0" mnemonicParsing="false" onAction="#saveTournament" styleClass="buttons" text="Save" AnchorPane.bottomAnchor="43.39999999999998" />
+            <Button layoutX="691.0" layoutY="99.0" mnemonicParsing="false" onAction="#logOutBtnClicked" prefHeight="27.0" prefWidth="71.0" styleClass="buttons" text="Log out" />
          </children>
       </AnchorPane>
    </center>

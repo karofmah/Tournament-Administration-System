@@ -158,4 +158,12 @@ public class SelectedTournamentController implements Initializable {
             tournamentDAO.addTournamentAndTeams(selectedTournament.getTournamentId(), team.getTeamName());
         }
     }
+    @FXML
+    void logOutBtnClicked() {
+        try {
+            Application.logout();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
