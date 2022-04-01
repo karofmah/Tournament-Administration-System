@@ -8,24 +8,23 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTeamController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTeamController">
    <center>
-      <AnchorPane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="playersTableView" layoutX="166.0" layoutY="179.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
+            <TableView fx:id="playersTableView" layoutX="166.0" layoutY="179.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="table" stylesheets="@../../../../../stylesheet/mycss.css">
               <columns>
                 <TableColumn fx:id="playerNameCol" prefWidth="356.00001525878906" text="Player name" />
                 <TableColumn fx:id="playerRankCol" prefWidth="332.6666564941406" text="Rank" />
               </columns>
             </TableView>
-            <Label fx:id="selectedText" graphicTextGap="1.0" layoutX="394.0" layoutY="79.0" prefHeight="58.0" prefWidth="234.0" text="Selected Team">
+            <Label fx:id="selectedText" graphicTextGap="1.0" layoutX="312.0" layoutY="73.0" prefHeight="58.0" prefWidth="307.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Selected Team">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Button fx:id="backBtn" layoutX="77.0" layoutY="549.0" mnemonicParsing="false" onAction="#backBtnClicked" text="Back" />
-            <Button fx:id="logOutBtn" layoutX="766.0" layoutY="536.0" mnemonicParsing="false" onAction="#logOutBtnClicked" text="Log out" />
+            <Button fx:id="backBtn" layoutX="77.0" layoutY="549.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Back" />
+            <Button fx:id="logOutBtn" layoutX="766.0" layoutY="536.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Log out" />
          </children>
       </AnchorPane>
    </center>
