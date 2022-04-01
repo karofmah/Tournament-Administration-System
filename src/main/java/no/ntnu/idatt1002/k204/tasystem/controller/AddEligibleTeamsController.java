@@ -3,7 +3,7 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
@@ -17,7 +17,6 @@ import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
-import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -105,7 +104,6 @@ public class AddEligibleTeamsController implements Initializable {
     @FXML
     void backBtnClicked(ActionEvent Event) {
         try {
-            // TODO: implement the new way of changing to the SelectedTournament scene
             URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent FrontPageParent = loader.load();

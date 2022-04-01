@@ -68,7 +68,7 @@ public class SelectedTournamentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // TODO: Add try-catch
+
         this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
         this.teamRegister = new TeamRegister();
         this.tournamentDAO = new TournamentDAO();
@@ -80,12 +80,6 @@ public class SelectedTournamentController implements Initializable {
         selectedText.setText(this.tournamentDAO.getTournamentNameByTournamentId(Tournament.getSelectedTournamentID()));
 
     }
-
-    // TODO: remove this:
-
-    /**
-     * Change to add eligible team scene and start adding teams
-     */
 
     public void initData(Tournament tournament) {
         selectedTournament = tournament;
@@ -99,10 +93,13 @@ public class SelectedTournamentController implements Initializable {
         this.teamsTableView.setItems(this.teamObservableList);
     }
 
+    /**
+     * Change to add eligible team scene and start adding teams
+     */
     @FXML
     void addEligibleTeamBtnClicked() {
         try {
-            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/addEligibleTeams.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/addEligibleTeamsView.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent FrontPageParent = loader.load();
             AddEligibleTeamsController controller = loader.getController();
@@ -110,7 +107,6 @@ public class SelectedTournamentController implements Initializable {
             controller.initData(selectedTournament);
             Stage stage = Application.stage;
             stage.getScene().setRoot(FrontPageParent);
-
         } catch (IOException e) {
             e.printStackTrace();
         }

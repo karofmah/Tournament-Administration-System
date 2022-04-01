@@ -60,7 +60,6 @@ public class FrontPageController implements Initializable {
 
     private ObservableList<Tournament> tournamentObservableList;
 
-    //public static int selectedTournamentID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -102,13 +101,10 @@ public class FrontPageController implements Initializable {
                         tournamentsTableView.setCursor(Cursor.HAND);//Change courser
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
                             try {
-                                Tournament.setSelectedTournamentID(tournament.getTournamentId());
 
-                                //TODO: remove this:
+                                Tournament.setSelectedTournamentID(tournament.getTournamentId());
                                 changeToSelectedTournamentView(tournament);//Change scene
 
-                                // TODO: implement the new way of changing to the SelectedTournament scene
-                                //Application.changeScene("selectedTournamentView.fxml");//Change scene
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
