@@ -43,7 +43,7 @@ public class TournamentRegisterTest {
         public void addTeamToTournament() {
             register.addTournament("SummonersRift", "Silver", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
             register.getTournamentByName("SummonersRift").addTeam(team1);
-            Assertions.assertEquals("[GeirSittLag]", register.getTournamentByName("SummonersRift").getTeams().toString());
+            Assertions.assertEquals(1, register.getTournamentByName("SummonersRift").getTeams().size());
         }
     }
 }

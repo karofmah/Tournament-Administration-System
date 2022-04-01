@@ -19,8 +19,8 @@ public class TeamTest {
         ArrayList<Player> teamList = new ArrayList<Player>();
         this.team = new Team(teamList, "Fnatic");
         this.player=new Player("Phase","Iron");
-
     }
+
     @Nested
     public class inputIsSupported{
 
@@ -39,17 +39,12 @@ public class TeamTest {
         }
     }
     @Nested
-    public class inputIsNotSupported{
+    public class inputIsNotSupported {
         @Test
         @DisplayName("Tests if exception is thrown when a team with empty team name is created")
-        public void emptyName(){
-            assertThrows(IllegalArgumentException.class,()->new Team(""));
+        public void emptyName() {
+            assertThrows(IllegalArgumentException.class, () -> new Team(""));
 
-        }
-        @Test
-        @DisplayName("Tests if exception is thrown when a team with empty list of players can be created")
-        public void emptyArrayList(){
-            assertEquals("Fnatic",team.toString());
         }
     }
 }
