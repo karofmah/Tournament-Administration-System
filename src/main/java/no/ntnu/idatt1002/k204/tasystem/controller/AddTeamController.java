@@ -1,10 +1,10 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
@@ -14,7 +14,10 @@ import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
@@ -22,7 +25,7 @@ import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDia
 /**
  * Controller for adding a team
  */
-public class AddTeamController {
+public class AddTeamController implements Initializable {
 
     @FXML
     private Button AddTeamBtn;
@@ -40,31 +43,31 @@ public class AddTeamController {
     private TextField p1NameTextfield;
 
     @FXML
-    private TextField p1RankTextfield;
+    private ComboBox p1RankComboBox;
 
     @FXML
     private TextField p2NameTextfield;
 
     @FXML
-    private TextField p2RankTextfield;
+    private ComboBox p2RankComboBox;
 
     @FXML
     private TextField p3NameTextfield;
 
     @FXML
-    private TextField p3RankTextfield;
+    private ComboBox p3RankComboBox;
 
     @FXML
     private TextField p4NameTextfield;
 
     @FXML
-    private TextField p4RankTextfield;
+    private ComboBox p4RankComboBox;
 
     @FXML
     private TextField p5NameTextfield;
 
     @FXML
-    private TextField p5RankTextfield;
+    private ComboBox p5RankComboBox;
 
     @FXML
     private Label txtAddedTeam;
@@ -81,11 +84,11 @@ public class AddTeamController {
             TeamDAO teamDAO = new TeamDAO();
 
             ArrayList<Player> players = new ArrayList<>();
-            players.add(new Player(p1NameTextfield.getText(), p1RankTextfield.getText()));
-            players.add(new Player(p2NameTextfield.getText(), p2RankTextfield.getText()));
-            players.add(new Player(p3NameTextfield.getText(), p3RankTextfield.getText()));
-            players.add(new Player(p4NameTextfield.getText(), p4RankTextfield.getText()));
-            players.add(new Player(p5NameTextfield.getText(), p5RankTextfield.getText()));
+            players.add(new Player(p1NameTextfield.getText(), p1RankComboBox.getValue().toString()));
+            players.add(new Player(p2NameTextfield.getText(), p2RankComboBox.getValue().toString()));
+            players.add(new Player(p3NameTextfield.getText(), p3RankComboBox.getValue().toString()));
+            players.add(new Player(p4NameTextfield.getText(), p4RankComboBox.getValue().toString()));
+            players.add(new Player(p5NameTextfield.getText(), p5RankComboBox.getValue().toString()));
 
             Team team1 = new Team(players, nameTextField.getText());
 
@@ -111,6 +114,18 @@ public class AddTeamController {
         }
     }
 
+    private void addRanksToList() {
+        ObservableList<String> rankList=FXCollections.observableArrayList("Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
+
+        p1RankComboBox.setItems(rankList);
+        p2RankComboBox.setItems(rankList);
+        p3RankComboBox.setItems(rankList);
+        p4RankComboBox.setItems(rankList);
+        p5RankComboBox.setItems(rankList);
+
+    }
+
+
     /**
      * Handle logout event.
      *
@@ -123,5 +138,10 @@ public class AddTeamController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        addRanksToList();
     }
 }
