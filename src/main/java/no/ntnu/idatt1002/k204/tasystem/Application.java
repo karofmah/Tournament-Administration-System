@@ -28,13 +28,13 @@ public class Application extends javafx.application.Application {
         Scene scene = null;
 
         try {
-            scene = new Scene(fxmlLoader.load(), 640, 480);
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
         } catch (IOException e) {
             logger.severe("ERROR: IOException occurred. Cause: " + e.getCause());
         }
 
         stage.setTitle("TA-System");
-        stage.getIcons().add(new Image(Application.class.getResourceAsStream( "/no/ntnu/idatt1002/k204/tasystem/Images/logo.jpg" )));
+        stage.getIcons().add(new Image(Application.class.getResourceAsStream( "/no/ntnu/idatt1002/k204/tasystem/Images/logo.png" )));
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> {
