@@ -5,9 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxTreeTableCell;
+import javafx.scene.control.cell.ChoiceBoxTreeTableCell;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.controller.utils.GroupStageUtils;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
@@ -15,7 +16,6 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -49,6 +49,9 @@ public class GroupStageController implements Initializable {
 
     @FXML
     private TreeTableColumn<Team, String> pointsColTable4;
+
+    @FXML
+    private Button generateGroupsBtn;
 
     @FXML
     private TreeTableColumn<Team, String> teamColTable1;
@@ -85,6 +88,10 @@ public class GroupStageController implements Initializable {
     private TournamentDAO tournamentDAO;
     private TeamRegister teamRegister;
     private ObservableList<String> teamNames;
+    ObservableList<Team> teams1;
+    ObservableList<Team> teams2;
+    ObservableList<Team> teams4;
+    ObservableList<Team> teams3;
 
 
     @Override
@@ -92,6 +99,18 @@ public class GroupStageController implements Initializable {
         this.tournamentDAO = new TournamentDAO();
         this.teamRegister = this.tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
         this.teamNames = FXCollections.observableArrayList();
+        this.teams1 = FXCollections.observableArrayList();
+        this.teams2 = FXCollections.observableArrayList();
+        this.teams4 = FXCollections.observableArrayList();
+        this.teams3 = FXCollections.observableArrayList();
+
+
+        for (Team t : this.teamRegister.getTeams()) {
+            this.teams1.add(t);
+            this.teams2.add(t);
+            this.teams3.add(t);
+            this.teams4.add(t);
+        }
 
         initializeRowsWithDefaultText();
 
@@ -136,12 +155,24 @@ public class GroupStageController implements Initializable {
     }
 
     /**
+     * Handle event to generate groups
+     */
+    @FXML
+    void generateBtnClicked() {
+        GroupStageUtils.randomize(this.teams1, this.table1root);
+        GroupStageUtils.randomize(this.teams2, this.table2root);
+        GroupStageUtils.randomize(this.teams3, this.table3root);
+        GroupStageUtils.randomize(this.teams4, this.table4root);
+    }
+
+    /**
      * Start tournament
      */
     @FXML
     void startTournamentBtnClicked() {
         setNotEditableTeamCols();
         setPointsColumnsAsEditable();
+        generateGroupsBtn.setDisable(true);
     }
 
     @FXML
@@ -160,28 +191,10 @@ public class GroupStageController implements Initializable {
     }
 
     private void initializeRowsWithDefaultText() {
-        ArrayList<TreeItem<Team>> teamItem1 = new ArrayList();
-        ArrayList<TreeItem<Team>> teamItem2 = new ArrayList();
-        ArrayList<TreeItem<Team>> teamItem3 = new ArrayList();
-        ArrayList<TreeItem<Team>> teamItem4 = new ArrayList();
-
-        for (int i = 0; i < 3; i++) {//3 teams per group
-            //Create a TreeItem in order to set a default text.
-            //Will fail with other objects since TreeItem here requires a team
-            TreeItem<Team> team1 = new TreeItem<>(new Team("<Double click to choose team>"));
-            TreeItem<Team> team2 = new TreeItem<>(new Team("<Double click to choose team>"));
-            TreeItem<Team> team3 = new TreeItem<>(new Team("<Double click to choose team>"));
-            TreeItem<Team> team4 = new TreeItem<>(new Team("<Double click to choose team>"));
-            teamItem1.add(team1);
-            teamItem2.add(team2);
-            teamItem3.add(team3);
-            teamItem4.add(team4);
-        }
-
-        table1root.getChildren().setAll(teamItem1);
-        table2root.getChildren().setAll(teamItem2);
-        table3root.getChildren().setAll(teamItem3);
-        table4root.getChildren().setAll(teamItem4);
+        GroupStageUtils.initDefaultText(this.table1root);
+        GroupStageUtils.initDefaultText(this.table2root);
+        GroupStageUtils.initDefaultText(this.table3root);
+        GroupStageUtils.initDefaultText(this.table4root);
     }
 
     private void setRootInTreeTables() {
@@ -220,10 +233,10 @@ public class GroupStageController implements Initializable {
     }
 
     private void addComboboxToTeamCol(ObservableList<String> teamNames) {
-        this.teamColTable1.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
-        this.teamColTable2.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
-        this.teamColTable3.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
-        this.teamColTable4.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable1.setCellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable2.setCellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable3.setCellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn(teamNames));
+        this.teamColTable4.setCellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn(teamNames));
     }
 
     private void handleEditingTeamCols() {
@@ -240,9 +253,9 @@ public class GroupStageController implements Initializable {
             TreeItem<Team> currentlyChosen = tableView.getTreeItem(event.getTreeTablePosition().getRow());
             //Set name that has been chosen to the cell. Or else it is lost when tournament is started.
             currentlyChosen.getValue().setTeamName(event.getNewValue());
-            //Remove chosen name from observable list
         });
     }
+
     @FXML
     void logOutBtnClicked() {
         try {
