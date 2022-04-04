@@ -70,6 +70,9 @@ public class AddTournamentController implements Initializable {
         try {
             TournamentDAO tournamentDAO = new TournamentDAO();
 
+            if(rankRequirementComboBox.getValue()==null){
+                throw new IllegalArgumentException("Please choose the rank requirement of this tournament");
+            }
             Tournament tournament1 = new Tournament(nameTextField.getText(),rankRequirementComboBox.getValue().toString(),otherRequirementsTextfield.getText(),
                     String.valueOf(datePicker.getValue()), timeTextField.getText());
 
