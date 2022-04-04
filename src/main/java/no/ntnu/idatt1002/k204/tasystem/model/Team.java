@@ -40,6 +40,19 @@ public class Team {
     }
 
     /**
+     * Constructor used when getting teams and points from the tournament_team database table
+     * @param teamName the name of the team
+     * @param teamPoints the team's points in the current tournament
+     */
+    public Team(String teamName, String teamPoints){
+        this.teamName = new SimpleStringProperty(teamName);
+        if(teamName.isBlank()){
+            throw new IllegalArgumentException("Team name can not be blank");
+        }
+        this.points = new SimpleStringProperty(teamPoints);
+    }
+
+    /**
      * Constructor used for retrieving teams from the database.
      * @param name the name of the team
      * @param p1name player 1's name (gamertag)
@@ -90,6 +103,10 @@ public class Team {
 
     public String getPoints() {
         return points.get();
+    }
+
+    public int getPointsAsInt() {
+        return Integer.parseInt(points.getValue());
     }
 
     public SimpleStringProperty pointsProperty() {
