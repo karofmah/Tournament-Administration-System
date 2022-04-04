@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTournamentController">
    <center>
       <AnchorPane prefHeight="531.0" prefWidth="861.0" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
          <children>
@@ -36,6 +30,7 @@
                </font>
             </Text>
             <Button fx:id="saveTournamentBtn" layoutX="410.0" layoutY="603.0" mnemonicParsing="false" onAction="#saveTournament" styleClass="buttons" text="Save" AnchorPane.bottomAnchor="43.39999999999998" />
+            <Button fx:id="deleteTournamentBtn" layoutX="500.0" layoutY="485.0" mnemonicParsing="false" onAction="#deleteTournament" styleClass="buttons" text="Delete" />
             <Button layoutX="691.0" layoutY="99.0" mnemonicParsing="false" onAction="#logOutBtnClicked" prefHeight="27.0" prefWidth="71.0" styleClass="buttons" text="Log out" />
          </children>
       </AnchorPane>

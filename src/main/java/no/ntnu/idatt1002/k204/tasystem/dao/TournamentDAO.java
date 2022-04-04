@@ -117,6 +117,28 @@ public class TournamentDAO {
         }
     }
 
+    public void deleteTournament(int tournamentID){
+        String sql = "DELETE FROM tournament_team WHERE tournament_id = ?";
+        String sql1 = "DELETE FROM tournament WHERE tournament_id = ?";
+
+        PreparedStatement statement = null;
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setInt(1, tournamentID);
+            statement = Database.getConnection().prepareStatement(sql1);
+            statement.setInt(1, tournamentID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * Get teams that are currently participating in a tournament given the tournament id from database
      *
