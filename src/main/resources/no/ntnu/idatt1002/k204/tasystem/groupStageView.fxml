@@ -49,6 +49,7 @@
               </buttons>
             </ButtonBar>
             <Button fx:id="logOutBtn" layoutX="742.0" layoutY="43.0" mnemonicParsing="false" onAction="#logOutBtnClicked" prefHeight="26.0" prefWidth="73.0" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Log out" />
+            <Button fx:id="generateGroupsBtn" layoutX="106.0" layoutY="43.0" mnemonicParsing="false" onAction="#generateBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Generate groups" />
          </children>
       </AnchorPane>
    </top>

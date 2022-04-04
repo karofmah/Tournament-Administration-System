@@ -12,6 +12,7 @@ public class Team {
     private ArrayList<Player> players = new ArrayList<>();
     private SimpleStringProperty teamName; //Have to use string property because of combobox and events
     private SimpleStringProperty points;
+    private Team team;
 
     /**
      * Team-Constructors, the second one only has @param teamName
@@ -64,6 +65,15 @@ public class Team {
 
         this.players = newPlayers;
 
+    }
+
+    public Team (Team team) {
+        this.teamName = new SimpleStringProperty(team.getTeamName());
+        this.team = team;
+    }
+
+    public Team getTeam() {
+        return this.team;
     }
 
     public String getTeamName() {
@@ -127,7 +137,7 @@ public class Team {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Team team = (Team) o;
-        return Objects.equals(players, team.players) && Objects.equals(teamName, team.teamName);
+        return Objects.equals(teamName, team.teamName);
     }
 
     @Override
