@@ -57,7 +57,7 @@ public class AddTournamentController implements Initializable {
     private Label txtAddedTournament;
 
     @FXML
-    private ComboBox rankRequirementComboBox;
+    private ComboBox rankRequirementComboBox = new ComboBox();
 
 
     /**
