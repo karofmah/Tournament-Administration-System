@@ -13,6 +13,7 @@ public class Tournament {
     private final int tournamentId;
     private String name;
     private String rankRequirement;
+    private String otherRequirement;
     private boolean hasGroupStage;
     private LocalDateTime dateTime;
     private ArrayList<Team> teams = new ArrayList<>();
@@ -26,12 +27,13 @@ public class Tournament {
      * Creates constructor for Tournament
      *
      * @param name            String that represents the name of the tournament, can not be blank
-     * @param rankRequirement String that represents the rank requirement for the tournament, Unranked if blank
-     * @param hasGroupStage   Boolean that represents wheteher group stage will be included or not
+     * @param rankRequirement String that represents the rank requirement for the tournament, no requirements if blank
+     * @param otherRequirement String that represents another requirements that is created by the admin
+     * @param hasGroupStage   Boolean that represents whether group stage will be included or not
      * @param dateTime        LocalDateTime that represents the local date and time of the tournament
      * @throws IllegalArgumentException
      */
-    public Tournament(String name, String rankRequirement, boolean hasGroupStage, LocalDateTime dateTime) throws IllegalArgumentException {
+    public Tournament(String name, String rankRequirement,String otherRequirement, boolean hasGroupStage, LocalDateTime dateTime) throws IllegalArgumentException {
         this.name = name;
         if (name.isBlank()) {
             throw new IllegalArgumentException("Name can not be blank");
@@ -40,6 +42,7 @@ public class Tournament {
         if (rankRequirement.isBlank()) {
             this.rankRequirement = "No requirements";
         }
+        this.otherRequirement=otherRequirement;
         this.hasGroupStage = hasGroupStage;
         this.dateTime = dateTime;
         this.teams = new ArrayList<>();
@@ -58,11 +61,12 @@ public class Tournament {
      * @param date
      * @param time
      */
-    public Tournament(String name, String rankRequirement, String date, String time) throws IllegalArgumentException {
+    public Tournament(String name, String rankRequirement,String otherRequirement, String date, String time) throws IllegalArgumentException {
         this.name = name;
         if (name.isBlank()) throw new IllegalArgumentException("Name can not be blank");
         this.rankRequirement = rankRequirement;
         if (rankRequirement.isBlank()) this.rankRequirement = "No requirements";
+        this.otherRequirement=otherRequirement;
         this.isActive = false;
 
         try {
@@ -89,9 +93,10 @@ public class Tournament {
      * @param date
      * @param time
      */
-    public Tournament(String name, String status, String rankRequirement, String date, String time) {
+    public Tournament(String name, String status, String rankRequirement,String otherRequirement, String date, String time) {
         this.name = name;
         this.rankRequirement = rankRequirement;
+        this.otherRequirement=otherRequirement;
         this.status = status;
         this.date = LocalDate.parse(date);
         this.time = LocalTime.parse(time);
