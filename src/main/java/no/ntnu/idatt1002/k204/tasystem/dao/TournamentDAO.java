@@ -33,6 +33,10 @@ public class TournamentDAO {
             sql = "INSERT INTO tournament VALUES(? , ? , ?, ?, ?, ?, ?,null)";
         }
 
+       if (id < getMaxTournamentID()) {
+           id = getMaxTournamentID() + 1;
+       }
+
         PreparedStatement statement = null;
         try {
             statement = Database.getConnection().prepareStatement(sql);
@@ -53,6 +57,23 @@ public class TournamentDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    private int getMaxTournamentID () {
+        String sql = "SELECT MAX(tournament_id) AS MaxID FROM tournament";
+
+        int maxID = 0;
+
+        ResultSet result;
+        try {
+            result = Database.getConnection().prepareStatement(sql).executeQuery();
+            while (result.next()){
+                maxID = result.getInt("MaxID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return maxID;
     }
 
     /**
