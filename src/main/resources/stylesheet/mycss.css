@@ -108,3 +108,17 @@
 .text {
     -fx-text-fill: white;
 }
+
+
+/** Tree Table View */
+
+.tree-view{
+    -fx-background-color:  transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+    -fx-alignment: CENTER;
+}
+.tree-view .column-header-background{
+    -fx-background-color: #320150;
+    -fx-background-radius: 7px 7px 0px 0px;
+}
