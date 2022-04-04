@@ -1,17 +1,23 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
+import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
+import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class KnockoutStageController implements Initializable {
@@ -125,64 +131,10 @@ public class KnockoutStageController implements Initializable {
     private Team finalist2;
     private Team winner;
 
-    /**
-     * Navigate back to the front page
-     */
-    @FXML
-    void backBtnClicked() {
-        try {
-            Application.changeScene("frontPageView.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private ArrayList<Team> quarterFinalists = new ArrayList<>();
 
-    /**
-     * Handle events when knockout stage button is clicked
-     */
-    @FXML
-    void knockoutStageBtnClicked() {
-        try {
-            Application.changeScene("knockOutStageView.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Change to group stage scene
-     */
-    @FXML
-    void groupStageBtnClicked() {
-        try {
-            Application.changeScene("groupStageView.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Navigates back to the teams-page
-     */
-    @FXML
-    void teamsBtnClicked() {
-        try {
-            Application.changeScene("selectedTournamentView.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Finishes the tournament
-     */
-    @FXML
-    void finishTournamentBtnClicked() {
-        tournamentWinnerTxt.setVisible(true);
-        finalTeam1Btn.setDisable(true);
-        finalTeam2Btn.setDisable(true);
-        finishTournamentBtn.setDisable(true);
-    }
+    private TeamRegister teamRegister;
+    private TournamentDAO tournamentDAO;
 
     /**
      * Initializes the knockout stage
@@ -192,6 +144,36 @@ public class KnockoutStageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        this.teamRegister = new TeamRegister();
+        this.tournamentDAO = new TournamentDAO();
+
+        this.teamRegister = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
+
+        ArrayList<Team> sortedList = new ArrayList<>(teamRegister.getTeams());
+
+        sortedList.sort(Comparator.comparing(Team::getPointsAsInt));
+
+
+        for (int i = sortedList.size()-1; i > sortedList.size()-9; i--) {
+            quarterFinalists.add(sortedList.get(i));
+        }
+
+        quarterFinalist1 = quarterFinalists.get(0);
+        quarterFinalist2 = quarterFinalists.get(1);
+        quarterFinalist3 = quarterFinalists.get(2);
+        quarterFinalist4 = quarterFinalists.get(3);
+        quarterFinalist5 = quarterFinalists.get(4);
+        quarterFinalist6 = quarterFinalists.get(5);
+        quarterFinalist7 = quarterFinalists.get(6);
+        quarterFinalist8 = quarterFinalists.get(7);
+
+
+
+        System.out.println(quarterFinalist1.getPoints());
+        System.out.println(quarterFinalist1.getTeamName());
+
+
         setTextToTeamName(quarterFinalTeam1Txt, quarterFinalist1);
         setTextToTeamName(quarterFinalTeam2Txt, quarterFinalist2);
         setTextToTeamName(quarterFinalTeam3Txt, quarterFinalist3);
@@ -305,10 +287,70 @@ public class KnockoutStageController implements Initializable {
     private void setTextToTeamName(Text text, Team team) {
         text.setText(team.getTeamName());
     }
+
     @FXML
     void logOutBtnClicked() {
         try {
             Application.logout();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Finishes the tournament
+     */
+    @FXML
+    void finishTournamentBtnClicked() {
+        tournamentWinnerTxt.setVisible(true);
+        finalTeam1Btn.setDisable(true);
+        finalTeam2Btn.setDisable(true);
+        finishTournamentBtn.setDisable(true);
+    }
+
+    /**
+     * Navigate back to the front page
+     */
+    @FXML
+    void backBtnClicked() {
+        try {
+            Application.changeScene("frontPageView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Handle events when knockout stage button is clicked
+     */
+    @FXML
+    void knockoutStageBtnClicked() {
+        try {
+            Application.changeScene("knockOutStageView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Change to group stage scene
+     */
+    @FXML
+    void groupStageBtnClicked() {
+        try {
+            Application.changeScene("groupStageView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Navigates back to the teams-page
+     */
+    @FXML
+    void teamsBtnClicked() {
+        try {
+            Application.changeScene("selectedTournamentView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
