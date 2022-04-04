@@ -22,6 +22,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
+
 public class AddEligibleTeamsController implements Initializable {
 
     @FXML
@@ -46,8 +49,7 @@ public class AddEligibleTeamsController implements Initializable {
     private ObservableList<Team> teamObservableList;
     private Tournament selectedTournament;
     private TournamentDAO tournamentDAO;
-    @FXML
-    private Label txtAddedEligibleTeam;
+
 
     //private TeamDAO teamDAO;
 
@@ -67,6 +69,7 @@ public class AddEligibleTeamsController implements Initializable {
     }
 
     private void handleTeamSelection() {
+        try{
         teamsTableView.setRowFactory(table -> {
             TableRow<Team> row = new TableRow<>();
 
@@ -79,8 +82,7 @@ public class AddEligibleTeamsController implements Initializable {
                             System.out.println(selectedTournament);
                             selectedTournament.addTeam(team);
                             System.out.println(selectedTournament.getTeams());
-                            txtAddedEligibleTeam.setText(team.getTeamName() + " has been added to " + selectedTournament.getName());
-
+                            showInformationDialog(team.getTeamName() + " has been added to " + selectedTournament.getName());
                         });
                     });
                 } else {
@@ -91,7 +93,9 @@ public class AddEligibleTeamsController implements Initializable {
             });
 
             return row;
-        });
+        });}catch (IllegalArgumentException e){
+            showAlertDialog(e);
+        }
     }
     /**
      * Navigate back to previous scene
