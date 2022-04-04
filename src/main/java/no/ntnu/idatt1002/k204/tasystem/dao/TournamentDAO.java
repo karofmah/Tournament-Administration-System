@@ -169,7 +169,7 @@ public class TournamentDAO {
      * @return
      */
     public TeamRegister getTeamsGivenTournamentId(int tournamentID) {
-        String sql = "SELECT * from tournament_team WHERE tournament_id = ?";
+        String sql = "SELECT teamName from tournament_team WHERE tournament_id = ?";
 
         PreparedStatement statement = null;
         ResultSet result = null;
@@ -181,7 +181,7 @@ public class TournamentDAO {
 
             result = statement.executeQuery();
             while (result.next()) {
-                 Team team = new Team(result.getString("teamName"), result.getString("points"));
+                 Team team = new Team(result.getString("teamName"));
                  teamRegister.addTeam(team);
             }
         } catch (SQLException e) {
