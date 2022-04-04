@@ -37,7 +37,7 @@ public class GroupStageUtils {
 
         ArrayList<TreeItem<Team>> teamItem = new ArrayList();
         for (int i = 0; i < 3; i++) {//3 teams per group
-            Team team = teams.get(i);
+            Team team = new Team(teams.get(i));
             TreeItem<Team> team1 = new TreeItem<>(team);
             teamItem.add(team1);
         }
