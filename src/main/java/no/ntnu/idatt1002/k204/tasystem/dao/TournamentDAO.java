@@ -97,13 +97,14 @@ public class TournamentDAO {
      * @param teamName
      */
     public void addTournamentAndTeams(int tournamentID, String teamName){
-        String sql = "INSERT INTO tournament_team VALUES(? , ?)";
+        String sql = "INSERT INTO tournament_team VALUES(? , ?, ?)";
 
         PreparedStatement statement = null;
         try {
             statement = Database.getConnection().prepareStatement(sql);
             statement.setInt(1, tournamentID);
             statement.setString(2, teamName);
+            statement.setInt(3, 0);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
