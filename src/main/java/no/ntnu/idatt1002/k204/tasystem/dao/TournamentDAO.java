@@ -33,8 +33,8 @@ public class TournamentDAO {
             sql = "INSERT INTO tournament VALUES(? , ? , ?, ?, ?, ?, ?,null)";
         }
 
-       if (id < getMaxTournamentID()) {
-           id = getMaxTournamentID() + 1;
+       if (id <= getMaxTournamentID()) {
+           id = getMaxTournamentID()+ 1;
        }
 
         PreparedStatement statement = null;
