@@ -37,7 +37,7 @@ public class TournamentDAOTest {
     @Test
     @DisplayName("Add tournament, expected ok")
     public void addTournamentExpectedOk() {
-        tournamentDAO.addTournament(1,"LCK for noobs 2022", "Inactive", "Bronze 2", "2022-07-21", "13:37");
+        tournamentDAO.addTournament(1,"LCK for noobs 2022", "Inactive", "Bronze 2","", "2022-07-21", "13:37");
     }
 
     @Test

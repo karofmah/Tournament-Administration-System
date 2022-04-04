@@ -171,6 +171,9 @@ public class Tournament {
     public String getRankRequirement() {
         return rankRequirement;
     }
+    public String getOtherRequirement(){
+        return otherRequirement;
+    }
 
     /**
      * Returns teams in the tournament

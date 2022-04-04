@@ -20,16 +20,17 @@ public class TournamentDAO {
      *
      * @param name        the name
      * @param status      the status
-     * @param requirement the requirement
+     * @param rankRequirement the rankRequirement
+     * @param otherRequirement the other requirement
      * @param date        the date
      * @param time        the time
      */
-    public void addTournament(int id, String name, String status, String requirement, String date, String time) {
+    public void addTournament(int id, String name, String status, String rankRequirement,String otherRequirement, String date, String time) {
         String sql;
-        if (isTest) {
-            sql = "INSERT INTO tournamentTEST VALUES(? , ? , ?, ?, ?, ?, null)";
+       if (isTest) {
+            sql = "INSERT INTO TESTtournament VALUES(? , ? , ?, ?, ?, ?, ?,null)";
         } else {
-            sql = "INSERT INTO tournament VALUES(? , ? , ?, ?, ?, ?, null)";
+            sql = "INSERT INTO tournament VALUES(? , ? , ?, ?, ?, ?, ?,null)";
         }
 
         PreparedStatement statement = null;
@@ -38,10 +39,11 @@ public class TournamentDAO {
             statement.setInt(1, id);
             statement.setString(2, name);
             statement.setString(3, status);
-            statement.setString(4, requirement);
-            statement.setString(5, date);
-            statement.setString(6, time);
-            statement.executeUpdate();
+            statement.setString(4, rankRequirement);
+            statement.setString(5,otherRequirement);
+            statement.setString(6, date);
+            statement.setString(7, time);
+            statement.  executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -64,7 +66,7 @@ public class TournamentDAO {
         String sql;
 
         if (isTest) {
-            sql = "SELECT * FROM tournamentTEST";
+            sql = "SELECT * FROM TESTtournament";
         } else {
             sql = "SELECT * FROM tournament";
         }
@@ -74,8 +76,8 @@ public class TournamentDAO {
         try {
             result = Database.getConnection().prepareStatement(sql).executeQuery();
             while (result.next()) {
-                Tournament tournament = new Tournament(result.getString("name"), result.getString("status"),result.getString("requirement"),
-                        result.getString("start_date"), result.getString("start_time"));
+                Tournament tournament = new Tournament(result.getString("name"), result.getString("status"),result.getString("rankRequirement"),
+                        result.getString("otherRequirement"),result.getString("start_date"), result.getString("start_time"));
                 register.addTournament(tournament);
             }
         } catch (SQLException e) {
