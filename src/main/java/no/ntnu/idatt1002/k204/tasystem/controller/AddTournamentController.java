@@ -1,6 +1,9 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
@@ -8,6 +11,8 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
@@ -15,7 +20,7 @@ import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDia
 /**
  * Controller for adding tournaments
  */
-public class AddTournamentController {
+public class AddTournamentController implements Initializable {
 
     @FXML
     private Button AddTournamentBtn;
@@ -42,10 +47,18 @@ public class AddTournamentController {
     private TextField requirementsTextfield;
 
     @FXML
+    private TextField otherRequirementsTextfield;
+
+    @FXML
     private TextField timeTextField;
+
 
     @FXML
     private Label txtAddedTournament;
+
+    @FXML
+    private ComboBox rankRequirementComboBox;
+
 
     /**
      * Handle add tournament events
@@ -57,7 +70,7 @@ public class AddTournamentController {
         try {
             TournamentDAO tournamentDAO = new TournamentDAO();
 
-            Tournament tournament1 = new Tournament(nameTextField.getText(), requirementsTextfield.getText(),
+            Tournament tournament1 = new Tournament(nameTextField.getText(),rankRequirementComboBox.getValue().toString(),otherRequirementsTextfield.getText(),
                     String.valueOf(datePicker.getValue()), timeTextField.getText());
 
             String status = "Inactive";
@@ -73,6 +86,11 @@ public class AddTournamentController {
         }
     }
 
+    private void addRanksToComboBox(){
+        ObservableList<String> rankList= FXCollections.observableArrayList("Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
+
+        rankRequirementComboBox.setItems(rankList);
+    }
     /**
      * Navigate back to previous scene
      */
@@ -116,4 +134,9 @@ public class AddTournamentController {
             e.printStackTrace();
         }
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        addRanksToComboBox();
+    }
+
 }

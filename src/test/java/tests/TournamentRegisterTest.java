@@ -34,14 +34,14 @@ public class TournamentRegisterTest {
         @Test
         @DisplayName("Tests if it is possible to add tournament to the tournament register")
         public void addTournament() {
-            register.addTournament("SummonersRift", "Silver", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
+            register.addTournament("SummonersRift", "Silver","" ,false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
             Assertions.assertEquals("[Tournament{name='SummonersRift', rankRequirement='Silver', hasGroupStage=false, dateTime=2022-04-28T14:00, teams=[], isActive=false, winner=null}]", register.getTournaments().toString());
         }
 
         @Test
         @DisplayName("Tests if it is possible to add a team to tournament")
         public void addTeamToTournament() {
-            register.addTournament("SummonersRift", "Silver", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
+            register.addTournament("SummonersRift", "Silver","", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
             register.getTournamentByName("SummonersRift").addTeam(team1);
             Assertions.assertEquals(1, register.getTournamentByName("SummonersRift").getTeams().size());
         }

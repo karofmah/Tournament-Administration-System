@@ -22,8 +22,8 @@ public class TournamentTest {
     @BeforeEach
     @DisplayName("Fills a team with two players")
     public void testData(){
-        this.tournament1 =new Tournament("SummonersRift", "Silver", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
-        this.tournament2=new Tournament("SummonersRift", "", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
+        this.tournament1 =new Tournament("SummonersRift", "Silver","", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
+        this.tournament2=new Tournament("SummonersRift", "","", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00));
         this.player1 = new Player("Sjokoladepudden", "Silver");
         this.player2 = new Player("Phase", "Iron");
         ArrayList<Player> playerlist = new ArrayList<>();
@@ -66,7 +66,7 @@ public class TournamentTest {
             @Test
             @DisplayName("Tests if an exception is thrown when a tournament with blank name is created")
             public void tournamentNameIsBlank() {
-                assertThrows(IllegalArgumentException.class, () -> new Tournament("", "Silver", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00)));
+                assertThrows(IllegalArgumentException.class, () -> new Tournament("", "Silver","", false, LocalDateTime.of(2022, Month.APRIL, 28, 14, 00, 00)));
             }
         }
     }
