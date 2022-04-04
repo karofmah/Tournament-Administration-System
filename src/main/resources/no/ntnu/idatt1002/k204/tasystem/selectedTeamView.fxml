@@ -6,16 +6,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTeamController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.SelectedTeamController">
    <center>
-      <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="background" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="playersTableView" layoutX="166.0" layoutY="179.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="table" stylesheets="@../../../../../stylesheet/mycss.css">
+            <TableView fx:id="playersTableView" layoutX="166.0" layoutY="179.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="600.0" styleClass="table" stylesheets="@../../../../../stylesheet/mycss.css" AnchorPane.bottomAnchor="89.66666666666669">
               <columns>
-                <TableColumn fx:id="playerNameCol" prefWidth="356.00001525878906" text="Player name" />
-                <TableColumn fx:id="playerRankCol" prefWidth="332.6666564941406" text="Rank" />
+                <TableColumn fx:id="playerNameCol" prefWidth="356.00001525878906" styleClass="table" text="Player name" />
+                <TableColumn fx:id="playerRankCol" prefWidth="332.6666564941406" styleClass="table" text="Rank" />
               </columns>
             </TableView>
             <Label fx:id="selectedText" graphicTextGap="1.0" layoutX="312.0" layoutY="73.0" prefHeight="58.0" prefWidth="307.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Selected Team">
@@ -28,4 +29,16 @@
          </children>
       </AnchorPane>
    </center>
+   <top>
+      <Pane prefHeight="47.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <Pane prefHeight="600.0" prefWidth="172.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="600.0" prefWidth="135.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="23.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

@@ -17,7 +17,7 @@
 
 <BorderPane styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.TeamsController">
    <center>
-      <AnchorPane prefHeight="550.0" prefWidth="683.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="693.0" prefWidth="683.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="151.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -28,14 +28,22 @@
                   </ImageView>
                </children>
             </HBox>
-            <AnchorPane id="menuBar" layoutY="34.0" prefHeight="155.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <AnchorPane id="menuBar" layoutY="68.0" prefHeight="42.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
                <children>
-                  <Button fx:id="logOutBtn" layoutX="533.0" layoutY="100.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
+                  <Button fx:id="tournamentsBtn1" alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" mnemonicParsing="false" onAction="#tournamentsBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="NW_RESIZE" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="logOutBtn" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="55.00000000000004">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="teamsBtn1" layoutX="143.0" layoutY="100.0" mnemonicParsing="false" text="Teams" AnchorPane.leftAnchor="143.0">
+                  <Button fx:id="teamsBtn1" layoutX="143.0" mnemonicParsing="false" text="Teams" AnchorPane.leftAnchor="143.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -44,17 +52,9 @@
                         <String fx:value="buttonsActiveTab" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="tournamentsBtn1" alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="100.0" mnemonicParsing="false" onAction="#tournamentsBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournaments" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="NW_RESIZE" />
-                     </cursor>
-                  </Button>
                </children>
             </AnchorPane>
-            <VBox alignment="CENTER" prefHeight="357.0" prefWidth="683.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="210.0">
+            <VBox alignment="CENTER" layoutY="205.0" prefHeight="400.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="58.0" prefWidth="505.0" VBox.vgrow="NEVER">
                      <children>
@@ -65,10 +65,10 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets top="20.0" />
                      </VBox.margin>
                   </AnchorPane>
-                  <TableView fx:id="teamsTableView" prefHeight="395.0" prefWidth="499.0" styleClass="table">
+                  <TableView fx:id="teamsTableView" maxHeight="342.0" minHeight="150.0" prefHeight="342.0" prefWidth="683.0" styleClass="table">
                     <columns>
                       <TableColumn fx:id="teamsCol" prefWidth="498.00000508626306" styleClass="table" text="Teams" />
                     </columns>
