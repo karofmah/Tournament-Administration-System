@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 
@@ -47,8 +48,10 @@ public class SelectedTeamController {
 
     private Team selectedTeam;
 
+    private TeamDAO teamDAO = new TeamDAO();
+
     @FXML
-    void backBtnClicked(ActionEvent event) {
+    void backBtnClicked() {
         try {
             Application.changeScene("teamsView.fxml");
         } catch (IOException e) {
@@ -57,9 +60,20 @@ public class SelectedTeamController {
     }
 
     @FXML
-    void logOutBtnClicked(ActionEvent event) {
+    void logOutBtnClicked() {
         try {
             Application.logout();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void deleteTeam() {
+        System.out.println(selectedTeam.getTeamName());
+        teamDAO.deleteTeam(selectedTeam.getTeamName());
+        try {
+            Application.changeScene("teamsView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

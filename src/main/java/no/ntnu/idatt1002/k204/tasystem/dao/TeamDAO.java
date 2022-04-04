@@ -127,6 +127,29 @@ public class TeamDAO {
         return teamRegister;
     }
 
+    public void deleteTeam(String teamName) {
+        String sql = "DELETE FROM tournament_team WHERE teamName = ?";
+        String sql1 = "DELETE FROM team WHERE name = ?";
+
+        PreparedStatement statement = null;
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setString(1, teamName);
+            statement.executeUpdate();
+            statement = Database.getConnection().prepareStatement(sql1);
+            statement.setString(1, teamName);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void addTeamAndPlayers(String teamName, String gamerTag) {
         String sql;
 
