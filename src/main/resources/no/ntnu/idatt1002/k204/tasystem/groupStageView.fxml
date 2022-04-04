@@ -23,6 +23,7 @@
                       <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Teams" />
                         <Button fx:id="groupStageBtn" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Group stage" />
                         <Button fx:id="knockoutStageBtn" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Knockout stage" />
+                        <Button fx:id="generateGroupsBtn" mnemonicParsing="false" onAction="#generateBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Generate groups" />
                     </buttons>
                   </ButtonBar>
                </children>
