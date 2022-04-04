@@ -8,142 +8,52 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.AddTournamentController">
    <center>
-      <AnchorPane prefHeight="526.0" prefWidth="834.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="398.0" prefWidth="599.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="78.0" prefHeight="58.0" prefWidth="1052.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Add new tournament" AnchorPane.leftAnchor="0.3333333333334849" AnchorPane.rightAnchor="0.33333333333325754">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Button fx:id="AddTournamentBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="267.0" layoutY="519.0" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="400.0" styleClass="buttons" text="Add tournament" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+            <Label layoutX="201.0" layoutY="221.0" text="Name">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <TextField fx:id="nameTextField" layoutX="334.0" layoutY="217.0" prefHeight="39.0" prefWidth="259.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="requirementsTextfield" layoutX="337.0" layoutY="265.0" prefHeight="39.0" prefWidth="252.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <Label layoutX="200.0" layoutY="269.0" text="Requirements">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="207.0" layoutY="309.0" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="203.0" layoutY="423.0" text="Stage">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <ButtonBar layoutX="240.0" layoutY="412.0" prefHeight="40.0" prefWidth="380.0">
+              <buttons>
+                <Button fx:id="groupKnockoutBtn" mnemonicParsing="false" onAction="#groupKnockoutBtnClicked" text="Group + knockout (12 teams)" />
+                  <Button fx:id="knockoutBtn" mnemonicParsing="false" onAction="#knockoutBtnClicked" text="Knockout (8 teams)" />
+              </buttons>
+            </ButtonBar>
+            <Button fx:id="AddTournamentBtn" layoutX="267.0" layoutY="519.0" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Add tournament">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <VBox alignment="CENTER_RIGHT" layoutX="-5.0" layoutY="206.0" prefHeight="297.0" prefWidth="842.0" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane prefHeight="49.0" prefWidth="405.0">
-                           <children>
-                              <Label layoutY="13.666666507720947" styleClass="textlabels" text="Name">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nameTextField" alignment="CENTER" layoutX="145.0" layoutY="9.0" prefHeight="39.0" prefWidth="259.0" styleClass="inputFields">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </TextField>
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" />
-                           </padding>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane>
-                           <children>
-                              <Label layoutY="13.666666507720947" styleClass="textlabels" text="Requirements">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="requirementsTextfield" layoutX="142.66665649414062" layoutY="9.0" prefHeight="39.0" prefWidth="259.0" styleClass="inputFields">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                           <HBox.margin>
-                              <Insets bottom="20.0" />
-                           </HBox.margin>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane prefHeight="43.0" prefWidth="388.0">
-                           <children>
-                              <Label layoutY="11.0" styleClass="textlabels" text="Date">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="datePicker" layoutX="141.0" layoutY="5.0" prefHeight="34.0" prefWidth="255.0" styleClass="inputFields" />
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" />
-                           </padding>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane prefWidth="409.0">
-                           <children>
-                              <Label layoutY="14.0" prefHeight="30.0" prefWidth="159.0" styleClass="textlabels" text="Time (HH:mm)">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="timeTextField" layoutX="146.0" layoutY="9.0" prefHeight="39.0" prefWidth="263.0" styleClass="inputFields">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" />
-                           </padding>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane prefHeight="40.0" prefWidth="623.0">
-                           <children>
-                              <Label layoutX="167.0" layoutY="5.0" styleClass="textlabels" text="Stage">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <ButtonBar layoutX="234.0" prefHeight="40.0" prefWidth="507.0">
-                                <buttons>
-                                    <Button fx:id="knockoutBtn" mnemonicParsing="false" onAction="#knockoutBtnClicked" styleClass="buttons" text="Knockout (8 teams)">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font></Button>
-                                  <Button fx:id="groupKnockoutBtn" mnemonicParsing="false" onAction="#groupKnockoutBtnClicked" prefWidth="258.0" styleClass="buttons" text="Group + knockout (12 teams)">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font></Button>
-                                </buttons>
-                              </ButtonBar>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <Label fx:id="txtAddedTournament" alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="373.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" AnchorPane.rightAnchor="716.3333333333334">
+            <Button fx:id="backBtn" layoutX="87.0" layoutY="577.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -151,22 +61,24 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
+            <TextField fx:id="timeTextField" layoutX="337.0" layoutY="354.0" prefHeight="39.0" prefWidth="250.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <Label layoutX="200.0" layoutY="358.0" prefHeight="30.0" prefWidth="134.0" text="Time (HH:mm)">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <DatePicker fx:id="datePicker" layoutX="337.0" layoutY="311.0" prefHeight="34.0" prefWidth="249.0" />
+            <Label fx:id="txtAddedTournament" layoutX="204.0" layoutY="455.0" prefHeight="46.0" prefWidth="495.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
       </AnchorPane>
    </center>
-   <top>
-      <Pane prefHeight="31.0" prefWidth="1086.0" BorderPane.alignment="CENTER" />
-   </top>
-   <left>
-      <Pane prefHeight="616.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <Pane prefHeight="616.0" prefWidth="11.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Pane prefHeight="59.0" prefWidth="1086.0" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>

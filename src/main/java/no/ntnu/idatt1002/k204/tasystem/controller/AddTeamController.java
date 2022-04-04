@@ -114,8 +114,8 @@ public class AddTeamController implements Initializable {
         }
     }
 
-    private void addRanksToList() {
-        ObservableList<String> rankList=FXCollections.observableArrayList("Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
+    private void addRanksToComboBox() {
+        ObservableList<String> rankList=FXCollections.observableArrayList("Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
 
         p1RankComboBox.setItems(rankList);
         p2RankComboBox.setItems(rankList);
@@ -142,6 +142,6 @@ public class AddTeamController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        addRanksToList();
+        addRanksToComboBox();
     }
 }
