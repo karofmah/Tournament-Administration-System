@@ -22,6 +22,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
+import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
+
 /**
  * Controller for handling events when tournament is selected
  */
@@ -154,8 +157,13 @@ public class SelectedTournamentController implements Initializable {
      */
     @FXML
     void saveTournament() {
+        try{
         for (Team team : selectedTournament.getTeams()) {
             tournamentDAO.addTournamentAndTeams(selectedTournament.getTournamentId(), team.getTeamName());
+        }
+            showInformationDialog("Changes in " + selectedTournament.getName() + " has been saved");
+        }catch(IllegalArgumentException e) {
+            showAlertDialog(e);
         }
     }
 
