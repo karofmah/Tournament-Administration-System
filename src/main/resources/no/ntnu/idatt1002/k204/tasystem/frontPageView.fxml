@@ -17,7 +17,7 @@
 
 <BorderPane styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.FrontPageController">
    <center>
-      <AnchorPane prefHeight="693.0" prefWidth="683.0" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
+      <AnchorPane maxWidth="1280.0" prefHeight="693.0" prefWidth="683.0" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="151.0" prefWidth="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
