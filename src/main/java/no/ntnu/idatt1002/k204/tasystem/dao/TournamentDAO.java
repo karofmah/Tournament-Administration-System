@@ -97,7 +97,7 @@ public class TournamentDAO {
         try {
             result = Database.getConnection().prepareStatement(sql).executeQuery();
             while (result.next()) {
-                Tournament tournament = new Tournament(result.getString("name"), result.getString("status"),result.getString("rankRequirement"),
+                Tournament tournament = new Tournament(result.getString("tournament_id"), result.getString("name"), result.getString("status"),result.getString("rankRequirement"),
                         result.getString("otherRequirement"),result.getString("start_date"), result.getString("start_time"));
                 register.addTournament(tournament);
             }
