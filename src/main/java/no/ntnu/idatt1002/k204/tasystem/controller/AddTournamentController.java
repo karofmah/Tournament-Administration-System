@@ -73,7 +73,7 @@ public class AddTournamentController implements Initializable {
      */
     @FXML
     void addTournamentBtnClicked() {
-        if(editTournament=true){
+        if(editTournament==true){
             editTournamentClicked();
         }
         else{
