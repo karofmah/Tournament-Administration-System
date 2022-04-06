@@ -203,7 +203,7 @@
                                           </Text>
                                        </children>
                                     </TextFlow>
-                                    <TextFlow accessibleRole="BUTTON" layoutX="539.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="202.0">
+                                    <TextFlow accessibleRole="BUTTON" layoutX="539.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="202.0">
                                        <opaqueInsets>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                        </opaqueInsets>

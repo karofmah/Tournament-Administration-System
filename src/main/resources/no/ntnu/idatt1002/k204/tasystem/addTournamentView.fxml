@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -133,36 +132,6 @@
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane prefHeight="48.0" prefWidth="676.0">
-                           <children>
-                              <Label layoutX="185.0" layoutY="9.0" styleClass="textlabels" text="Stage">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <ButtonBar layoutX="265.0" layoutY="4.0" prefHeight="40.0" prefWidth="617.0">
-                                <buttons>
-                                  <Button fx:id="groupKnockoutBtn" mnemonicParsing="false" onAction="#groupKnockoutBtnClicked" styleClass="buttons" text="Group + knockout (12 teams)">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="knockoutBtn" mnemonicParsing="false" onAction="#knockoutBtnClicked" prefHeight="35.0" styleClass="buttons" text="Knockout (8 teams)">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                </buttons>
-                              </ButtonBar>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="40.0" />
                      </VBox.margin>
                   </HBox>
                   <Button fx:id="AddTournamentBtn" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Add tournament">
