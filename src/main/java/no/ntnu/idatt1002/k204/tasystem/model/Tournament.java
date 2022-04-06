@@ -100,10 +100,7 @@ public class Tournament {
         this.status = status;
         this.date = LocalDate.parse(date);
         this.time = LocalTime.parse(time);
-
-        //countTournaments++;
-        //tournamentId = countTournaments;
-        tournamentId = Integer.parseInt(id);
+        this.tournamentId = Integer.parseInt(id);
     }
 
     public static void setCountTournaments(int countTournaments) {
