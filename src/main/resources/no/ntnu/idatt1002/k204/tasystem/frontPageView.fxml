@@ -76,7 +76,6 @@
                         <TableColumn fx:id="otherRequirementCol" maxWidth="300.0" minWidth="78.0" prefWidth="95.33331298828125" styleClass="table" text="Other requirement" />
                         <TableColumn fx:id="startDateCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start date" />
                         <TableColumn fx:id="startTimeCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start time" />
-                        <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" styleClass="table" text="Stage" />
                     </columns>
                      <VBox.margin>
                         <Insets />
