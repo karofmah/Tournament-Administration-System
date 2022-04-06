@@ -148,6 +148,7 @@ public class TournamentDAO {
         try {
             statement = Database.getConnection().prepareStatement(sql);
             statement.setInt(1, tournamentID);
+            statement.executeUpdate();
             statement = Database.getConnection().prepareStatement(sql1);
             statement.setInt(1, tournamentID);
             statement.executeUpdate();

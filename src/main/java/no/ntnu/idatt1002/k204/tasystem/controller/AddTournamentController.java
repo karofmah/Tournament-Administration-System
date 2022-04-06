@@ -94,6 +94,9 @@ public class AddTournamentController implements Initializable {
 
         rankRequirementComboBox.setItems(rankList);
     }
+
+
+
     /**
      * Navigate back to previous scene
      */
