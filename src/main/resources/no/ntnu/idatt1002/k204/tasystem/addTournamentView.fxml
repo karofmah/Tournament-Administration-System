@@ -139,25 +139,7 @@
                      <children>
                         <AnchorPane prefHeight="48.0" prefWidth="676.0">
                            <children>
-                              <Label layoutX="185.0" layoutY="9.0" styleClass="textlabels" text="Stage">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <ButtonBar layoutX="265.0" layoutY="4.0" prefHeight="40.0" prefWidth="617.0">
-                                <buttons>
-                                  <Button fx:id="groupKnockoutBtn" mnemonicParsing="false" onAction="#groupKnockoutBtnClicked" styleClass="buttons" text="Group + knockout (12 teams)">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="knockoutBtn" mnemonicParsing="false" onAction="#knockoutBtnClicked" prefHeight="35.0" styleClass="buttons" text="Knockout (8 teams)">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                </buttons>
-                              </ButtonBar>
+                              <ButtonBar layoutX="265.0" layoutY="4.0" prefHeight="40.0" prefWidth="617.0" />
                            </children>
                         </AnchorPane>
                      </children>

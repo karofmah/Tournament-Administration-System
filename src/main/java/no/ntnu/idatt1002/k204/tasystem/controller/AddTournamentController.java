@@ -120,23 +120,6 @@ public class AddTournamentController implements Initializable {
         }
     }
 
-    /**
-     * Toggle group + knockout option
-     */
-    @FXML
-    void groupKnockoutBtnClicked() {
-        //TODO
-        // ADD ME: Toggle group + knockout option (maybe use radio buttons here)
-    }
-
-    /**
-     * Toggle knockout option
-     */
-    @FXML
-    void knockoutBtnClicked() {
-        //TODO
-        // ADD ME: Toggle knockout option (maybe use radio buttons here)
-    }
 
     /**
      * Handle logout event.
