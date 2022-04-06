@@ -68,14 +68,15 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </AnchorPane>
-                  <TableView fx:id="tournamentsTableView" fixedCellSize="0.0" maxHeight="342.0" minHeight="150.0" prefHeight="342.0" prefWidth="683.0" styleClass="table" VBox.vgrow="NEVER">
+                  <TableView fx:id="tournamentsTableView" fixedCellSize="0.0" maxHeight="342.0" minHeight="150.0" prefHeight="332.0" prefWidth="764.0" styleClass="table" VBox.vgrow="NEVER">
                     <columns>
                       <TableColumn fx:id="tournamentNameCol" maxWidth="300.0" minWidth="150.0" prefWidth="-1.0" styleClass="table" text="Tournament name" />
                       <TableColumn fx:id="statusCol" maxWidth="300.0" minWidth="80.0" prefWidth="-1.0" styleClass="table" text="Status" />
-                        <TableColumn fx:id="requirementsCol" maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" styleClass="table" text="Requirements" />
-                        <TableColumn fx:id="dateCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Date" />
-                        <TableColumn fx:id="timeCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Time" />
-                        <TableColumn fx:id="s" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Stage" />
+                        <TableColumn fx:id="rankRequirementCol" maxWidth="300.0" minWidth="120.0" prefWidth="124.66665649414062" styleClass="table" text="Rank requirement" />
+                        <TableColumn fx:id="otherRequirementCol" maxWidth="300.0" minWidth="78.0" prefWidth="95.33331298828125" styleClass="table" text="Other requirement" />
+                        <TableColumn fx:id="startDateCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start date" />
+                        <TableColumn fx:id="startTimeCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start time" />
+                        <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" styleClass="table" text="Stage" />
                     </columns>
                      <VBox.margin>
                         <Insets />

@@ -65,6 +65,7 @@
                               </Button>
                               <Button fx:id="saveTournamentBtn" mnemonicParsing="false" onAction="#saveTournament" styleClass="buttons" text="Save" />
                               <Button fx:id="deleteTournamentBtn" mnemonicParsing="false" onAction="#deleteTournament" styleClass="buttons" text="Delete" />
+                              <Button fx:id="editTournamentBtn" mnemonicParsing="false" onAction="#editTournamentBtnClicked" styleClass="buttons" text="Edit" />
                            </children>
                         </VBox>
                      </children>

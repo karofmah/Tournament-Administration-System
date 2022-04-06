@@ -55,6 +55,9 @@ public class SelectedTournamentController implements Initializable {
     private Button teamsBtn;
 
     @FXML
+    private Button editTournamentBtn;
+
+    @FXML
     private TableView<Team> teamsTableView;
 
     @FXML
@@ -96,6 +99,21 @@ public class SelectedTournamentController implements Initializable {
         this.teamsTableView.setItems(this.teamObservableList);
     }
 
+    @FXML
+    void editTournamentBtnClicked() {
+        try {
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/AddTournamentView.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            AddTournamentController controller = loader.getController();
+            controller.initData(selectedTournament);
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Change to add eligible team scene and start adding teams
      */

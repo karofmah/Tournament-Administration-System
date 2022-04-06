@@ -22,7 +22,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="1052.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Add new tournament">
+                        <Label fx:id="addNewTournamentTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="1052.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Add new tournament">
                            <font>
                               <Font size="40.0" />
                            </font>
@@ -165,7 +165,7 @@
                         <Insets bottom="40.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button fx:id="AddTournamentBtn" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Add tournament">
+                  <Button fx:id="addTournamentBtn" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Add tournament">
                      <font>
                         <Font size="20.0" />
                      </font>

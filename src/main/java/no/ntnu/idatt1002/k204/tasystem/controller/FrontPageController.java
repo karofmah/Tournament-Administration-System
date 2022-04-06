@@ -31,10 +31,13 @@ public class FrontPageController implements Initializable {
     private Button addTournamentBtn;
 
     @FXML
-    private TableColumn<?, ?> dateCol;
+    private TableColumn<?, ?> startDateCol;
 
     @FXML
-    private TableColumn<?, ?> requirementsCol;
+    private TableColumn<?, ?> rankRequirementCol;
+
+    @FXML
+    private TableColumn <?, ?> otherRequirementCol;
 
     @FXML
     private TableColumn<?, ?> statusCol;
@@ -43,7 +46,7 @@ public class FrontPageController implements Initializable {
     private Button teamsBtn;
 
     @FXML
-    private TableColumn<?, ?> timeCol;
+    private TableColumn<?, ?> startTimeCol;
 
     @FXML
     private TableColumn<?, ?> tournamentNameCol;
@@ -65,9 +68,10 @@ public class FrontPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tournamentNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         this.statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
-        this.requirementsCol.setCellValueFactory(new PropertyValueFactory<>("rankRequirement"));
-        this.dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        this.timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+        this.rankRequirementCol.setCellValueFactory(new PropertyValueFactory<>("rankRequirement"));
+        this.otherRequirementCol.setCellValueFactory(new PropertyValueFactory<>("otherRequirement"));
+        this.startDateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        this.startTimeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
 
         this.tournamentRegister = new TournamentRegister();
         this.tournamentDAO = new TournamentDAO();
