@@ -79,7 +79,6 @@ public class AddTournamentController implements Initializable {
         else{
             try {
                 TournamentDAO tournamentDAO = new TournamentDAO();
-
                 if(rankRequirementComboBox.getValue()==null){
                     throw new IllegalArgumentException("Please choose the rank requirement of this tournament");
                 }
