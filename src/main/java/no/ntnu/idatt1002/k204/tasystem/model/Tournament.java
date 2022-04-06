@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Tournament {
     private static int countTournaments = 1;//keep track of count tournaments. Also used to update an id for a tournament.
     private static int selectedTournamentID;//keep track on the id of the selected tournament
-    private final int tournamentId;
+    private int tournamentId = 0;
     private String name;
     private String rankRequirement;
     private String otherRequirement;
@@ -93,16 +93,14 @@ public class Tournament {
      * @param date
      * @param time
      */
-    public Tournament(String name, String status, String rankRequirement,String otherRequirement, String date, String time) {
+    public Tournament(String id, String name, String status, String rankRequirement,String otherRequirement, String date, String time) {
         this.name = name;
         this.rankRequirement = rankRequirement;
         this.otherRequirement=otherRequirement;
         this.status = status;
         this.date = LocalDate.parse(date);
         this.time = LocalTime.parse(time);
-
-        countTournaments++;
-        tournamentId = countTournaments;
+        this.tournamentId = Integer.parseInt(id);
     }
 
     public static void setCountTournaments(int countTournaments) {
