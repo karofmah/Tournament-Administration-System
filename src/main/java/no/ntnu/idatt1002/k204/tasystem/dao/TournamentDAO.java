@@ -47,7 +47,7 @@ public class TournamentDAO {
             statement.setString(5,otherRequirement);
             statement.setString(6, date);
             statement.setString(7, time);
-            statement.  executeUpdate();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -220,5 +220,43 @@ public class TournamentDAO {
             Database.close(statement, result);
         }
         return tournamentName;
+    }
+
+    /**
+     * Method used to update a tournament in the database.
+     * @param id the selected tournament ID
+     * @param name the new name of the tournament
+     * @param rankRequirement the new rank requirement
+     * @param otherRequirement the new general requirement
+     * @param date the new date
+     * @param time the new time
+     */
+    public void updateTournament(int id, String name, String rankRequirement, String otherRequirement, String date, String time) {
+        String sql;
+        if (isTest) {
+            sql = "UPDATE TESTtournament SET name = ?, rankRequirement = ?, otherRequirement = ?, start_date = ?, start_time = ? WHERE tournament_id = ?";
+        } else {
+            sql = "UPDATE tournament SET name = ?, rankRequirement = ?, otherRequirement = ?, start_date = ?, start_time = ? WHERE tournament_id = ?";
+        }
+
+        PreparedStatement statement = null;
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, rankRequirement);
+            statement.setString(3, otherRequirement);
+            statement.setString(4, date);
+            statement.setString(5, time);
+            statement.setInt(6, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
