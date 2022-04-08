@@ -195,31 +195,34 @@ public class TournamentDAO {
     }
 
     /**
-     * Gets the name of a tournament from the database
+     * Gets a tournament from the database
      * @param tournamentID the ID of the tournament
-     * @return the name of the tournament
+     * @return the tournament object
      */
-    public String getTournamentNameByTournamentId(int tournamentID) {
-        String sql = "SELECT name from tournament WHERE tournament_id = ?";
+    public Tournament getTournamentById(int tournamentID) {
+        String sql = "SELECT * from tournament WHERE tournament_id = ?";
 
         PreparedStatement statement = null;
         ResultSet result = null;
 
-        String tournamentName = "";
+        Tournament tournament = null;
         try {
             statement = Database.getConnection().prepareStatement(sql);
             statement.setInt(1,tournamentID);
 
             result = statement.executeQuery();
             while (result.next()) {
-                tournamentName = result.getString("name");
+                tournament = new Tournament(result.getString("tournament_id"), result.getString("name"),
+                        result.getString("status"),result.getString("rankRequirement"),
+                        result.getString("otherRequirement"),result.getString("start_date"),
+                        result.getString("start_time"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             Database.close(statement, result);
         }
-        return tournamentName;
+        return tournament;
     }
 
     /**

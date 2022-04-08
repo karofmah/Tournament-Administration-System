@@ -83,7 +83,7 @@ public class SelectedTournamentController implements Initializable {
         this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
         this.teamsTableView.setItems(this.teamObservableList);
 
-        selectedText.setText(this.tournamentDAO.getTournamentNameByTournamentId(Tournament.getSelectedTournamentID()));
+        selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
 
     }
 

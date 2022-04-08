@@ -47,11 +47,10 @@ public class AddEligibleTeamsController implements Initializable {
     private TeamDAO teamDAO;
 
     private ObservableList<Team> teamObservableList;
+
     private Tournament selectedTournament;
+
     private TournamentDAO tournamentDAO;
-
-
-    //private TeamDAO teamDAO;
 
 
     @Override
