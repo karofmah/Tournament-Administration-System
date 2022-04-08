@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
@@ -21,6 +22,9 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class KnockoutStageController implements Initializable {
+
+    @FXML
+    private Label selectedText;
 
     @FXML
     private Text quarterFinalTeam1Txt;
@@ -149,6 +153,8 @@ public class KnockoutStageController implements Initializable {
         this.tournamentDAO = new TournamentDAO();
 
         this.teamRegister = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
+
+        selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
 
         ArrayList<Team> sortedList = new ArrayList<>(teamRegister.getTeams());
 

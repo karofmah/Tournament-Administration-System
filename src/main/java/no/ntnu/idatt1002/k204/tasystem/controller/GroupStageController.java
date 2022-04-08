@@ -36,6 +36,9 @@ public class GroupStageController implements Initializable {
     private Button startTournamentBtn;
 
     @FXML
+    private Label selectedText;
+
+    @FXML
     private Button finishGroupStageBtn;
 
     @FXML
@@ -104,7 +107,7 @@ public class GroupStageController implements Initializable {
         this.teams4 = FXCollections.observableArrayList();
         this.teams3 = FXCollections.observableArrayList();
 
-
+        selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
         for (Team t : this.teamRegister.getTeams()) {
             this.teams1.add(t);
             this.teams2.add(t);

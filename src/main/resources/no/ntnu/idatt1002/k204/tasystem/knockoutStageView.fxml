@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -23,26 +25,41 @@
          <children>
             <VBox alignment="CENTER" layoutX="230.0" prefHeight="534.0" prefWidth="989.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <AnchorPane prefHeight="128.0" prefWidth="821.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+                           <image>
+                              <Image url="@Images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0">
+                           <image>
+                              <Image url="@Images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Images/logo.png" />
-                                 </image>
-                              </ImageView>
+                              <Label fx:id="selectedText" styleClass="title" text="Tournament">
+                                 <font>
+                                    <Font size="40.0" />
+                                 </font>
+                              </Label>
                            </children>
-                        </AnchorPane>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </AnchorPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
                   <HBox alignment="CENTER">
                      <children>
                         <AnchorPane prefHeight="53.0" prefWidth="410.0">
                            <children>
-                              <Button fx:id="teamsBtn" layoutY="9.0" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" />
-                              <Button fx:id="groupStageBtn" layoutX="93.0" layoutY="9.0" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
-                              <Button fx:id="knockoutStageBtn" layoutX="243.0" layoutY="9.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" text="Knockout stage" />
+                              <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Teams" />
+                              <Button fx:id="groupStageBtn" layoutX="100.0" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
+                              <Button fx:id="knockoutStageBtn" layoutX="250.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage">
+                                 <styleClass>
+                                    <String fx:value="buttons" />
+                                    <String fx:value="buttonsActiveTab" />
+                                 </styleClass></Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -243,7 +260,7 @@
                                     <Line endX="210.5" endY="-79.49999237060547" layoutX="209.0" layoutY="150.0" startX="210.5" startY="119.33333587646484" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="362.0" prefWidth="797.3333333333334" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane layoutX="171.0" prefHeight="362.0" prefWidth="797.3333333333334" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <VBox layoutX="16.0" prefHeight="40.0" prefWidth="0.0">
                                        <children>
@@ -382,15 +399,15 @@
       </AnchorPane>
    </center>
    <top>
-      <Pane prefHeight="10.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="20.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <Pane prefHeight="534.0" prefWidth="39.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="534.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefHeight="200.0" prefWidth="1.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="20.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

@@ -42,7 +42,7 @@
                         <String fx:value="buttonsActiveTab" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="54.66666666666663">
+                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="587.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="1.0">
                      <font>
                         <Font size="20.0" />
                      </font>
