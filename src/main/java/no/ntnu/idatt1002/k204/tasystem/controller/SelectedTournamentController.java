@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -165,7 +166,11 @@ public class SelectedTournamentController implements Initializable {
     @FXML
     void knockoutStageBtnClicked() {
         try {
-            Application.changeScene("knockOutStageView.fxml");
+            if (teamRegister.getTeams().size() >= 8) {
+                Application.changeScene("knockOutStageView.fxml");
+            } else {
+                Dialogs.showInformationDialog("You need 8 teams to start the knockout stage.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,16 +1,18 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -117,28 +119,52 @@ public class KnockoutStageController implements Initializable {
     private Button finishTournamentBtn;
 
     @FXML
+    private Button saveBtn;
+
+    @FXML
     private Text tournamentWinnerTxt;
 
-    private Team quarterFinalist1 = new Team("Fnatic");
-    private Team quarterFinalist2 = new Team("Ninjas in Pyjamas");
-    private Team quarterFinalist3 = new Team("NAVI");
-    private Team quarterFinalist4 = new Team("G2");
-    private Team quarterFinalist5 = new Team("Team Liquid");
-    private Team quarterFinalist6 = new Team("Cloud9");
-    private Team quarterFinalist7 = new Team("Astralis");
-    private Team quarterFinalist8 = new Team("Faze");
+
+    private Team quarterFinalist1;
+    private Team quarterFinalist2;
+    private Team quarterFinalist3;
+    private Team quarterFinalist4;
+    private Team quarterFinalist5;
+    private Team quarterFinalist6;
+    private Team quarterFinalist7;
+    private Team quarterFinalist8;
     private Team semiFinalist1;
     private Team semiFinalist2;
     private Team semiFinalist3;
     private Team semiFinalist4;
     private Team finalist1;
     private Team finalist2;
-    private Team winner;
+    private Team tournamentWinner;
 
-    private ArrayList<Team> quarterFinalists = new ArrayList<>();
+    private Team quarterFinalWinner1;
+    private Team quarterFinalWinner2;
+    private Team quarterFinalWinner3;
+    private Team quarterFinalWinner4;
+    private Team semiFinalWinner1;
+    private Team semiFinalWinner2;
+
+    /**
+     * List of all teams participating in the knockout stage
+     * Each row represents a match, with two teams and the winner as columns
+     */
+    private Team[][] matches = {
+            {quarterFinalist1, quarterFinalist2, quarterFinalWinner1},
+            {quarterFinalist3, quarterFinalist4, quarterFinalWinner2},
+            {quarterFinalist5, quarterFinalist6, quarterFinalWinner3},
+            {quarterFinalist7, quarterFinalist8, quarterFinalWinner4},
+            {semiFinalist1, semiFinalist2, semiFinalWinner1},
+            {semiFinalist2, semiFinalist4, semiFinalWinner2},
+            {finalist1, finalist2, tournamentWinner},
+    };
 
     private TeamRegister teamRegister;
     private TournamentDAO tournamentDAO;
+    private Tournament tournament;
 
     /**
      * Initializes the knockout stage
@@ -153,41 +179,13 @@ public class KnockoutStageController implements Initializable {
         this.tournamentDAO = new TournamentDAO();
 
         this.teamRegister = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
+        this.tournament = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID());
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
 
-        ArrayList<Team> sortedList = new ArrayList<>(teamRegister.getTeams());
+        initializeMatches();
 
-        sortedList.sort(Comparator.comparing(Team::getPointsAsInt));
-
-
-        for (int i = sortedList.size()-1; i > sortedList.size()-9; i--) {
-            quarterFinalists.add(sortedList.get(i));
-        }
-
-        quarterFinalist1 = quarterFinalists.get(0);
-        quarterFinalist2 = quarterFinalists.get(1);
-        quarterFinalist3 = quarterFinalists.get(2);
-        quarterFinalist4 = quarterFinalists.get(3);
-        quarterFinalist5 = quarterFinalists.get(4);
-        quarterFinalist6 = quarterFinalists.get(5);
-        quarterFinalist7 = quarterFinalists.get(6);
-        quarterFinalist8 = quarterFinalists.get(7);
-
-
-
-        System.out.println(quarterFinalist1.getPoints());
-        System.out.println(quarterFinalist1.getTeamName());
-
-
-        setTextToTeamName(quarterFinalTeam1Txt, quarterFinalist1);
-        setTextToTeamName(quarterFinalTeam2Txt, quarterFinalist2);
-        setTextToTeamName(quarterFinalTeam3Txt, quarterFinalist3);
-        setTextToTeamName(quarterFinalTeam4Txt, quarterFinalist4);
-        setTextToTeamName(quarterFinalTeam5Txt, quarterFinalist5);
-        setTextToTeamName(quarterFinalTeam6Txt, quarterFinalist6);
-        setTextToTeamName(quarterFinalTeam7Txt, quarterFinalist7);
-        setTextToTeamName(quarterFinalTeam8Txt, quarterFinalist8);
+        initializeBrackets();
 
         quarterFinalTeam1Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist1,1));
         quarterFinalTeam2Btn.setOnAction((ActionEvent event) -> quarterFinalBtnClicked(quarterFinalist2,1));
@@ -207,6 +205,176 @@ public class KnockoutStageController implements Initializable {
         finalTeam2Btn.setOnAction((ActionEvent event) -> finalBtnClicked(finalist2));
     }
 
+
+    private void initializeBrackets() {
+        setTextToTeamName(quarterFinalTeam1Txt, quarterFinalist1);
+        setTextToTeamName(quarterFinalTeam2Txt, quarterFinalist2);
+        setTextToTeamName(quarterFinalTeam3Txt, quarterFinalist3);
+        setTextToTeamName(quarterFinalTeam4Txt, quarterFinalist4);
+        setTextToTeamName(quarterFinalTeam5Txt, quarterFinalist5);
+        setTextToTeamName(quarterFinalTeam6Txt, quarterFinalist6);
+        setTextToTeamName(quarterFinalTeam7Txt, quarterFinalist7);
+        setTextToTeamName(quarterFinalTeam8Txt, quarterFinalist8);
+        setTextToTeamName(semiFinalTeam1Txt, semiFinalist1);
+        setTextToTeamName(semiFinalTeam2Txt, semiFinalist2);
+        setTextToTeamName(semiFinalTeam3Txt, semiFinalist3);
+        setTextToTeamName(semiFinalTeam4Txt, semiFinalist4);
+        setTextToTeamName(finalTeam1Txt, finalist1);
+        setTextToTeamName(finalTeam2Txt, finalist2);
+        setTextToTeamName(winnerTeamTxt, tournamentWinner);
+
+        quarterFinalTeam1Btn.setSelected(quarterFinalTeam1Txt.getText().equals(semiFinalTeam1Txt.getText()) && !semiFinalTeam1Txt.getText().equals(""));
+        quarterFinalTeam2Btn.setSelected(quarterFinalTeam2Txt.getText().equals(semiFinalTeam1Txt.getText()) && !semiFinalTeam1Txt.getText().equals(""));
+        quarterFinalTeam3Btn.setSelected(quarterFinalTeam3Txt.getText().equals(semiFinalTeam2Txt.getText()) && !semiFinalTeam2Txt.getText().equals(""));
+        quarterFinalTeam4Btn.setSelected(quarterFinalTeam4Txt.getText().equals(semiFinalTeam2Txt.getText()) && !semiFinalTeam2Txt.getText().equals(""));
+        quarterFinalTeam5Btn.setSelected(quarterFinalTeam5Txt.getText().equals(semiFinalTeam3Txt.getText()) && !semiFinalTeam3Txt.getText().equals(""));
+        quarterFinalTeam6Btn.setSelected(quarterFinalTeam6Txt.getText().equals(semiFinalTeam3Txt.getText()) && !semiFinalTeam3Txt.getText().equals(""));
+        quarterFinalTeam7Btn.setSelected(quarterFinalTeam7Txt.getText().equals(semiFinalTeam4Txt.getText()) && !semiFinalTeam4Txt.getText().equals(""));
+        quarterFinalTeam8Btn.setSelected(quarterFinalTeam8Txt.getText().equals(semiFinalTeam4Txt.getText()) && !semiFinalTeam4Txt.getText().equals(""));
+
+        semiFinalTeam1Btn.setSelected(semiFinalTeam1Txt.getText().equals(finalTeam1Txt.getText()) && !finalTeam1Txt.getText().equals(""));
+        semiFinalTeam2Btn.setSelected(semiFinalTeam2Txt.getText().equals(finalTeam1Txt.getText()) && !finalTeam1Txt.getText().equals(""));
+        semiFinalTeam3Btn.setSelected(semiFinalTeam3Txt.getText().equals(finalTeam2Txt.getText()) && !finalTeam2Txt.getText().equals(""));
+        semiFinalTeam4Btn.setSelected(semiFinalTeam4Txt.getText().equals(finalTeam2Txt.getText()) && !finalTeam2Txt.getText().equals(""));
+
+        finalTeam1Btn.setSelected(finalTeam1Txt.getText().equals(winnerTeamTxt.getText()) && !winnerTeamTxt.getText().equals(""));
+        finalTeam2Btn.setSelected(finalTeam2Txt.getText().equals(winnerTeamTxt.getText()) && !winnerTeamTxt.getText().equals(""));
+
+        if (matches[4][2] == null) {
+            quarterFinalTeam1Btn.setDisable(false);
+            quarterFinalTeam2Btn.setDisable(false);
+            quarterFinalTeam3Btn.setDisable(false);
+            quarterFinalTeam4Btn.setDisable(false);
+        }
+        if (matches[5][2] == null) {
+            quarterFinalTeam5Btn.setDisable(false);
+            quarterFinalTeam6Btn.setDisable(false);
+            quarterFinalTeam7Btn.setDisable(false);
+            quarterFinalTeam8Btn.setDisable(false);
+        }
+        if (matches[6][2] == null) {
+            if (matches[0][2] != null && matches[1][2] != null) {
+                semiFinalTeam1Btn.setDisable(false);
+                semiFinalTeam2Btn.setDisable(false);
+            }
+            if (matches[2][2] != null && matches[3][2] != null) {
+                semiFinalTeam3Btn.setDisable(false);
+                semiFinalTeam4Btn.setDisable(false);
+            }
+        }
+        if (matches[4][2] != null && matches[5][2] != null && !tournament.getStatus().equals("Finished")) {
+                finalTeam1Btn.setDisable(false);
+                finalTeam2Btn.setDisable(false);
+            }
+
+        if (tournament.getStatus().equals("Finished")) {
+            tournamentWinnerTxt.setVisible(true);
+            finishTournamentBtn.setDisable(true);
+            saveBtn.setDisable(true);
+        }
+
+        if ((finalTeam1Btn.isSelected() || finalTeam2Btn.isSelected()) && !tournament.getStatus().equals("Finished")) {
+            finishTournamentBtn.setDisable(false);
+        }
+    }
+
+    private void initializeMatches() {
+
+        tournamentDAO.getKnockoutMatches(Tournament.getSelectedTournamentID(), matches);
+
+        if (matches[0][1] == null){
+            ArrayList<Team> sortedList = new ArrayList<>(teamRegister.getTeams());
+
+            sortedList.sort(Comparator.comparing(Team::getPointsAsInt));
+
+            ArrayList<Team> quarterFinalists = new ArrayList<>();
+
+            for (int i = sortedList.size()-1; quarterFinalists.size() < 8; i--) {
+                if (!sortedList.isEmpty()) {
+                    quarterFinalists.add(sortedList.get(i));
+                } else {
+                    quarterFinalists.add(null);
+                }
+            }
+
+            quarterFinalist1 = quarterFinalists.get(0);
+            quarterFinalist2 = quarterFinalists.get(1);
+            quarterFinalist3 = quarterFinalists.get(2);
+            quarterFinalist4 = quarterFinalists.get(3);
+            quarterFinalist5 = quarterFinalists.get(4);
+            quarterFinalist6 = quarterFinalists.get(5);
+            quarterFinalist7 = quarterFinalists.get(6);
+            quarterFinalist8 = quarterFinalists.get(7);
+
+            //saveBtnClicked();
+        } else {
+            quarterFinalist1 = matches[0][0];
+            quarterFinalist2 = matches[0][1];
+            quarterFinalist3 = matches[1][0];
+            quarterFinalist4 = matches[1][1];
+            quarterFinalist5 = matches[2][0];
+            quarterFinalist6 = matches[2][1];
+            quarterFinalist7 = matches[3][0];
+            quarterFinalist8 = matches[3][1];
+        }
+
+
+        // Sets all participating teams to local variables, from the list/database.
+
+        semiFinalist1 = matches[4][0];
+        semiFinalist2 = matches[4][1];
+        semiFinalist3 = matches[5][0];
+        semiFinalist4 = matches[5][1];
+
+        finalist1 = matches[6][0];
+        finalist2 = matches[6][1];
+
+        quarterFinalWinner1 = matches[0][2];
+        quarterFinalWinner2 = matches[1][2];
+        quarterFinalWinner3 = matches[2][2];
+        quarterFinalWinner4 = matches[3][2];
+        semiFinalWinner1 = matches[4][2];
+        semiFinalWinner2 = matches[5][2];
+        tournamentWinner = matches[6][2];
+
+
+
+    }
+
+
+    @FXML
+    void saveBtnClicked() {
+        matches[0][0] = quarterFinalist1;
+        matches[0][1] = quarterFinalist2;
+        matches[1][0] = quarterFinalist3;
+        matches[1][1] = quarterFinalist4;
+        matches[2][0] = quarterFinalist5;
+        matches[2][1] = quarterFinalist6;
+        matches[3][0] = quarterFinalist7;
+        matches[3][1] = quarterFinalist8;
+
+        matches[4][0] = semiFinalist1;
+        matches[4][1] = semiFinalist2;
+        matches[5][0] = semiFinalist3;
+        matches[5][1] = semiFinalist4;
+
+        matches[6][0] = finalist1;
+        matches[6][1] = finalist2;
+
+        matches[0][2] = quarterFinalWinner1;
+        matches[1][2] = quarterFinalWinner2;
+        matches[2][2] = quarterFinalWinner3;
+        matches[3][2] = quarterFinalWinner4;
+        matches[4][2] = semiFinalWinner1;
+        matches[5][2] = semiFinalWinner2;
+        matches[6][2] = tournamentWinner;
+
+        tournamentDAO.updateKnockoutMatches(Tournament.getSelectedTournamentID(), matches);
+
+        Dialogs.showInformationDialog("The knockout stage has been saved!");
+    }
+
+
     /**
      * Decides what happens when either of the quarter-final buttons are clicked
      * @param quarterFinalWinner the winner of the quarter-final
@@ -217,18 +385,22 @@ public class KnockoutStageController implements Initializable {
             case 1:
                 semiFinalist1 = quarterFinalWinner;
                 setTextToTeamName(semiFinalTeam1Txt, quarterFinalWinner);
+                quarterFinalWinner1 = quarterFinalWinner;
                 break;
             case 2:
                 semiFinalist2 = quarterFinalWinner;
                 setTextToTeamName(semiFinalTeam2Txt, quarterFinalWinner);
+                quarterFinalWinner2 = quarterFinalWinner;
                 break;
             case 3:
                 semiFinalist3 = quarterFinalWinner;
                 setTextToTeamName(semiFinalTeam3Txt, quarterFinalWinner);
+                quarterFinalWinner3 = quarterFinalWinner;
                 break;
             case 4:
                 semiFinalist4 = quarterFinalWinner;
                 setTextToTeamName(semiFinalTeam4Txt, quarterFinalWinner);
+                quarterFinalWinner4 = quarterFinalWinner;
                 break;
         }
 
@@ -255,6 +427,7 @@ public class KnockoutStageController implements Initializable {
             quarterFinalTeam2Btn.setDisable(true);
             quarterFinalTeam3Btn.setDisable(true);
             quarterFinalTeam4Btn.setDisable(true);
+            semiFinalWinner1 = semiFinalWinner;
         } else {
             finalist2 = semiFinalWinner;
             setTextToTeamName(finalTeam2Txt, finalist2);
@@ -262,6 +435,7 @@ public class KnockoutStageController implements Initializable {
             quarterFinalTeam6Btn.setDisable(true);
             quarterFinalTeam7Btn.setDisable(true);
             quarterFinalTeam8Btn.setDisable(true);
+            semiFinalWinner2 = semiFinalWinner;
         }
 
         if (finalist1 != null && finalist2 != null) {
@@ -276,8 +450,8 @@ public class KnockoutStageController implements Initializable {
      * @param finalWinner the winner of the final
      */
     public void finalBtnClicked(Team finalWinner) {
-        winner = finalWinner;
-        setTextToTeamName(winnerTeamTxt, winner);
+        tournamentWinner = finalWinner;
+        setTextToTeamName(winnerTeamTxt, tournamentWinner);
         semiFinalTeam1Btn.setDisable(true);
         semiFinalTeam2Btn.setDisable(true);
         semiFinalTeam3Btn.setDisable(true);
@@ -291,7 +465,7 @@ public class KnockoutStageController implements Initializable {
      * @param team the team to be displayed
      */
     private void setTextToTeamName(Text text, Team team) {
-        text.setText(team.getTeamName());
+        if (team != null) text.setText(team.getTeamName());
     }
 
     @FXML
@@ -312,6 +486,13 @@ public class KnockoutStageController implements Initializable {
         finalTeam1Btn.setDisable(true);
         finalTeam2Btn.setDisable(true);
         finishTournamentBtn.setDisable(true);
+        saveBtn.setDisable(true);
+
+
+        tournament.setStatus("Finished");
+        tournamentDAO.updateTournamentStatus(tournament.getTournamentId(), tournament.getStatus());
+
+        saveBtnClicked();
     }
 
     /**
@@ -356,7 +537,13 @@ public class KnockoutStageController implements Initializable {
     @FXML
     void teamsBtnClicked() {
         try {
-            Application.changeScene("selectedTournamentView.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            SelectedTournamentController controller = loader.getController();
+            controller.initData(tournament);
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
         } catch (IOException e) {
             e.printStackTrace();
         }

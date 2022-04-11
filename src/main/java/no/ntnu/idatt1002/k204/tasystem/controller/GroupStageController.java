@@ -3,13 +3,17 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ChoiceBoxTreeTableCell;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
+import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.controller.utils.GroupStageUtils;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -150,8 +154,11 @@ public class GroupStageController implements Initializable {
     @FXML
     void knockoutStageBtnClicked() {
         try {
-            Application.changeScene("knockOutStageView.fxml");
-
+            if (teamRegister.getTeams().size() >= 8) {
+                Application.changeScene("knockOutStageView.fxml");
+            } else {
+                Dialogs.showInformationDialog("You need 8 teams to start the knockout stage.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -187,7 +194,13 @@ public class GroupStageController implements Initializable {
     @FXML
     void teamsBtnClicked() {
         try {
-            Application.changeScene("selectedTournamentView.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            SelectedTournamentController controller = loader.getController();
+            controller.initData(tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()));
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
         } catch (IOException e) {
             e.printStackTrace();
         }

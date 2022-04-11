@@ -218,6 +218,16 @@ public class Tournament {
         this.winner = winner;
     }
 
+
+    /**
+     * Sets the status of the tournament
+     *
+     * @param status the new status
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public boolean addTeam(Team team) {
         if (!teams.contains(team)) {
             return teams.add(team);

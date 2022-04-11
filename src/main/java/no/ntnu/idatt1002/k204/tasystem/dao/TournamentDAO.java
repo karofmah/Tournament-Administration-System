@@ -8,6 +8,8 @@ import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.ArrayList;
 
 /**
  * Data access object for tournament
@@ -252,6 +254,123 @@ public class TournamentDAO {
             statement.setString(5, time);
             statement.setInt(6, id);
             statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void updateTournamentStatus(int tournamentId, String status) {
+        String sql;
+        if (isTest) {
+            sql = "UPDATE TESTtournament SET name = ?, rankRequirement = ?, otherRequirement = ?, start_date = ?, start_time = ? WHERE tournament_id = ?";
+        } else {
+            sql = "UPDATE tournament SET status = ? WHERE tournament_id = ?";
+        }
+
+        PreparedStatement statement = null;
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setString(1, status);
+            statement.setInt(2, tournamentId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void getKnockoutMatches(int tournamentID, Team[][] matches) {
+        String sql = "SELECT * from knockout_match WHERE tournament_id = ?";
+
+        PreparedStatement statement = null;
+        ResultSet result = null;
+
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setInt(1,tournamentID);
+
+            result = statement.executeQuery();
+
+            int i = 0;
+            while (result.next()) {
+                Team team1 = null;
+                Team team2 = null;
+                Team winner = null;
+
+                if (!result.getString("team1").equals("")) {
+                    team1 = new Team(result.getString("team1"));
+                }
+
+                if (!result.getString("team2").equals("")) {
+                    team2 = new Team(result.getString("team2"));
+                }
+
+                if (!result.getString("winner").equals("")) {
+                    winner = new Team(result.getString("winner"));
+                }
+
+                matches[i] = (new Team[]{team1, team2, winner});
+
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Database.close(statement, result);
+        }
+    }
+
+    public void updateKnockoutMatches(int tournamentID, Team[][] matches){
+        String sql1 = "DELETE FROM knockout_match WHERE tournament_id = ?";
+        String sql2 = "INSERT INTO knockout_match VALUES(?, ?, ?, ?, ?)";
+
+        PreparedStatement statement = null;
+        try {
+            statement = Database.getConnection().prepareStatement(sql1);
+            statement.setInt(1, tournamentID);
+            statement.executeUpdate();
+
+            for (int i = 0; i < matches.length; i++) {
+
+                statement = Database.getConnection().prepareStatement(sql2);
+                statement.setInt(1, tournamentID);
+                statement.setInt(2, i+1);
+
+                if (matches[i][0] == null) {
+                    //statement.setNull(2, Types.VARCHAR);
+                    statement.setString(3, "");
+                } else {
+                    statement.setString(3, matches[i][0].getTeamName());
+                }
+
+                if (matches[i][1] == null) {
+                    //statement.setNull(3, Types.VARCHAR);
+                    statement.setString(4, "");
+                } else {
+                    statement.setString(4, matches[i][1].getTeamName());
+                }
+
+                if (matches[i][2] == null) {
+                    //statement.setNull(4, Types.VARCHAR);
+                    statement.setString(5, "");
+                } else {
+                    statement.setString(5, matches[i][2].getTeamName());
+                }
+
+                statement.executeUpdate();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

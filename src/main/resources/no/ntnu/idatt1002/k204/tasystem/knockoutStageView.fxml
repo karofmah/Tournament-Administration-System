@@ -264,7 +264,7 @@
                                  <children>
                                     <VBox layoutX="16.0" prefHeight="40.0" prefWidth="0.0">
                                        <children>
-                                          <RadioButton fx:id="quarterFinalTeam1Btn" mnemonicParsing="false" prefWidth="16.0">
+                                          <RadioButton fx:id="quarterFinalTeam1Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -275,12 +275,12 @@
                                                 <ToggleGroup fx:id="quarterFinalGroup1" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton fx:id="quarterFinalTeam2Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup1" />
+                                          <RadioButton fx:id="quarterFinalTeam2Btn" disable="true" mnemonicParsing="false" toggleGroup="$quarterFinalGroup1" />
                                        </children>
                                     </VBox>
                                     <VBox layoutX="16.0" layoutY="100.0" prefHeight="40.0" prefWidth="0.0">
                                        <children>
-                                          <RadioButton fx:id="quarterFinalTeam3Btn" mnemonicParsing="false" prefWidth="16.0">
+                                          <RadioButton fx:id="quarterFinalTeam3Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -291,12 +291,12 @@
                                                 <ToggleGroup fx:id="quarterFinalGroup2" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton fx:id="quarterFinalTeam4Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup2" />
+                                          <RadioButton fx:id="quarterFinalTeam4Btn" disable="true" mnemonicParsing="false" toggleGroup="$quarterFinalGroup2" />
                                        </children>
                                     </VBox>
                                     <VBox layoutX="16.0" layoutY="200.0" prefHeight="40.0" prefWidth="0.0">
                                        <children>
-                                          <RadioButton fx:id="quarterFinalTeam5Btn" mnemonicParsing="false" prefWidth="16.0">
+                                          <RadioButton fx:id="quarterFinalTeam5Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -307,12 +307,12 @@
                                                 <ToggleGroup fx:id="quarterFinalGroup3" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton fx:id="quarterFinalTeam6Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup3" />
+                                          <RadioButton fx:id="quarterFinalTeam6Btn" disable="true" mnemonicParsing="false" toggleGroup="$quarterFinalGroup3" />
                                        </children>
                                     </VBox>
                                     <VBox layoutX="16.0" layoutY="300.0" prefHeight="40.0" prefWidth="0.0">
                                        <children>
-                                          <RadioButton fx:id="quarterFinalTeam7Btn" mnemonicParsing="false" prefWidth="16.0">
+                                          <RadioButton fx:id="quarterFinalTeam7Btn" disable="true" mnemonicParsing="false" prefWidth="16.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -323,7 +323,7 @@
                                                 <ToggleGroup fx:id="quarterFinalGroup4" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton fx:id="quarterFinalTeam8Btn" mnemonicParsing="false" toggleGroup="$quarterFinalGroup4" />
+                                          <RadioButton fx:id="quarterFinalTeam8Btn" disable="true" mnemonicParsing="false" toggleGroup="$quarterFinalGroup4" />
                                        </children>
                                     </VBox>
                                     <VBox layoutX="231.0" layoutY="49.0" prefHeight="40.0" prefWidth="17.0">
@@ -386,6 +386,7 @@
                            <children>
                               <Button fx:id="backBtn" layoutY="4.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" />
                               <Button fx:id="finishTournamentBtn" disable="true" layoutX="408.0" layoutY="2.0" mnemonicParsing="false" onAction="#finishTournamentBtnClicked" styleClass="buttons" text="Finish tournament" />
+                              <Button fx:id="saveBtn" layoutX="215.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnClicked" styleClass="buttons" text="Save" />
                            </children>
                         </AnchorPane>
                      </children>
