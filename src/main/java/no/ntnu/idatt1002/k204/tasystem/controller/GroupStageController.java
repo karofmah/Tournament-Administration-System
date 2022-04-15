@@ -95,10 +95,7 @@ public class GroupStageController implements Initializable {
     private TournamentDAO tournamentDAO;
     private TeamRegister teamRegister;
     private ObservableList<String> teamNames;
-    ObservableList<Team> teams1;
-    ObservableList<Team> teams2;
-    ObservableList<Team> teams4;
-    ObservableList<Team> teams3;
+    ObservableList<Team> teamObservableList;
 
 
     @Override
@@ -106,17 +103,11 @@ public class GroupStageController implements Initializable {
         this.tournamentDAO = new TournamentDAO();
         this.teamRegister = this.tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
         this.teamNames = FXCollections.observableArrayList();
-        this.teams1 = FXCollections.observableArrayList();
-        this.teams2 = FXCollections.observableArrayList();
-        this.teams4 = FXCollections.observableArrayList();
-        this.teams3 = FXCollections.observableArrayList();
+        this.teamObservableList = FXCollections.observableArrayList();
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
-        for (Team t : this.teamRegister.getTeams()) {
-            this.teams1.add(t);
-            this.teams2.add(t);
-            this.teams3.add(t);
-            this.teams4.add(t);
+        for (Team team : this.teamRegister.getTeams()) {
+            this.teamObservableList.add(team);
         }
 
         initializeRowsWithDefaultText();
@@ -169,10 +160,12 @@ public class GroupStageController implements Initializable {
      */
     @FXML
     void generateBtnClicked() {
-        GroupStageUtils.randomize(this.teams1, this.table1root);
-        GroupStageUtils.randomize(this.teams2, this.table2root);
-        GroupStageUtils.randomize(this.teams3, this.table3root);
-        GroupStageUtils.randomize(this.teams4, this.table4root);
+        GroupStageUtils groupStageUtils = new GroupStageUtils(this.teamRegister);
+
+        groupStageUtils.randomize(this.table1root);
+        groupStageUtils.randomize(this.table2root);
+        groupStageUtils.randomize(this.table3root);
+        groupStageUtils.randomize(this.table4root);
     }
 
     /**

@@ -4,10 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
+import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 
 import java.util.ArrayList;
 
 public class GroupStageUtils {
+
+    private TeamRegister teamRegister;
+    private ObservableList<Team> teamsObservableList;
+
+
+    public GroupStageUtils(TeamRegister teamRegister) {
+        this.teamRegister = teamRegister;
+        this.teamsObservableList = FXCollections.observableArrayList(teamRegister.getTeams());
+    }
 
     /**
      * Initialize tree items with default text.
@@ -29,19 +39,31 @@ public class GroupStageUtils {
     /**
      * Randomize teams inside a tree tableview
      *
-     * @param teams observable list containing teams
      * @param root  tree item root node
      */
-    public static void randomize(ObservableList<Team> teams, TreeItem<Team> root) {
-        FXCollections.shuffle(teams);
+    public void randomize(TreeItem<Team> root) {
+        FXCollections.shuffle(this.teamsObservableList);
 
-        ArrayList<TreeItem<Team>> teamItem = new ArrayList();
-        for (int i = 0; i < 3; i++) {//3 teams per group
-            Team team = new Team(teams.get(i));
-            TreeItem<Team> team1 = new TreeItem<>(team);
-            teamItem.add(team1);
+        ArrayList<TreeItem<Team>> teamItems = new ArrayList();
+
+        //This loop is for filling last tree item root.
+        // Otherwise index out of bounds error
+        if (this.teamsObservableList.size() == 3) {
+            for (Team t : this.teamsObservableList) {
+                Team team = new Team(t);
+                TreeItem<Team> teamItem = new TreeItem<>(team);
+                teamItems.add(teamItem);
+                root.getChildren().setAll(teamItems);
+            }
+            return;
         }
 
-        root.getChildren().setAll(teamItem);
+        for (int i = 0; i <= 2; i++) {//3 teams per group
+            Team team = new Team(this.teamsObservableList.get(i));
+            TreeItem<Team> team1 = new TreeItem<>(team);
+            teamItems.add(team1);
+            this.teamsObservableList.remove(this.teamRegister.getTeamByName(team.getTeamName()));
+        }
+        root.getChildren().setAll(teamItems);
     }
 }
