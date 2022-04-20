@@ -194,6 +194,8 @@ public class SelectedTournamentController implements Initializable {
     @FXML
     void deleteTournament() {
         tournamentDAO.deleteTournament(selectedTournament.getTournamentId());
+        Dialogs.showInformationDialog(selectedTournament.getName() + " has been deleted");
+
         try {
             Application.changeScene("frontPageView.fxml");
         } catch (IOException e) {
@@ -201,12 +203,4 @@ public class SelectedTournamentController implements Initializable {
         }
     }
 
-    @FXML
-    void logOutBtnClicked() {
-        try {
-            Application.logout();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

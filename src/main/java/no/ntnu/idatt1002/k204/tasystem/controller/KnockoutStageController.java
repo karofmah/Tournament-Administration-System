@@ -382,15 +382,4 @@ public class KnockoutStageController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    void logOutBtnClicked() {
-        try {
-            Application.logout();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
-
-
