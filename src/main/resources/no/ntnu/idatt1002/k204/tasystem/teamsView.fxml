@@ -38,7 +38,7 @@
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor>
                   </Button>
-                  <Button fx:id="logOutBtn" layoutX="533.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="55.00000000000004">
+                  <Button fx:id="logOutBtn" layoutX="587.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>

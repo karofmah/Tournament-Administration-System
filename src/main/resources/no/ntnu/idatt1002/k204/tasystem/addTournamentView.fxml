@@ -156,11 +156,6 @@
                      <children>
                         <AnchorPane prefHeight="99.0" prefWidth="354.0">
                            <children>
-                              <Button fx:id="logoutBtn" layoutX="252.0" layoutY="9.0" mnemonicParsing="false" onAction="#logoutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
                               <Button fx:id="backBtn" layoutX="8.0" layoutY="9.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" AnchorPane.leftAnchor="0.0">
                                  <font>
                                     <Font size="20.0" />
