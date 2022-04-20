@@ -7,16 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
-import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
-import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
@@ -69,8 +66,24 @@ public class AddTeamController implements Initializable {
     @FXML
     private ComboBox p5RankComboBox;
 
-    @FXML
-    private Label txtAddedTeam;
+    private TeamDAO teamDAO;
+
+    private TeamRegister teamRegister;
+
+    private TextField[] names;
+
+    private ComboBox[] ranks;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.teamDAO = new TeamDAO();
+        teamRegister = teamDAO.getTeams();
+
+        names = new TextField[]{p1NameTextfield, p2NameTextfield, p3NameTextfield, p4NameTextfield, p5NameTextfield};
+        ranks = new ComboBox[]{p1RankComboBox, p2RankComboBox, p3RankComboBox, p4RankComboBox, p5RankComboBox};
+
+        addRanksToComboBox();
+    }
 
     /**
      * Handle add team events
@@ -81,18 +94,25 @@ public class AddTeamController implements Initializable {
     void addTeamBtnClicked() throws IOException {
 
         try {
-            TeamDAO teamDAO = new TeamDAO();
-
             ArrayList<Player> players = new ArrayList<>();
-            players.add(new Player(p1NameTextfield.getText(), p1RankComboBox.getValue().toString()));
-            players.add(new Player(p2NameTextfield.getText(), p2RankComboBox.getValue().toString()));
-            players.add(new Player(p3NameTextfield.getText(), p3RankComboBox.getValue().toString()));
-            players.add(new Player(p4NameTextfield.getText(), p4RankComboBox.getValue().toString()));
-            players.add(new Player(p5NameTextfield.getText(), p5RankComboBox.getValue().toString()));
 
-            Team team1 = new Team(players, nameTextField.getText());
+            for (int i = 0; i < 5; i++) {
+                if (ranks[i].getValue() != null) {
+                    players.add(new Player(names[i].getText(), ranks[i].getValue().toString()));
+                } else {
+                    throw new IllegalArgumentException("Please select a rank for each player");
+                }
+            }
 
-            teamDAO.addTeam(team1.getPlayers(), team1.getTeamName());
+            for (Team team : teamRegister.getTeams()) {
+                if (team.getTeamName().equals(nameTextField.getText())) {
+                    throw new IllegalArgumentException("The team name already exists");
+                }
+            }
+
+            Team team = new Team(players, nameTextField.getText());
+
+            teamDAO.addTeam(team.getPlayers(), team.getTeamName());
 
             showInformationDialog(nameTextField.getText() + " has been added to the system!");
 
@@ -117,11 +137,9 @@ public class AddTeamController implements Initializable {
     private void addRanksToComboBox() {
         ObservableList<String> rankList=FXCollections.observableArrayList("Unranked","Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
 
-        p1RankComboBox.setItems(rankList);
-        p2RankComboBox.setItems(rankList);
-        p3RankComboBox.setItems(rankList);
-        p4RankComboBox.setItems(rankList);
-        p5RankComboBox.setItems(rankList);
+        for (ComboBox comboBox : ranks) {
+            comboBox.setItems(rankList);
+        }
 
     }
 
@@ -140,8 +158,4 @@ public class AddTeamController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        addRanksToComboBox();
-    }
 }

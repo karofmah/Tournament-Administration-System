@@ -16,6 +16,18 @@ public class Dialogs {
     }
 
     /**
+     * Displays an alert dialog
+     * @param text the text to be displayed
+     */
+    public static void showAlertDialog(String text) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Tournament Administration System");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
+    /**
      * Displays an error message for when an exception occurs
      * @param e the exception that is thrown
      */

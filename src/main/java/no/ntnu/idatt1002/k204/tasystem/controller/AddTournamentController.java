@@ -55,9 +55,6 @@ public class AddTournamentController implements Initializable {
     private TextField timeTextField;
 
     @FXML
-    private Label txtAddedTournament;
-
-    @FXML
     private ComboBox rankRequirementComboBox = new ComboBox();
 
     private boolean editTournament = false;
