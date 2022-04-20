@@ -1,5 +1,6 @@
 package no.ntnu.idatt1002.k204.tasystem.dao;
 
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -143,15 +144,19 @@ public class TournamentDAO {
     }
 
     public void deleteTournament(int tournamentID){
-        String sql = "DELETE FROM tournament_team WHERE tournament_id = ?";
-        String sql1 = "DELETE FROM tournament WHERE tournament_id = ?";
+        String sql1 = "DELETE FROM tournament_team WHERE tournament_id = ?";
+        String sql2 = "DELETE FROM tournament WHERE tournament_id = ?";
+        String sql3 = "DELETE FROM knockout_match WHERE tournament_id = ?";
 
         PreparedStatement statement = null;
         try {
-            statement = Database.getConnection().prepareStatement(sql);
+            statement = Database.getConnection().prepareStatement(sql1);
             statement.setInt(1, tournamentID);
             statement.executeUpdate();
-            statement = Database.getConnection().prepareStatement(sql1);
+            statement = Database.getConnection().prepareStatement(sql2);
+            statement.setInt(1, tournamentID);
+            statement.executeUpdate();
+            statement = Database.getConnection().prepareStatement(sql3);
             statement.setInt(1, tournamentID);
             statement.executeUpdate();
         } catch (SQLException e) {
