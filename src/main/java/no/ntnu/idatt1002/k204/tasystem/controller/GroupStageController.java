@@ -12,6 +12,7 @@ import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.controller.utils.GroupStageUtils;
+import no.ntnu.idatt1002.k204.tasystem.dao.GroupDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
 import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
@@ -84,7 +85,6 @@ public class GroupStageController implements Initializable {
     @FXML
     private TreeTableView<Team> tableView4;
 
-
     @FXML
     private Button teamsBtn;
 
@@ -93,14 +93,16 @@ public class GroupStageController implements Initializable {
     private final TreeItem<Team> table3root = new TreeItem<>();
     private final TreeItem<Team> table4root = new TreeItem<>();
     private TournamentDAO tournamentDAO;
+    private GroupDAO groupDAO;
     private TeamRegister teamRegister;
     private ObservableList<String> teamNames;
     ObservableList<Team> teamObservableList;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tournamentDAO = new TournamentDAO();
+        this.groupDAO = new GroupDAO();
+
         this.teamRegister = this.tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
         this.teamNames = FXCollections.observableArrayList();
         this.teamObservableList = FXCollections.observableArrayList();
@@ -168,6 +170,19 @@ public class GroupStageController implements Initializable {
         groupStageUtils.randomize(this.table4root);
     }
 
+    @FXML
+    void saveBtnClicked() {
+        //TODO Fix
+        // - duplicate primary key error
+        // - Add points to teams after edit and save points
+        // - save all teams in a group
+
+        this.groupDAO.addGroup("Group A", Tournament.getSelectedTournamentID());
+
+        this.groupDAO.addTeamToGroup("Group A", this.tableView1.getTreeItem(0).getValue().getTeamName());
+
+    }
+
     /**
      * Start tournament
      */
@@ -178,11 +193,6 @@ public class GroupStageController implements Initializable {
         generateGroupsBtn.setDisable(true);
     }
 
-    @FXML
-    void finishGroupStageBtnClicked() {
-
-
-    }
 
     @FXML
     void teamsBtnClicked() {
