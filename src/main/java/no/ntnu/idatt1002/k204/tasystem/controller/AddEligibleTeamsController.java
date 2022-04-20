@@ -37,9 +37,6 @@ public class AddEligibleTeamsController implements Initializable {
     private TableColumn<?, ?> lowRankCol;
 
     @FXML
-    private TableColumn<?, ?> playersCol;
-
-    @FXML
     private TableView<Team> teamsTableView;
 
     private TeamRegister teamRegister;
@@ -56,7 +53,7 @@ public class AddEligibleTeamsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
-       // this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("Lowest Rank"));
+        this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("lowestRank"));
         this.tournamentDAO = new TournamentDAO();
         this.teamRegister = new TeamRegister();
         this.teamDAO = new TeamDAO();
@@ -101,7 +98,6 @@ public class AddEligibleTeamsController implements Initializable {
      */
     public void initData(Tournament tournament){
         selectedTournament = tournament;
-        System.out.println(selectedTournament);
 
     }
     @FXML
@@ -118,13 +114,4 @@ public class AddEligibleTeamsController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    void logOutBtnClicked() {
-        try {
-            Application.logout();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
