@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -27,7 +26,7 @@
                               <Font size="40.0" />
                            </font>
                            <HBox.margin>
-                              <Insets bottom="30.0" />
+                              <Insets bottom="50.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -35,122 +34,93 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="765.0">
+                  <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <AnchorPane maxWidth="200.0" prefHeight="41.0" prefWidth="200.0">
-                           <children>
-                              <Label layoutY="6.0" styleClass="textlabels" text="Name">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nameTextField" layoutX="69.0" layoutY="1.0" prefHeight="39.0" prefWidth="256.0" styleClass="inputFields">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                           </children>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameTextField" prefWidth="260.0" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
-                        </AnchorPane>
+                        </TextField>
                      </children>
                      <padding>
                         <Insets bottom="10.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <AnchorPane prefHeight="45.0" prefWidth="565.0">
-                           <children>
-                              <Label layoutY="16.0" prefHeight="30.0" prefWidth="209.0" styleClass="textlabels" text="Rank Requirement">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="rankRequirementComboBox" layoutX="189.0" layoutY="9.0" prefHeight="35.0" prefWidth="258.0" promptText="Choose rank" styleClass="inputFields" />
-                           </children>
-                        </AnchorPane>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Rank Requirement">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="rankRequirementComboBox" prefWidth="260.0" promptText="Choose rank" styleClass="inputFields" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <AnchorPane prefHeight="49.0" prefWidth="570.0">
-                           <children>
-                              <TextField fx:id="otherRequirementsTextfield" layoutX="192.0" layoutY="4.0" prefHeight="39.0" prefWidth="259.0" styleClass="inputFields">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <Label layoutY="9.0" styleClass="textlabels" text="Other requirement">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Other requirement">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="otherRequirementsTextfield" prefWidth="260.0" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <AnchorPane prefHeight="39.0" prefWidth="367.0">
-                           <children>
-                              <Label layoutX="31.0" layoutY="5.0" styleClass="textlabels" text="Date">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="datePicker" layoutX="95.0" layoutY="4.0" prefHeight="35.0" prefWidth="255.0" styleClass="inputFields" />
-                           </children>
-                        </AnchorPane>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Start date">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="datePicker" prefWidth="260.0" styleClass="inputFields" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <AnchorPane prefHeight="49.0" prefWidth="450.0">
-                           <children>
-                              <TextField fx:id="timeTextField" layoutX="135.0" layoutY="5.0" prefHeight="39.0" prefWidth="250.0" styleClass="inputFields">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <Label layoutX="-25.0" layoutY="10.0" prefHeight="30.0" prefWidth="159.0" styleClass="textlabels" text="Time (HH:mm)">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Start time (HH:MM)">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="timeTextField" prefWidth="260.0" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <AnchorPane prefHeight="48.0" prefWidth="676.0">
-                           <children>
-                              <ButtonBar layoutX="265.0" layoutY="4.0" prefHeight="40.0" prefWidth="617.0" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="40.0" />
                      </VBox.margin>
                   </HBox>
                   <Button fx:id="addTournamentBtn" mnemonicParsing="false" onAction="#addTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Add tournament">
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
                   </Button>
                   <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                      <children>
@@ -161,11 +131,6 @@
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="txtAddedTournament" layoutX="-1.0" layoutY="64.0" prefHeight="46.0" prefWidth="460.0" AnchorPane.leftAnchor="-1.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
                            </children>
                            <HBox.margin>
                               <Insets top="30.0" />
