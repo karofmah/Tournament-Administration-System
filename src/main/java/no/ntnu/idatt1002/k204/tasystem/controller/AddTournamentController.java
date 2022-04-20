@@ -76,7 +76,7 @@ public class AddTournamentController implements Initializable {
         otherRequirementsTextfield.setText(tournament.getOtherRequirement());
         datePicker.setValue(tournament.getDate());
         timeTextField.setText(tournament.getTime().toString());
-        addTournamentBtn.setText("Save");
+        addTournamentBtn.setText("Save changes");
     }
 
     /**

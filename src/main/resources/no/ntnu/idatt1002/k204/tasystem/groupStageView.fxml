@@ -54,14 +54,14 @@
                      <children>
                         <AnchorPane>
                            <children>
-                            <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Teams" />
-                              <Button fx:id="groupStageBtn" layoutX="100.0" mnemonicParsing="false" stylesheets="@../../../../../stylesheet/mycss.css" text="Group stage">
+                            <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Tournament overview" />
+                              <Button fx:id="groupStageBtn" layoutX="229.0" mnemonicParsing="false" stylesheets="@../../../../../stylesheet/mycss.css" text="Group stage">
                                  <styleClass>
                                     <String fx:value="buttons" />
                                     <String fx:value="buttonsActiveTab" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="knockoutStageBtn" layoutX="250.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Knockout stage" />
+                              <Button fx:id="knockoutStageBtn" layoutX="374.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Knockout stage" />
                            </children>
                         </AnchorPane>
                      </children>

@@ -46,16 +46,16 @@
                   </AnchorPane>
                   <HBox alignment="CENTER" prefHeight="43.0" prefWidth="840.0">
                      <children>
-                        <AnchorPane prefHeight="43.0" prefWidth="378.0">
+                        <AnchorPane prefHeight="43.0">
                            <children>
-                            <Button fx:id="teamsBtn" mnemonicParsing="false" text="Teams">
+                            <Button fx:id="teamsBtn" mnemonicParsing="false" text="Tournament overview">
                                  <styleClass>
                                     <String fx:value="buttons" />
                                     <String fx:value="buttonsActiveTab" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="groupStageBtn" layoutX="100.0" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
-                              <Button fx:id="knockoutStageBtn" layoutX="250.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" text="Knockout stage" />
+                              <Button fx:id="groupStageBtn" layoutX="229.0" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
+                              <Button fx:id="knockoutStageBtn" layoutX="374.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" styleClass="buttons" text="Knockout stage" />
                            </children>
                         </AnchorPane>
                      </children>
