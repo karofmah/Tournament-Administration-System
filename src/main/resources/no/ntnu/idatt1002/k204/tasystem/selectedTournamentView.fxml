@@ -67,8 +67,7 @@
                      <children>
                         <TableView fx:id="teamsTableView" fixedCellSize="0.0" maxWidth="500.0" prefHeight="358.0" prefWidth="590.0" styleClass="table">
                           <columns>
-                            <TableColumn fx:id="teamNameCol" maxWidth="500.0" prefWidth="254.0" styleClass="table" text="Team name" />
-                            <TableColumn fx:id="countPlayersCol" maxWidth="150.0" minWidth="0.0" prefWidth="334.0000203450521" styleClass="table" text="Players" />
+                            <TableColumn fx:id="teamNameCol" maxWidth="500.0" prefWidth="254.0" styleClass="table" text="Teams in tournament" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -79,14 +78,17 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                            <children>
-                              <Button fx:id="addEligibleTeamBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addEligibleTeamBtnClicked" styleClass="buttons" text="Add eligible team">
+                              <Button fx:id="addEligibleTeamBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addEligibleTeamBtnClicked" prefWidth="183.0" styleClass="buttons" text="Add eligible team">
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets bottom="40.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="saveTournamentBtn" mnemonicParsing="false" onAction="#saveTournament" styleClass="buttons" text="Save" />
-                              <Button fx:id="deleteTournamentBtn" mnemonicParsing="false" onAction="#deleteTournament" styleClass="buttons" text="Delete" />
-                              <Button fx:id="editTournamentBtn" mnemonicParsing="false" onAction="#editTournamentBtnClicked" styleClass="buttons" text="Edit" />
+                              <Button fx:id="saveTournamentBtn" mnemonicParsing="false" onAction="#saveTournament" prefWidth="183.0" styleClass="buttons" text="Save">
+                                 <VBox.margin>
+                                    <Insets left="1.0" right="1.0" />
+                                 </VBox.margin></Button>
+                              <Button fx:id="editTournamentBtn" mnemonicParsing="false" onAction="#editTournamentBtnClicked" prefWidth="183.0" styleClass="buttons" text="Edit" />
+                              <Button fx:id="deleteTournamentBtn" mnemonicParsing="false" onAction="#deleteTournament" prefWidth="183.0" styleClass="buttons" text="Delete" />
                            </children>
                         </VBox>
                      </children>
