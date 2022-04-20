@@ -115,7 +115,7 @@ public class AddTeamController implements Initializable {
     }
 
     private void addRanksToComboBox() {
-        ObservableList<String> rankList=FXCollections.observableArrayList("Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
+        ObservableList<String> rankList=FXCollections.observableArrayList("Unranked","Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
 
         p1RankComboBox.setItems(rankList);
         p2RankComboBox.setItems(rankList);
