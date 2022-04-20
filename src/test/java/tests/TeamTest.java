@@ -37,6 +37,14 @@ public class TeamTest {
             team.setTeamName("Team Liquid");
             assertEquals("Team Liquid", team.getTeamName());
         }
+
+        @Test
+        @DisplayName("Get lowest Rank")
+            public void getLowestRank(){
+            team.addPlayer(new Player("Kåre", "Challenger"));
+            team.addPlayer(new Player("Geir", "Unranked"));
+            team.setLowestRank();
+        }
     }
     @Nested
     public class inputIsNotSupported {

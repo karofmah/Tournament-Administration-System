@@ -3,6 +3,7 @@ package no.ntnu.idatt1002.k204.tasystem.model;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -11,8 +12,10 @@ import java.util.Objects;
 public class Team {
     private ArrayList<Player> players = new ArrayList<>();
     private SimpleStringProperty teamName; //Have to use string property because of combobox and events
+    private String lowestRank = "Challenger";
     private SimpleStringProperty points;
     private Team team;
+
 
     /**
      * Team-Constructors, the second one only has @param teamName
@@ -29,6 +32,7 @@ public class Team {
         if(teamName.isBlank()){
             throw new IllegalArgumentException("Team name can not be blank");
         }
+        setLowestRank();
     }
 
     public Team(String teamName){
@@ -37,6 +41,7 @@ public class Team {
             throw new IllegalArgumentException("Team name can not be blank");
         }
         this.points = new SimpleStringProperty();
+        setLowestRank();
     }
 
     /**
@@ -50,6 +55,7 @@ public class Team {
             throw new IllegalArgumentException("Team name can not be blank");
         }
         this.points = new SimpleStringProperty(teamPoints);
+        setLowestRank();
     }
 
     /**
@@ -77,12 +83,13 @@ public class Team {
         newPlayers.add(new Player(p5name,p5rank));
 
         this.players = newPlayers;
-
+        setLowestRank();
     }
 
     public Team (Team team) {
         this.teamName = new SimpleStringProperty(team.getTeamName());
         this.team = team;
+        setLowestRank();
     }
 
     public Team getTeam() {
@@ -95,6 +102,23 @@ public class Team {
 
     public SimpleStringProperty teamNameProperty() {
         return teamName;
+    }
+
+    public String getLowestRank() {
+        return lowestRank;
+    }
+
+    public void setLowestRank(){
+        String[] ranks = {"Unranked", "Iron", "Bronze", "Silver","Gold", "Platinum","Diamond","Master","Grandmaster","Challenger" };
+        int lowestRankIndex = 9;
+        for (Player player:getPlayers()) {
+            for (int i = ranks.length-1; i >= 0; i--) {
+                if(player.getRank().equals(ranks[i])&&i<lowestRankIndex){
+                    lowestRankIndex= i;
+                }
+            }
+        }
+        this.lowestRank=ranks[lowestRankIndex];
     }
 
     public void setTeamName(String teamName) {

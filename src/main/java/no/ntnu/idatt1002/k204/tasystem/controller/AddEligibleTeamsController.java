@@ -14,12 +14,14 @@ import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
@@ -35,9 +37,6 @@ public class AddEligibleTeamsController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> lowRankCol;
-
-    @FXML
-    private TableColumn<?, ?> playersCol;
 
     @FXML
     private TableView<Team> teamsTableView;
@@ -56,17 +55,28 @@ public class AddEligibleTeamsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.teamNameCol.setCellValueFactory(new PropertyValueFactory<>("teamName"));
-       // this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("Lowest Rank"));
+        this.lowRankCol.setCellValueFactory(new PropertyValueFactory<>("lowestRank"));
         this.tournamentDAO = new TournamentDAO();
         this.teamRegister = new TeamRegister();
         this.teamDAO = new TeamDAO();
-
         this.teamDAO.getTeam(this.teamRegister);
-        this.teamObservableList = FXCollections.observableArrayList(this.teamRegister.getTeams());
-        this.teamsTableView.setItems(this.teamObservableList);
-        handleTeamSelection();
-    }
 
+        ArrayList<Team> eligibleTeams = new ArrayList<>();
+        String[] ranks = {"Unranked", "Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster", "Challenger"};
+        ArrayList<String> ranksArraylist = new ArrayList();
+        for (String rank:ranks) {
+            ranksArraylist.add(rank);
+        }
+        for (Team team : teamRegister.getTeams()) {
+                if(ranksArraylist.indexOf(team.getLowestRank()) >= ranksArraylist.indexOf(tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getRankRequirement())){
+                    eligibleTeams.add(team);
+                }
+            }
+
+            this.teamObservableList = FXCollections.observableArrayList(eligibleTeams);
+            this.teamsTableView.setItems(this.teamObservableList);
+            handleTeamSelection();
+    }
     private void handleTeamSelection() {
         try{
         teamsTableView.setRowFactory(table -> {
@@ -78,9 +88,7 @@ public class AddEligibleTeamsController implements Initializable {
                     row.setOnMouseEntered(mouseEvent1 -> {//Listen when mouse is hovered over a row
                         teamsTableView.setCursor(Cursor.HAND);//Change courser
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
-                            System.out.println(selectedTournament);
                             selectedTournament.addTeam(team);
-                            System.out.println(selectedTournament.getTeams());
                             showInformationDialog(team.getTeamName() + " has been added to " + selectedTournament.getName());
                         });
                     });
@@ -101,7 +109,6 @@ public class AddEligibleTeamsController implements Initializable {
      */
     public void initData(Tournament tournament){
         selectedTournament = tournament;
-        System.out.println(selectedTournament);
 
     }
     @FXML
@@ -118,13 +125,4 @@ public class AddEligibleTeamsController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    void logOutBtnClicked() {
-        try {
-            Application.logout();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

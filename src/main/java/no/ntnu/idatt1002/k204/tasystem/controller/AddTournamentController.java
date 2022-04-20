@@ -83,7 +83,7 @@ public class AddTournamentController implements Initializable {
      * Adds all possible ranks to the combo box.
      */
     private void addRanksToComboBox(){
-        ObservableList<String> rankList= FXCollections.observableArrayList("Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
+        ObservableList<String> rankList= FXCollections.observableArrayList("Unranked","Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
         rankRequirementComboBox.setItems(rankList);
     }
 
