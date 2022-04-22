@@ -60,6 +60,9 @@ public class SelectedTournamentController implements Initializable {
     private Button editTournamentBtn;
 
     @FXML
+    private Button startTournamentButton;
+
+    @FXML
     private TableView<Team> teamsTableView;
 
     @FXML
@@ -86,6 +89,17 @@ public class SelectedTournamentController implements Initializable {
         this.teamsTableView.setItems(this.teamObservableList);
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
+        String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
+        knockoutStageBtn.setDisable(true);
+        groupStageBtn.setDisable(true);
+        if(tournamentStatus.equals("Groupstage") || tournamentStatus.equals("Knockoutstage") || tournamentStatus.equals("Finished")){
+            startTournamentButton.setDisable(true);
+            editTournamentBtn.setDisable(true);
+            saveTournamentBtn.setDisable(true);
+            addEligibleTeamBtn.setDisable(true);
+            knockoutStageBtn.setDisable(false);
+            groupStageBtn.setDisable(false);
+        }
 
     }
 
@@ -135,6 +149,31 @@ public class SelectedTournamentController implements Initializable {
         }
     }
 
+    @FXML
+    void startTournamentButtonClicked(){
+        try{
+            int numberOfTeams = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams().size();
+            if(numberOfTeams>=8 && numberOfTeams<=12) {
+                editTournamentBtn.setDisable(true);
+                saveTournamentBtn.setDisable(true);
+                addEligibleTeamBtn.setDisable(true);
+                if (numberOfTeams > 8 && numberOfTeams <= 12) {
+                    Application.changeScene("groupStageView.fxml");
+                    tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Groupstage");
+                } else if (numberOfTeams == 8) {
+                    Application.changeScene("knockOutStageView.fxml");
+                    tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Knockoutstage");
+                }
+            }
+            else {
+                Dialogs.showInformationDialog("Number of teams has to be between 8 and 12. Currently: " + numberOfTeams);
+            }
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Navigate back to previous scene

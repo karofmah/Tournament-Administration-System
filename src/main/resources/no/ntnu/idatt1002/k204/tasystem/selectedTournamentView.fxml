@@ -101,6 +101,7 @@
                         <AnchorPane prefHeight="53.0" prefWidth="526.0">
                            <children>
                               <Button fx:id="backBtn" layoutX="7.0" layoutY="5.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" />
+                              <Button fx:id="startTournamentButton" layoutX="152.0" layoutY="5.0" mnemonicParsing="false" onAction="#startTournamentButtonClicked" styleClass="buttons" text="START TOURNAMENT" />
                            </children>
                         </AnchorPane>
                      </children>
