@@ -37,30 +37,30 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="2.0" layoutY="169.0" styleClass="textlabels" text="Player 3" />
-                        <TextField fx:id="p3NameTextfield" layoutX="112.0" layoutY="165.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                        <Label layoutX="2.0" layoutY="167.0" styleClass="textlabels" text="Player 3" />
+                        <TextField fx:id="p3NameTextfield" layoutX="112.0" layoutY="163.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="2.0" layoutY="225.0" styleClass="textlabels" text="Player 4" />
-                        <TextField fx:id="p4NameTextfield" layoutX="112.0" layoutY="221.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                        <Label layoutX="2.0" layoutY="216.0" styleClass="textlabels" text="Player 4" />
+                        <TextField fx:id="p4NameTextfield" layoutX="112.0" layoutY="212.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="2.0" layoutY="277.0" styleClass="textlabels" text="Player 5" />
-                        <TextField fx:id="p5NameTextfield" layoutX="112.0" layoutY="273.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                        <Label layoutX="2.0" layoutY="266.0" styleClass="textlabels" text="Player 5" />
+                        <TextField fx:id="p5NameTextfield" layoutX="112.0" layoutY="262.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
                         <Button fx:id="AddTeamBtn" layoutX="175.0" layoutY="362.0" mnemonicParsing="false" onAction="#addTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Add team" />
                         <ComboBox fx:id="p1RankComboBox" layoutX="327.0" layoutY="65.0" prefHeight="26.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
-                        <ComboBox fx:id="p4RankComboBox" layoutX="327.0" layoutY="221.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
-                        <ComboBox fx:id="p3RankComboBox" layoutX="327.0" layoutY="165.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p4RankComboBox" layoutX="327.0" layoutY="212.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p3RankComboBox" layoutX="327.0" layoutY="163.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
                         <ComboBox fx:id="p2RankComboBox" layoutX="327.0" layoutY="114.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
-                        <ComboBox fx:id="p5RankComboBox" layoutX="327.0" layoutY="273.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p5RankComboBox" layoutX="327.0" layoutY="262.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
                      </children>
                   </AnchorPane>
                </children>
