@@ -51,6 +51,8 @@ public class AddEligibleTeamsController implements Initializable {
 
     private TournamentDAO tournamentDAO;
 
+    private ArrayList<Team> eligibleTeams;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,20 +63,20 @@ public class AddEligibleTeamsController implements Initializable {
         this.teamDAO = new TeamDAO();
         this.teamDAO.getTeam(this.teamRegister);
 
-        ArrayList<Team> eligibleTeams = new ArrayList<>();
+        eligibleTeams = new ArrayList<>();
         String[] ranks = {"Unranked", "Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster", "Challenger"};
         ArrayList<String> ranksArraylist = new ArrayList();
         for (String rank:ranks) {
             ranksArraylist.add(rank);
         }
         for (Team team : teamRegister.getTeams()) {
-                if(ranksArraylist.indexOf(team.getLowestRank()) >= ranksArraylist.indexOf(tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getRankRequirement())){
+            if (tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams().stream().noneMatch(p -> p.getTeamName().equals(team.getTeamName()))) {
+                if (ranksArraylist.indexOf(team.getLowestRank()) >= ranksArraylist.indexOf(tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getRankRequirement())) {
                     eligibleTeams.add(team);
                 }
             }
-
-            this.teamObservableList = FXCollections.observableArrayList(eligibleTeams);
-            this.teamsTableView.setItems(this.teamObservableList);
+        }
+        updateTable();
             handleTeamSelection();
     }
     private void handleTeamSelection() {
@@ -90,6 +92,9 @@ public class AddEligibleTeamsController implements Initializable {
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
                             selectedTournament.addTeam(team);
                             showInformationDialog(team.getTeamName() + " has been added to " + selectedTournament.getName());
+                            eligibleTeams.remove(team);
+                            updateTable();
+
                         });
                     });
                 } else {
@@ -124,5 +129,9 @@ public class AddEligibleTeamsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void updateTable(){
+        this.teamObservableList = FXCollections.observableArrayList(eligibleTeams);
+        this.teamsTableView.setItems(this.teamObservableList);
     }
 }
