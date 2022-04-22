@@ -25,7 +25,7 @@
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="playersTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="600.0" styleClass="table" stylesheets="@../../../../../stylesheet/mycss.css">
+                        <TableView fx:id="playersTableView" fixedCellSize="40.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="600.0" styleClass="table" stylesheets="@../../../../../stylesheet/mycss.css">
                           <columns>
                             <TableColumn fx:id="playerNameCol" prefWidth="356.00001525878906" styleClass="table" text="Player name" />
                             <TableColumn fx:id="playerRankCol" prefWidth="332.6666564941406" styleClass="table" text="Rank" />
@@ -34,13 +34,14 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets bottom="50.0" top="100.0" />
                            </VBox.margin>
                         </TableView>
                         <AnchorPane>
                            <children>
-                              <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Back" />
-                              <Button fx:id="deleteTeamBtn" layoutX="465.0" layoutY="2.0" mnemonicParsing="false" onAction="#deleteTeam" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Delete Team" />
+                              <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Back" />
+                              <Button fx:id="deleteTeamBtn" layoutX="465.0" mnemonicParsing="false" onAction="#deleteTeamBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Delete Team" />
+                              <Button fx:id="editTeamBtn" layoutX="337.0" mnemonicParsing="false" onAction="#editTeamBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Edit Team" />
                            </children>
                         </AnchorPane>
                      </children>

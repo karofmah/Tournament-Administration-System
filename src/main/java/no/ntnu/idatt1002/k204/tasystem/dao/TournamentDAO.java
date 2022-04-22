@@ -62,6 +62,11 @@ public class TournamentDAO {
         }
     }
 
+    /**
+     * Retrieves the maximum tournament id from the database
+     * Used for making sure all tournaments have unique id's
+     * @return the highest id in the database
+     */
     private int getMaxTournamentID () {
         String sql = "SELECT MAX(tournament_id) AS MaxID FROM tournament";
 
@@ -80,9 +85,8 @@ public class TournamentDAO {
     }
 
     /**
-     * Get tournament from database
-     *
-     * @param register the register
+     * Fills a tournament-register with tournaments from the database
+     * @param register the register to be filled
      */
     public void getTournament(TournamentRegister register) {
         //Reset count tournaments since we update each time new tournament is added.
@@ -117,10 +121,8 @@ public class TournamentDAO {
 
     /**
      * Add tournament with participating teams to database
-     *
-     *
-     * @param tournamentID
-     * @param teamName
+     * @param tournamentID the id of the tournament
+     * @param teamName the name of the team
      */
     public void addTournamentAndTeams(int tournamentID, String teamName){
         String sql = "INSERT INTO tournament_team VALUES(? , ?, ?)";
@@ -143,6 +145,10 @@ public class TournamentDAO {
         }
     }
 
+    /**
+     * Deletes a tournament from the database
+     * @param tournamentID the id of the tournament to be deleted
+     */
     public void deleteTournament(int tournamentID){
         String sql1 = "DELETE FROM tournament_team WHERE tournament_id = ?";
         String sql2 = "DELETE FROM tournament WHERE tournament_id = ?";
@@ -173,8 +179,8 @@ public class TournamentDAO {
     /**
      * Get teams that are currently participating in a tournament given the tournament id from database
      *
-     * @param tournamentID
-     * @return
+     * @param tournamentID the id of the tournament
+     * @return a team-register with the teams
      */
     public TeamRegister getTeamsGivenTournamentId(int tournamentID) {
         String sql = "SELECT * from tournament_team WHERE tournament_id = ?";
@@ -270,6 +276,11 @@ public class TournamentDAO {
         }
     }
 
+    /**
+     * Updates the status of a tournament
+     * @param tournamentId the id of the tournament
+     * @param status the new status (for example "Finished" or "Group stage")
+     */
     public void updateTournamentStatus(int tournamentId, String status) {
         String sql;
         if (isTest) {
@@ -295,6 +306,11 @@ public class TournamentDAO {
         }
     }
 
+    /**
+     * Gets all knockout stage matches from the database
+     * @param tournamentID the id of the tournament
+     * @param matches a list containing all the matches
+     */
     public void getKnockoutMatches(int tournamentID, Team[][] matches) {
         String sql = "SELECT * from knockout_match WHERE tournament_id = ?";
 
@@ -336,6 +352,11 @@ public class TournamentDAO {
         }
     }
 
+    /**
+     * Updates all the knockout stage matches in the database
+     * @param tournamentID the id of the tournament
+     * @param matches a list containing all the matches
+     */
     public void updateKnockoutMatches(int tournamentID, Team[][] matches){
         String sql1 = "DELETE FROM knockout_match WHERE tournament_id = ?";
         String sql2 = "INSERT INTO knockout_match VALUES(?, ?, ?, ?, ?)";
@@ -353,21 +374,18 @@ public class TournamentDAO {
                 statement.setInt(2, i+1);
 
                 if (matches[i][0] == null) {
-                    //statement.setNull(2, Types.VARCHAR);
                     statement.setString(3, "");
                 } else {
                     statement.setString(3, matches[i][0].getTeamName());
                 }
 
                 if (matches[i][1] == null) {
-                    //statement.setNull(3, Types.VARCHAR);
                     statement.setString(4, "");
                 } else {
                     statement.setString(4, matches[i][1].getTeamName());
                 }
 
                 if (matches[i][2] == null) {
-                    //statement.setNull(4, Types.VARCHAR);
                     statement.setString(5, "");
                 } else {
                     statement.setString(5, matches[i][2].getTeamName());

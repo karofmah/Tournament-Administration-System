@@ -57,50 +57,16 @@ public class AddTournamentController implements Initializable {
     @FXML
     private ComboBox rankRequirementComboBox = new ComboBox();
 
-    private boolean editTournament = false;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addRanksToComboBox();
     }
 
     /**
-     * Initializes the page with data from the selected tournament when an "edit tournament" button was pressed.
-     * @param tournament the selected tournament
-     */
-    public void initData(Tournament tournament){
-        editTournament = true;
-        addNewTournamentTitle.setText("Edit " + tournament.getName());
-        nameTextField.setText(tournament.getName());
-        rankRequirementComboBox.setValue(tournament.getRankRequirement());
-        otherRequirementsTextfield.setText(tournament.getOtherRequirement());
-        datePicker.setValue(tournament.getDate());
-        timeTextField.setText(tournament.getTime().toString());
-        addTournamentBtn.setText("Save changes");
-    }
-
-    /**
-     * Adds all possible ranks to the combo box.
-     */
-    private void addRanksToComboBox(){
-        ObservableList<String> rankList= FXCollections.observableArrayList("Unranked","Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
-        rankRequirementComboBox.setItems(rankList);
-    }
-
-    /**
      * Handles add tournament events, and adds them to the database via TournamentDAO.
-     * If an "edit tournament" button was clicked, the method will instead just update the selected tournament.
      */
     @FXML
-    void addTournamentBtnClicked() {
-        if (editTournament) editTournament();
-        else addTournament();
-    }
-
-    /**
-     * Method used to add new tournaments.
-     */
-    private void addTournament() {
+    private void addTournamentBtnClicked() {
         try {
             TournamentDAO tournamentDAO = new TournamentDAO();
 
@@ -130,23 +96,11 @@ public class AddTournamentController implements Initializable {
     }
 
     /**
-     * Method used to edit existing tournaments by updating the database.
+     * Adds all possible ranks to the combo box.
      */
-    @FXML
-    private void editTournament(){
-        try {
-            TournamentDAO tournamentDAO = new TournamentDAO();
-
-            tournamentDAO.updateTournament(Tournament.getSelectedTournamentID(), nameTextField.getText(),
-                    rankRequirementComboBox.getValue().toString(), otherRequirementsTextfield.getText(),
-                    String.valueOf(datePicker.getValue()), timeTextField.getText());
-
-            showInformationDialog(nameTextField.getText()+ " has been updated.");
-
-            backBtnClicked();
-        } catch (IllegalArgumentException e) {
-            showAlertDialog(e);
-        }
+    private void addRanksToComboBox(){
+        ObservableList<String> rankList= FXCollections.observableArrayList("Unranked","Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
+        rankRequirementComboBox.setItems(rankList);
     }
 
     /**
@@ -156,20 +110,6 @@ public class AddTournamentController implements Initializable {
     void backBtnClicked() {
         try {
             Application.changeScene("frontPageView.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Handle logout event.
-     *
-     * Logout and send back to log in screen
-     */
-    @FXML
-    void logoutBtnClicked() {
-        try {
-            Application.logout();
         } catch (IOException e) {
             e.printStackTrace();
         }

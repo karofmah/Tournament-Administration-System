@@ -57,9 +57,8 @@ public class TeamDAO {
     }
 
     /**
-     * Get team from database
-     *
-     * @param register team register
+     * Fills a team-register with teams from the database
+     * @param register the team register to be filled
      */
     public void getTeam(TeamRegister register) {
         String sql;
@@ -93,40 +92,9 @@ public class TeamDAO {
     }
 
     /**
-     * Gets teams.
-     *
-     * @return team register of teams
+     * Method used to delete a team from the database
+     * @param teamName the name of the team to be deleted
      */
-    public TeamRegister getTeams() {
-        Team team;
-        TeamRegister teamRegister = new TeamRegister();
-        String sql;
-        ResultSet result = null;
-
-        if (isTest) {
-            sql = "SELECT name FROM teamTEST";
-        } else {
-            sql = "SELECT name FROM team";
-        }
-
-        try {
-            result = Database.getConnection().prepareStatement(sql).executeQuery();
-            while (result.next()) {
-                team = new Team(result.getString("name"));
-                teamRegister.addTeam(team);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                result.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return teamRegister;
-    }
-
     public void deleteTeam(String teamName) {
         String sql = "DELETE FROM tournament_team WHERE teamName = ?";
         String sql1 = "DELETE FROM team WHERE name = ?";
@@ -166,6 +134,48 @@ public class TeamDAO {
             statement.setString(1, teamName);
             statement.setString(2, gamerTag);
             statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Method used to update a team in the database.
+     * @param teamName the name of the team
+     * @param players the list of players
+     */
+    public void updateTeam(String teamName, ArrayList<Player> players) {
+        String sql1;
+        if (isTest) {
+            sql1 = "UPDATE TESTteam SET  p1name = ?, p2name = ?, p3name = ?, p4name = ?, p5name = ?, " +
+                    "p1rank = ?, p2rank = ?, p3rank = ?, p4rank = ?, p5rank = ?  WHERE name = ?";
+        } else {
+            sql1 = "UPDATE team SET  p1name = ?, p2name = ?, p3name = ?, p4name = ?, p5name = ?," +
+                    "p1rank = ?, p2rank = ?, p3rank = ?, p4rank = ?, p5rank = ?  WHERE name = ?";
+        }
+
+        PreparedStatement statement = null;
+        try {
+            statement = Database.getConnection().prepareStatement(sql1);
+            statement.setString(1, players.get(0).getGamertag());
+            statement.setString(2, players.get(1).getGamertag());
+            statement.setString(3, players.get(2).getGamertag());
+            statement.setString(4, players.get(3).getGamertag());
+            statement.setString(5, players.get(4).getGamertag());
+            statement.setString(6, players.get(0).getRank());
+            statement.setString(7, players.get(1).getRank());
+            statement.setString(8, players.get(2).getRank());
+            statement.setString(9, players.get(3).getRank());
+            statement.setString(10, players.get(4).getRank());
+            statement.setString(11, teamName);
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

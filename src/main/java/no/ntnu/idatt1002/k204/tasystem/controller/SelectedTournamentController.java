@@ -128,10 +128,10 @@ public class SelectedTournamentController implements Initializable {
     @FXML
     void editTournamentBtnClicked() {
         try {
-            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/AddTournamentView.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/EditTournamentView.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent FrontPageParent = loader.load();
-            AddTournamentController controller = loader.getController();
+            EditTournamentController controller = loader.getController();
             controller.initData(selectedTournament);
             Stage stage = Application.stage;
             stage.getScene().setRoot(FrontPageParent);
@@ -250,5 +250,4 @@ public class SelectedTournamentController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

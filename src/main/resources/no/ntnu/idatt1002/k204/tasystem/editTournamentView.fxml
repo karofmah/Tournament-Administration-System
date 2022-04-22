@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.EditTournamentController">
+   <center>
+      <AnchorPane prefHeight="398.0" prefWidth="599.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" layoutX="-4.666666507720947" layoutY="-1.0" prefHeight="555.0" prefWidth="818.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="editTournamentTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="1052.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Edit tournament">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="50.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameTextField" prefWidth="260.0" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Rank Requirement">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="rankRequirementComboBox" prefWidth="260.0" promptText="Choose rank" styleClass="inputFields" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Other requirement">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="otherRequirementsTextfield" prefWidth="260.0" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Start date">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="datePicker" prefWidth="260.0" styleClass="inputFields" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefWidth="200.0" styleClass="textlabels" text="Start time (HH:MM)">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="timeTextField" prefWidth="260.0" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="updateTournamentBtn" mnemonicParsing="false" onAction="#updateTournamentBtnClicked" prefHeight="26.0" prefWidth="352.0" styleClass="buttons" text="Save">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                     <children>
+                        <AnchorPane prefHeight="99.0" prefWidth="354.0">
+                           <children>
+                              <Button fx:id="backBtn" layoutX="8.0" layoutY="9.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" text="Back" AnchorPane.leftAnchor="0.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </center>
+   <top>
+      <Pane prefHeight="23.0" prefWidth="1218.0" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="40.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="40.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

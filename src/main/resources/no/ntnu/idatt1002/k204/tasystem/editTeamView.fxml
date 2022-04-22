@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="672.0" prefWidth="861.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.EditTeamController">
+   <center>
+      <AnchorPane prefHeight="621.0" prefWidth="805.0" stylesheets="@../../../../../stylesheet/mycss.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="editTeamTxt" alignment="CENTER" contentDisplay="CENTER" layoutY="47.0" prefHeight="58.0" prefWidth="815.0" styleClass="title" stylesheets="@../../../../../stylesheet/mycss.css" text="Edit team" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutY="145.0" prefHeight="498.0" prefWidth="781.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0">
+               <children>
+                  <AnchorPane prefHeight="405.0" prefWidth="529.0">
+                     <children>
+                        <Label layoutX="2.0" layoutY="69.0" styleClass="textlabels" text="Player 1" />
+                        <TextField fx:id="p1NameTextfield" layoutX="112.0" layoutY="65.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="2.0" layoutY="118.0" styleClass="textlabels" text="Player 2" />
+                        <TextField fx:id="p2NameTextfield" layoutX="112.0" layoutY="114.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="2.0" layoutY="169.0" styleClass="textlabels" text="Player 3" />
+                        <TextField fx:id="p3NameTextfield" layoutX="112.0" layoutY="165.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="2.0" layoutY="225.0" styleClass="textlabels" text="Player 4" />
+                        <TextField fx:id="p4NameTextfield" layoutX="112.0" layoutY="221.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="2.0" layoutY="277.0" styleClass="textlabels" text="Player 5" />
+                        <TextField fx:id="p5NameTextfield" layoutX="112.0" layoutY="273.0" prefHeight="26.0" prefWidth="200.0" promptText="Name" styleClass="inputFields">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="updateTeamBtn" layoutX="175.0" layoutY="362.0" mnemonicParsing="false" onAction="#updateTeamBtnClicked" prefHeight="26.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Save" />
+                        <ComboBox fx:id="p1RankComboBox" layoutX="327.0" layoutY="65.0" prefHeight="26.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p4RankComboBox" layoutX="327.0" layoutY="221.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p3RankComboBox" layoutX="327.0" layoutY="165.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p2RankComboBox" layoutX="327.0" layoutY="114.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                        <ComboBox fx:id="p5RankComboBox" layoutX="327.0" layoutY="273.0" prefHeight="25.0" prefWidth="199.0" promptText="Rank" styleClass="inputFields" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="31.0" layoutY="590.0" prefHeight="53.0" prefWidth="781.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="590.0">
+               <children>
+                  <AnchorPane prefHeight="53.0" prefWidth="537.0">
+                     <children>
+                        <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#backBtnClicked" styleClass="buttons" stylesheets="@../../../../../stylesheet/mycss.css" text="Back" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <Label fx:id="txtAddedTeam" layoutX="159.0" layoutY="472.0" prefHeight="33.0" prefWidth="568.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Pane prefHeight="9.0" prefWidth="861.0" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <Pane prefHeight="621.0" prefWidth="40.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="621.0" prefWidth="40.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="41.0" prefWidth="861.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

@@ -1,5 +1,8 @@
 package no.ntnu.idatt1002.k204.tasystem.dao;
 
+import no.ntnu.idatt1002.k204.tasystem.Application;
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
+
 import java.sql.*;
 
 /**
@@ -11,7 +14,7 @@ public class Database {
     private static final String DB_USERNAME = "g_idatt1002_x";
     private static final String DB_PW = "ApQiiNHj";
     private static final String DB_URL = "jdbc:mysql://mysql-ait.stud.idi.ntnu.no/"
-            + DB_NAME + "?user=" + DB_USERNAME + "&password=" + DB_PW;
+            + DB_NAME + "?user=" + DB_USERNAME + "&password=" + DB_PW + "&autoReconnect=true";
 
     private static Database instance;
     private static Connection connection;

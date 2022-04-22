@@ -3,8 +3,14 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Player;
@@ -20,9 +26,9 @@ import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
 
 /**
- * Controller for adding a team
+ * Controller for editing a team
  */
-public class AddTeamController implements Initializable {
+public class EditTeamController implements Initializable {
 
     @FXML
     private Button AddTeamBtn;
@@ -73,12 +79,18 @@ public class AddTeamController implements Initializable {
     private TextField[] names;
 
     private ComboBox[] ranks;
+    @FXML
+    private Label editTeamTxt;
 
+    private Team team;
+
+    /**
+     * Initializes the scene
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.teamDAO = new TeamDAO();
         this.teamRegister = new TeamRegister();
-        teamDAO.getTeam(teamRegister);
+        this.teamDAO = new TeamDAO();
 
         names = new TextField[]{p1NameTextfield, p2NameTextfield, p3NameTextfield, p4NameTextfield, p5NameTextfield};
         ranks = new ComboBox[]{p1RankComboBox, p2RankComboBox, p3RankComboBox, p4RankComboBox, p5RankComboBox};
@@ -87,13 +99,28 @@ public class AddTeamController implements Initializable {
     }
 
     /**
-     * Handle add team events
-     *
-     * Add team to database
+     * Fills in current values in the editable fields
+     * @param team the selected team
+     */
+    public void initData(Team team){
+        this.team = team;
+
+        editTeamTxt.setText("Edit " + team.getTeamName());
+
+        for (int i = 0; i < 5; i++) {
+            Player player = team.getPlayers().get(i);
+
+            names[i].setText(player.getGamertag());
+            ranks[i].setValue(player.getRank());
+        }
+
+    }
+
+    /**
+     * Updates the team in the database
      */
     @FXML
-    void addTeamBtnClicked() throws IOException {
-
+    void updateTeamBtnClicked() {
         try {
             ArrayList<Player> players = new ArrayList<>();
 
@@ -105,19 +132,14 @@ public class AddTeamController implements Initializable {
                 }
             }
 
-            for (Team team : teamRegister.getTeams()) {
-                if (team.getTeamName().equals(nameTextField.getText())) {
-                    throw new IllegalArgumentException("The team name already exists");
-                }
-            }
+            teamDAO.updateTeam(team.getTeamName(), players);
 
-            Team team = new Team(players, nameTextField.getText());
+            showInformationDialog(team.getTeamName() + " has been updated.");
 
-            teamDAO.addTeam(team.getPlayers(), team.getTeamName());
+            teamDAO.getTeam(teamRegister);
+            team = teamRegister.getTeamByName(team.getTeamName());
 
-            showInformationDialog(nameTextField.getText() + " has been added to the system!");
-
-            Application.changeScene("addTeamView.fxml");
+            backBtnClicked();
         } catch (IllegalArgumentException e) {
             showAlertDialog(e);
         }
@@ -129,12 +151,22 @@ public class AddTeamController implements Initializable {
     @FXML
     void backBtnClicked() {
         try {
-            Application.changeScene("teamsView.fxml");
+            URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTeamView.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent FrontPageParent = loader.load();
+            SelectedTeamController controller = loader.getController();
+            controller.initData(team);
+            Stage stage = Application.stage;
+            stage.getScene().setRoot(FrontPageParent);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Adds all the available ranks to the combo boxes
+     */
     private void addRanksToComboBox() {
         ObservableList<String> rankList=FXCollections.observableArrayList("Unranked","Iron","Bronze","Silver","Gold", "Platinum", "Diamond","Master","Grandmaster","Challenger");
 
@@ -143,20 +175,4 @@ public class AddTeamController implements Initializable {
         }
 
     }
-
-
-    /**
-     * Handle logout event.
-     *
-     * Logout and send back to log in screen
-     */
-    @FXML
-    void logoutBtnClicked() {
-        try {
-            Application.logout();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
