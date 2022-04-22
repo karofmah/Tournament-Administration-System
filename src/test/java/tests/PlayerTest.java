@@ -5,9 +5,6 @@ import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import org.junit.jupiter.api.*;
 
 class PlayerTest {
-    //TODO Fix maven tests, currently not running properly
-    // 1. Make class for testing public and test methods public otherwise maven lifecycle "test" will fail including
-    // some other maven build lifecycles e.g. package
     private Player player1;
 
     @BeforeEach

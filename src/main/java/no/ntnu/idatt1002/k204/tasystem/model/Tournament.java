@@ -14,11 +14,8 @@ public class Tournament {
     private String name;
     private String rankRequirement;
     private String otherRequirement;
-    private boolean hasGroupStage;
     private LocalDateTime dateTime;
     private ArrayList<Team> teams = new ArrayList<>();
-    private boolean isActive;
-    private Team winner;
     private LocalDate date;
     private LocalTime time;
     private String status;
@@ -43,11 +40,8 @@ public class Tournament {
             this.rankRequirement = "No requirements";
         }
         this.otherRequirement=otherRequirement;
-        this.hasGroupStage = hasGroupStage;
         this.dateTime = dateTime;
         this.teams = new ArrayList<>();
-        this.isActive = false;
-        this.winner = null;
 
         countTournaments++;
         tournamentId = countTournaments;
@@ -67,7 +61,6 @@ public class Tournament {
         this.rankRequirement = rankRequirement;
         if (rankRequirement.isBlank()) this.rankRequirement = "No requirements";
         this.otherRequirement=otherRequirement;
-        this.isActive = false;
 
         try {
             this.date = LocalDate.parse(date);
@@ -183,46 +176,9 @@ public class Tournament {
     }
 
     /**
-     * Returns whether or not the tournament is active
-     *
-     * @return isActive as a boolean
-     */
-    public boolean isActive() {
-        return isActive;
-    }
-
-    /**
-     * Returns the winner of the tournament
-     *
-     * @return winner as the type Team
-     */
-    public Team getWinner() {
-        return winner;
-    }
-
-    /**
-     * Changes whether or not the tournament is active
-     *
-     * @param active
-     */
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    /**
-     * Sets the winner
-     *
-     * @param winner
-     */
-    public void setWinner(Team winner) {
-        this.winner = winner;
-    }
-
-
-    /**
      * Sets the status of the tournament
      *
-     * @param status the new status
+     * @param status the new status (for example "Finished")
      */
     public void setStatus(String status) {
         this.status = status;
@@ -236,34 +192,13 @@ public class Tournament {
         }
     }
 
-    /**
-     * Starts the tournament by setting active to be true
-     */
-    public void startTournament() {
-        setActive(true);
-    }
-
-    /**
-     * Finishes tournament by selecting a winner and setting active to be false
-     *
-     * @param winner
-     */
-    public void finishTournament(Team winner) {
-        setActive(false);
-        setWinner(winner);
-    }
-
-
     @Override
     public String toString() {
         return "Tournament{" +
                 "name='" + name + '\'' +
                 ", rankRequirement='" + rankRequirement + '\'' +
-                ", hasGroupStage=" + hasGroupStage +
                 ", dateTime=" + dateTime +
                 ", teams=" + teams +
-                ", isActive=" + isActive +
-                ", winner=" + winner +
                 '}';
     }
 }

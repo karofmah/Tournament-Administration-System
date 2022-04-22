@@ -31,9 +31,9 @@ public class TournamentDAO {
     public void addTournament(int id, String name, String status, String rankRequirement,String otherRequirement, String date, String time) {
         String sql;
        if (isTest) {
-            sql = "INSERT INTO TESTtournament VALUES(? , ? , ?, ?, ?, ?, ?,null)";
+            sql = "INSERT INTO TESTtournament VALUES(? , ? , ?, ?, ?, ?, ?)";
         } else {
-            sql = "INSERT INTO tournament VALUES(? , ? , ?, ?, ?, ?, ?,null)";
+            sql = "INSERT INTO tournament VALUES(? , ? , ?, ?, ?, ?, ?)";
         }
 
        if (id <= getMaxTournamentID()) {

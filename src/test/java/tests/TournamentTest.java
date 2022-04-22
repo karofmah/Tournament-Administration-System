@@ -43,19 +43,6 @@ public class TournamentTest {
         }
 
         @Test
-        @DisplayName("Tests if tournament has begun")
-        public void startTournament() {
-            tournament1.startTournament();
-            assertTrue(tournament1.isActive());
-        }
-
-        @Test
-        @DisplayName("Tests if tournament has finished")
-        public void finishTournament() {
-            tournament1.finishTournament(team);
-            assertFalse(tournament1.isActive());
-        }
-        @Test
         @DisplayName("Tests if rank requirement can be blank")
         public void rankRequirementIsBlank(){
             assertEquals("Unranked",tournament2.getRankRequirement());
