@@ -123,6 +123,9 @@ public class KnockoutStageController implements Initializable {
     private Button saveBtn;
 
     @FXML
+    private Button groupStageBtn;
+
+    @FXML
     private Text tournamentWinnerTxt;
 
     private TournamentDAO tournamentDAO;
@@ -159,6 +162,10 @@ public class KnockoutStageController implements Initializable {
         initializeMatches();
 
         redrawBrackets();
+        String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
+        if(tournamentStatus.equals("Knockoutstage")){
+            groupStageBtn.setDisable(true);
+        }
     }
 
     /**

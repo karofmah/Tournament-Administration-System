@@ -89,23 +89,33 @@ public class SelectedTournamentController implements Initializable {
         this.teamsTableView.setItems(this.teamObservableList);
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
+        /**
+         * Disables buttons based on tournament status
+         */
         String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
         knockoutStageBtn.setDisable(true);
         groupStageBtn.setDisable(true);
-        if(tournamentStatus.equals("Groupstage") || tournamentStatus.equals("Knockoutstage") || tournamentStatus.equals("Finished")){
+        if(tournamentStatus.equals("Groupstage") || tournamentStatus.equals("Knockoutstage") || tournamentStatus.equals("Group-KnockoutStage") || tournamentStatus.equals("Finished")){
             startTournamentButton.setDisable(true);
             editTournamentBtn.setDisable(true);
             saveTournamentBtn.setDisable(true);
             addEligibleTeamBtn.setDisable(true);
+        }
+        if(tournamentStatus.equals("Knockoutstage")){
             knockoutStageBtn.setDisable(false);
+        }
+        if(tournamentStatus.equals("Group-Knockoutstage") || tournamentStatus.equals("Groupstage")){
             groupStageBtn.setDisable(false);
+        }
+        if(tournamentStatus.equals("Finished")){
+            groupStageBtn.setDisable(false);
+            knockoutStageBtn.setDisable(false);
         }
 
     }
 
     public void initData(Tournament tournament) {
         selectedTournament = tournament;
-        //System.out.println(selectedTournament);
         if (selectedTournament != null) {
             for (Team team : selectedTournament.getTeams()) {
                 this.teamRegister.addTeam(team);
@@ -140,7 +150,6 @@ public class SelectedTournamentController implements Initializable {
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent FrontPageParent = loader.load();
             AddEligibleTeamsController controller = loader.getController();
-            //System.out.println(selectedTournament);
             controller.initData(selectedTournament);
             Stage stage = Application.stage;
             stage.getScene().setRoot(FrontPageParent);

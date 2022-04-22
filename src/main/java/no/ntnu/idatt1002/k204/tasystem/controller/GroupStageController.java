@@ -38,7 +38,10 @@ public class GroupStageController implements Initializable {
     private Button knockoutStageBtn;
 
     @FXML
-    private Button startTournamentBtn;
+    private Button commitGroupsBtn;
+
+    @FXML
+    private Button saveBtn;
 
     @FXML
     private Label selectedText;
@@ -107,6 +110,18 @@ public class GroupStageController implements Initializable {
         this.teamNames = FXCollections.observableArrayList();
         this.teamObservableList = FXCollections.observableArrayList();
 
+        String tournamentStatus= tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
+        if(tournamentStatus.equals("Groupstage")){
+            knockoutStageBtn.setDisable(true);
+        } else{
+            knockoutStageBtn.setDisable(false);
+        }
+        if(tournamentStatus.equals("Finished")){
+            saveBtn.setDisable(true);
+            generateGroupsBtn.setDisable(true);
+            commitGroupsBtn.setDisable(true);
+        }
+
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
         for (Team team : this.teamRegister.getTeams()) {
             this.teamObservableList.add(team);
@@ -147,11 +162,7 @@ public class GroupStageController implements Initializable {
     @FXML
     void knockoutStageBtnClicked() {
         try {
-            if (teamRegister.getTeams().size() >= 8) {
                 Application.changeScene("knockOutStageView.fxml");
-            } else {
-                Dialogs.showInformationDialog("You need 8 teams to start the knockout stage.");
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -187,7 +198,7 @@ public class GroupStageController implements Initializable {
      * Start tournament
      */
     @FXML
-    void startTournamentBtnClicked() {
+    void commitGroupsBtnClicked() {
         setNotEditableTeamCols();
         setPointsColumnsAsEditable();
         generateGroupsBtn.setDisable(true);
