@@ -167,11 +167,12 @@ public class SelectedTournamentController implements Initializable {
                 saveTournamentBtn.setDisable(true);
                 addEligibleTeamBtn.setDisable(true);
                 if (numberOfTeams > 8 && numberOfTeams <= 12) {
-                    Application.changeScene("groupStageView.fxml");
                     tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Groupstage");
+                    Application.changeScene("groupStageView.fxml");
                 } else if (numberOfTeams == 8) {
-                    Application.changeScene("knockOutStageView.fxml");
                     tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Knockoutstage");
+                    Application.changeScene("knockOutStageView.fxml");
+
                 }
             }
             else {
