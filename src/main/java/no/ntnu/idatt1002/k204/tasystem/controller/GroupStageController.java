@@ -202,6 +202,7 @@ public class GroupStageController implements Initializable {
         setNotEditableTeamCols();
         setPointsColumnsAsEditable();
         generateGroupsBtn.setDisable(true);
+        commitGroupsBtn.setDisable(true);
     }
 
 

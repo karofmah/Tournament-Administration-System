@@ -68,9 +68,9 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </AnchorPane>
-                  <TableView fx:id="teamsTableView" maxHeight="342.0" maxWidth="500.0" minHeight="150.0" prefHeight="342.0" prefWidth="200.0" styleClass="table">
+                  <TableView fx:id="teamsTableView" fixedCellSize="0.0" maxHeight="342.0" maxWidth="500.0" minHeight="150.0" prefHeight="342.0" prefWidth="200.0" styleClass="table">
                     <columns>
-                      <TableColumn fx:id="teamsCol" prefWidth="498.00000508626306" styleClass="table" text="Teams" />
+                      <TableColumn fx:id="teamsCol" editable="false" prefWidth="498.00000508626306" styleClass="table" text="Teams" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

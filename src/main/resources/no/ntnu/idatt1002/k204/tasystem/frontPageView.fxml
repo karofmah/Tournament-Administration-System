@@ -42,7 +42,7 @@
                         <String fx:value="buttonsActiveTab" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="587.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="1.0">
+                  <Button fx:id="logOutBtn" alignment="TOP_RIGHT" layoutX="587.0" mnemonicParsing="false" onAction="#logOutBtnClicked" styleClass="buttons" text="Log out" AnchorPane.rightAnchor="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -70,12 +70,12 @@
                   </AnchorPane>
                   <TableView fx:id="tournamentsTableView" fixedCellSize="0.0" maxHeight="342.0" minHeight="150.0" prefHeight="332.0" prefWidth="764.0" styleClass="table" VBox.vgrow="NEVER">
                     <columns>
-                      <TableColumn fx:id="tournamentNameCol" maxWidth="300.0" minWidth="150.0" prefWidth="-1.0" styleClass="table" text="Tournament name" />
-                      <TableColumn fx:id="statusCol" maxWidth="300.0" minWidth="80.0" prefWidth="-1.0" styleClass="table" text="Status" />
-                        <TableColumn fx:id="rankRequirementCol" maxWidth="300.0" minWidth="120.0" prefWidth="124.66665649414062" styleClass="table" text="Rank requirement" />
-                        <TableColumn fx:id="otherRequirementCol" maxWidth="300.0" minWidth="78.0" prefWidth="95.33331298828125" styleClass="table" text="Other requirement" />
-                        <TableColumn fx:id="startDateCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start date" />
-                        <TableColumn fx:id="startTimeCol" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start time" />
+                      <TableColumn fx:id="tournamentNameCol" editable="false" maxWidth="300.0" minWidth="160.0" prefWidth="-1.0" styleClass="table" text="Tournament name" />
+                      <TableColumn fx:id="statusCol" editable="false" maxWidth="300.0" minWidth="80.0" prefWidth="-1.0" styleClass="table" text="Status" />
+                        <TableColumn fx:id="rankRequirementCol" editable="false" maxWidth="300.0" minWidth="150.0" prefWidth="124.66665649414062" styleClass="table" text="Rank requirement" />
+                        <TableColumn fx:id="otherRequirementCol" editable="false" maxWidth="300.0" minWidth="160.0" prefWidth="95.33331298828125" styleClass="table" text="Other requirement" />
+                        <TableColumn fx:id="startDateCol" editable="false" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start date" />
+                        <TableColumn fx:id="startTimeCol" editable="false" maxWidth="300.0" minWidth="100.0" prefWidth="-1.0" styleClass="table" text="Start time" />
                     </columns>
                      <VBox.margin>
                         <Insets />
@@ -83,6 +83,9 @@
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
                   </TableView>
                </children>
             </VBox>

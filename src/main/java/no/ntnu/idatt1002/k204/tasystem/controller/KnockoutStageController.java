@@ -156,16 +156,17 @@ public class KnockoutStageController implements Initializable {
 
         this.tournament = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID());
         this.teamRegister = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
+        String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
 
+        if(tournamentStatus.equals("Knockoutstage")){
+            groupStageBtn.setDisable(true);
+        }
         selectedText.setText(tournament.getName());
 
         initializeMatches();
 
         redrawBrackets();
-        String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
-        if(tournamentStatus.equals("Knockoutstage")){
-            groupStageBtn.setDisable(true);
-        }
+
     }
 
     /**
