@@ -10,14 +10,19 @@ import java.sql.Types;
 /**
  * DAO for group
  */
-
 public class GroupDAO {
     private static boolean isTest = Database.isJunitTest();
 
     /**
      * Add group.
      *
+     * If group does not exist, add the group. Otherwise update current group.
+     *
      * @param groupName    the group name
+     * @param team1        team 1
+     * @param team2        team 2
+     * @param team3        team 3
+     * @param tournamentId the tournament id
      */
     public void addGroup(String groupName, String team1, String team2, String team3, int tournamentId) {
 
@@ -29,7 +34,7 @@ public class GroupDAO {
             sql = "INSERT INTO grp VALUES(?, ?, ?, ?, ?, ?)";
         }
 
-        if (!groupExists(groupName, tournamentId)) {
+        if (getGroup(groupName, tournamentId) == null) {
 
             PreparedStatement statement = null;
 
@@ -56,7 +61,16 @@ public class GroupDAO {
         }
     }
 
-    private void updateGroup(String groupName, String team1, String team2, String team3, int tournamnetId) {
+    /**
+     * Update group with new teams.
+     *
+     * @param groupName
+     * @param team1
+     * @param team2
+     * @param team3
+     * @param tournamentId
+     */
+    private void updateGroup(String groupName, String team1, String team2, String team3, int tournamentId) {
         String sql;
 
         if (isTest) {
@@ -76,7 +90,7 @@ public class GroupDAO {
             statement.setString(2, team2);
             statement.setString(3, team3);
             statement.setString(4, groupName);
-            statement.setInt(5, tournamnetId);
+            statement.setInt(5, tournamentId);
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -90,31 +104,38 @@ public class GroupDAO {
         }
     }
 
-    private boolean groupExists(String groupName, int tournamentID) {
+    /**
+     * Get group given group name and tournament id.
+     *
+     * @param groupName    the group name
+     * @param tournamentId the tournament id
+     * @return the group
+     */
+    public Group getGroup(String groupName, int tournamentId) {
         String sql;
 
         if (isTest) {
-            sql = "SELECT name from grpTEST WHERE name = ? AND tournament_id = ?";
+            sql = "SELECT * from grpTEST WHERE name = ? AND tournament_id = ?";
         } else {
-            sql = "SELECT name from grp WHERE name = ? AND tournament_id = ?";
+            sql = "SELECT * from grp WHERE name = ? AND tournament_id = ?";
         }
 
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         ResultSet result = null;
 
         Group group = null;
-        boolean exists = true;
+
         try {
             statement = Database.getConnection().prepareStatement(sql);
             statement.setString(1, groupName);
-            statement.setInt(2, tournamentID);
+            statement.setInt(2, tournamentId);
             result = statement.executeQuery();
 
             while (result.next()) {
                 group = new Group(result.getString("name"));
-            }
-            if (group == null) {
-                exists = false;
+                group.addTeam(result.getString("team1"));
+                group.addTeam(result.getString("team2"));
+                group.addTeam(result.getString("team3"));
             }
 
         } catch (SQLException e) {
@@ -126,7 +147,6 @@ public class GroupDAO {
                 e.printStackTrace();
             }
         }
-        return exists;
+        return group;
     }
-
 }

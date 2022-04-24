@@ -14,7 +14,6 @@ import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.controller.utils.GroupStageUtils;
 import no.ntnu.idatt1002.k204.tasystem.dao.GroupDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
-import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -127,7 +126,7 @@ public class GroupStageController implements Initializable {
             this.teamObservableList.add(team);
         }
 
-        initializeRowsWithDefaultText();
+        initializeGroupTables();
 
         initializeTeamColumns();
 
@@ -185,11 +184,10 @@ public class GroupStageController implements Initializable {
     void saveBtnClicked() {
         //TODO Fix
         // - Add points to teams after edit and save points
-
         GroupStageUtils.saveGroup(this.groupDAO,"Group A", this.tableView1, Tournament.getSelectedTournamentID());
-        GroupStageUtils.saveGroup(this.groupDAO,"Group B", this.tableView1, Tournament.getSelectedTournamentID());
-        GroupStageUtils.saveGroup(this.groupDAO,"Group C", this.tableView1, Tournament.getSelectedTournamentID());
-        GroupStageUtils.saveGroup(this.groupDAO,"Group D", this.tableView1, Tournament.getSelectedTournamentID());
+        GroupStageUtils.saveGroup(this.groupDAO,"Group B", this.tableView2, Tournament.getSelectedTournamentID());
+        GroupStageUtils.saveGroup(this.groupDAO,"Group C", this.tableView3, Tournament.getSelectedTournamentID());
+        GroupStageUtils.saveGroup(this.groupDAO,"Group D", this.tableView4, Tournament.getSelectedTournamentID());
     }
 
     /**
@@ -219,11 +217,11 @@ public class GroupStageController implements Initializable {
         }
     }
 
-    private void initializeRowsWithDefaultText() {
-        GroupStageUtils.initDefaultText(this.table1root);
-        GroupStageUtils.initDefaultText(this.table2root);
-        GroupStageUtils.initDefaultText(this.table3root);
-        GroupStageUtils.initDefaultText(this.table4root);
+    private void initializeGroupTables() {
+        GroupStageUtils.initWithTeamsFromDatabase(this.groupDAO, "Group A", Tournament.getSelectedTournamentID(), this.table1root);
+        GroupStageUtils.initWithTeamsFromDatabase(this.groupDAO, "Group B", Tournament.getSelectedTournamentID(), this.table2root);
+        GroupStageUtils.initWithTeamsFromDatabase(this.groupDAO, "Group C", Tournament.getSelectedTournamentID(), this.table3root);
+        GroupStageUtils.initWithTeamsFromDatabase(this.groupDAO, "Group D", Tournament.getSelectedTournamentID(), this.table4root);
     }
 
     private void setRootInTreeTables() {
