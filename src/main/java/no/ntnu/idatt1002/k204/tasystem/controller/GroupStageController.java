@@ -177,7 +177,14 @@ public class GroupStageController implements Initializable {
         // - Add points to teams after edit and save points
         // - save all teams in a group
 
-        this.groupDAO.addGroup("Group A", Tournament.getSelectedTournamentID(), this.tableView1.getTreeItem(0).getValue().getTeamName());
+        /*for (int i = 0; i < 3; i++) {
+            this.groupDAO.addGroup("Group A", Tournament.getSelectedTournamentID(), this.tableView1.getTreeItem(i).getValue().getTeamName());
+        }*/
+
+        this.groupDAO.addGroup("Group A",
+                this.tableView1.getTreeItem(0).getValue().getTeamName(),
+                this.tableView1.getTreeItem(1).getValue().getTeamName(),
+                this.tableView1.getTreeItem(2).getValue().getTeamName(), Tournament.getSelectedTournamentID());
 
         //this.groupDAO.addTeamToGroup("Group A", this.tableView1.getTreeItem(0).getValue().getTeamName());
 
