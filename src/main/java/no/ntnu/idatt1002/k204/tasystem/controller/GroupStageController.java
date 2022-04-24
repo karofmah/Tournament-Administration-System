@@ -184,21 +184,12 @@ public class GroupStageController implements Initializable {
     @FXML
     void saveBtnClicked() {
         //TODO Fix
-        // - duplicate primary key error
         // - Add points to teams after edit and save points
-        // - save all teams in a group
 
-        /*for (int i = 0; i < 3; i++) {
-            this.groupDAO.addGroup("Group A", Tournament.getSelectedTournamentID(), this.tableView1.getTreeItem(i).getValue().getTeamName());
-        }*/
-
-        this.groupDAO.addGroup("Group A",
-                this.tableView1.getTreeItem(0).getValue().getTeamName(),
-                this.tableView1.getTreeItem(1).getValue().getTeamName(),
-                this.tableView1.getTreeItem(2).getValue().getTeamName(), Tournament.getSelectedTournamentID());
-
-        //this.groupDAO.addTeamToGroup("Group A", this.tableView1.getTreeItem(0).getValue().getTeamName());
-
+        GroupStageUtils.saveGroup(this.groupDAO,"Group A", this.tableView1, Tournament.getSelectedTournamentID());
+        GroupStageUtils.saveGroup(this.groupDAO,"Group B", this.tableView1, Tournament.getSelectedTournamentID());
+        GroupStageUtils.saveGroup(this.groupDAO,"Group C", this.tableView1, Tournament.getSelectedTournamentID());
+        GroupStageUtils.saveGroup(this.groupDAO,"Group D", this.tableView1, Tournament.getSelectedTournamentID());
     }
 
     /**

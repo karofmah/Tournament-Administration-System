@@ -3,11 +3,16 @@ package no.ntnu.idatt1002.k204.tasystem.controller.utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableView;
+import no.ntnu.idatt1002.k204.tasystem.dao.GroupDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 
 import java.util.ArrayList;
 
+/**
+ * The type Group stage utils.
+ */
 public class GroupStageUtils {
 
     private TeamRegister teamRegister;
@@ -65,5 +70,22 @@ public class GroupStageUtils {
             this.teamsObservableList.remove(this.teamRegister.getTeamByName(team.getTeamName()));
         }
         root.getChildren().setAll(teamItems);
+    }
+
+
+    /**
+     * Save group.
+     *
+     * @param groupDAO     the group dao
+     * @param groupName    the group name
+     * @param tableView    the table view
+     * @param tournamentId the tournament id
+     */
+    public static void saveGroup(GroupDAO groupDAO, String groupName,TreeTableView<Team> tableView, int tournamentId) {
+        groupDAO.addGroup(groupName,
+                tableView.getTreeItem(0).getValue().getTeamName(),
+                tableView.getTreeItem(1).getValue().getTeamName(),
+                tableView.getTreeItem(2).getValue().getTeamName(),
+                tournamentId);
     }
 }
