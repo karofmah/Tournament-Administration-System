@@ -29,10 +29,10 @@ public class AdministratorDAO {
             connection = Database.getConnection();
             if (isTest) {
                 preparedStatement = connection.prepareStatement(
-                        "SELECT * FROM admininistratorTEST WHERE username = ? AND paswd = MD5(?)");
+                        "SELECT * FROM TESTadministrator WHERE username = ? AND paswd = MD5(?)");
             } else {
                 preparedStatement = connection.prepareStatement(
-                        "SELECT * FROM admininistrator WHERE username = ? AND paswd = MD5(?)");
+                        "SELECT * FROM administrator WHERE username = ? AND paswd = MD5(?)");
             }
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);

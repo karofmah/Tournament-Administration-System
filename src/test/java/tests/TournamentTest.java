@@ -39,13 +39,13 @@ public class TournamentTest {
         @DisplayName("Tests if it is possible to add a team to a tournament ")
         public void addTeam() {
             tournament1.addTeam(team);
-            assertEquals("[GeirSittLag]", tournament1.getTeams().toString());
+            assertEquals("GeirSittLag", tournament1.getTeams().get(0).getTeamName());
         }
 
         @Test
         @DisplayName("Tests if rank requirement can be blank")
         public void rankRequirementIsBlank(){
-            assertEquals("Unranked",tournament2.getRankRequirement());
+            assertEquals("No requirements",tournament2.getRankRequirement());
         }
         @Nested
         @DisplayName("Performs negative tests")

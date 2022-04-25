@@ -72,6 +72,7 @@ public class GroupDAO {
      */
     private void updateGroup(String groupName, String team1, String team2, String team3, int tournamentId) {
         String sql;
+        String sql2;
 
         if (isTest) {
             sql = "UPDATE TESTgrp SET team1= ?, team2= ?, team3= ? " +
@@ -79,6 +80,7 @@ public class GroupDAO {
         } else {
             sql = "UPDATE grp SET team1= ?, team2= ?, team3= ?" +
                     "WHERE name= ? AND tournament_id = ?";
+            sql2 = "UPDATE tournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
         }
 
         PreparedStatement statement = null;

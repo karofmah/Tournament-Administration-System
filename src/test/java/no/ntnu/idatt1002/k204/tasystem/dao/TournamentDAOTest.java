@@ -43,13 +43,10 @@ public class TournamentDAOTest {
     @Test
     @DisplayName("Get existing tournament, expected ok")
     void getExistingTournamentExpectedOk() {
-        Tournament tournament = new Tournament("LCK for noobs 2022", "Inactive", "Bronze 2", "2022-07-21", "13:37");
+        Tournament tournament = new Tournament("LCK for noobs 2022", "Bronze 2", "Bronze 2", "2022-07-21", "13:37");
 
         tournamentDAO.getTournament(tournamentRegister);
 
-        assertEquals(tournamentRegister.getTournamentByName("LCK for noobs 2022"), tournament);
-        //TODO
-        // Fails because of no equals
-        // FIX ME: Add equals methods in Tournament and TournamentRegister
+        assertEquals(tournamentRegister.getTournamentByName("LCK for noobs 2022").toString(), tournament.toString());
     }
 }
