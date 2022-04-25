@@ -20,10 +20,22 @@ public class Group {
         this.teams = new ArrayList<>();
     }
 
-    public boolean addTeam(String teamName) {
-        return this.teams.add(new Team(teamName));
+    /**
+     * Add team boolean.
+     *
+     * @param teamName   the team name
+     * @param teamPoints the team points
+     * @return the boolean
+     */
+    public boolean addTeam(String teamName, String teamPoints) {
+        return this.teams.add(new Team(teamName, teamPoints));
     }
 
+    /**
+     * Gets teams.
+     *
+     * @return the teams
+     */
     public ArrayList<Team> getTeams() {
         return teams;
     }
@@ -43,8 +55,14 @@ public class Group {
         return Objects.equals(groupName, group.groupName) && Objects.equals(teams, group.teams);
     }
 
+    /**
+     * Create a string of a group instance
+     * Used when debugging.
+     *
+     * @return string of a group item.
+     */
     @Override
     public String toString() {
-        return "" + groupName;
+        return groupName + " " + this.teams;
     }
 }

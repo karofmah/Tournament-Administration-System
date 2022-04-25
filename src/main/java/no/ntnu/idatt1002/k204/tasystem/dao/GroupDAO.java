@@ -15,7 +15,7 @@ public class GroupDAO {
 
     /**
      * Add group.
-     *
+     * <p>
      * If group does not exist, add the group. Otherwise update current group.
      *
      * @param groupName    the group name
@@ -29,9 +29,9 @@ public class GroupDAO {
         String sql;
 
         if (isTest) {
-            sql = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?,?,?)";
+            sql = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         } else {
-            sql = "INSERT INTO grp VALUES(?, ?, ?, ?, ?, ?,?,?,?)";
+            sql = "INSERT INTO grp VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?)";
         }
 
         if (getGroup(groupName, tournamentId) == null) {
@@ -45,10 +45,10 @@ public class GroupDAO {
                 statement.setString(3, team1);
                 statement.setString(4, team2);
                 statement.setString(5, team3);
-                statement.setInt(6,team1Point);
-                statement.setInt(7,team2Point);
-                statement.setInt(8,team3Point);
-                statement.setInt(9, tournamentId);
+                statement.setString(6, String.valueOf(team1Point));
+                statement.setString(7, String.valueOf(team2Point));
+                statement.setString(8, String.valueOf(team3Point));
+                statement.setString(9, String.valueOf(tournamentId));
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -123,7 +123,6 @@ public class GroupDAO {
             statement.executeUpdate();
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -164,9 +163,9 @@ public class GroupDAO {
 
             while (result.next()) {
                 group = new Group(result.getString("name"));
-                group.addTeam(result.getString("team1"));
-                group.addTeam(result.getString("team2"));
-                group.addTeam(result.getString("team3"));
+                group.addTeam(result.getString("team1"), result.getString("team1Point"));
+                group.addTeam(result.getString("team2"), result.getString("team2Point"));
+                group.addTeam(result.getString("team3"), result.getString("team3Point"));
             }
 
         } catch (SQLException e) {

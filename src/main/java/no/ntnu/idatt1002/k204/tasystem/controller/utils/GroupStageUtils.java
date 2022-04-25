@@ -1,13 +1,10 @@
 package no.ntnu.idatt1002.k204.tasystem.controller.utils;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableRow;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.control.TreeView;
 import no.ntnu.idatt1002.k204.tasystem.dao.GroupDAO;
 import no.ntnu.idatt1002.k204.tasystem.model.Group;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
@@ -41,7 +38,6 @@ public class GroupStageUtils {
      */
     public static void initWithTeamsFromDatabase(GroupDAO groupDAO, String groupName, int tournamentId, TreeItem<Team> root) {
         ArrayList<TreeItem<Team>> teamItems = new ArrayList();
-        ArrayList<TreeItem<String>> pointItems = new ArrayList();
         Group group = groupDAO.getGroup(groupName, tournamentId);
 
         if (group == null) {
@@ -49,9 +45,7 @@ public class GroupStageUtils {
         } else {
             for (int i = 0; i < 3; i++) {//3 teams per group
                 TreeItem<Team> teamItem = new TreeItem<>(group.getTeams().get(i));
-                TreeItem<String> pointItem = new TreeItem<String>(group.getTeams().get(i).pointsProperty().getValue());
                 teamItems.add(teamItem);
-                pointItems.add(pointItem);
             }
             root.getChildren().setAll(teamItems);
         }
@@ -114,28 +108,25 @@ public class GroupStageUtils {
      * @param tournamentId the tournament id
      */
     public static void saveGroup(GroupDAO groupDAO, String groupName, TreeTableView<Team> tableView, int tournamentId) {
-        TreeItem<Team> team1 =tableView.getTreeItem(0);
-        TreeItem<Team> team2 =tableView.getTreeItem(1);
-        TreeItem<Team> team3 =tableView.getTreeItem(2);
+        String onlyDigitsRegex = "[0-9]+";
 
-        System.out.println(team1.valueProperty().getValue().pointsProperty());
+        TreeItem<Team> team1 = tableView.getTreeItem(0);
+        TreeItem<Team> team2 = tableView.getTreeItem(1);
+        TreeItem<Team> team3 = tableView.getTreeItem(2);
 
         SimpleStringProperty team1PointsValue = team1.valueProperty().getValue().pointsProperty();
         SimpleStringProperty team2PointsValue = team2.valueProperty().getValue().pointsProperty();
         SimpleStringProperty team3PointsValue = team3.valueProperty().getValue().pointsProperty();
-        int team1Points = 0;
-        int team2Points = 0;
-        int team3Points = 0;
 
-        if(team1PointsValue != null && !team1PointsValue.equals("")){
-            team1Points = Integer.parseInt(team1PointsValue.getValue());
-        }
-        if(team2PointsValue != null && !team2PointsValue.equals("")){
-            team2Points = Integer.parseInt(team2PointsValue.getValue());
-        }
-        if(team3PointsValue != null && !team3PointsValue.equals("")) {
-            team3Points = Integer.parseInt(team3PointsValue.getValue());
-        }
+        int team1Points;
+        int team2Points;
+        int team3Points;
+
+        validateBeforeSave(onlyDigitsRegex, team1, team2, team3, team1PointsValue, team2PointsValue, team3PointsValue);
+
+        team1Points = Integer.parseInt(team1PointsValue.getValue());
+        team2Points = Integer.parseInt(team2PointsValue.getValue());
+        team3Points = Integer.parseInt(team3PointsValue.getValue());
 
         groupDAO.addGroup(
                 groupName,
@@ -146,5 +137,19 @@ public class GroupStageUtils {
                 team2Points,
                 team3Points,
                 tournamentId);
+    }
+
+    private static void validateBeforeSave(String onlyDigitsRegex, TreeItem<Team> team1, TreeItem<Team> team2,
+                                           TreeItem<Team> team3, SimpleStringProperty team1PointsValue,
+                                           SimpleStringProperty team2PointsValue, SimpleStringProperty team3PointsValue) {
+        if (!team1PointsValue.getValue().matches(onlyDigitsRegex)
+                || !team2PointsValue.getValue().matches(onlyDigitsRegex)
+                || !team3PointsValue.getValue().matches(onlyDigitsRegex)) {
+            throw new IllegalArgumentException("Points have to be a number!");
+        } else if (team1.getValue().getTeamName().equalsIgnoreCase("<Double click to choose team>")
+                || team2.getValue().getTeamName().equalsIgnoreCase("<Double click to choose team>")
+                || team3.getValue().getTeamName().equalsIgnoreCase("<Double click to choose team>")) {
+            throw new IllegalArgumentException("Please choose team(s)!");
+        }
     }
 }

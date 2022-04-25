@@ -171,10 +171,15 @@ public class GroupStageController implements Initializable {
 
     @FXML
     void saveBtnClicked() {
-        GroupStageUtils.saveGroup(this.groupDAO,"Group A", this.tableView1, Tournament.getSelectedTournamentID());
-        GroupStageUtils.saveGroup(this.groupDAO,"Group B", this.tableView2, Tournament.getSelectedTournamentID());
-        GroupStageUtils.saveGroup(this.groupDAO,"Group C", this.tableView3, Tournament.getSelectedTournamentID());
-        GroupStageUtils.saveGroup(this.groupDAO,"Group D", this.tableView4, Tournament.getSelectedTournamentID());
+        try {
+            GroupStageUtils.saveGroup(this.groupDAO,"Group A", this.tableView1, Tournament.getSelectedTournamentID());
+            GroupStageUtils.saveGroup(this.groupDAO,"Group B", this.tableView2, Tournament.getSelectedTournamentID());
+            GroupStageUtils.saveGroup(this.groupDAO,"Group C", this.tableView3, Tournament.getSelectedTournamentID());
+            GroupStageUtils.saveGroup(this.groupDAO,"Group D", this.tableView4, Tournament.getSelectedTournamentID());
+        } catch (IllegalArgumentException e) {
+            Dialogs.showAlertDialog(e.getMessage());
+            return;
+        }
         Dialogs.showInformationDialog("The group stage has been saved");
     }
 
