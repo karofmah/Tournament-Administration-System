@@ -38,6 +38,9 @@ public class GroupStageController implements Initializable {
     private Button saveBtn;
 
     @FXML
+    private Button finishGroupstageBtn;
+
+    @FXML
     private Label selectedText;
 
 
@@ -184,6 +187,16 @@ public class GroupStageController implements Initializable {
         setPointsColumnsAsEditable();
         generateGroupsBtn.setDisable(true);
         commitGroupsBtn.setDisable(true);
+    }
+
+    @FXML
+    void finishGroupstageBtnClicked(){
+        try {
+            Application.changeScene("knockOutStageView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Fill Knockoutstage
     }
 
 

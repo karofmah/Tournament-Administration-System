@@ -107,7 +107,10 @@ public class SelectedTournamentController implements Initializable {
             groupStageBtn.setDisable(false);
         }
         if(tournamentStatus.equals("Finished")){
-            groupStageBtn.setDisable(false);
+            int numberOfTeams = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams().size();
+            if(numberOfTeams>8){
+                groupStageBtn.setDisable(false);
+            }
             knockoutStageBtn.setDisable(false);
         }
 

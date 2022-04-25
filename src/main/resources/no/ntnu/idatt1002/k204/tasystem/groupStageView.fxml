@@ -134,6 +134,7 @@
                   </HBox>
                </children>
             </VBox>
+            <Button fx:id="finishGroupstageBtn" layoutX="318.0" layoutY="555.0" mnemonicParsing="false" onAction="#finishGroupstageBtnClicked" styleClass="buttons" text="Finish Groupstage" />
          </children>
       </AnchorPane>
    </center>
