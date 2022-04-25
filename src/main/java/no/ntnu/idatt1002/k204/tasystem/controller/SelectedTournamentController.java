@@ -88,9 +88,8 @@ public class SelectedTournamentController implements Initializable {
         this.teamsTableView.setItems(this.teamObservableList);
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
-        /**
-         * Disables buttons based on tournament status
-         */
+
+        // Disables buttons based on tournament status
         String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
         knockoutStageBtn.setDisable(true);
         groupStageBtn.setDisable(true);
@@ -171,7 +170,7 @@ public class SelectedTournamentController implements Initializable {
                 if (numberOfTeams == 12) {
                     tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Groupstage");
                     Application.changeScene("groupStageView.fxml");
-                } else if (numberOfTeams == 8) {
+                } else {
                     tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Knockoutstage");
                     Application.changeScene("knockOutStageView.fxml");
 

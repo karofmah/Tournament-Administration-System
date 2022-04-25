@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="734.0" prefWidth="707.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
+<BorderPane prefHeight="734.0" prefWidth="707.0" styleClass="background" stylesheets="@../../../../../stylesheet/mycss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatt1002.k204.tasystem.controller.KnockoutStageController">
    <center>
       <AnchorPane prefHeight="534.0" prefWidth="350.0">
          <children>
@@ -54,7 +44,7 @@
                         <AnchorPane prefHeight="53.0" prefWidth="410.0">
                            <children>
                               <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#teamsBtnClicked" styleClass="buttons" text="Tournament overview" />
-                              <Button fx:id="groupStageBtn" layoutX="229.0" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
+                              <Button fx:id="groupStageBtn" disable="true" layoutX="229.0" mnemonicParsing="false" onAction="#groupStageBtnClicked" styleClass="buttons" text="Group stage" />
                               <Button fx:id="knockoutStageBtn" layoutX="374.0" mnemonicParsing="false" onAction="#knockoutStageBtnClicked" text="Knockout stage">
                                  <styleClass>
                                     <String fx:value="buttons" />

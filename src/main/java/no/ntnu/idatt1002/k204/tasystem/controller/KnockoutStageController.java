@@ -132,6 +132,8 @@ public class KnockoutStageController implements Initializable {
     private Tournament tournament;
     private TeamRegister teamRegister;
 
+    private int numberOfTeams;
+
     /**
      * List containing all matches and teams in the knockout stage
      *
@@ -156,11 +158,9 @@ public class KnockoutStageController implements Initializable {
 
         this.tournament = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID());
         this.teamRegister = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID());
-        String tournamentStatus = tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
 
-        if(tournamentStatus.equals("Knockoutstage")){
-            groupStageBtn.setDisable(true);
-        }
+        numberOfTeams = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams().size();
+
         selectedText.setText(tournament.getName());
 
         initializeMatches();
@@ -266,6 +266,8 @@ public class KnockoutStageController implements Initializable {
             saveBtn.setDisable(true);
 
             for (RadioButton button : buttons) button.setDisable(true);
+
+            if (numberOfTeams > 8) groupStageBtn.setDisable(false);
         }
     }
 

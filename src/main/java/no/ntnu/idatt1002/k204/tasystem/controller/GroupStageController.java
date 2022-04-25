@@ -110,6 +110,7 @@ public class GroupStageController implements Initializable {
             saveBtn.setDisable(true);
             generateGroupsBtn.setDisable(true);
             commitGroupsBtn.setDisable(true);
+            finishGroupstageBtn.setDisable(true);
         }
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
