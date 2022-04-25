@@ -7,10 +7,11 @@ import java.util.Objects;
 
 /**
  * Team class. Creates a team with a list of players that will participate in tournament
+ * Teams are initialized with 0 points if not something else is set.
  */
 public class Team {
     private ArrayList<Player> players = new ArrayList<>();
-    private final SimpleStringProperty teamName; //Have to use string property because of combobox and events
+    private final SimpleStringProperty teamName; //Have to use string property because of combobox and event listening
     private String lowestRank = "Challenger";
     private SimpleStringProperty points;
     private Team team;
@@ -27,7 +28,7 @@ public class Team {
             Team team=new Team(teamName);
         }
         this.teamName = new SimpleStringProperty(teamName);
-        this.points = new SimpleStringProperty();
+        this.points = new SimpleStringProperty(String.valueOf(0));
         if(teamName.isBlank()){
             throw new IllegalArgumentException("Team name can not be blank");
         }
@@ -39,7 +40,7 @@ public class Team {
         if(teamName.isBlank()){
             throw new IllegalArgumentException("Team name can not be blank");
         }
-        this.points = new SimpleStringProperty();
+        this.points = new SimpleStringProperty(String.valueOf(0));
         setLowestRank();
     }
 
@@ -73,7 +74,6 @@ public class Team {
      */
     public Team(String name, String p1name, String p1rank, String p2name, String p2rank, String p3name, String p3rank, String p4name, String p4rank, String p5name, String p5rank) {
         this.teamName = new SimpleStringProperty(name);
-
         ArrayList<Player> newPlayers = new ArrayList<>();
         newPlayers.add(new Player(p1name,p1rank));
         newPlayers.add(new Player(p2name,p2rank));
@@ -92,6 +92,7 @@ public class Team {
     public Team (Team team) {
         this.teamName = new SimpleStringProperty(team.getTeamName());
         this.team = team;
+        this.points = new SimpleStringProperty(String.valueOf(0));
         setLowestRank();
     }
 
@@ -168,14 +169,30 @@ public class Team {
     }
 
     /**
+     * Sets points.
+     *
+     * @param points the points
+     */
+    public void setPoints(String points) {
+        this.points.set(points);
+    }
+
+    /**
+     * Gets points.
+     *
+     * @return the points
+     */
+    public String getPoints() {
+        return points.get();
+    }
+
+    /**
      * Method for getting players in team
      * @return players
      */
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
