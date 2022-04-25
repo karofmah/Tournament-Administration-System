@@ -85,28 +85,51 @@ public class Team {
         setLowestRank();
     }
 
+    /**
+     * Constructor that takes an entire team as parameter
+     * @param team the team
+     */
     public Team (Team team) {
         this.teamName = new SimpleStringProperty(team.getTeamName());
         this.team = team;
         setLowestRank();
     }
 
+    /**
+     * Method for getting the team
+     * @return the team
+     */
     public Team getTeam() {
         return this.team;
     }
 
+    /**
+     * Method for getting teamname
+     * @return teamName
+     */
     public String getTeamName() {
         return teamName.get();
     }
 
+    /**
+     * Method for getting team name
+     * @return team name
+     */
     public SimpleStringProperty teamNameProperty() {
         return teamName;
     }
 
+    /**
+     * Method for getting the lowest rank in the team
+     * @return the lowest rank
+     */
     public String getLowestRank() {
         return lowestRank;
     }
 
+    /**
+     * Method for setting the lowest rank that exists in the team
+     */
     public void setLowestRank(){
         String[] ranks = {"Unranked", "Iron", "Bronze", "Silver","Gold", "Platinum","Diamond","Master","Grandmaster","Challenger" };
         int lowestRankIndex = 9;
@@ -120,24 +143,28 @@ public class Team {
         this.lowestRank=ranks[lowestRankIndex];
     }
 
+    /**
+     * Method for changing team name
+     //* @param teamName name of team
+     */
     public void setTeamName(String teamName) {
         this.teamName.set(teamName);
     }
 
-    public String getPoints() {
-        return points.get();
-    }
-
+    /**
+     * Gets team points as int
+     * @return the points
+     */
     public int getPointsAsInt() {
         return Integer.parseInt(points.getValue());
     }
 
+    /**
+     * Gets the points as a SimpleStringProperty
+     * @return the points
+     */
     public SimpleStringProperty pointsProperty() {
         return points;
-    }
-
-    public void setPoints(int points) {
-        this.points.set(String.valueOf(points));
     }
 
     /**
@@ -149,14 +176,6 @@ public class Team {
     }
 
     /**
-     * Method for getting teamname
-     * @return teamName
-     */
-    /*public String getTeamName() {
-        return teamName;
-    }*/
-
-    /**
      * Method for adding player to team
      * @param player players in team
      */
@@ -164,13 +183,6 @@ public class Team {
         players.add(player);
     }
 
-    /**
-     * Method for changing team name
-     //* @param teamName name of team
-     */
-    /*public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }*/
 
     @Override
     public boolean equals(Object o) {

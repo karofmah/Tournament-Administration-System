@@ -11,9 +11,9 @@ public class Tournament {
     private static int countTournaments = 1;//keep track of count tournaments. Also used to update an id for a tournament.
     private static int selectedTournamentID;//keep track on the id of the selected tournament
     private int tournamentId = 0;
-    private final String name;
+    private String name;
     private String rankRequirement;
-    private final String otherRequirement;
+    private String otherRequirement;
     private LocalDateTime dateTime;
     private ArrayList<Team> teams = new ArrayList<>();
     private LocalDate date;
@@ -28,7 +28,7 @@ public class Tournament {
      * @param otherRequirement String that represents another requirements that is created by the admin
      * @param hasGroupStage   Boolean that represents whether group stage will be included or not
      * @param dateTime        LocalDateTime that represents the local date and time of the tournament
-     * @throws IllegalArgumentException might be thrown
+     * @throws IllegalArgumentException
      */
     public Tournament(String name, String rankRequirement,String otherRequirement, boolean hasGroupStage, LocalDateTime dateTime) throws IllegalArgumentException {
         this.name = name;
@@ -50,10 +50,10 @@ public class Tournament {
     /**
      * Instantiates a new tournament. Used when adding tournament to database
      *
-     * @param name String that represents the name of the tournament, can not be blank
-     * @param rankRequirement String that represents the rank requirement for the tournament, no requirements if blank
-     * @param date  LocalDate that represents the local date of the tournament
-     * @param time LocalTime that represents the local time of the tournament
+     * @param name
+     * @param rankRequirement
+     * @param date
+     * @param time
      */
     public Tournament(String name, String rankRequirement,String otherRequirement, String date, String time) throws IllegalArgumentException {
         this.name = name;
