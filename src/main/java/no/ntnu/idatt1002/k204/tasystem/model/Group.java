@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class Group {
     private final String groupName;
-    private ArrayList<Team> teams;
+    private final ArrayList<Team> teams;
 
     /**
      * Instantiates a new Group.
@@ -32,8 +32,8 @@ public class Group {
      * Check equality of a group object.
      * Groups are equal if they have the same group name and contains same teams.
      *
-     * @param o
-     * @return
+     * @param o Object
+     * @return boolean
      */
     @Override
     public boolean equals(Object o) {

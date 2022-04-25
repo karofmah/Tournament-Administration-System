@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
@@ -232,7 +231,7 @@ public class SelectedTournamentController implements Initializable {
     void saveTournament() {
         try{
         for (Team team : selectedTournament.getTeams()) {
-            tournamentDAO.addTournamentAndTeams(selectedTournament.getTournamentId(), team.getTeamName());
+            tournamentDAO.addTournamentAndTeams(selectedTournament.getTournamentID(), team.getTeamName());
         }
             showInformationDialog("Changes in " + selectedTournament.getName() + " has been saved");
         }catch(IllegalArgumentException e) {
@@ -242,7 +241,7 @@ public class SelectedTournamentController implements Initializable {
 
     @FXML
     void deleteTournament() {
-        tournamentDAO.deleteTournament(selectedTournament.getTournamentId());
+        tournamentDAO.deleteTournament(selectedTournament.getTournamentID());
         Dialogs.showInformationDialog(selectedTournament.getName() + " has been deleted");
 
         try {

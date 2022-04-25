@@ -65,7 +65,7 @@ public class AddTournamentController implements Initializable {
 
             String status = "Inactive";
 
-            tournamentDAO.addTournament(tournament1.getTournamentId(),tournament1.getName(), status,
+            tournamentDAO.addTournament(tournament1.getTournamentID(),tournament1.getName(), status,
                     tournament1.getRankRequirement(),tournament1.getOtherRequirement(),
                     String.valueOf(tournament1.getDate()), String.valueOf(tournament1.getTime()));
 

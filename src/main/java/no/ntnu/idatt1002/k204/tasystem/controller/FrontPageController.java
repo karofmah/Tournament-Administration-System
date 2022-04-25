@@ -99,7 +99,7 @@ public class FrontPageController implements Initializable {
                         row.setOnMouseClicked(mouseEvent2 -> { //Listen for click event
                             try {
 
-                                Tournament.setSelectedTournamentID(tournament.getTournamentId());
+                                Tournament.setSelectedTournamentID(tournament.getTournamentID());
                                 changeToSelectedTournamentView(tournament);//Change scene
 
                             } catch (IOException e) {

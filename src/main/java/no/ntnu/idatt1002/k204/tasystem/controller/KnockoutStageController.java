@@ -321,7 +321,7 @@ public class KnockoutStageController implements Initializable {
     void finishTournamentBtnClicked() {
 
         tournament.setStatus("Finished");
-        tournamentDAO.updateTournamentStatus(tournament.getTournamentId(), tournament.getStatus());
+        tournamentDAO.updateTournamentStatus(tournament.getTournamentID(), tournament.getStatus());
 
         redrawBrackets();
 
