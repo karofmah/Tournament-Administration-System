@@ -6,14 +6,14 @@ public class Player {
 
     /**
      * Player Constructor
-     * @param gamertag gamertag of player
+     * @param gamertag gamer-tag of player
      * @param rank rank of player
      */
     public Player(String gamertag, String rank) throws IllegalArgumentException {
         if(gamertag != null && !gamertag.equals("")) {
             this.gamertag = gamertag;
         } else {
-            throw new IllegalArgumentException("Gamertag cannot be null or empty");
+            throw new IllegalArgumentException("Gamer-tag cannot be null or empty");
         }
         if (rank != null && !rank.equals("")){
             this.rank = rank;
@@ -23,7 +23,7 @@ public class Player {
     }
 
     /**
-     * Get gamertag of player
+     * Get gamer-tag of player
      * @return gamertag
      */
     public String getGamertag() {
@@ -39,8 +39,8 @@ public class Player {
     }
 
     /**
-     * Modifies the gamertag of player
-     * @param gamertag gamertag of player
+     * Modifies the gamer-tag of player
+     * @param gamertag gamer-tag of player
      */
     public void setGamertag(String gamertag) {
         if(gamertag != null && !gamertag.equals("")) {

@@ -1,6 +1,5 @@
 package no.ntnu.idatt1002.k204.tasystem.model;
 
-import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,10 +9,10 @@ import java.util.ArrayList;
 public class Tournament {
     private static int countTournaments = 1;//keep track of count tournaments. Also used to update an id for a tournament.
     private static int selectedTournamentID;//keep track on the id of the selected tournament
-    private int tournamentId = 0;
-    private String name;
+    private final int tournamentId;
+    private final String name;
     private String rankRequirement;
-    private String otherRequirement;
+    private final String otherRequirement;
     private LocalDateTime dateTime;
     private ArrayList<Team> teams = new ArrayList<>();
     private LocalDate date;
@@ -26,11 +25,10 @@ public class Tournament {
      * @param name            String that represents the name of the tournament, can not be blank
      * @param rankRequirement String that represents the rank requirement for the tournament, no requirements if blank
      * @param otherRequirement String that represents another requirements that is created by the admin
-     * @param hasGroupStage   Boolean that represents whether group stage will be included or not
      * @param dateTime        LocalDateTime that represents the local date and time of the tournament
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException might be thrown
      */
-    public Tournament(String name, String rankRequirement,String otherRequirement, boolean hasGroupStage, LocalDateTime dateTime) throws IllegalArgumentException {
+    public Tournament(String name, String rankRequirement, String otherRequirement, LocalDateTime dateTime) throws IllegalArgumentException {
         this.name = name;
         if (name.isBlank()) {
             throw new IllegalArgumentException("Name can not be blank");
@@ -50,10 +48,10 @@ public class Tournament {
     /**
      * Instantiates a new tournament. Used when adding tournament to database
      *
-     * @param name
-     * @param rankRequirement
-     * @param date
-     * @param time
+     * @param name String that represents the name of the tournament, can not be blank
+     * @param rankRequirement String that represents the rank requirement for the tournament, no requirements if blank
+     * @param date LocalDate that represents the local date of the tournament
+     * @param time LocalTime that represents the local time of the tournament
      */
     public Tournament(String name, String rankRequirement,String otherRequirement, String date, String time) throws IllegalArgumentException {
         this.name = name;
@@ -80,11 +78,11 @@ public class Tournament {
     /**
      * Instantiates a new tournament. Used when adding fetching tournament from database
      *
-     * @param name
-     * @param status
-     * @param rankRequirement
-     * @param date
-     * @param time
+     * @param name String that represents the name of the tournament, can not be blank
+     * @param status String that represents the status of the tournament
+     * @param rankRequirement String that represents the rank requirement for the tournament, no requirements if blank
+     * @param date LocalDate that represents the local date of the tournament
+     * @param time LocalTime that represents the local time of the tournament
      */
     public Tournament(String id, String name, String status, String rankRequirement,String otherRequirement, String date, String time) {
         this.name = name;
