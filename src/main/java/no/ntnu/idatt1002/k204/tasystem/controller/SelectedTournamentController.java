@@ -164,11 +164,11 @@ public class SelectedTournamentController implements Initializable {
     void startTournamentButtonClicked(){
         try{
             int numberOfTeams = tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams().size();
-            if(numberOfTeams>=8 && numberOfTeams<=12) {
+            if(numberOfTeams==8 || numberOfTeams==12) {
                 editTournamentBtn.setDisable(true);
                 saveTournamentBtn.setDisable(true);
                 addEligibleTeamBtn.setDisable(true);
-                if (numberOfTeams > 8 && numberOfTeams <= 12) {
+                if (numberOfTeams == 12) {
                     tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Groupstage");
                     Application.changeScene("groupStageView.fxml");
                 } else if (numberOfTeams == 8) {
@@ -178,7 +178,7 @@ public class SelectedTournamentController implements Initializable {
                 }
             }
             else {
-                Dialogs.showInformationDialog("Number of teams has to be between 8 and 12. Currently: " + numberOfTeams);
+                Dialogs.showInformationDialog("Number of teams has to be 8 or 12. Currently: " + numberOfTeams);
             }
 
 
