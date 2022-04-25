@@ -80,6 +80,7 @@ public class GroupDAO {
         if (isTest) {
             sql = "UPDATE TESTgrp SET team1= ?, team2= ?, team3= ? " +
                     "WHERE name= ? AND tournament_id = ?";
+            sql2 = "";
         } else {
             sql = "UPDATE grp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
                     "WHERE name= ? AND tournament_id = ?";
@@ -101,6 +102,28 @@ public class GroupDAO {
             statement.setInt(8, tournamentId);
 
             statement.executeUpdate();
+
+            statement = Database.getConnection().prepareStatement(sql2);
+            statement.setString(1, String.valueOf(team1Point));
+            statement.setInt(2, tournamentId);
+            statement.setString(3, team1);
+            statement.executeUpdate();
+
+
+            statement = Database.getConnection().prepareStatement(sql2);
+            statement.setString(1, String.valueOf(team2Point));
+            statement.setInt(2, tournamentId);
+            statement.setString(3, team2);
+            statement.executeUpdate();
+
+            statement = Database.getConnection().prepareStatement(sql2);
+            statement.setString(1, String.valueOf(team3Point));
+            statement.setInt(2, tournamentId);
+            statement.setString(3, team3);
+            statement.executeUpdate();
+
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

@@ -14,6 +14,7 @@ import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.controller.utils.GroupStageUtils;
 import no.ntnu.idatt1002.k204.tasystem.dao.GroupDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -170,12 +171,11 @@ public class GroupStageController implements Initializable {
 
     @FXML
     void saveBtnClicked() {
-        //TODO Fix
-        // - Add points to teams after edit and save points
         GroupStageUtils.saveGroup(this.groupDAO,"Group A", this.tableView1, Tournament.getSelectedTournamentID());
         GroupStageUtils.saveGroup(this.groupDAO,"Group B", this.tableView2, Tournament.getSelectedTournamentID());
         GroupStageUtils.saveGroup(this.groupDAO,"Group C", this.tableView3, Tournament.getSelectedTournamentID());
         GroupStageUtils.saveGroup(this.groupDAO,"Group D", this.tableView4, Tournament.getSelectedTournamentID());
+        Dialogs.showInformationDialog("The group stage has been saved");
     }
 
     /**
@@ -192,11 +192,11 @@ public class GroupStageController implements Initializable {
     @FXML
     void finishGroupstageBtnClicked(){
         try {
+            tournamentDAO.updateTournamentStatus(Tournament.getSelectedTournamentID(), "Knockoutstage");
             Application.changeScene("knockOutStageView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //Fill Knockoutstage
     }
 
 

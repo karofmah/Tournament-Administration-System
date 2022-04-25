@@ -1,5 +1,6 @@
 package no.ntnu.idatt1002.k204.tasystem.controller.utils;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -117,27 +118,23 @@ public class GroupStageUtils {
         TreeItem<Team> team2 =tableView.getTreeItem(1);
         TreeItem<Team> team3 =tableView.getTreeItem(2);
 
-        String team1PointsValue = team1.valueProperty().getValue().pointsProperty().getValue();
-        String team2PointsValue = team2.valueProperty().getValue().pointsProperty().getValue();
-        String team3PointsValue = team3.valueProperty().getValue().pointsProperty().getValue();
+        SimpleStringProperty team1PointsValue = team1.valueProperty().getValue().pointsProperty();
+        SimpleStringProperty team2PointsValue = team2.valueProperty().getValue().pointsProperty();
+        SimpleStringProperty team3PointsValue = team3.valueProperty().getValue().pointsProperty();
         int team1Points = 0;
         int team2Points = 0;
         int team3Points = 0;
-        if(team1PointsValue == null){
-            team1Points = 0;
-        } else {
-            team1Points = Integer.parseInt(team1PointsValue);
+
+        if(team1PointsValue.getValue() != null && !team1PointsValue.getValue().equals("")){
+            team1Points = Integer.parseInt(team1PointsValue.getValue());
         }
-        if(team2PointsValue == null){
-            team2Points = 0;
-        } else {
-            team2Points = Integer.parseInt(team2PointsValue);
+        if(team2PointsValue.getValue() != null && !team2PointsValue.getValue().equals("")){
+            team2Points = Integer.parseInt(team2PointsValue.getValue());
         }
-        if(team3PointsValue ==null){
-            team3Points = 0;
-        } else {
-            team3Points = Integer.parseInt(team3PointsValue);
+        if(team3PointsValue.getValue() != null && !team3PointsValue.getValue().equals("")) {
+            team3Points = Integer.parseInt(team3PointsValue.getValue());
         }
+
         groupDAO.addGroup(
                 groupName,
                 team1.getValue().getTeamName(),
