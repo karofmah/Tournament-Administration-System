@@ -175,13 +175,6 @@ public class Team {
         return players;
     }
 
-    /**
-     * Method for adding player to team
-     * @param player players in team
-     */
-    public void addPlayer(Player player){
-        players.add(player);
-    }
 
 
     @Override

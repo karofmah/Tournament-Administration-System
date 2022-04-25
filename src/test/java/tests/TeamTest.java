@@ -24,12 +24,7 @@ public class TeamTest {
     @Nested
     public class inputIsSupported{
 
-        @Test
-        @DisplayName("Adds player to team")
-        public void addPlayerToTeam() {
-            team.addPlayer(player);
-            assertTrue(team.getPlayers().contains(player));
-        }
+
 
         @Test
         @DisplayName("Set team name")
@@ -38,13 +33,7 @@ public class TeamTest {
             assertEquals("Team Liquid", team.getTeamName());
         }
 
-        @Test
-        @DisplayName("Get lowest Rank")
-            public void getLowestRank(){
-            team.addPlayer(new Player("Kåre", "Challenger"));
-            team.addPlayer(new Player("Geir", "Unranked"));
-            team.setLowestRank();
-        }
+
     }
     @Nested
     public class inputIsNotSupported {
