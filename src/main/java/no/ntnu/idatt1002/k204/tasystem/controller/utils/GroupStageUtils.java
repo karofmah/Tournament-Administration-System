@@ -118,6 +118,8 @@ public class GroupStageUtils {
         TreeItem<Team> team2 =tableView.getTreeItem(1);
         TreeItem<Team> team3 =tableView.getTreeItem(2);
 
+        System.out.println(team1.valueProperty().getValue().pointsProperty());
+
         SimpleStringProperty team1PointsValue = team1.valueProperty().getValue().pointsProperty();
         SimpleStringProperty team2PointsValue = team2.valueProperty().getValue().pointsProperty();
         SimpleStringProperty team3PointsValue = team3.valueProperty().getValue().pointsProperty();
@@ -125,13 +127,13 @@ public class GroupStageUtils {
         int team2Points = 0;
         int team3Points = 0;
 
-        if(team1PointsValue.getValue() != null && !team1PointsValue.getValue().equals("")){
+        if(team1PointsValue != null && !team1PointsValue.equals("")){
             team1Points = Integer.parseInt(team1PointsValue.getValue());
         }
-        if(team2PointsValue.getValue() != null && !team2PointsValue.getValue().equals("")){
+        if(team2PointsValue != null && !team2PointsValue.equals("")){
             team2Points = Integer.parseInt(team2PointsValue.getValue());
         }
-        if(team3PointsValue.getValue() != null && !team3PointsValue.getValue().equals("")) {
+        if(team3PointsValue != null && !team3PointsValue.equals("")) {
             team3Points = Integer.parseInt(team3PointsValue.getValue());
         }
 
