@@ -1,8 +1,5 @@
 package no.ntnu.idatt1002.k204.tasystem.model;
 
-import javafx.collections.ObservableList;
-import javafx.scene.control.ComboBox;
-
 import java.util.HashSet;
 
 /**
@@ -10,19 +7,13 @@ import java.util.HashSet;
  * Utilizes HashSet to ensure that each team is only added once.
  */
 public class TeamRegister {
-    private HashSet<Team> teams = new HashSet<>();
+    private final HashSet<Team> teams = new HashSet<>();
 
     /**
      * The constructor for the TeamRegister.
      */
     public TeamRegister() {
     }
-
-    /**
-     * Instantiates a new Team register using an observable list
-     *
-     * @param teamObservableList observable list of teams
-     */
 
     /**
      * Adds a new team to the system.

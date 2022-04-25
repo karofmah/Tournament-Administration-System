@@ -10,12 +10,12 @@ public class Player {
      * @param rank rank of player
      */
     public Player(String gamertag, String rank) throws IllegalArgumentException {
-        if(!gamertag.equals(null) && !gamertag.equals("")) {
+        if(gamertag != null && !gamertag.equals("")) {
             this.gamertag = gamertag;
         } else {
             throw new IllegalArgumentException("Gamertag cannot be null or empty");
         }
-        if (!rank.equals(null) && !rank.equals("")){
+        if (rank != null && !rank.equals("")){
             this.rank = rank;
         } else{
             this.rank = "Unranked";
@@ -43,7 +43,7 @@ public class Player {
      * @param gamertag gamertag of player
      */
     public void setGamertag(String gamertag) {
-        if(!gamertag.equals(null) && !gamertag.equals("")) {
+        if(gamertag != null && !gamertag.equals("")) {
             this.gamertag = gamertag;
         } else {
             throw new IllegalArgumentException("Gamertag cannot be null or empty");
@@ -55,7 +55,7 @@ public class Player {
      * @param rank rank of player
      */
     public void setRank(String rank) {
-        if (!rank.equals(null) && !rank.equals("")){
+        if (rank != null && !rank.equals("")){
             this.rank = rank;
         } else{
             this.rank = "Unranked";

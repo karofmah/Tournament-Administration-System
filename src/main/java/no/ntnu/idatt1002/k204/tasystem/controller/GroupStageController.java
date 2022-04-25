@@ -27,11 +27,6 @@ import java.util.ResourceBundle;
  */
 public class GroupStageController implements Initializable {
 
-    @FXML
-    private Button backBtn;
-
-    @FXML
-    private Button groupStageBtn;
 
     @FXML
     private Button knockoutStageBtn;
@@ -45,8 +40,6 @@ public class GroupStageController implements Initializable {
     @FXML
     private Label selectedText;
 
-    @FXML
-    private Button finishGroupStageBtn;
 
     @FXML
     private TreeTableColumn<Team, String> pointsColTable1;
@@ -87,8 +80,6 @@ public class GroupStageController implements Initializable {
     @FXML
     private TreeTableView<Team> tableView4;
 
-    @FXML
-    private Button teamsBtn;
 
     private final TreeItem<Team> table1root = new TreeItem<>();
     private final TreeItem<Team> table2root = new TreeItem<>();
@@ -110,11 +101,7 @@ public class GroupStageController implements Initializable {
         this.teamObservableList = FXCollections.observableArrayList();
 
         String tournamentStatus= tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getStatus();
-        if(tournamentStatus.equals("Groupstage")){
-            knockoutStageBtn.setDisable(true);
-        } else{
-            knockoutStageBtn.setDisable(false);
-        }
+        knockoutStageBtn.setDisable(tournamentStatus.equals("Groupstage"));
         if(tournamentStatus.equals("Finished")){
             saveBtn.setDisable(true);
             generateGroupsBtn.setDisable(true);
@@ -122,9 +109,7 @@ public class GroupStageController implements Initializable {
         }
 
         selectedText.setText(this.tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getName());
-        for (Team team : this.teamRegister.getTeams()) {
-            this.teamObservableList.add(team);
-        }
+        this.teamObservableList.addAll(this.teamRegister.getTeams());
 
         initializeGroupTables();
 

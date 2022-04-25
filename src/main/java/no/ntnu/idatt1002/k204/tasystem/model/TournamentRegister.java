@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * The Tournament register that holds all tournaments.
  */
 public class TournamentRegister {
-    private ArrayList<Tournament> tournaments = new ArrayList<Tournament>();
+    private final ArrayList<Tournament> tournaments = new ArrayList<>();
 
     /**
      * The constructor for the TournamentRegister class.
@@ -18,14 +18,13 @@ public class TournamentRegister {
     /**
      * Adds a new tournament to the register.
      * @param name the name of the tournament
-     * @param dateTime the date and time of the tournament
      * @param rankRequirement the minimum rank required to take part in the tournament
      * @param hasGroupStage if the tournament has a group stage or not.
-     *                      If there are 8 teams competing, there will only be a knockout stage.
-     *                      If there are 12 teams competing, there will be a group stage as well.
+ *                      If there are 8 teams competing, there will only be a knockout stage.
+     * @param dateTime the date and time of the tournament
      */
-    public boolean addTournament(String name, String rankRequirement, String otherRequirement,boolean hasGroupStage, LocalDateTime dateTime) {
-        return tournaments.add(new Tournament(name, rankRequirement,otherRequirement, hasGroupStage, dateTime));
+    public void addTournament(String name, String rankRequirement, String otherRequirement, boolean hasGroupStage, LocalDateTime dateTime) {
+        tournaments.add(new Tournament(name, rankRequirement, otherRequirement, hasGroupStage, dateTime));
     }
 
     /**
@@ -60,12 +59,5 @@ public class TournamentRegister {
         return null;
     }
 
-    public Tournament getTournamentById(int id) {
-        for (Tournament tournament: tournaments) {
-            if (tournament.getTournamentId() == id) {
-                return tournament;
-            }
-        }
-        return null;
-    }
+
 }

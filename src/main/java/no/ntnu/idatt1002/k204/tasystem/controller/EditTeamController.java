@@ -30,17 +30,6 @@ import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDia
  */
 public class EditTeamController implements Initializable {
 
-    @FXML
-    private Button AddTeamBtn;
-
-    @FXML
-    private Button backBtn;
-
-    @FXML
-    private Button logoutBtn;
-
-    @FXML
-    private TextField nameTextField;
 
     @FXML
     private TextField p1NameTextfield;

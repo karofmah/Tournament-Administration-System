@@ -27,8 +27,6 @@ import java.util.ResourceBundle;
  */
 public class FrontPageController implements Initializable {
 
-    @FXML
-    private Button addTournamentBtn;
 
     @FXML
     private TableColumn<?, ?> startDateCol;
@@ -43,16 +41,11 @@ public class FrontPageController implements Initializable {
     private TableColumn<?, ?> statusCol;
 
     @FXML
-    private Button teamsBtn;
-
-    @FXML
     private TableColumn<?, ?> startTimeCol;
 
     @FXML
     private TableColumn<?, ?> tournamentNameCol;
 
-    @FXML
-    private Button tournamentsBtn;
 
     @FXML
     private TableView<Tournament> tournamentsTableView;

@@ -3,7 +3,6 @@ package no.ntnu.idatt1002.k204.tasystem.model;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -11,7 +10,7 @@ import java.util.Objects;
  */
 public class Team {
     private ArrayList<Player> players = new ArrayList<>();
-    private SimpleStringProperty teamName; //Have to use string property because of combobox and events
+    private final SimpleStringProperty teamName; //Have to use string property because of combobox and events
     private String lowestRank = "Challenger";
     private SimpleStringProperty points;
     private Team team;

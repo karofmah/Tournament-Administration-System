@@ -2,7 +2,6 @@ package no.ntnu.idatt1002.k204.tasystem.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +13,6 @@ import javafx.stage.Stage;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.TeamDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.TournamentDAO;
-import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
 import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
@@ -22,15 +20,13 @@ import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showAlertDialog;
 import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDialog;
 
 public class AddEligibleTeamsController implements Initializable {
-
-    @FXML
-    private Button backBtn;
 
     @FXML
     private TableColumn <?,?> teamNameCol;
@@ -66,9 +62,7 @@ public class AddEligibleTeamsController implements Initializable {
         eligibleTeams = new ArrayList<>();
         String[] ranks = {"Unranked", "Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster", "Challenger"};
         ArrayList<String> ranksArraylist = new ArrayList();
-        for (String rank:ranks) {
-            ranksArraylist.add(rank);
-        }
+        Collections.addAll(ranksArraylist, ranks);
         for (Team team : teamRegister.getTeams()) {
             if (tournamentDAO.getTeamsGivenTournamentId(Tournament.getSelectedTournamentID()).getTeams().stream().noneMatch(p -> p.getTeamName().equals(team.getTeamName()))) {
                 if (ranksArraylist.indexOf(team.getLowestRank()) >= ranksArraylist.indexOf(tournamentDAO.getTournamentById(Tournament.getSelectedTournamentID()).getRankRequirement())) {
@@ -117,7 +111,7 @@ public class AddEligibleTeamsController implements Initializable {
 
     }
     @FXML
-    void backBtnClicked(ActionEvent Event) {
+    void backBtnClicked() {
         try {
             URL fxmlLocation = getClass().getResource("/no/ntnu/idatt1002/k204/tasystem/selectedTournamentView.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);

@@ -24,14 +24,6 @@ import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDia
  */
 public class AddTeamController implements Initializable {
 
-    @FXML
-    private Button AddTeamBtn;
-
-    @FXML
-    private Button backBtn;
-
-    @FXML
-    private Button logoutBtn;
 
     @FXML
     private TextField nameTextField;
@@ -145,18 +137,6 @@ public class AddTeamController implements Initializable {
     }
 
 
-    /**
-     * Handle logout event.
-     *
-     * Logout and send back to log in screen
-     */
-    @FXML
-    void logoutBtnClicked() {
-        try {
-            Application.logout();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 }

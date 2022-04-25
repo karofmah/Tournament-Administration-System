@@ -21,32 +21,14 @@ import static no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs.showInformationDia
  */
 public class AddTournamentController implements Initializable {
 
-    @FXML
-    private Label addNewTournamentTitle;
-
-    @FXML
-    private Button addTournamentBtn;
-
-    @FXML
-    private Button backBtn;
 
     @FXML
     private DatePicker datePicker;
 
-    @FXML
-    private Button groupKnockoutBtn;
-
-    @FXML
-    private Button knockoutBtn;
-
-    @FXML
-    private Button logoutBtn;
 
     @FXML
     private TextField nameTextField;
 
-    @FXML
-    private TextField requirementsTextfield;
 
     @FXML
     private TextField otherRequirementsTextfield;

@@ -1,13 +1,8 @@
 package no.ntnu.idatt1002.k204.tasystem.controller;
 
-/**
- * Sample Skeleton for 'selectedTeamView.fxml' Controller Class
- */
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,21 +16,10 @@ import no.ntnu.idatt1002.k204.tasystem.model.Team;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public class SelectedTeamController {
 
-    @FXML // ResourceBundle that was given to the FXMLLoader
-    private ResourceBundle resources;
-
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
-
-    @FXML // fx:id="backBtn"
-    private Button backBtn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="logOutBtn"
-    private Button logOutBtn; // Value injected by FXMLLoader
 
     @FXML
     private Label selectedText;
@@ -51,7 +35,7 @@ public class SelectedTeamController {
 
     private Team selectedTeam;
 
-    private TeamDAO teamDAO = new TeamDAO();
+    private final TeamDAO teamDAO = new TeamDAO();
 
     /**
      * Adds data to the table.
