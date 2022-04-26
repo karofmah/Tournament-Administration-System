@@ -150,9 +150,10 @@ public class TournamentDAO {
      * @param tournamentID the id of the tournament to be deleted
      */
     public void deleteTournament(int tournamentID){
-        String sql1 = "DELETE FROM tournament_team WHERE tournament_id = ?";
-        String sql2 = "DELETE FROM tournament WHERE tournament_id = ?";
-        String sql3 = "DELETE FROM knockout_match WHERE tournament_id = ?";
+        String sql1 = "DELETE FROM grp WHERE tournament_id = ?";
+        String sql2 = "DELETE FROM knockout_match WHERE tournament_id = ?";
+        String sql3 = "DELETE FROM tournament WHERE tournament_id = ?";
+        String sql4 = "DELETE FROM tournament_team WHERE tournament_id = ?";
 
         PreparedStatement statement = null;
         try {
@@ -163,6 +164,9 @@ public class TournamentDAO {
             statement.setInt(1, tournamentID);
             statement.executeUpdate();
             statement = Database.getConnection().prepareStatement(sql3);
+            statement.setInt(1, tournamentID);
+            statement.executeUpdate();
+            statement = Database.getConnection().prepareStatement(sql4);
             statement.setInt(1, tournamentID);
             statement.executeUpdate();
         } catch (SQLException e) {
