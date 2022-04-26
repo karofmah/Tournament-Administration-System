@@ -152,8 +152,8 @@ public class TournamentDAO {
     public void deleteTournament(int tournamentID){
         String sql1 = "DELETE FROM grp WHERE tournament_id = ?";
         String sql2 = "DELETE FROM knockout_match WHERE tournament_id = ?";
-        String sql3 = "DELETE FROM tournament WHERE tournament_id = ?";
-        String sql4 = "DELETE FROM tournament_team WHERE tournament_id = ?";
+        String sql3 = "DELETE FROM tournament_team WHERE tournament_id = ?";
+        String sql4 = "DELETE FROM tournament WHERE tournament_id = ?";
 
         PreparedStatement statement = null;
         try {
