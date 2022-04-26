@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"no.ntnu.idatt1002.k204.tasystem"},{"l":"no.ntnu.idatt1002.k204.tasystem.controller"},{"l":"no.ntnu.idatt1002.k204.tasystem.controller.utils"},{"l":"no.ntnu.idatt1002.k204.tasystem.dao"},{"l":"no.ntnu.idatt1002.k204.tasystem.dialogs"},{"l":"no.ntnu.idatt1002.k204.tasystem.model"}];updateSearchResults();
