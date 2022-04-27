@@ -233,7 +233,7 @@ public class SelectedTournamentController implements Initializable {
     void saveTournament() {
         try{
         for (Team team : selectedTournament.getTeams()) {
-            tournamentDAO.addTournamentAndTeams(selectedTournament.getTournamentID(), team.getTeamName());
+            tournamentDAO.addTournamentAndTeam(selectedTournament.getTournamentID(), team.getTeamName());
         }
             showInformationDialog("Changes in " + selectedTournament.getName() + " has been saved");
         }catch(IllegalArgumentException e) {

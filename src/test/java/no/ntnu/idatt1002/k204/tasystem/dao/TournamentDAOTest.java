@@ -1,5 +1,6 @@
 package no.ntnu.idatt1002.k204.tasystem.dao;
 
+import no.ntnu.idatt1002.k204.tasystem.model.TeamRegister;
 import no.ntnu.idatt1002.k204.tasystem.model.Tournament;
 import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 import org.junit.jupiter.api.*;
@@ -37,16 +38,74 @@ public class TournamentDAOTest {
     @Test
     @DisplayName("Add tournament, expected ok")
     public void addTournamentExpectedOk() {
-        tournamentDAO.addTournament(1,"LCK for noobs 2022", "Inactive", "Bronze 2","", "2022-07-21", "13:37");
+        tournamentDAO.addTournament(2, "LCK for noobs 2022", "Inactive", "Bronze 2", "PC", "2022-07-21", "13:37");
+    }
+
+    @Test
+    @DisplayName("Add tournament with same id, expected ok")
+    public void addTournamentWithSameIdExpectedOk() {
+        tournamentDAO.addTournament(2, "LCK for noobs 2022", "Inactive", "Bronze 2", "PC", "2022-07-21", "13:37");
+        tournamentDAO.addTournament(2, "LCK for noobs 2022", "Inactive", "Bronze 2", "PC", "2022-07-21", "13:39");
     }
 
     @Test
     @DisplayName("Get existing tournament, expected ok")
-    void getExistingTournamentExpectedOk() {
+    public void getExistingTournamentExpectedOk() {
         Tournament tournament = new Tournament("LCK for noobs 2022", "Bronze 2", "Bronze 2", "2022-07-21", "13:37");
 
         tournamentDAO.getTournament(tournamentRegister);
 
         assertEquals(tournamentRegister.getTournamentByName("LCK for noobs 2022").toString(), tournament.toString());
+    }
+
+    @Test
+    @DisplayName("Add tournament and team, expected")
+    public void addTournamentAndTeam() {
+        tournamentDAO.addTournamentAndTeam(3, "Rip SKT");
+    }
+
+    @Test
+    @DisplayName("Add duplicate tournament and team, expected ok")
+    public void addDuplicateTournamentAndTeamExpectedOk() {
+        tournamentDAO.addTournamentAndTeam(4, "Rip SKT");
+    }
+
+    @Test
+    @DisplayName("Delete tournament, expected ok")
+    public void deleteTournamentExpectedOk() {
+        tournamentDAO.deleteTournament(2);
+    }
+
+    @Test
+    @DisplayName("Get teams given tournament id, expected ok")
+    public void getTeamsGivenTournamentIdExpectedOk() {
+        TeamRegister teamRegister = tournamentDAO.getTeamsGivenTournamentId(3);
+        assertNotNull(teamRegister);
+    }
+
+    @Test
+    @DisplayName("Get tournament by id, expected ok")
+    public void getTournamentByIdExpectedOk() {
+        Tournament tournament = tournamentDAO.getTournamentById(4);
+        assertNotNull(tournament);
+    }
+
+    @Test
+    @DisplayName("Get tournament by id not existing")
+    public void getTournamentByIdNotExisting() {
+        Tournament tournament = tournamentDAO.getTournamentById(99);
+        assertNull(tournament);
+    }
+
+    @Test
+    @DisplayName("Update tournament, expected ok")
+    public void updateTournamentExpectedOk() {
+        tournamentDAO.updateTournament(3, "LCK for lolz", "Bronze 2", "PC", "2022-07-21", "13:39");
+    }
+
+    @Test
+    @DisplayName("Update tournament status")
+    public void updateTournamentStatus() {
+        tournamentDAO.updateTournamentStatus(5, "Group Stage");
     }
 }

@@ -22,11 +22,17 @@ public class TeamDAO {
 
     public void addTeam(ArrayList<Player> players, String teamName) {
         String sql;
+
         if (isTest) {
-            sql = "INSERT INTO teamTEST VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO TESTteam VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         } else {
             sql = "INSERT INTO team VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         }
+
+        if (teamExists(teamName)) {
+            return;
+        }
+
         PreparedStatement statement = null;
         try {
             statement = Database.getConnection().prepareStatement(sql);
@@ -56,15 +62,53 @@ public class TeamDAO {
         }
     }
 
+    private boolean teamExists(String name) {
+        String sql;
+
+        if (isTest){
+            sql = "SELECT name FROM TESTteam WHERE name = ?";
+        } else {
+            sql = "SELECT name FROM team WHERE name = ?";
+        }
+
+        ResultSet res = null;
+        PreparedStatement statement = null;
+        Team team = null;
+        boolean exists = false;
+
+        try {
+            statement = Database.getConnection().prepareStatement(sql);
+            statement.setString(1, name);
+            res = statement.executeQuery();
+            while (res.next()) {
+                team = new Team(res.getString("name"));
+            }
+            if (team != null) {
+                exists = true;
+                return exists;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                res.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return exists;
+    }
+
     /**
      * Fills a team-register with teams from the database
+     *
      * @param register the team register to be filled
      */
     public void getTeam(TeamRegister register) {
         String sql;
 
         if (isTest) {
-            sql = "SELECT * FROM teamTest";
+            sql = "SELECT * FROM TESTteam";
         } else {
             sql = "SELECT * FROM team";
         }
@@ -93,11 +137,20 @@ public class TeamDAO {
 
     /**
      * Method used to delete a team from the database
+     *
      * @param teamName the name of the team to be deleted
      */
     public void deleteTeam(String teamName) {
-        String sql = "DELETE FROM tournament_team WHERE teamName = ?";
-        String sql1 = "DELETE FROM team WHERE name = ?";
+        String sql;
+        String sql1;
+
+        if (isTest) {
+            sql = "DELETE FROM TESTtournament_team WHERE teamName = ?";
+            sql1 = "DELETE FROM TESTteam WHERE name = ?";
+        } else {
+            sql = "DELETE FROM tournament_team WHERE teamName = ?";
+            sql1 = "DELETE FROM team WHERE name = ?";
+        }
 
         PreparedStatement statement = null;
         try {
@@ -118,37 +171,11 @@ public class TeamDAO {
         }
     }
 
-    public void addTeamAndPlayers(String teamName, String gamerTag) {
-        String sql;
-
-        if (isTest) {
-            sql = "INSERT INTO team_playerTEST VALUES(?, ?)";
-        } else {
-            sql = "INSERT INTO team_player VALUES(?, ?)";
-        }
-
-        PreparedStatement statement = null;
-
-        try {
-            statement = Database.getConnection().prepareStatement(sql);
-            statement.setString(1, teamName);
-            statement.setString(2, gamerTag);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     /**
      * Method used to update a team in the database.
+     *
      * @param teamName the name of the team
-     * @param players the list of players
+     * @param players  the list of players
      */
     public void updateTeam(String teamName, ArrayList<Player> players) {
         String sql1;

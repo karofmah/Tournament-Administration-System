@@ -78,9 +78,9 @@ public class GroupDAO {
         String sql2;
 
         if (isTest) {
-            sql = "UPDATE TESTgrp SET team1= ?, team2= ?, team3= ? " +
+            sql = "UPDATE TESTgrp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
                     "WHERE name= ? AND tournament_id = ?";
-            sql2 = "";
+            sql2 = "UPDATE TESTtournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
         } else {
             sql = "UPDATE grp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
                     "WHERE name= ? AND tournament_id = ?";
@@ -145,7 +145,7 @@ public class GroupDAO {
         String sql;
 
         if (isTest) {
-            sql = "SELECT * from grpTEST WHERE name = ? AND tournament_id = ?";
+            sql = "SELECT * from TESTgrp WHERE name = ? AND tournament_id = ?";
         } else {
             sql = "SELECT * from grp WHERE name = ? AND tournament_id = ?";
         }
@@ -167,7 +167,9 @@ public class GroupDAO {
                 group.addTeam(result.getString("team2"), result.getString("team2Point"));
                 group.addTeam(result.getString("team3"), result.getString("team3Point"));
             }
-
+            if (group == null){
+                return null;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

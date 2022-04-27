@@ -1,7 +1,10 @@
-package tests;
+package no.ntnu.idatt1002.k204.tasystem.model;
+
 import no.ntnu.idatt1002.k204.tasystem.model.Player;
 import no.ntnu.idatt1002.k204.tasystem.model.Team;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -13,19 +16,17 @@ public class TeamTest {
     private Team team;
     private Player player;
     private Team team_2;
+
     @BeforeEach
     @DisplayName("Creates a list with players, a new team and a new player.")
     public void testData() {
         ArrayList<Player> teamList = new ArrayList<Player>();
         this.team = new Team(teamList, "Fnatic");
-        this.player=new Player("Phase","Iron");
+        this.player = new Player("Phase", "Iron");
     }
 
     @Nested
-    public class inputIsSupported{
-
-
-
+    public class inputIsSupported {
         @Test
         @DisplayName("Set team name")
         public void setTeamName() {
@@ -35,6 +36,7 @@ public class TeamTest {
 
 
     }
+
     @Nested
     public class inputIsNotSupported {
         @Test

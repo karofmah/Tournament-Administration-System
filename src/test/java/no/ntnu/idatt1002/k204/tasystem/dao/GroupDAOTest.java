@@ -1,6 +1,5 @@
 package no.ntnu.idatt1002.k204.tasystem.dao;
 
-import no.ntnu.idatt1002.k204.tasystem.model.TournamentRegister;
 import org.junit.jupiter.api.*;
 
 import java.sql.Connection;
@@ -34,6 +33,24 @@ public class GroupDAOTest {
     @Test
     @DisplayName("Add group to database, expected ok")
     public void addGroupToDatabaseExpectedOk() {
+        groupDAO.addGroup("Kjeltringane", "A-laget", "B-laget", "C-laget", 0, 0, 0, 2);
+    }
 
+    @Test
+    @DisplayName("Add already existing group, expected ok")
+    public void addAlreadyExistingGroupExpectedOk() {
+        groupDAO.addGroup("Kjeltringane", "A-laget", "B-laget", "C-laget", 0, 0, 0, 2);
+    }
+
+    @Test
+    @DisplayName("Get existing group, expected ok")
+    public void getExistingGroupExpectedOk() {
+        groupDAO.getGroup("Kjeltringane", 2);
+    }
+
+    @Test
+    @DisplayName("Get non existing group")
+    public void getNonExistingGroup() {
+        assertNull(groupDAO.getGroup("Gratis pølser i kantina", 3));
     }
 }

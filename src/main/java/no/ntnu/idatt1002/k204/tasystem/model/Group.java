@@ -18,6 +18,13 @@ public class Group {
     public Group(String groupName) {
         this.groupName = groupName;
         this.teams = new ArrayList<>();
+        validateName(groupName);;
+    }
+
+    private void validateName(String name){
+        if (name == null || name.equals("")) {
+            throw new IllegalArgumentException("Please provide a group name!");
+        }
     }
 
     /**
