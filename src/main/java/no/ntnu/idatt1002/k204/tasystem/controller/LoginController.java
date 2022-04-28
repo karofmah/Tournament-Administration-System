@@ -26,7 +26,6 @@ public class LoginController {
     @FXML
     private TextField usernameTextField;
     Database database;
-
     /**
      * Handle login button event
      * <p>

@@ -31,7 +31,7 @@ public class GroupDAO {
 
         if (isTest) {
             sql1 = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            sql2 = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql2 = "UPDATE tournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
         } else {
             sql1 = "INSERT INTO grp VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?)";
             sql2 = "UPDATE tournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
