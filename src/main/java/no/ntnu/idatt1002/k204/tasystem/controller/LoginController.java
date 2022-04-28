@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import no.ntnu.idatt1002.k204.tasystem.Application;
 import no.ntnu.idatt1002.k204.tasystem.dao.AdministratorDAO;
 import no.ntnu.idatt1002.k204.tasystem.dao.Database;
+import no.ntnu.idatt1002.k204.tasystem.dialogs.Dialogs;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,8 +15,6 @@ import java.sql.SQLException;
 
 /**
  * Controller for handling login.
- *
- *
  */
 public class LoginController {
     @FXML
@@ -30,9 +29,8 @@ public class LoginController {
 
     /**
      * Handle login button event
-     *
+     * <p>
      * Start database connection and change scene when authenticated user logs in.
-     *
      */
     @FXML
     void loginButtonClicked() {
@@ -41,15 +39,11 @@ public class LoginController {
             database = Database.getInstance();
             AdministratorDAO adminDAO = new AdministratorDAO();
 
-            //if (adminDAO.getAdmin(usernameTextField.getText(), passwordTextField.getText())) {
-            if (adminDAO.getAdmin("skype", "1234")) { //Only for testing, remove afterwards
-                System.out.println("Succesfully logged in!");
+            if (adminDAO.getAdmin(usernameTextField.getText(), passwordTextField.getText())) {
+                System.out.println("Successfully logged in!");
                 Application.changeScene("frontPageView.fxml");
             } else {
-                System.out.println("You don't have access to this system!");
-                //TODO
-
-                //FIXME Add user feedback when not authenticated
+                Dialogs.showAlertDialog("You don't have access to this system!");
             }
         } catch (IOException e) {
             e.printStackTrace();

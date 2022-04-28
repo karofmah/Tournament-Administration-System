@@ -447,7 +447,7 @@ public class TournamentDAO {
         String sql2;
 
         if (isTest) {
-            sql1 = "SELECT FROM TESTknockout_match WHERE tournament_id = ?";
+            sql1 = "SELECT * FROM TESTknockout_match WHERE tournament_id = ?";
             sql2 = "INSERT INTO TESTknockout_match VALUES(?, ?, ?, ?, ?)";
         } else {
             sql1 = "SELECT * from knockout_match WHERE tournament_id = ?";

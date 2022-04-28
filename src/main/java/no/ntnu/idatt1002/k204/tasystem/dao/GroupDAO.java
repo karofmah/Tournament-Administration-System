@@ -26,12 +26,15 @@ public class GroupDAO {
      */
     public void addGroup(String groupName, String team1, String team2, String team3, int team1Point, int team2Point, int team3Point, int tournamentId) {
 
-        String sql;
+        String sql1;
+        String sql2;
 
         if (isTest) {
-            sql = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql1 = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql2 = "INSERT INTO TESTgrp VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         } else {
-            sql = "INSERT INTO grp VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?)";
+            sql1 = "INSERT INTO grp VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?)";
+            sql2 = "UPDATE tournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
         }
 
         if (getGroup(groupName, tournamentId) == null) {
@@ -39,7 +42,7 @@ public class GroupDAO {
             PreparedStatement statement = null;
 
             try {
-                statement = Database.getConnection().prepareStatement(sql);
+                statement = Database.getConnection().prepareStatement(sql1);
                 statement.setNull(1, Types.NULL);
                 statement.setString(2, groupName);
                 statement.setString(3, team1);
@@ -49,6 +52,26 @@ public class GroupDAO {
                 statement.setString(7, String.valueOf(team2Point));
                 statement.setString(8, String.valueOf(team3Point));
                 statement.setString(9, String.valueOf(tournamentId));
+                statement.executeUpdate();
+
+                //UPDATE tournament_team
+                statement = Database.getConnection().prepareStatement(sql2);
+                statement.setString(1, String.valueOf(team1Point));
+                statement.setInt(2, tournamentId);
+                statement.setString(3, team1);
+                statement.executeUpdate();
+
+
+                statement = Database.getConnection().prepareStatement(sql2);
+                statement.setString(1, String.valueOf(team2Point));
+                statement.setInt(2, tournamentId);
+                statement.setString(3, team2);
+                statement.executeUpdate();
+
+                statement = Database.getConnection().prepareStatement(sql2);
+                statement.setString(1, String.valueOf(team3Point));
+                statement.setInt(2, tournamentId);
+                statement.setString(3, team3);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -74,15 +97,15 @@ public class GroupDAO {
      * @param tournamentId
      */
     private void updateGroup(String groupName, String team1, String team2, String team3, int team1Point, int team2Point, int team3Point, int tournamentId) {
-        String sql;
+        String sql1;
         String sql2;
 
         if (isTest) {
-            sql = "UPDATE TESTgrp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
+            sql1 = "UPDATE TESTgrp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
                     "WHERE name= ? AND tournament_id = ?";
             sql2 = "UPDATE TESTtournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
         } else {
-            sql = "UPDATE grp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
+            sql1 = "UPDATE grp SET team1= ?, team2= ?, team3= ?, team1Point = ?, team2Point =?, team3Point= ?" +
                     "WHERE name= ? AND tournament_id = ?";
             sql2 = "UPDATE tournament_team SET points = ? WHERE tournament_id = ? AND teamName = ?";
         }
@@ -90,7 +113,7 @@ public class GroupDAO {
         PreparedStatement statement = null;
 
         try {
-            statement = Database.getConnection().prepareStatement(sql);
+            statement = Database.getConnection().prepareStatement(sql1);
 
             statement.setString(1, team1);
             statement.setString(2, team2);
