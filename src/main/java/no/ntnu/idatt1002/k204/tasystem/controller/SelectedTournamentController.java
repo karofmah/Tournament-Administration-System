@@ -177,7 +177,7 @@ public class SelectedTournamentController implements Initializable {
                 }
             }
             else {
-                Dialogs.showInformationDialog("Number of teams has to be 8 or 12. Currently: " + numberOfTeams);
+                Dialogs.showInformationDialog("Number of teams has to be 8 or 12. Currently: " + numberOfTeams +"\n Perhaps you forgot to save");
             }
 
 
