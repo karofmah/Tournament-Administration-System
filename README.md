@@ -13,8 +13,8 @@ window (highlighted in picture below). Make sure that `Application` is the selec
 If it is not selected or there are no configurations added, navigate to `src/main/java/no.ntnu.idatt1002.k204.tasystem`, 
 right-click the file `Application` and select `Run 'Application.main()'`. 
 
+![Run](./run.png)
+
 ## Regarding log in
 Note that it is currently not possible to log into the application because the database was shut down after the project period. 
 However, the user manual included in the repository may be read to understand the application further.
-
-![Run](./run.png)
