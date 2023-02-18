@@ -11,6 +11,10 @@ in IntelliJ IDEA.
 To run the application, locate the green play button next to the Run/Debug Configuration selector at the top of the 
 window (highlighted in picture below). Make sure that `Application` is the selected run configuration in the drop-down menu.
 If it is not selected or there are no configurations added, navigate to `src/main/java/no.ntnu.idatt1002.k204.tasystem`, 
-right-click the file `Application` and select `Run 'Application.main()'`.
+right-click the file `Application` and select `Run 'Application.main()'`. 
+
+##Regarding log in
+Note that it is currently not possible to log into the application because the database was shut down after the project period. 
+However, the user manual included in the repository may be read to understand the application further.
 
 ![Run](./run.png)
