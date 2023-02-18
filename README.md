@@ -1,7 +1,6 @@
 <h1>Tournament Administration System</h1>
 
-The Tournament Administration System (TAS) is a program developed for NTNUI e-sport to make the process of managing 
-e-sports tournaments easier and more efficient.
+This is a group project in IDATT1001-System Development. The Tournament Administration System (TAS) is a program developed for NTNUI e-sport to make the process of managing e-sports tournaments easier and more efficient.
 
 ## Opening the project
 To open the project, you first need IntelliJ IDEA by JetBrains and a Java SE Development Kit from Oracle. 
